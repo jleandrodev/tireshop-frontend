@@ -1,0 +1,84 @@
+name: CI
+
+# O CI cresce com o projeto: a task que cria uma verificação acrescenta o job (ou o passo) aqui
+# e o caso em tests/infra/ci.spec.ts (specs/README.md, "O CI cresce com o projeto").
+#
+# Regra que não muda: todo job entra no `needs` do "CI ok". A main exige só "CI ok" e
+# "Título do PR" (.github/ruleset-main.json), então job novo nunca fica fora da proteção.
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  specs:
+    name: Specs
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      # Os mesmos verificadores da máquina, no mesmo contêiner: specs (ids, campos, dependências,
+      # requisitos) e contrato (todo exemplo valida no OpenAPI).
+      - name: Specs e contrato
+        run: |
+          DEV_UID="$(id -u)"
+          DEV_GID="$(id -g)"
+          export DEV_UID DEV_GID
+          docker compose --profile ferramentas run --rm -T handoff
+
+  workflows:
+    name: Workflows
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: actionlint
+        run: docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:1.7.12 -color .github/workflows/*.yml
+
+  imagem-dev:
+    name: Imagem dev
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - name: Lê a versão do Node do .nvmrc
+        id: node
+        run: echo "versao=$(tr -d 'v[:space:]' < .nvmrc)" >> "$GITHUB_OUTPUT"
+      - name: Constrói a imagem de desenvolvimento
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          target: dev
+          build-args: NODE_VERSION=${{ steps.node.outputs.versao }}
+          load: true
+          tags: tireshop-frontend-dev
+          cache-from: type=gha,scope=dev
+          cache-to: type=gha,scope=dev,mode=max
+      - name: Confere o ambiente (Node, pnpm, Chromium)
+        run: SO_IMAGEM=1 sh scripts/conferir-ambiente.sh
+
+  # O único check de CI exigido pela main. Reprova se qualquer job acima falhar, for cancelado
+  # ou for pulado. O `if: always()` é o que impede um "pulado" de contar como aprovado.
+  ci-ok:
+    name: CI ok
+    if: always()
+    needs: [specs, workflows, imagem-dev]
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Todos os jobs passaram
+        env:
+          NEEDS: ${{ toJSON(needs) }}
+        run: |
+          echo "$NEEDS" | jq -r 'to_entries[] | "\(.key): \(.value.result)"'
+          echo "$NEEDS" | jq -e 'all(.[]; .result == "success")' > /dev/null

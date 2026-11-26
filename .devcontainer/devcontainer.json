@@ -1,0 +1,20 @@
+{
+  "name": "TireShop Frontend",
+  "dockerComposeFile": "../compose.yaml",
+  "service": "app",
+  "workspaceFolder": "/app",
+  "overrideCommand": true,
+  "forwardPorts": [3000, 24678, 9323],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Vue.volar",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "EditorConfig.EditorConfig",
+        "vitest.explorer",
+        "ms-playwright.playwright"
+      ]
+    }
+  }
+}

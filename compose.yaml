@@ -1,0 +1,55 @@
+name: tireshop-frontend
+
+# Desenvolvimento só por contêiner (ADR 0014). No dia a dia use o atalho:
+#   bin/pnpm install        bin/pnpm dev        bin/pnpm test        bin/pnpm test:e2e
+# Verificadores das specs e do contrato:
+#   docker compose --profile ferramentas run --rm handoff
+
+services:
+  app:
+    image: tireshop-frontend-dev
+    build:
+      context: .
+      target: dev
+      args:
+        # bin/pnpm e scripts/conferir-ambiente.sh exportam NODE_VERSION a partir do .nvmrc.
+        NODE_VERSION: ${NODE_VERSION:-22}
+    # O uid de quem chama: os arquivos criados na pasta (node_modules, .nuxt) ficam com o dev.
+    # No CI o runner não é 1000; o workflow exporta DEV_UID e DEV_GID.
+    user: '${DEV_UID:-1000}:${DEV_GID:-1000}'
+    init: true
+    working_dir: /app
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      # Sem isto o Nuxt escuta só dentro do contêiner.
+      NUXT_HOST: 0.0.0.0
+      HOST: 0.0.0.0
+      CI: ${CI:-}
+      npm_config_store_dir: /pnpm/store
+    volumes:
+      - .:/app
+      - pnpm_store:/pnpm/store
+    ports:
+      - '${PORTA_APP:-3000}:3000' # aplicação
+      - '24678:24678' # HMR do Vite
+      - '9323:9323' # relatório do Playwright (bin/pnpm exec playwright show-report --host 0.0.0.0)
+
+  # Verificadores em Python, herdados do repositório de discovery. Saem daqui quando forem
+  # portados para TypeScript: o contrato na T-0009, as specs na T-1316.
+  handoff:
+    profiles: [ferramentas]
+    image: tireshop-frontend-handoff
+    build:
+      context: .
+      target: handoff
+    user: '${DEV_UID:-1000}:${DEV_GID:-1000}'
+    working_dir: /app
+    environment:
+      PYTHONDONTWRITEBYTECODE: '1'
+    volumes:
+      - .:/app:ro
+
+volumes:
+  pnpm_store:

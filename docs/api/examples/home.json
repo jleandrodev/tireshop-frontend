@@ -1,0 +1,196 @@
+{
+  "banners": [
+    {
+      "id": "ofertas-aro",
+      "titulo": "Ofertas em pneus aro 17 a 22",
+      "texto": "Pneus para carros, SUVs e pick-ups com preço de promoção.",
+      "chamada": "Ver ofertas",
+      "href": "/#ofertas",
+      "imagens": {
+        "computador": {
+          "src": "/img/banners/ofertas-aro-c@2x.webp",
+          "largura": 1440,
+          "altura": 320,
+          "alt": "Ofertas em pneus aro 17 a 22. Pneus para carros, SUVs e pick-ups com preço de promoção."
+        },
+        "celular": {
+          "src": "/img/banners/ofertas-aro-m@2x.webp",
+          "largura": 390,
+          "altura": 290,
+          "alt": "Ofertas em pneus aro 17 a 22. Pneus para carros, SUVs e pick-ups com preço de promoção."
+        }
+      }
+    },
+    {
+      "id": "frete-gratis",
+      "titulo": "Frete grátis acima de R$ 1.000 no Sul e Sudeste",
+      "texto": "Em milhares de pneus. A regra de cada produto aparece na página dele.",
+      "chamada": "Ver pneus com frete grátis",
+      "href": "/#ofertas",
+      "imagens": {
+        "computador": {
+          "src": "/img/banners/frete-gratis-c@2x.webp",
+          "largura": 1440,
+          "altura": 320,
+          "alt": "Frete grátis acima de R$ 1.000 no Sul e Sudeste. Em milhares de pneus. A regra de cada produto aparece na página dele."
+        },
+        "celular": {
+          "src": "/img/banners/frete-gratis-m@2x.webp",
+          "largura": 390,
+          "altura": 290,
+          "alt": "Frete grátis acima de R$ 1.000 no Sul e Sudeste. Em milhares de pneus. A regra de cada produto aparece na página dele."
+        }
+      }
+    },
+    {
+      "id": "lojas",
+      "titulo": "Desde 2001 vendendo pneus. Com cinco lojas para você conferir.",
+      "texto": "Curitiba, Joinville, Novo Hamburgo, São Paulo e Ribeirão Preto.",
+      "chamada": "Conhecer as lojas",
+      "href": "/lojas",
+      "imagens": {
+        "computador": {
+          "src": "/img/banners/lojas-c@2x.webp",
+          "largura": 1440,
+          "altura": 320,
+          "alt": "Desde 2001 vendendo pneus. Com cinco lojas para você conferir.. Curitiba, Joinville, Novo Hamburgo, São Paulo e Ribeirão Preto."
+        },
+        "celular": {
+          "src": "/img/banners/lojas-m@2x.webp",
+          "largura": 390,
+          "altura": 290,
+          "alt": "Desde 2001 vendendo pneus. Com cinco lojas para você conferir.. Curitiba, Joinville, Novo Hamburgo, São Paulo e Ribeirão Preto."
+        }
+      }
+    }
+  ],
+  "beneficios": [
+    {
+      "icone": "pix",
+      "titulo": "5% de desconto à vista",
+      "texto": "No Pix, no boleto ou em 1x no cartão."
+    },
+    {
+      "icone": "cartao",
+      "titulo": "Até 12x sem juros",
+      "texto": "No cartão de crédito."
+    },
+    {
+      "icone": "frete",
+      "titulo": "Promo Frete Grátis",
+      "texto": "Acima de R$ 1.000 para Sul e Sudeste."
+    },
+    {
+      "icone": "brasil",
+      "titulo": "Entrega em todo o Brasil",
+      "texto": "No seu endereço ou em uma oficina conveniada."
+    }
+  ],
+  "entrega": [
+    {
+      "titulo": "No seu endereço",
+      "texto": "Calcule o frete pelo CEP na página do pneu. O prazo aparece em dias úteis, com a margem que garante a entrega no combinado."
+    },
+    {
+      "titulo": "Em uma oficina conveniada",
+      "texto": "Receba direto em uma oficina parceira perto de você. A montagem é combinada e paga diretamente com a oficina."
+    }
+  ],
+  "seguranca": [
+    {
+      "icone": "nota",
+      "titulo": "Nota fiscal e termo de garantia",
+      "texto": "Em PDF, na área Meus Pedidos."
+    },
+    {
+      "icone": "rastreio",
+      "titulo": "Rastreio do pedido",
+      "texto": "Acompanhe cada etapa até a entrega."
+    },
+    {
+      "icone": "whatsapp",
+      "titulo": "Atendimento no WhatsApp",
+      "texto": "Gente de verdade para tirar dúvidas antes de comprar."
+    },
+    {
+      "icone": "cadeado",
+      "titulo": "Compra protegida",
+      "texto": "Pagamento com análise antifraude."
+    }
+  ],
+  "blog": [
+    {
+      "titulo": "Pneu ressecado: causas, riscos e como identificar",
+      "resumo": "Como reconhecer o ressecamento, por que ele é perigoso e o que fazer quando aparece.",
+      "categoria": "Pneus",
+      "data": "2026-09-08",
+      "href": "https://www.tireshop.com.br/Blog/pneu-ressecado",
+      "imagem": {
+        "src": "/img/blog/pneu-ressecado-640.webp",
+        "largura": 640,
+        "altura": 385,
+        "alt": ""
+      }
+    },
+    {
+      "titulo": "Pneus A/T, H/T e M/T: diferenças para SUV ou pick-up",
+      "resumo": "Asfalto, terra ou lama: qual desenho de pneu combina com o uso do seu SUV ou da sua picape.",
+      "categoria": "Pneus",
+      "data": "2026-08-03",
+      "href": "https://www.tireshop.com.br/Blog/pneus-at-ht-e-mt-diferencas-para-suv-ou-pick-up",
+      "imagem": {
+        "src": "/img/blog/pneus-at-ht-mt-640.webp",
+        "largura": 640,
+        "altura": 385,
+        "alt": ""
+      }
+    },
+    {
+      "titulo": "Rodízio de pneus: o que é, para que serve e quando fazer",
+      "resumo": "Como o rodízio evita o desgaste irregular e ajuda a economizar combustível.",
+      "categoria": "Pneus",
+      "data": "2026-07-27",
+      "href": "https://www.tireshop.com.br/Blog/rodizio-de-pneus",
+      "imagem": {
+        "src": "/img/blog/rodizio-de-pneus-640.webp",
+        "largura": 640,
+        "altura": 385,
+        "alt": ""
+      }
+    }
+  ],
+  "textoApoio": {
+    "titulo": "Loja de pneus TireShop: referência em confiança e variedade desde 2001",
+    "html": "<p>Seja bem-vindo à TireShop, sua loja de pneus online, onde você encontra praticidade e segurança para renovar seu veículo. Atuando no mercado desde 2001, consolidamos nossa posição como referência nacional em confiabilidade, oferecendo entrega ágil e um amplo portfólio de produtos.</p><p>Dessa forma, garantimos que cada cliente encontre as informações essenciais para realizar a melhor compra, aproveitando diferenciais exclusivos que só uma marca pioneira pode oferecer. Além disso, <strong>trabalhamos com estoque 100% próprio e envio imediato</strong>, assegurando que seu pedido chegue com rapidez e total transparência.</p><h2>Principais tipos de pneus em nosso portfólio</h2><p>Para facilitar sua busca, dividimos nosso catálogo em categorias específicas que atendem a todas as necessidades de rodagem:</p><ul><li><a href=\"#departamentos\">Pneus para carros</a>: modelos ideais para o uso urbano e rodoviário, priorizando aderência, conforto e durabilidade;</li><li><a href=\"#departamentos\">Pneus SUV e pick-ups</a>: projetados com foco em robustez e resistência para garantir desempenho superior em diferentes terrenos;</li><li><a href=\"#departamentos\">Pneus para caminhões</a> e vans: uma linha completa para quem busca alta quilometragem e confiança no transporte de carga;</li><li><a href=\"#departamentos\">Pneus agrícolas</a> e de competição: opções técnicas desenvolvidas para aplicações profissionais e segmentos de alta performance.</li></ul><h2>TireShop é confiável? Descubra por que comprar conosco</h2><p>Sim, a TireShop é uma escolha segura para quem deseja comprar pneus online. Nossa trajetória de mais de duas décadas no e-commerce é sustentada por <strong>parcerias com as maiores distribuidoras do Brasil e um suporte completo</strong> em todas as etapas da jornada de compra.</p><p>Atualmente, contamos com um portfólio atualizado que inclui marcas renomadas como Yokohama, Bridgestone, Continental, Pirelli, Hankook, entre outras. Portanto, aqui você encontra desde pneus em promoção até linhas exclusivas, sempre com garantia de procedência e qualidade.</p><h2>Vantagens exclusivas para sua compra online</h2><p>Ao escolher a TireShop, você tem acesso a benefícios pensados para facilitar o seu dia a dia e valorizar seu investimento:</p><ul><li>Pagamento facilitado: parcele suas compras em até 12x sem juros no cartão ou aproveite descontos especiais para pagamentos à vista;</li><li>Logística privilegiada: oferecemos frete grátis para toda a região Sul e Sudeste em todos os produtos do site;</li><li>Filtros inteligentes: utilize nossa ferramenta de busca para localizar o pneu certo por medida, modelo do veículo ou categoria.</li></ul>"
+  },
+  "faq": [
+    {
+      "pergunta": "Quais são os diferenciais da TireShop no mercado de pneus online?",
+      "respostaHtml": "<p>Entre os maiores diferenciais da TireShop está o estoque 100% próprio, que facilita a entrega ágil e evita atrasos. Nosso catálogo exclusivo inclui<strong> marcas e tipos de pneus que dificilmente são encontrados em outras lojas virtuais</strong>, principalmente para carros e pickups com pneus grandes (aros 17 a 22).</p><p>Além disso, a plataforma também oferece ferramentas de busca avançadas para facilitar a escolha técnica do pneu ideal, além de possibilitar pagamento em até 12x sem juros e frete grátis para Sul e Sudeste.</p>"
+    },
+    {
+      "pergunta": "Como saber quando trocar os pneus do carro?",
+      "respostaHtml": "<p>É fundamental avaliar periodicamente os sulcos de desgaste (TWI) na banda de rodagem. Além disso, observe se existem sinais como rachaduras, bolhas ou desgastes irregulares. Fique atento também a vibrações excessivas ou dificuldades na frenagem, pois esses são indícios claros de que a troca é necessária para manter sua segurança.</p>"
+    },
+    {
+      "pergunta": "Como a TireShop garante a qualidade e segurança dos seus pneus?",
+      "respostaHtml": "<p>Desde 2001, a TireShop mantém rigoroso controle sobre a qualidade dos pneus comercializados, trabalhando apenas com marcas reconhecidas globalmente.</p><p>Nosso estoque próprio facilita o gerenciamento dos produtos, evitando itens armazenados por muito tempo. Isso contribui para<strong> a entrega de pneus com desempenho máximo e segurança comprovada</strong>, especialmente para veículos de grande porte como SUVs e pickups. A plataforma também oferece suporte técnico para ajudar na escolha adequada e segura.</p>"
+    },
+    {
+      "pergunta": "Como escolher o tipo e a medida correta?",
+      "respostaHtml": "<p>A maneira mais segura é verificar as informações contidas no manual do proprietário do veículo ou na lateral dos pneus atuais. Caso ainda restem dúvidas, nossa equipe de especialistas está preparada para oferecer suporte via chat, telefone ou WhatsApp, garantindo que você escolha a aplicação específica para sua necessidade.</p>"
+    },
+    {
+      "pergunta": "Onde encontrar pneus em promoção e com preço justo?",
+      "respostaHtml": "<p>A TireShop disponibiliza<a href=\"https://www.tireshop.com.br/1/1/PromocaoEspecial\"> ofertas de pneus </a>para carros, SUVs e utilitários durante todo o ano. Com preços competitivos e condições únicas de parcelamento, tornamos a renovação dos seus pneus muito mais acessível, sem abrir mão da qualidade e segurança que você merece.</p>"
+    },
+    {
+      "pergunta": "O que fazer se o pneu comprado online não servir ou der problema?",
+      "respostaHtml": "<p>A TireShop preza pela satisfação completa do cliente. Caso haja incompatibilidade, nosso atendimento está pronto para orientar sobre a melhor solução, assegurando a troca ou devolução conforme as <a href=\"https://www.tireshop.com.br/TrocasDevolucoes\">políticas de troca e devolução vigente</a>s. Com estoque próprio, a reposição é rápida, evitando transtornos.</p><p>Oferecemos <strong>suporte claro e prático, focado em garantir que você obtenha o pneu ideal para seu veículo</strong>, reforçando nossa missão de transparência e qualidade.</p>"
+    }
+  ],
+  "seo": {
+    "titulo": "TireShop: pneus novos com nota fiscal e garantia, em até 12x sem juros",
+    "descricao": "Pneus para carros, SUVs, pick-ups, vans e caminhões. 5% de desconto à vista, 12x sem juros e frete grátis para o Sul e o Sudeste acima de R$ 1.000."
+  }
+}

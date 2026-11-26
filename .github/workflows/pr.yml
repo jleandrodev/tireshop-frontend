@@ -1,0 +1,33 @@
+name: PR
+
+# O título do PR vira a mensagem do commit na main (o merge é sempre squash). Por isso ele segue
+# a convenção de commit do projeto (AGENTS.md, seção 7):
+#   T-0304: filtra a listagem por aro
+# Fora de task, um destes prefixos: CI, Docs, Deps, Handoff.
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+permissions: {}
+
+jobs:
+  titulo:
+    name: Título do PR
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Confere a convenção
+        env:
+          # Pelo ambiente, nunca interpolado no script: o título é texto de quem abre o PR.
+          TITULO: ${{ github.event.pull_request.title }}
+        run: |
+          padrao='^(T-[0-9]{4}|CI|Docs|Deps|Handoff): [^[:space:]].*[^.[:space:]]$'
+          if printf '%s' "$TITULO" | grep -Eq "$padrao"; then
+            echo "ok: $TITULO"
+          else
+            echo "::error::Título fora da convenção: \"$TITULO\""
+            echo "Use \"T-0304: filtra a listagem por aro\" (id da task, dois-pontos, verbo no"
+            echo "imperativo, sem ponto final) ou um dos prefixos CI, Docs, Deps, Handoff."
+            exit 1
+          fi

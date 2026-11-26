@@ -1,0 +1,21 @@
+{
+  "itens": [],
+  "totais": {
+    "quantidade": 0,
+    "aVista": {
+      "centavos": 0,
+      "moeda": "BRL"
+    },
+    "parcelado": {
+      "total": {
+        "centavos": 0,
+        "moeda": "BRL"
+      },
+      "parcelas": 12,
+      "valorParcela": {
+        "centavos": 0,
+        "moeda": "BRL"
+      }
+    }
+  }
+}

@@ -1,0 +1,353 @@
+{
+  "itens": [
+    {
+      "id": "4244",
+      "slug": "pneu-bridgestone-turanza-t005-215-45-r17-91v",
+      "nome": "Pneu Bridgestone Turanza T005 215/45 R17 91V",
+      "marca": {
+        "slug": "bridgestone",
+        "nome": "Bridgestone"
+      },
+      "medida": {
+        "largura": 215,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "215/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/4244-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Bridgestone Turanza T005 215/45 R17 91V"
+      },
+      "preco": {
+        "de": {
+          "centavos": 72000,
+          "moeda": "BRL"
+        },
+        "parcelado": {
+          "total": {
+            "centavos": 56900,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 4742,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 54055,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": true,
+      "freteGratis": {
+        "regiao": "Sul e Sudeste",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.9,
+        "total": 11
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Simétrico"
+    },
+    {
+      "id": "4045",
+      "slug": "pneu-hankook-ventus-v2-concept-2-h457-215-45-r17-91v-xl",
+      "nome": "Pneu Hankook Ventus V2 Concept 2 H457 215/45 R17 91V XL",
+      "marca": {
+        "slug": "hankook",
+        "nome": "Hankook"
+      },
+      "medida": {
+        "largura": 215,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "215/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/4045-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Hankook Ventus V2 Concept 2 H457 215/45 R17 91V XL"
+      },
+      "preco": {
+        "de": {
+          "centavos": 66000,
+          "moeda": "BRL"
+        },
+        "parcelado": {
+          "total": {
+            "centavos": 56900,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 4742,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 54055,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": true,
+      "freteGratis": {
+        "regiao": "Sul e Sudeste",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.5,
+        "total": 12
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Simétrico"
+    }
+  ],
+  "pagina": 3,
+  "porPagina": 12,
+  "total": 26,
+  "totalPaginas": 3,
+  "ordem": "mais_vendidos",
+  "ordenacoes": [
+    {
+      "valor": "mais_vendidos",
+      "rotulo": "Mais vendidos"
+    },
+    {
+      "valor": "menor_preco",
+      "rotulo": "Menor preço"
+    },
+    {
+      "valor": "maior_preco",
+      "rotulo": "Maior preço"
+    },
+    {
+      "valor": "melhor_avaliados",
+      "rotulo": "Melhor avaliados"
+    }
+  ],
+  "facetas": [
+    {
+      "chave": "aro",
+      "rotulo": "Aro",
+      "opcoes": [
+        {
+          "valor": "14",
+          "rotulo": "Aro 14",
+          "total": 1
+        },
+        {
+          "valor": "17",
+          "rotulo": "Aro 17",
+          "total": 24
+        },
+        {
+          "valor": "20",
+          "rotulo": "Aro 20",
+          "total": 1
+        }
+      ]
+    },
+    {
+      "chave": "medida",
+      "rotulo": "Medida",
+      "opcoes": [
+        {
+          "valor": "185/60 R14",
+          "rotulo": "185/60 R14",
+          "total": 1
+        },
+        {
+          "valor": "205/45 R17",
+          "rotulo": "205/45 R17",
+          "total": 2
+        },
+        {
+          "valor": "205/50 R17",
+          "rotulo": "205/50 R17",
+          "total": 1
+        },
+        {
+          "valor": "205/55 R17",
+          "rotulo": "205/55 R17",
+          "total": 2
+        },
+        {
+          "valor": "215/45 R17",
+          "rotulo": "215/45 R17",
+          "total": 4
+        },
+        {
+          "valor": "215/50 R17",
+          "rotulo": "215/50 R17",
+          "total": 2
+        },
+        {
+          "valor": "215/55 R17",
+          "rotulo": "215/55 R17",
+          "total": 2
+        },
+        {
+          "valor": "225/45 R17",
+          "rotulo": "225/45 R17",
+          "total": 6
+        },
+        {
+          "valor": "225/50 R17",
+          "rotulo": "225/50 R17",
+          "total": 2
+        },
+        {
+          "valor": "225/55 R17",
+          "rotulo": "225/55 R17",
+          "total": 1
+        },
+        {
+          "valor": "235/45 R17",
+          "rotulo": "235/45 R17",
+          "total": 1
+        },
+        {
+          "valor": "235/45 R20",
+          "rotulo": "235/45 R20",
+          "total": 1
+        },
+        {
+          "valor": "235/55 R17",
+          "rotulo": "235/55 R17",
+          "total": 1
+        }
+      ]
+    },
+    {
+      "chave": "marca",
+      "rotulo": "Marca",
+      "opcoes": [
+        {
+          "valor": "Bridgestone",
+          "rotulo": "Bridgestone",
+          "total": 3
+        },
+        {
+          "valor": "Firestone",
+          "rotulo": "Firestone",
+          "total": 3
+        },
+        {
+          "valor": "Fortune",
+          "rotulo": "Fortune",
+          "total": 11
+        },
+        {
+          "valor": "Hankook",
+          "rotulo": "Hankook",
+          "total": 3
+        },
+        {
+          "valor": "Nexen",
+          "rotulo": "Nexen",
+          "total": 1
+        },
+        {
+          "valor": "Prinx",
+          "rotulo": "Prinx",
+          "total": 5
+        }
+      ]
+    },
+    {
+      "chave": "preco",
+      "rotulo": "Preço à vista",
+      "opcoes": [
+        {
+          "valor": "0-450",
+          "rotulo": "Até R$ 450",
+          "total": 9
+        },
+        {
+          "valor": "450-550",
+          "rotulo": "R$ 450 a R$ 550",
+          "total": 16
+        },
+        {
+          "valor": "550-99999",
+          "rotulo": "Acima de R$ 550",
+          "total": 1
+        }
+      ]
+    },
+    {
+      "chave": "runflat",
+      "rotulo": "Run flat",
+      "opcoes": [
+        {
+          "valor": "Não",
+          "rotulo": "Não",
+          "total": 26
+        }
+      ]
+    },
+    {
+      "chave": "terreno",
+      "rotulo": "Tipo de terreno",
+      "opcoes": [
+        {
+          "valor": "Asfalto",
+          "rotulo": "Asfalto",
+          "total": 25
+        },
+        {
+          "valor": "H/T",
+          "rotulo": "H/T",
+          "total": 1
+        }
+      ]
+    },
+    {
+      "chave": "desenho",
+      "rotulo": "Desenho",
+      "opcoes": [
+        {
+          "valor": "Assimétrico",
+          "rotulo": "Assimétrico",
+          "total": 11
+        },
+        {
+          "valor": "Simétrico",
+          "rotulo": "Simétrico",
+          "total": 14
+        }
+      ]
+    }
+  ]
+}

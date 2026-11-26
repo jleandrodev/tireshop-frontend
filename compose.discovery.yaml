@@ -1,0 +1,15 @@
+# Só para as tasks que copiam arquivos do repositório de discovery da N1 (T-0005, T-0007, T-1310).
+# Monta, somente para leitura, as três pastas de origem em /discovery. A raiz do discovery não é
+# montada de propósito: lá há credenciais.
+#
+#   docker compose -f compose.yaml -f compose.discovery.yaml run --rm app <comando>
+#
+# DISCOVERY_DIR é o caminho do repositório de discovery; o padrão vale enquanto esta pasta
+# estiver dentro dele.
+
+services:
+  app:
+    volumes:
+      - ${DISCOVERY_DIR:-..}/ui:/discovery/ui:ro
+      - ${DISCOVERY_DIR:-..}/portal/alta-fidelidade:/discovery/portal/alta-fidelidade:ro
+      - ${DISCOVERY_DIR:-..}/entregaveis/alta-fidelidade:/discovery/entregaveis/alta-fidelidade:ro

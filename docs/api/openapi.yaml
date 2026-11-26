@@ -1,0 +1,1244 @@
+openapi: 3.1.0
+info:
+  title: API TireShop (contrato consumido pelo frontend Nuxt)
+  version: 1.0.0
+  description: |
+    Contrato entre o frontend (N1) e o backend (TI da TireShop). Cada operação existe porque uma tela
+    precisa dela. Convenções em `README.md`; explicação por tela em `endpoints/`; exemplos reais em
+    `examples/`.
+
+    Regras gerais: JSON em camelCase e em português; dinheiro em centavos inteiros; datas em ISO 8601;
+    campo opcional vem `null` (não é omitido); o frontend ignora campos que não conhece.
+servers:
+  - url: /api/mock
+    description: Servidor de mocks do frontend (desenvolvimento, teste e demonstração)
+  - url: https://api.tireshop.com.br/v1
+    description: Produção (endereço a definir pelo TI)
+security: []   # autenticação a definir com o TI (dúvida D1 do PRD); leitura pública nesta versão
+tags:
+  - { name: Conteúdo, description: 'Navegação, Home, políticas e Sobre nós.' }
+  - { name: Catálogo, description: 'Categorias, produtos, busca de pneus e comparação.' }
+  - { name: Entrega, description: Prazo e frete por CEP. }
+  - { name: Avaliações, description: 'Nota e depoimentos, da loja e de cada produto.' }
+  - { name: Lojas, description: 'Lojas físicas: hub e página de cada loja.' }
+  - { name: Carrinho, description: Itens e totais da sessão. }
+  - { name: Relacionamento, description: Newsletter e Avise-me. }
+
+paths:
+  /navegacao:
+    get:
+      tags: [Conteúdo]
+      operationId: obterNavegacao
+      summary: Menu, departamentos com aros, marcas, rodapé e contatos do e-commerce
+      responses:
+        '200':
+          description: Navegação
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Navegacao' }
+              examples: { padrao: { externalValue: ./examples/navegacao.json } }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /home:
+    get:
+      tags: [Conteúdo]
+      operationId: obterPaginaInicial
+      summary: Blocos editoriais da Home
+      responses:
+        '200':
+          description: Página inicial
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/PaginaInicial' }
+              examples: { padrao: { externalValue: ./examples/home.json } }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /politicas:
+    get:
+      tags: [Conteúdo]
+      operationId: listarPoliticas
+      summary: Itens do menu lateral de políticas e ajuda
+      responses:
+        '200':
+          description: Lista
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ListaDePoliticas' }
+              examples: { padrao: { externalValue: ./examples/politicas.json } }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /politicas/{slug}:
+    get:
+      tags: [Conteúdo]
+      operationId: obterPolitica
+      summary: Uma página de política ou de ajuda
+      parameters:
+        - { $ref: '#/components/parameters/Slug' }
+      responses:
+        '200':
+          description: Política
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Politica' }
+              examples:
+                trocas: { externalValue: ./examples/politica-trocas-e-devolucoes.json }
+                perguntasFrequentes: { externalValue: ./examples/politica-perguntas-frequentes.json }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /institucional:
+    get:
+      tags: [Conteúdo]
+      operationId: obterInstitucional
+      summary: Conteúdo da página Sobre nós
+      responses:
+        '200':
+          description: Institucional
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Institucional' }
+              examples: { padrao: { externalValue: ./examples/institucional.json } }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /categorias/{slug}:
+    get:
+      tags: [Catálogo]
+      operationId: obterCategoria
+      summary: Cabeçalho, arte, busca pré-preenchida, texto de apoio e FAQ de uma listagem
+      parameters:
+        - { $ref: '#/components/parameters/Slug' }
+      responses:
+        '200':
+          description: Categoria
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Categoria' }
+              examples:
+                departamento: { externalValue: ./examples/categoria-pneus-para-carros.json }
+                aro: { externalValue: ./examples/categoria-carros-aro-17.json }
+                medida: { externalValue: ./examples/categoria-225-45-r17.json }
+                marca: { externalValue: ./examples/categoria-hankook.json }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /produtos:
+    get:
+      tags: [Catálogo]
+      operationId: listarProdutos
+      summary: Listagem com filtros, ordenação, paginação e facetas com contagem
+      description: |
+        Filtros de facetas diferentes combinam com E; valores repetidos da mesma faceta combinam com OU
+        (`?aro=17&aro=18&marca=hankook`). As contagens de cada faceta consideram os demais filtros.
+      parameters:
+        - { name: categoria, in: query, schema: { type: string }, description: Slug da categoria. Aplica a seleção fixa dela. }
+        - { name: vitrine, in: query, schema: { type: string, enum: [ofertas] }, description: Lista curada (Home). Ignora facetas. }
+        - { name: aro, in: query, schema: { type: array, items: { type: string } }, style: form, explode: true }
+        - { name: medida, in: query, schema: { type: array, items: { type: string } }, style: form, explode: true, description: 'Rótulo da medida, ex.: "225/45 R17".' }
+        - { name: marca, in: query, schema: { type: array, items: { type: string } }, style: form, explode: true }
+        - { name: preco, in: query, schema: { type: array, items: { type: string } }, style: form, explode: true, description: 'Faixa "min-max" em reais, como devolvida na faceta, ex.: "450-550".' }
+        - { name: runflat, in: query, schema: { type: array, items: { type: string, enum: [Sim, Não] } }, style: form, explode: true }
+        - { name: terreno, in: query, schema: { type: array, items: { type: string } }, style: form, explode: true }
+        - { name: desenho, in: query, schema: { type: array, items: { type: string } }, style: form, explode: true }
+        - { name: ordem, in: query, schema: { $ref: '#/components/schemas/Ordenacao' } }
+        - { name: pagina, in: query, schema: { type: integer, minimum: 1, default: 1 } }
+        - { name: porPagina, in: query, schema: { type: integer, minimum: 1, maximum: 48, default: 12 } }
+      responses:
+        '200':
+          description: Página de produtos
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ListaDeProdutos' }
+              examples:
+                departamento: { externalValue: ./examples/produtos-lista.json }
+                ultimaPagina: { externalValue: ./examples/produtos-lista-pagina-3.json }
+                medida: { externalValue: ./examples/produtos-lista-medida-225-45-r17.json }
+                vazia: { externalValue: ./examples/produtos-lista-vazia.json }
+                vitrineOfertas: { externalValue: ./examples/produtos-vitrine-ofertas.json }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /produtos/comparar:
+    get:
+      tags: [Catálogo]
+      operationId: compararProdutos
+      summary: Detalhe de 2 a 4 produtos, na ordem pedida
+      parameters:
+        - name: ids
+          in: query
+          required: true
+          schema: { type: array, minItems: 2, maxItems: 4, items: { type: string } }
+          style: form
+          explode: false
+          description: 'Códigos separados por vírgula: `?ids=3084,3026,4223`.'
+      responses:
+        '200':
+          description: Produtos para comparar. Código inexistente é omitido.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ProdutosParaComparar' }
+              examples: { padrao: { externalValue: ./examples/produtos-comparar.json } }
+        '422': { $ref: '#/components/responses/Invalido' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /produtos/{id}:
+    get:
+      tags: [Catálogo]
+      operationId: obterProduto
+      summary: Página de produto completa
+      parameters:
+        - { $ref: '#/components/parameters/ProdutoId' }
+      responses:
+        '200':
+          description: Produto
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Produto' }
+              examples:
+                comum: { externalValue: ./examples/produto-3084.json }
+                com360: { externalValue: ./examples/produto-3016-com-360.json }
+                semEstoque: { externalValue: ./examples/produto-4360-sem-estoque.json }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /produtos/{id}/relacionados:
+    get:
+      tags: [Catálogo]
+      operationId: listarRelacionados
+      summary: Até 4 pneus do mesmo aro e departamento ("Veja também")
+      parameters:
+        - { $ref: '#/components/parameters/ProdutoId' }
+      responses:
+        '200':
+          description: Relacionados
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ListaSimplesDeProdutos' }
+              examples: { padrao: { externalValue: ./examples/produto-3084-relacionados.json } }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /busca/medidas:
+    get:
+      tags: [Catálogo]
+      operationId: listarOpcoesDeMedida
+      summary: Opções em cascata do filtro de pneus (largura, altura, aro)
+      responses:
+        '200':
+          description: Opções
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/OpcoesDeMedida' }
+              examples: { padrao: { externalValue: ./examples/busca-medidas.json } }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /busca/veiculos:
+    get:
+      tags: [Catálogo]
+      operationId: listarVeiculos
+      summary: Opções em cascata da busca por veículo (proposta a validar com o TI)
+      parameters:
+        - { name: fabricante, in: query, schema: { type: string } }
+        - { name: modelo, in: query, schema: { type: string } }
+      responses:
+        '200':
+          description: Sem parâmetros, só `fabricantes`. Com `fabricante`, também `modelos`. Com os dois, `versoes`.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/OpcoesDeVeiculo' }
+              examples: { padrao: { externalValue: ./examples/busca-veiculos.json } }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /frete/simulacoes:
+    post:
+      tags: [Entrega]
+      operationId: simularFrete
+      summary: Prazo e frete para um CEP
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PedidoDeSimulacao' }
+            examples: { padrao: { externalValue: ./examples/frete-simulacao.requisicao.json } }
+      responses:
+        '200':
+          description: Simulação
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/SimulacaoDeFrete' }
+              examples: { padrao: { externalValue: ./examples/frete-simulacao.json } }
+        '422': { $ref: '#/components/responses/Invalido' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /avaliacoes/resumo:
+    get:
+      tags: [Avaliações]
+      operationId: obterResumoDaLoja
+      summary: Nota geral da loja e depoimentos em destaque
+      responses:
+        '200':
+          description: Resumo
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ResumoDeAvaliacoes' }
+              examples: { padrao: { externalValue: ./examples/avaliacoes-resumo.json } }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /produtos/{id}/avaliacoes/resumo:
+    get:
+      tags: [Avaliações]
+      operationId: obterResumoDoProduto
+      summary: Nota do produto e as 6 avaliações do carrossel
+      parameters:
+        - { $ref: '#/components/parameters/ProdutoId' }
+      responses:
+        '200':
+          description: Resumo
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ResumoDeAvaliacoes' }
+              examples: { padrao: { externalValue: ./examples/produto-3084-avaliacoes-resumo.json } }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /produtos/{id}/avaliacoes:
+    get:
+      tags: [Avaliações]
+      operationId: listarAvaliacoesDoProduto
+      summary: Avaliações do produto, da mais recente para a mais antiga
+      parameters:
+        - { $ref: '#/components/parameters/ProdutoId' }
+        - { name: deslocamento, in: query, schema: { type: integer, minimum: 0, default: 0 }, description: Quantas pular. A tela começa em 6 (as 6 primeiras estão no carrossel). }
+        - { name: limite, in: query, schema: { type: integer, minimum: 1, maximum: 50, default: 5 } }
+      responses:
+        '200':
+          description: Fatia de avaliações
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/FatiaDeAvaliacoes' }
+              examples: { padrao: { externalValue: ./examples/produto-3084-avaliacoes.json } }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /lojas:
+    get:
+      tags: [Lojas]
+      operationId: listarLojas
+      summary: Hub de lojas físicas
+      responses:
+        '200':
+          description: Hub
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/HubDeLojas' }
+              examples: { padrao: { externalValue: ./examples/lojas.json } }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /lojas/{slug}:
+    get:
+      tags: [Lojas]
+      operationId: obterLoja
+      summary: Página de uma loja física
+      parameters:
+        - { $ref: '#/components/parameters/Slug' }
+      responses:
+        '200':
+          description: Loja
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Loja' }
+              examples:
+                comBanners: { externalValue: ./examples/loja-curitiba.json }
+                comAgendamento: { externalValue: ./examples/loja-novo-hamburgo.json }
+                semBanners: { externalValue: ./examples/loja-curitiba-sem-banners.json }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /carrinho:
+    get:
+      tags: [Carrinho]
+      operationId: obterCarrinho
+      summary: Carrinho da sessão
+      responses:
+        '200':
+          description: Carrinho (vazio se a sessão é nova)
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Carrinho' }
+              examples:
+                comItens: { externalValue: ./examples/carrinho.json }
+                vazio: { externalValue: ./examples/carrinho-vazio.json }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /carrinho/itens:
+    post:
+      tags: [Carrinho]
+      operationId: adicionarAoCarrinho
+      summary: Adiciona um produto. Se já existe, soma a quantidade (máximo de 8 por item).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ItemParaAdicionar' }
+            examples: { padrao: { externalValue: ./examples/carrinho-item.requisicao.json } }
+      responses:
+        '200':
+          description: Carrinho atualizado
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Carrinho' }
+              examples: { padrao: { externalValue: ./examples/carrinho.json } }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+        '422': { $ref: '#/components/responses/Invalido' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /carrinho/itens/{id}:
+    patch:
+      tags: [Carrinho]
+      operationId: alterarQuantidade
+      summary: Define a quantidade de um item (1 a 8)
+      parameters:
+        - { $ref: '#/components/parameters/ProdutoId' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/Quantidade' }
+      responses:
+        '200':
+          description: Carrinho atualizado
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Carrinho' }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+        '422': { $ref: '#/components/responses/Invalido' }
+        default: { $ref: '#/components/responses/Erro' }
+    delete:
+      tags: [Carrinho]
+      operationId: removerDoCarrinho
+      summary: Remove um item
+      parameters:
+        - { $ref: '#/components/parameters/ProdutoId' }
+      responses:
+        '200':
+          description: Carrinho atualizado
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Carrinho' }
+              examples: { padrao: { externalValue: ./examples/carrinho-vazio.json } }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /newsletter:
+    post:
+      tags: [Relacionamento]
+      operationId: assinarNewsletter
+      summary: Inscrição na newsletter, com e-mail e WhatsApp opcional
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/InscricaoNewsletter' }
+            examples: { padrao: { externalValue: ./examples/newsletter.requisicao.json } }
+      responses:
+        '201':
+          description: Inscrito
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Confirmacao' }
+        '422': { $ref: '#/components/responses/Invalido' }
+        default: { $ref: '#/components/responses/Erro' }
+
+  /produtos/{id}/avise-me:
+    post:
+      tags: [Relacionamento]
+      operationId: pedirAviso
+      summary: Pede aviso por e-mail quando o produto voltar ao estoque
+      parameters:
+        - { $ref: '#/components/parameters/ProdutoId' }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/PedidoDeAviso' }
+            examples: { padrao: { externalValue: ./examples/avise-me.requisicao.json } }
+      responses:
+        '201':
+          description: Pedido registrado
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Confirmacao' }
+              examples: { padrao: { externalValue: ./examples/confirmacao.json } }
+        '404': { $ref: '#/components/responses/NaoEncontrado' }
+        '422': { $ref: '#/components/responses/Invalido' }
+        default: { $ref: '#/components/responses/Erro' }
+
+components:
+  parameters:
+    Slug:
+      name: slug
+      in: path
+      required: true
+      schema: { type: string, pattern: '^[a-z0-9]+(-[a-z0-9]+)*$' }
+    ProdutoId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+      description: Código do produto na TireShop (o "Cód." exibido).
+
+  responses:
+    Erro:
+      description: Erro inesperado
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problema' }
+    NaoEncontrado:
+      description: Recurso não encontrado
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problema' }
+          examples: { padrao: { externalValue: ./examples/erro-404.json } }
+    Invalido:
+      description: Entrada inválida
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problema' }
+          examples: { padrao: { externalValue: ./examples/erro-422.json } }
+
+  schemas:
+    # ------------------------------------------------------------------ comuns
+    Dinheiro:
+      type: object
+      required: [centavos, moeda]
+      properties:
+        centavos: { type: integer, minimum: 0, description: 'Valor em centavos. R$ 529,00 = 52900.' }
+        moeda: { type: string, enum: [BRL] }
+    Imagem:
+      type: object
+      required: [src, largura, altura, alt]
+      properties:
+        src: { type: string, description: Caminho absoluto ou URL. }
+        largura: { type: integer, minimum: 1 }
+        altura: { type: integer, minimum: 1 }
+        alt: { type: string, description: Vazio só para imagem decorativa. }
+    Link:
+      type: object
+      required: [rotulo, href]
+      properties:
+        rotulo: { type: string }
+        href: { type: [string, 'null'], description: Caminho interno ou URL externa. `null` = item sem link. }
+    Migalha:
+      type: object
+      required: [rotulo, href]
+      properties:
+        rotulo: { type: string }
+        href: { type: [string, 'null'], description: '`null` no item atual e nos que não têm página.' }
+    Seo:
+      type: object
+      required: [titulo, descricao]
+      properties:
+        titulo: { type: string }
+        descricao: { type: string }
+    TextoDeApoio:
+      type: object
+      required: [titulo, html]
+      properties:
+        titulo: { type: [string, 'null'] }
+        html: { type: string, description: 'HTML restrito a p, h2, h3, ul, ol, li, strong, em, a, br.' }
+    ItemDeFaq:
+      type: object
+      required: [pergunta, respostaHtml]
+      properties:
+        pergunta: { type: string }
+        respostaHtml: { type: string }
+    Destaque:
+      type: object
+      required: [icone, titulo, texto]
+      properties:
+        icone: { type: string, description: Chave de ícone do sistema de design. }
+        titulo: { type: string }
+        texto: { type: string }
+    Confirmacao:
+      type: object
+      required: [mensagem]
+      properties:
+        mensagem: { type: string, description: Texto pronto para mostrar ao usuário. }
+    Problema:
+      type: object
+      description: RFC 9457 (problem+json)
+      required: [type, title, status]
+      properties:
+        type: { type: string }
+        title: { type: string }
+        status: { type: integer }
+        detail: { type: string }
+        instance: { type: string }
+        erros:
+          type: array
+          items:
+            type: object
+            required: [campo, mensagem]
+            properties:
+              campo: { type: string }
+              mensagem: { type: string }
+
+    # ------------------------------------------------------------------ conteúdo
+    Navegacao:
+      type: object
+      required: [contato, redes, menu, departamentos, ajuda, extras, marcas, rodape]
+      properties:
+        contato:
+          type: object
+          required: [telefone, whatsapp, email, atendimento, razaoSocial, cnpj]
+          properties:
+            telefone: { type: string }
+            whatsapp: { type: string, description: 'Só dígitos, com 55.' }
+            email: { type: string }
+            atendimento: { type: string }
+            razaoSocial: { type: string }
+            cnpj: { type: string }
+        redes:
+          type: array
+          items:
+            type: object
+            required: [id, nome, href]
+            properties:
+              id: { type: string }
+              nome: { type: string }
+              href: { type: string }
+        menu: { type: array, items: { $ref: '#/components/schemas/Link' } }
+        departamentos:
+          type: array
+          items:
+            type: object
+            required: [slug, nome, icone, href, resumoAros, aros]
+            properties:
+              slug: { type: string }
+              nome: { type: string }
+              icone: { type: string }
+              href: { type: [string, 'null'] }
+              resumoAros: { type: string, description: 'Texto curto, ex.: "Aros 10 a 24".' }
+              aros:
+                type: array
+                description: Vazio = departamento sem botões de aro.
+                items:
+                  type: object
+                  required: [aro, href]
+                  properties:
+                    aro: { type: string }
+                    href: { type: [string, 'null'] }
+        ajuda: { type: array, items: { $ref: '#/components/schemas/Link' } }
+        extras: { type: array, items: { $ref: '#/components/schemas/Link' } }
+        marcas:
+          type: array
+          items:
+            type: object
+            required: [slug, nome, logo, href]
+            properties:
+              slug: { type: string }
+              nome: { type: string }
+              logo: { $ref: '#/components/schemas/Imagem' }
+              href: { type: [string, 'null'] }
+        rodape:
+          type: object
+          required: [colunas, textoFiscal]
+          properties:
+            colunas:
+              type: array
+              items:
+                type: object
+                required: [titulo, links]
+                properties:
+                  titulo: { type: string }
+                  links: { type: array, items: { $ref: '#/components/schemas/Link' } }
+            textoFiscal: { type: string }
+
+    PaginaInicial:
+      type: object
+      required: [banners, beneficios, entrega, seguranca, blog, textoApoio, faq, seo]
+      properties:
+        banners:
+          type: array
+          maxItems: 3
+          items:
+            type: object
+            required: [id, titulo, texto, chamada, href, imagens]
+            properties:
+              id: { type: string }
+              titulo: { type: string }
+              texto: { type: string }
+              chamada: { type: string }
+              href: { type: [string, 'null'] }
+              imagens:
+                type: object
+                required: [computador, celular]
+                properties:
+                  computador: { $ref: '#/components/schemas/Imagem' }
+                  celular: { $ref: '#/components/schemas/Imagem' }
+        beneficios: { type: array, items: { $ref: '#/components/schemas/Destaque' } }
+        entrega:
+          type: array
+          items:
+            type: object
+            required: [titulo, texto]
+            properties: { titulo: { type: string }, texto: { type: string } }
+        seguranca: { type: array, items: { $ref: '#/components/schemas/Destaque' } }
+        blog:
+          type: array
+          items:
+            type: object
+            required: [titulo, resumo, categoria, data, href, imagem]
+            properties:
+              titulo: { type: string }
+              resumo: { type: string }
+              categoria: { type: string }
+              data: { type: string, format: date }
+              href: { type: string }
+              imagem: { $ref: '#/components/schemas/Imagem' }
+        textoApoio: { $ref: '#/components/schemas/TextoDeApoio' }
+        faq: { type: array, items: { $ref: '#/components/schemas/ItemDeFaq' } }
+        seo: { $ref: '#/components/schemas/Seo' }
+
+    ListaDePoliticas:
+      type: object
+      required: [itens]
+      properties:
+        itens:
+          type: array
+          items:
+            type: object
+            required: [slug, rotuloMenu, icone]
+            properties:
+              slug: { type: string }
+              rotuloMenu: { type: string }
+              icone: { type: string }
+
+    BlocoDeTexto:
+      oneOf:
+        - type: object
+          required: [tipo, html]
+          properties: { tipo: { const: paragrafo }, html: { type: string } }
+        - type: object
+          required: [tipo, nivel, texto]
+          properties: { tipo: { const: titulo }, nivel: { type: integer, enum: [2, 3] }, texto: { type: string } }
+        - type: object
+          required: [tipo, itens]
+          properties: { tipo: { const: lista }, itens: { type: array, items: { type: string } } }
+        - type: object
+          required: [tipo, itens]
+          properties: { tipo: { const: passos }, itens: { type: array, items: { type: string } } }
+        - type: object
+          required: [tipo, html]
+          properties: { tipo: { const: aviso }, html: { type: string } }
+        - type: object
+          required: [tipo, itens]
+          properties: { tipo: { const: faq }, itens: { type: array, items: { $ref: '#/components/schemas/ItemDeFaq' } } }
+        - type: object
+          required: [tipo, video]
+          properties:
+            tipo: { const: video }
+            video:
+              type: object
+              required: [id, provedor, titulo, canal, capa]
+              properties:
+                id: { type: string }
+                provedor: { type: string, enum: [youtube] }
+                titulo: { type: string }
+                canal: { type: [string, 'null'] }
+                capa: { $ref: '#/components/schemas/Imagem' }
+
+    Politica:
+      type: object
+      required: [slug, titulo, rotuloMenu, icone, blocos, contatoHtml, atualizadoEm, seo]
+      properties:
+        slug: { type: string }
+        titulo: { type: string, description: H1 da página. }
+        rotuloMenu: { type: string }
+        icone: { type: string }
+        blocos: { type: array, items: { $ref: '#/components/schemas/BlocoDeTexto' } }
+        contatoHtml: { type: [string, 'null'] }
+        atualizadoEm: { type: string, format: date }
+        seo: { $ref: '#/components/schemas/Seo' }
+
+    Institucional:
+      type: object
+      required: [titulo, secoes, fatos, lojasTexto, estoque, seo]
+      properties:
+        titulo: { type: string }
+        secoes:
+          type: array
+          items:
+            type: object
+            required: [titulo, blocos]
+            properties:
+              titulo: { type: [string, 'null'] }
+              blocos: { type: array, items: { $ref: '#/components/schemas/BlocoDeTexto' } }
+        fatos:
+          type: array
+          items:
+            type: object
+            required: [titulo, texto]
+            properties: { titulo: { type: string }, texto: { type: string } }
+        lojasTexto: { type: string }
+        estoque:
+          type: object
+          required: [titulo, blocos, fotos]
+          properties:
+            titulo: { type: string }
+            blocos: { type: array, items: { $ref: '#/components/schemas/BlocoDeTexto' } }
+            fotos: { type: array, items: { $ref: '#/components/schemas/Imagem' } }
+        seo: { $ref: '#/components/schemas/Seo' }
+
+    # ------------------------------------------------------------------ catálogo
+    Ordenacao:
+      type: string
+      enum: [mais_vendidos, menor_preco, maior_preco, melhor_avaliados]
+    Medida:
+      type: object
+      required: [largura, altura, aro, rotulo]
+      properties:
+        largura: { type: integer }
+        altura: { type: integer }
+        aro: { type: string, description: 'Texto: "17", "17,5", "16C".' }
+        rotulo: { type: string, description: 'Ex.: "225/45 R17".' }
+    Preco:
+      type: object
+      required: [de, parcelado, aVista]
+      properties:
+        de: { oneOf: [{ $ref: '#/components/schemas/Dinheiro' }, { type: 'null' }], description: 'Preço anterior, quando em promoção.' }
+        parcelado: { $ref: '#/components/schemas/Parcelamento' }
+        aVista:
+          type: object
+          required: [valor, descontoPercentual]
+          properties:
+            valor: { $ref: '#/components/schemas/Dinheiro' }
+            descontoPercentual: { type: number }
+    Parcelamento:
+      type: object
+      required: [total, parcelas, valorParcela]
+      properties:
+        total: { $ref: '#/components/schemas/Dinheiro' }
+        parcelas: { type: integer, minimum: 1, maximum: 12 }
+        valorParcela: { $ref: '#/components/schemas/Dinheiro' }
+    ProdutoResumo:
+      type: object
+      required: [id, slug, nome, marca, medida, departamento, imagem, preco, promocao, freteGratis, tem360, avaliacao, disponibilidade, runFlat, terreno, desenho]
+      properties:
+        id: { type: string }
+        slug: { type: string }
+        nome: { type: string }
+        marca:
+          type: object
+          required: [slug, nome]
+          properties: { slug: { type: string }, nome: { type: string } }
+        medida: { $ref: '#/components/schemas/Medida' }
+        departamento:
+          type: object
+          required: [slug, nome]
+          properties: { slug: { type: string }, nome: { type: string } }
+        imagem: { $ref: '#/components/schemas/Imagem' }
+        preco: { oneOf: [{ $ref: '#/components/schemas/Preco' }, { type: 'null' }], description: '`null` quando sem estoque: a tela não mostra preço.' }
+        promocao: { type: boolean }
+        freteGratis:
+          oneOf:
+            - type: object
+              required: [regiao, valorMinimo]
+              properties:
+                regiao: { type: string, description: 'Ex.: "Sul e Sudeste", "todo o Brasil".' }
+                valorMinimo: { $ref: '#/components/schemas/Dinheiro' }
+            - type: 'null'
+        tem360: { type: boolean }
+        avaliacao:
+          oneOf:
+            - type: object
+              required: [nota, total]
+              properties:
+                nota: { type: number, minimum: 1, maximum: 5 }
+                total: { type: integer, minimum: 0 }
+            - type: 'null'
+        disponibilidade: { type: string, enum: [em_estoque, sem_estoque] }
+        runFlat: { type: boolean }
+        terreno: { type: string }
+        desenho: { type: [string, 'null'] }
+    Produto:
+      allOf:
+        - $ref: '#/components/schemas/ProdutoResumo'
+        - type: object
+          required: [ean, originalDe, indiceCarga, indiceVelocidade, galeria, giro360, descricaoHtml, ficha, inmetro, veiculos, garantia, formasPagamento, previsaoChegada, migalhas, faq, seo]
+          properties:
+            ean: { type: [string, 'null'] }
+            originalDe: { type: [string, 'null'], description: 'Ex.: "Hyundai i30 e VW Golf". Gera o selo "Original do…".' }
+            indiceCarga:
+              oneOf:
+                - type: object
+                  required: [codigo, kg]
+                  properties: { codigo: { type: string }, kg: { type: integer } }
+                - type: 'null'
+            indiceVelocidade:
+              oneOf:
+                - type: object
+                  required: [codigo, kmh]
+                  properties: { codigo: { type: string }, kmh: { type: integer } }
+                - type: 'null'
+            galeria: { type: array, minItems: 1, items: { $ref: '#/components/schemas/Imagem' } }
+            giro360:
+              oneOf:
+                - type: object
+                  required: [quadros, largura, altura]
+                  properties:
+                    quadros: { type: array, minItems: 2, items: { type: string } }
+                    largura: { type: integer }
+                    altura: { type: integer }
+                - type: 'null'
+            descricaoHtml: { type: string, description: 'HTML restrito a p, h2, h3, ul, ol, li, strong, em, a, br e tabela (table, thead, tbody, tr, th, td).' }
+            ficha:
+              type: array
+              items:
+                type: object
+                required: [rotulo, valor]
+                properties: { rotulo: { type: string }, valor: { type: string } }
+            inmetro: { oneOf: [{ $ref: '#/components/schemas/Imagem' }, { type: 'null' }] }
+            veiculos:
+              type: array
+              items:
+                type: object
+                required: [fabricante, modelo, versao, ano]
+                properties:
+                  fabricante: { type: string }
+                  modelo: { type: string }
+                  versao: { type: string }
+                  ano: { type: string }
+            garantia: { type: [string, 'null'] }
+            formasPagamento:
+              type: array
+              description: Vazio quando sem estoque.
+              items:
+                type: object
+                required: [rotulo, parcelas, valorParcela, observacao]
+                properties:
+                  rotulo: { type: string }
+                  parcelas: { type: integer }
+                  valorParcela: { $ref: '#/components/schemas/Dinheiro' }
+                  observacao: { type: [string, 'null'] }
+            previsaoChegada: { type: [string, 'null'], format: date, description: Só quando sem estoque. }
+            migalhas: { type: array, items: { $ref: '#/components/schemas/Migalha' } }
+            faq: { type: array, items: { $ref: '#/components/schemas/ItemDeFaq' } }
+            seo: { $ref: '#/components/schemas/Seo' }
+    Faceta:
+      type: object
+      required: [chave, rotulo, opcoes]
+      properties:
+        chave: { type: string, description: Nome do parâmetro de consulta correspondente. }
+        rotulo: { type: string }
+        opcoes:
+          type: array
+          items:
+            type: object
+            required: [valor, rotulo, total]
+            properties:
+              valor: { type: string }
+              rotulo: { type: string }
+              total: { type: integer, minimum: 0 }
+    ListaDeProdutos:
+      type: object
+      required: [itens, pagina, porPagina, total, totalPaginas, ordem, ordenacoes, facetas]
+      properties:
+        itens: { type: array, items: { $ref: '#/components/schemas/ProdutoResumo' } }
+        pagina: { type: integer, minimum: 1 }
+        porPagina: { type: integer, minimum: 1 }
+        total: { type: integer, minimum: 0 }
+        totalPaginas: { type: integer, minimum: 1 }
+        ordem: { $ref: '#/components/schemas/Ordenacao' }
+        ordenacoes:
+          type: array
+          items:
+            type: object
+            required: [valor, rotulo]
+            properties:
+              valor: { $ref: '#/components/schemas/Ordenacao' }
+              rotulo: { type: string }
+        facetas: { type: array, items: { $ref: '#/components/schemas/Faceta' } }
+    ListaSimplesDeProdutos:
+      type: object
+      required: [itens]
+      properties:
+        itens: { type: array, items: { $ref: '#/components/schemas/ProdutoResumo' } }
+    ProdutosParaComparar:
+      type: object
+      required: [itens]
+      properties:
+        itens: { type: array, maxItems: 4, items: { $ref: '#/components/schemas/Produto' } }
+    Categoria:
+      type: object
+      required: [slug, tipo, titulo, departamento, arte, busca, selecao, migalhas, textoApoio, faq, seo, ilustrativo]
+      properties:
+        slug: { type: string }
+        tipo: { type: string, enum: [departamento, aro, medida, marca] }
+        titulo: { type: string, description: H1 da listagem. }
+        departamento:
+          oneOf:
+            - type: object
+              required: [slug, nome, icone]
+              properties: { slug: { type: string }, nome: { type: string }, icone: { type: string } }
+            - type: 'null'
+        arte:
+          type: object
+          required: [computador, celular, href]
+          properties:
+            computador: { $ref: '#/components/schemas/Imagem' }
+            celular: { $ref: '#/components/schemas/Imagem' }
+            href: { type: [string, 'null'] }
+        busca:
+          type: object
+          description: Como o filtro de pneus abre nesta página.
+          required: [aba, largura, altura, aro]
+          properties:
+            aba: { type: string, enum: [medida, aro, veiculo] }
+            largura: { type: [integer, 'null'] }
+            altura: { type: [integer, 'null'] }
+            aro: { type: [string, 'null'] }
+        selecao:
+          type: object
+          description: Filtros fixos da categoria (o frontend não precisa reenviar; servem para exibir).
+          additionalProperties: { type: string }
+        migalhas: { type: array, items: { $ref: '#/components/schemas/Migalha' } }
+        textoApoio: { oneOf: [{ $ref: '#/components/schemas/TextoDeApoio' }, { type: 'null' }] }
+        faq: { type: array, items: { $ref: '#/components/schemas/ItemDeFaq' } }
+        seo: { $ref: '#/components/schemas/Seo' }
+        ilustrativo: { type: boolean, description: 'Texto de apoio escrito pela N1, ainda sem validação.' }
+    OpcoesDeMedida:
+      type: object
+      required: [larguras, alturasPorLargura, arosPorMedida, aros]
+      properties:
+        larguras: { type: array, items: { type: integer } }
+        alturasPorLargura:
+          type: object
+          description: 'Chave = largura. Ex.: {"225": [45, 50, 55]}.'
+          additionalProperties: { type: array, items: { type: integer } }
+        arosPorMedida:
+          type: object
+          description: 'Chave = "largura/altura". Ex.: {"225/45": ["17", "18"]}.'
+          additionalProperties: { type: array, items: { type: string } }
+        aros: { type: array, items: { type: string }, description: 'Todos os aros, para a aba "Por aro".' }
+    OpcoesDeVeiculo:
+      type: object
+      required: [fabricantes, modelos, versoes, aviso, ilustrativo]
+      properties:
+        fabricantes: { type: array, items: { type: string } }
+        modelos: { type: array, items: { type: string } }
+        versoes:
+          type: array
+          items:
+            type: object
+            required: [versao, ano, medidas]
+            properties:
+              versao: { type: string }
+              ano: { type: string }
+              medidas: { type: array, items: { $ref: '#/components/schemas/Medida' } }
+        aviso: { type: string }
+        ilustrativo: { type: boolean }
+
+    # ------------------------------------------------------------------ entrega
+    PedidoDeSimulacao:
+      type: object
+      required: [cep, itens, tipo]
+      properties:
+        cep: { type: string, pattern: '^[0-9]{8}$' }
+        itens:
+          type: array
+          minItems: 1
+          items:
+            type: object
+            required: [produtoId, quantidade]
+            properties:
+              produtoId: { type: string }
+              quantidade: { type: integer, minimum: 1, maximum: 8 }
+        tipo: { type: string, enum: [endereco, oficina] }
+    SimulacaoDeFrete:
+      type: object
+      required: [prazo, frete, mensagem, ilustrativo]
+      properties:
+        prazo:
+          type: object
+          required: [minimoDiasUteis, maximoDiasUteis]
+          properties:
+            minimoDiasUteis: { type: integer, minimum: 0 }
+            maximoDiasUteis: { type: integer, minimum: 0 }
+        frete:
+          type: object
+          required: [tipo, valor]
+          properties:
+            tipo: { type: string, enum: [gratis, valor, a_calcular] }
+            valor: { oneOf: [{ $ref: '#/components/schemas/Dinheiro' }, { type: 'null' }] }
+        mensagem: { type: string }
+        ilustrativo: { type: boolean }
+
+    # ------------------------------------------------------------------ avaliações
+    Avaliacao:
+      type: object
+      required: [id, autor, iniciais, cidade, data, nota, texto]
+      properties:
+        id: { type: string }
+        autor: { type: string }
+        iniciais: { type: string, minLength: 1, maxLength: 2 }
+        cidade: { type: [string, 'null'] }
+        data: { type: string, format: date }
+        nota: { type: integer, minimum: 1, maximum: 5 }
+        texto: { type: string }
+    ResumoDeAvaliacoes:
+      type: object
+      required: [nota, total, destaques, ilustrativo]
+      properties:
+        nota: { type: number, minimum: 1, maximum: 5 }
+        total: { type: integer, minimum: 0 }
+        destaques: { type: array, items: { $ref: '#/components/schemas/Avaliacao' } }
+        ilustrativo: { type: boolean }
+    FatiaDeAvaliacoes:
+      type: object
+      required: [itens, deslocamento, limite, total, ilustrativo]
+      properties:
+        itens: { type: array, items: { $ref: '#/components/schemas/Avaliacao' } }
+        deslocamento: { type: integer, minimum: 0 }
+        limite: { type: integer, minimum: 1 }
+        total: { type: integer, minimum: 0 }
+        ilustrativo: { type: boolean }
+
+    # ------------------------------------------------------------------ lojas
+    LojaResumo:
+      type: object
+      required: [slug, cidade, uf, nome, endereco, horario, telefone, whatsapp, foto, servicosResumo, agendamentoUrl, mapaUrl]
+      properties:
+        slug: { type: string }
+        cidade: { type: string }
+        uf: { type: string, minLength: 2, maxLength: 2 }
+        nome: { type: string }
+        endereco:
+          type: object
+          required: [logradouro, cidade, uf]
+          properties: { logradouro: { type: string }, cidade: { type: string }, uf: { type: string } }
+        horario: { type: array, minItems: 1, items: { type: string } }
+        telefone: { type: string }
+        whatsapp: { type: array, minItems: 1, items: { type: string }, description: 'Só dígitos, com 55. O primeiro é o principal.' }
+        foto: { $ref: '#/components/schemas/Imagem' }
+        servicosResumo: { type: array, items: { type: string } }
+        agendamentoUrl: { type: [string, 'null'], description: '`null` = loja sem agendamento pelo site.' }
+        mapaUrl: { type: string }
+    Loja:
+      allOf:
+        - $ref: '#/components/schemas/LojaResumo'
+        - type: object
+          required: [cnpj, apresentacao, orcamentoUrl, instagram, facebook, banners, vitrine, servicos, marcas, mapa, condicoes, textoApoio, faq, seo, ilustrativo]
+          properties:
+            cnpj: { type: [string, 'null'] }
+            apresentacao: { type: string }
+            orcamentoUrl: { type: string }
+            instagram: { type: [string, 'null'] }
+            facebook: { type: [string, 'null'] }
+            banners:
+              type: array
+              description: Vazio = a página abre com o hero preto. Com itens = carrossel + introdução clara.
+              items:
+                type: object
+                required: [imagem, imagemCelular, destino]
+                properties:
+                  imagem: { $ref: '#/components/schemas/Imagem' }
+                  imagemCelular: { oneOf: [{ $ref: '#/components/schemas/Imagem' }, { type: 'null' }] }
+                  destino:
+                    type: object
+                    required: [tipo, url]
+                    properties:
+                      tipo: { type: string, enum: [mapa, whatsapp, orcamento, url] }
+                      url: { type: [string, 'null'], description: Só quando `tipo` é `url`. }
+            vitrine: { type: array, description: Vazio = a seção não aparece., items: { $ref: '#/components/schemas/ProdutoResumo' } }
+            servicos:
+              type: array
+              items:
+                type: object
+                required: [nome, texto, foto]
+                properties:
+                  nome: { type: string }
+                  texto: { type: [string, 'null'] }
+                  foto: { oneOf: [{ $ref: '#/components/schemas/Imagem' }, { type: 'null' }] }
+            marcas:
+              type: array
+              items:
+                type: object
+                required: [grupo, rotulo, itens]
+                properties:
+                  grupo: { type: string, enum: [pneus, freios, suspensao, filtros, oleo, outras] }
+                  rotulo: { type: string }
+                  itens:
+                    type: array
+                    items:
+                      type: object
+                      required: [nome, logo]
+                      properties:
+                        nome: { type: string }
+                        logo: { $ref: '#/components/schemas/Imagem' }
+            mapa:
+              type: object
+              required: [link, embed]
+              properties: { link: { type: string }, embed: { type: string } }
+            condicoes: { type: array, items: { $ref: '#/components/schemas/Destaque' } }
+            textoApoio: { oneOf: [{ $ref: '#/components/schemas/TextoDeApoio' }, { type: 'null' }] }
+            faq: { type: array, items: { $ref: '#/components/schemas/ItemDeFaq' } }
+            seo: { $ref: '#/components/schemas/Seo' }
+            ilustrativo:
+              type: object
+              required: [vitrine]
+              properties: { vitrine: { type: boolean } }
+    HubDeLojas:
+      type: object
+      required: [titulo, intro, lojas, textoApoio, faq, seo]
+      properties:
+        titulo: { type: string }
+        intro: { type: string }
+        lojas: { type: array, items: { $ref: '#/components/schemas/LojaResumo' } }
+        textoApoio: { oneOf: [{ $ref: '#/components/schemas/TextoDeApoio' }, { type: 'null' }] }
+        faq: { type: array, items: { $ref: '#/components/schemas/ItemDeFaq' } }
+        seo: { $ref: '#/components/schemas/Seo' }
+
+    # ------------------------------------------------------------------ carrinho
+    Carrinho:
+      type: object
+      required: [itens, totais]
+      properties:
+        itens:
+          type: array
+          items:
+            type: object
+            required: [produto, quantidade, subtotalAVista]
+            properties:
+              produto: { $ref: '#/components/schemas/ProdutoResumo' }
+              quantidade: { type: integer, minimum: 1, maximum: 8 }
+              subtotalAVista: { $ref: '#/components/schemas/Dinheiro' }
+        totais:
+          type: object
+          required: [quantidade, aVista, parcelado]
+          properties:
+            quantidade: { type: integer, minimum: 0 }
+            aVista: { $ref: '#/components/schemas/Dinheiro' }
+            parcelado: { $ref: '#/components/schemas/Parcelamento' }
+    ItemParaAdicionar:
+      type: object
+      required: [produtoId, quantidade]
+      properties:
+        produtoId: { type: string }
+        quantidade: { type: integer, minimum: 1, maximum: 8 }
+    Quantidade:
+      type: object
+      required: [quantidade]
+      properties:
+        quantidade: { type: integer, minimum: 1, maximum: 8 }
+
+    # ------------------------------------------------------------------ relacionamento
+    InscricaoNewsletter:
+      type: object
+      required: [email]
+      properties:
+        email: { type: string, format: email }
+        whatsapp: { type: [string, 'null'], pattern: '^[0-9]{10,11}$', description: 'DDD + número, só dígitos.' }
+    PedidoDeAviso:
+      type: object
+      required: [email]
+      properties:
+        email: { type: string, format: email }

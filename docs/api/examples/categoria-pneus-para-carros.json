@@ -1,0 +1,79 @@
+{
+  "slug": "pneus-para-carros",
+  "tipo": "departamento",
+  "titulo": "Pneus para carros",
+  "departamento": {
+    "slug": "pneus-para-carros",
+    "nome": "Pneus para carros",
+    "icone": "carro"
+  },
+  "arte": {
+    "computador": {
+      "src": "/img/banners/ofertas-aro-l@2x.webp",
+      "largura": 720,
+      "altura": 420,
+      "alt": "Ofertas em pneus aro 17 a 22. Pneus para carros, SUVs e pick-ups com preço de promoção. Ver ofertas."
+    },
+    "celular": {
+      "src": "/img/banners/ofertas-aro-m@2x.webp",
+      "largura": 390,
+      "altura": 290,
+      "alt": "Ofertas em pneus aro 17 a 22. Pneus para carros, SUVs e pick-ups com preço de promoção. Ver ofertas."
+    },
+    "href": "/c/carros-aro-17"
+  },
+  "busca": {
+    "aba": "medida",
+    "largura": null,
+    "altura": null,
+    "aro": null
+  },
+  "selecao": {
+    "departamento": "carros"
+  },
+  "migalhas": [
+    {
+      "rotulo": "Pneus para carros",
+      "href": null
+    }
+  ],
+  "textoApoio": {
+    "titulo": "Pneus para carros: o que saber antes de comprar",
+    "html": "<h2>Pneus de carros de passeio: variedade, segurança e tecnologia</h2> <p>A TireShop oferece uma linha completa para quem busca o melhor pneu de carro para rodagem urbana ou rodoviária. Garantir o modelo ideal de pneu de carro de passeio é fundamental para manter a estabilidade, o conforto e a eficiência de combustível do veículo. Em nosso e-commerce, você encontra opções desenvolvidas com compostos que oferecem<strong> aderência em pista molhada, tecnologia antiaquaplanagem e rodagem silenciosa.</strong></p> <h3>Pneu para carro de passeio: marcas e medidas no catálogo</h3> <p>Para atender a diversas montadoras nacionais e internacionais, oferecemos o melhor pneu para carro do mercado. Nosso e-commerce dispõe de opções renomadas, como pneu Fortune, pneu Hankook, pneu Nexen e pneu Barum (fabricado pela Continental). A seleção de aros cobre todas as exigências do mercado, incluindo pneu aro 10, <a href=\"https://www.tireshop.com.br/1/138/Pneus-para-carros_Pneu-Aro-12\">pneu aro 12</a>, pneu aro 13, pneu aro 14, pneu aro 15, <a href=\"https://www.tireshop.com.br/1/4/Pneus-para-carros_Pneu-Aro-16\">pneu aro 16</a>, <a href=\"https://www.tireshop.com.br/1/8/Pneus-para-carros_Pneu-Aro-20\">pneu aro 20</a> e pneu aro 21.</p> <h3>Principais linhas, modelos e destaques do nosso catálogo:</h3> <ul> <li> <p><a href=\"https://www.tireshop.com.br/3/34/Fortune\">Pneu Fortune:</a> linhas FSR-802 e FSR-602 focadas em resistência ao desgaste, carcaça reforçada e economia de combustível;</p></li> <li> <p><a href=\"https://www.tireshop.com.br/3/22/Hankook\">Pneu Hankook: </a>modelo Optimo H724, projetado com banda de rodagem otimizada para proporcionar conforto acústico;</p></li> <li> <p><a href=\"https://www.tireshop.com.br/3/38/Nexen\">Pneu Nexen:</a> modelos Nfera-SU4 e Npriz GX, desenvolvidos para alta estabilidade em curvas e frenagem precisa;</p></li> <li> <p><a href=\"https://www.tireshop.com.br/3/37/Barum-by-Continental\">Pneu Barum</a>: linha Bravuris 5HM, fabricada pela Continental para entregar alta quilometragem e segurança no piso molhado;</p></li> <li> <p><a href=\"https://www.tireshop.com.br/3/1/Yokohama\">Yokohama:</a> modelo BluEarth ES32, focado em sustentabilidade, aderência e menor resistência ao rolamento.</p></li></ul> <h2>Diferenciais dos pneus e das condições exclusivas TireShop</h2> <p>Os produtos do nosso catálogo contam com tecnologias que evitam o desgaste irregular da borracha, aumentam a economia de combustível e asseguram aderência sob chuva.</p> <p>Além do alto padrão dos fabricantes com cobertura total assegurada na nossa <a href=\"https://www.tireshop.com.br/PoliticaGarantia\">política de garantia de pneus e produtos</a>, comprar na TireShop oferece diferenciais logísticos e comerciais, como <strong>frete grátis para o Sul e Sudeste, nas compras acima de R$ 1.000,00, parcelamento em até 12x sem juros no cartão, descontos para pagamentos à vista</strong>, suporte técnico especializado e envio ágil direto do estoque próprio para todo o país.</p>"
+  },
+  "faq": [
+    {
+      "pergunta": "Como saber a medida certa de pneu para meu carro?",
+      "respostaHtml": "<p>Verifique o manual do veículo ou consulte a medida gravada na lateral do pneu atual (ex: 195/70 R14). Também é possível usar nosso filtro de busca para selecionar a medida correta.</p>"
+    },
+    {
+      "pergunta": "Qual a melhor marca de pneu para carros?",
+      "respostaHtml": "<p>Todas as marcas do nosso catálogo foram escolhidas por sua confiabilidade. Temos opções como Fortune, Hankook, Nexen e outras com excelente custo-benefício.</p>"
+    },
+    {
+      "pergunta": "Quanto custa um pneu para carro?",
+      "respostaHtml": "<p>O valor pode variar. Por exemplo, em nosso catálogo, estão<strong>disponíveis pneus entre R$ 300,00 e R$ 8.000,00</strong>.</p> <p>A TireShop está aqui para oferecer a melhor experiência na hora de comprar pneus para carro. Com produtos de qualidade, marcas confiáveis e uma jornada de compra transparente, garantimos segurança e desempenho em cada escolha. Explore nosso catálogo e aproveite as condições exclusivas para renovar os pneus do seu carro com economia, praticidade e confiança.</p> <p>Confira também nossa categoria de<a href=\"https://www.tireshop.com.br/0/5/Pneus-Pick-ups-e-SUVs\">pneus para pick up e SUV</a>e encontre as melhores opções para veículos maiores com a mesma qualidade que você já conhece.</p> <br/>"
+    },
+    {
+      "pergunta": "Quanto tempo dura um pneu de carro em uso regular?",
+      "respostaHtml": "<p>A durabilidade de um pneu de carro depende do composto de borracha, alinhamento do veículo e hábitos de condução. Em média, um pneu de carro de passeio dura entre 40.000 e 60.000 km. Fazer o rodízio e manter a calibragem em dia ajudam a atingir a durabilidade máxima do jogo.</p>"
+    },
+    {
+      "pergunta": "Qual é a calibragem do pneu de carro ideal para rodar?",
+      "respostaHtml": "<p>Para saber qual é a calibragem correta do pneu de carro, consulte o manual do proprietário ou o adesivo na porta do motorista. A pressão varia de acordo com a medida do pneu para carro e a carga transportada. Ajustar a calibragem semanalmente a frio garante segurança, menor desgaste e economia.</p>"
+    },
+    {
+      "pergunta": "Como trocar pneu de carro com segurança no dia a dia?",
+      "respostaHtml": "<p>Saber como trocar pneu de carro exige <strong>estacionar em local plano, puxar o freio de mão e afrouxar os parafusos antes de erguer o macaco</strong>. Substitua a roda, aperte os parafusos levemente, desça o veículo e finalize o aperto em cruz. Na TireShop, você também pode agendar a montagem em autocenters parceiros.</p>"
+    },
+    {
+      "pergunta": "Como encontrar pneus em promoção para o meu veículo?",
+      "respostaHtml": "<p>Você encontra<a href=\"https://www.tireshop.com.br/1/1/PromocaoEspecial\"> pneus em promoção no e-commerce da TireShop</a> utilizando nosso filtro por medida (como<a href=\"https://www.tireshop.com.br/1/2/Pneus-para-carros_Pneu-Aro-14\"> aro 14 </a>ou <a href=\"https://www.tireshop.com.br/1/3/Pneus-para-carros_Pneu-Aro-15\">aro 15</a>) ou por veículo. Oferecemos modelos da Fortune, Yokohama, Hankook, Nexen e Barum com parcelamento em até 12x sem juros no cartão de crédito, frete grátis para Sul e Sudeste e entrega vinda do nosso estoque próprio.</p>"
+    }
+  ],
+  "seo": {
+    "titulo": "Pneus para carros | TireShop",
+    "descricao": "Pneus para carros com 5% de desconto à vista ou 12x sem juros e frete grátis para o Sul e o Sudeste acima de R$ 1.000."
+  },
+  "ilustrativo": false
+}

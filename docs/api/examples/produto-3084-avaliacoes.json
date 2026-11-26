@@ -1,0 +1,53 @@
+{
+  "itens": [
+    {
+      "id": "3084-7",
+      "autor": "Rafael J.",
+      "iniciais": "RJ",
+      "cidade": "Sorocaba, SP",
+      "data": "2026-08-03",
+      "nota": 5,
+      "texto": "Troquei os quatro e o consumo de combustível caiu um pouco. Satisfeito."
+    },
+    {
+      "id": "3084-8",
+      "autor": "Renata L.",
+      "iniciais": "RL",
+      "cidade": "Novo Hamburgo, RS",
+      "data": "2026-08-03",
+      "nota": 5,
+      "texto": "Já estou com 10 mil km e o desgaste está bem parelho. Boa compra."
+    },
+    {
+      "id": "3084-9",
+      "autor": "Renata B.",
+      "iniciais": "RB",
+      "cidade": "Caxias do Sul, RS",
+      "data": "2026-07-30",
+      "nota": 5,
+      "texto": "Primeira vez comprando pneu pela internet e foi mais fácil do que eu imaginava."
+    },
+    {
+      "id": "3084-10",
+      "autor": "Daniela V.",
+      "iniciais": "DV",
+      "cidade": "Maringá, PR",
+      "data": "2026-07-14",
+      "nota": 5,
+      "texto": "Primeira vez comprando pneu pela internet e foi mais fácil do que eu imaginava."
+    },
+    {
+      "id": "3084-11",
+      "autor": "Rodrigo G.",
+      "iniciais": "RG",
+      "cidade": "Maringá, PR",
+      "data": "2026-07-09",
+      "nota": 5,
+      "texto": "Esperava um pouco mais de conforto, mas a durabilidade está ótima até agora."
+    }
+  ],
+  "deslocamento": 6,
+  "limite": 5,
+  "total": 31,
+  "ilustrativo": true
+}

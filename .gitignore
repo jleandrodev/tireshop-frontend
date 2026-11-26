@@ -1,0 +1,28 @@
+# Dependências e saídas de build
+node_modules/
+.nuxt/
+.output/
+.data/
+.cache/
+dist/
+
+# Testes e relatórios
+coverage/
+playwright-report/
+test-results/
+.lighthouseci/
+reports/
+
+# Ambiente e credenciais: nunca versionar
+.env
+.env.*
+!.env.example
+
+# Python dos verificadores
+__pycache__/
+*.pyc
+
+# Sistema e editor
+.DS_Store
+Thumbs.db
+*.log

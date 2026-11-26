@@ -1,0 +1,58 @@
+{
+  "itens": [],
+  "pagina": 1,
+  "porPagina": 12,
+  "total": 0,
+  "totalPaginas": 1,
+  "ordem": "mais_vendidos",
+  "ordenacoes": [
+    {
+      "valor": "mais_vendidos",
+      "rotulo": "Mais vendidos"
+    },
+    {
+      "valor": "menor_preco",
+      "rotulo": "Menor preço"
+    },
+    {
+      "valor": "maior_preco",
+      "rotulo": "Maior preço"
+    },
+    {
+      "valor": "melhor_avaliados",
+      "rotulo": "Melhor avaliados"
+    }
+  ],
+  "facetas": [
+    {
+      "chave": "medida",
+      "rotulo": "Medida",
+      "opcoes": []
+    },
+    {
+      "chave": "marca",
+      "rotulo": "Marca",
+      "opcoes": []
+    },
+    {
+      "chave": "preco",
+      "rotulo": "Preço à vista",
+      "opcoes": []
+    },
+    {
+      "chave": "runflat",
+      "rotulo": "Run flat",
+      "opcoes": []
+    },
+    {
+      "chave": "terreno",
+      "rotulo": "Tipo de terreno",
+      "opcoes": []
+    },
+    {
+      "chave": "desenho",
+      "rotulo": "Desenho",
+      "opcoes": []
+    }
+  ]
+}

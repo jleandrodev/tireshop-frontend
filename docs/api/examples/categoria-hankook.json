@@ -1,0 +1,55 @@
+{
+  "slug": "hankook",
+  "tipo": "marca",
+  "titulo": "Pneus Hankook",
+  "departamento": null,
+  "arte": {
+    "computador": {
+      "src": "/img/banners/seo-l@2x.webp",
+      "largura": 720,
+      "altura": 420,
+      "alt": "Dois pneus novos sobre fundo amarelo"
+    },
+    "celular": {
+      "src": "/img/banners/seo-m@2x.webp",
+      "largura": 390,
+      "altura": 290,
+      "alt": "Dois pneus novos sobre fundo amarelo"
+    },
+    "href": null
+  },
+  "busca": {
+    "aba": "medida",
+    "largura": null,
+    "altura": null,
+    "aro": null
+  },
+  "selecao": {
+    "marca": "Hankook"
+  },
+  "migalhas": [
+    {
+      "rotulo": "Marcas",
+      "href": "/#marcas"
+    },
+    {
+      "rotulo": "Hankook",
+      "href": null
+    }
+  ],
+  "textoApoio": {
+    "titulo": "Pneus Hankook: o que saber antes de comprar",
+    "html": "<p>A Hankook é a sétima maior fabricante de pneus do mundo e equipa de fábrica modelos de Hyundai, Kia, Volkswagen, Ford e BMW. Na TireShop você encontra as linhas Ventus (performance), Kinergy (uso urbano) e Dynapro (SUVs e picapes), com estoque próprio e frete grátis para o Sul e o Sudeste acima de R$ 1.000.</p>"
+  },
+  "faq": [
+    {
+      "pergunta": "A Hankook é pneu original de fábrica?",
+      "respostaHtml": "<p>Sim. Vários modelos vendidos no Brasil saem da fábrica com Hankook, como Hyundai i30 e HB20, VW Golf e Kia Sportage. Os produtos marcados \"Original do [veículo]\" são exatamente a especificação de fábrica.</p>"
+    }
+  ],
+  "seo": {
+    "titulo": "Pneus Hankook | TireShop",
+    "descricao": "Pneus Hankook com 5% de desconto à vista ou 12x sem juros e frete grátis para o Sul e o Sudeste acima de R$ 1.000."
+  },
+  "ilustrativo": true
+}

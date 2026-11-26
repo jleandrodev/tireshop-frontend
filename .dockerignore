@@ -1,0 +1,21 @@
+# Só entra no contexto o que a imagem usa. O resto atrasa o build e, no caso do .env,
+# vazaria segredo para dentro de uma camada.
+.git
+.github
+.devcontainer
+node_modules
+.nuxt
+.output
+.data
+.cache
+dist
+coverage
+playwright-report
+test-results
+.lighthouseci
+reports
+.env
+.env.*
+!.env.example
+*.log
+compose*.yaml

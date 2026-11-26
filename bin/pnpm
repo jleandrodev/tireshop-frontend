@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+# Roda o pnpm dentro do contêiner do projeto. Todo `pnpm x` das specs e dos docs é `bin/pnpm x`.
+#
+#   bin/pnpm install
+#   bin/pnpm dev          sobe com as portas publicadas (http://localhost:3000)
+#   bin/pnpm test
+#
+# Para outro binário no mesmo contêiner: docker compose run --rm app <comando>
+set -eu
+
+cd "$(dirname "$0")/.."
+
+DEV_UID="${DEV_UID:-$(id -u)}"
+DEV_GID="${DEV_GID:-$(id -g)}"
+NODE_VERSION="$(tr -d 'v[:space:]' < .nvmrc)"
+export DEV_UID DEV_GID NODE_VERSION
+
+# Sem terminal (CI, agente de IA), o compose não pode pedir um TTY.
+tty=""
+[ -t 0 ] && [ -t 1 ] || tty="-T"
+
+# Os comandos que sobem servidor precisam das portas; os demais não as disputam.
+portas=""
+case "${1:-}" in
+  dev | preview | start) portas="--service-ports" ;;
+esac
+
+# shellcheck disable=SC2086
+exec docker compose run --rm $tty $portas app pnpm "$@"

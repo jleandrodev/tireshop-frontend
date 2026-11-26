@@ -1,0 +1,43 @@
+{
+  "nota": 4.8,
+  "total": 12400,
+  "destaques": [
+    {
+      "id": "loja-1",
+      "autor": "Cliente de Curitiba",
+      "iniciais": "C",
+      "cidade": "Curitiba",
+      "data": "2026-10-01",
+      "nota": 5,
+      "texto": "Comprei em uma segunda e chegou na quarta, dentro do prazo que o site mostrou. Pneu bem embalado e com nota fiscal."
+    },
+    {
+      "id": "loja-2",
+      "autor": "Cliente de Campinas",
+      "iniciais": "C",
+      "cidade": "Campinas",
+      "data": "2026-10-01",
+      "nota": 5,
+      "texto": "Achei a medida certa pela busca e o preço em 12x saiu melhor que nas lojas da minha cidade."
+    },
+    {
+      "id": "loja-3",
+      "autor": "Cliente de Joinville",
+      "iniciais": "J",
+      "cidade": "Joinville",
+      "data": "2026-10-01",
+      "nota": 5,
+      "texto": "Mandei entregar em uma oficina conveniada e já saí com os pneus montados no mesmo dia."
+    },
+    {
+      "id": "loja-4",
+      "autor": "Cliente de Porto Alegre",
+      "iniciais": "A",
+      "cidade": "Porto Alegre",
+      "data": "2026-10-01",
+      "nota": 4,
+      "texto": "Tirei uma dúvida de índice de carga pelo WhatsApp antes de comprar. Atendimento rápido."
+    }
+  ],
+  "ilustrativo": true
+}
