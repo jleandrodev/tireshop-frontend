@@ -30,7 +30,14 @@ function schemaPassaTudo<T>() {
 }
 
 function eventoComCookie(cookie: string): H3Event {
-  return { node: { req: { headers: { cookie } } } } as unknown as H3Event
+  return {
+    node: { req: { headers: { cookie, host: 'loja.exemplo.com.br' } } },
+    path: '/pagina',
+  } as unknown as H3Event
+}
+
+function eventoComHost(host: string): H3Event {
+  return { node: { req: { headers: { host } } }, path: '/pagina' } as unknown as H3Event
 }
 
 describe('useClienteHttp (composable)', () => {
@@ -100,6 +107,34 @@ describe('montarConfiguracaoDoClienteHttp', () => {
     const configuracao = montarConfiguracaoDoClienteHttp({ apiBase: '/api/mock', fetch })
 
     expect(configuracao.cabecalhos).toBeUndefined()
+  })
+
+  test('com evento (SSR), uma apiBase relativa fica absoluta (origem da requisição atual)', async () => {
+    const cliente = criarClienteHttp(
+      montarConfiguracaoDoClienteHttp({
+        apiBase: '/api/mock',
+        evento: eventoComHost('loja.exemplo.com.br'),
+        fetch,
+      }),
+    )
+
+    await cliente.obter('/produtos', { schema: schemaPassaTudo() })
+
+    expect(vi.mocked(fetch).mock.calls[0]![0]).toBe('http://loja.exemplo.com.br/api/mock/produtos')
+  })
+
+  test('apiBase já absoluta (API externa) não é prefixada, mesmo com evento', async () => {
+    const cliente = criarClienteHttp(
+      montarConfiguracaoDoClienteHttp({
+        apiBase: 'https://api.tireshop.com.br',
+        evento: eventoComHost('loja.exemplo.com.br'),
+        fetch,
+      }),
+    )
+
+    await cliente.obter('/produtos', { schema: schemaPassaTudo() })
+
+    expect(vi.mocked(fetch).mock.calls[0]![0]).toBe('https://api.tireshop.com.br/produtos')
   })
 
   test('duas configurações seguidas (duas requisições) não compartilham cookie uma da outra', () => {

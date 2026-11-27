@@ -61,7 +61,7 @@
   display: grid; grid-template-columns: auto 1fr auto; align-items: center;
   gap: var(--ts-s-6); min-height: 76px;
 }
-.ts-header__logo { display: block; width: 168px; }
+.ts-header__logo { display: flex; align-items: center; width: 168px; min-height: var(--ts-tap); }
 .ts-header__logo svg, .ts-header__logo img { width: 100%; height: auto; }
 .ts-header__acoes { display: flex; align-items: center; gap: var(--ts-s-2); }
 .ts-header__acao {
