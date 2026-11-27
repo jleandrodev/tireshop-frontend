@@ -285,7 +285,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   `.ts-dialogo*` — uma base genérica para a gaveta lateral; o protótipo só tinha `.ts-minicart` e
   `.ts-menu`, específicas de cada consumidor (módulos 02/03), sem uma versão compartilhada.
 
-### [ ] T-0113 · `EstadoVazio`, `EstadoDeErro` e `Esqueleto` cobrem os estados que não são sucesso
+### [x] T-0113 · `EstadoVazio`, `EstadoDeErro` e `Esqueleto` cobrem os estados que não são sucesso — 2026-11-27
 
 - **Requisito:** REQ-01-14
 - **Camada:** ui
@@ -301,6 +301,13 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/ui/EstadoVazio.vue`, `EstadoDeErro.vue`, `Esqueleto.vue`, `Estados.spec.ts`
 - **Fora do escopo:** página de não encontrado (módulo 02); esqueletos com forma de card (cada contexto compõe o seu).
 - **Depende de:** T-0103, T-0007
+- **Decisões:** sem protótipo de alta fidelidade para estes três (só cobre o caminho feliz); classes
+  novas em `componentes.css` (`.ts-esqueleto`, `.ts-estado-vazio*`, `.ts-estado-erro*`), simples e
+  nos tokens existentes. `EstadoDeErro` nunca lê `erro.caminho`/`erro.endpoint` de `ErroDeContrato`
+  — a mensagem é só por `erro.tipo`, então não tem como expor detalhe técnico por acidente.
+  `ErroDeValidacao` (não citado nos casos de teste) cai na mesma mensagem genérica de
+  `ErroDeContrato`, só para o `switch` ser exaustivo; não é o uso esperado deste componente (erro
+  de validação é por campo, não de bloco inteiro).
 
 ### [ ] T-0114 · `Paginacao` mostra os números e "Próxima página" na mesma linha
 
