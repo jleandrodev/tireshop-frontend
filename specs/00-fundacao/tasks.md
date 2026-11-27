@@ -168,7 +168,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Fora do escopo:** schemas Zod (cada adaptador traz o seu, e o teste de contrato do adaptador é da task dele); apagar o `validar_contratos.py` (listar para o dev decidir).
 - **Depende de:** T-0008
 
-### [ ] T-0010 · O Playwright aplica os invariantes comuns de página
+### [x] T-0010 · O Playwright aplica os invariantes comuns de página · 2026-11-27
 
 - **Requisito:** REQ-00-09
 - **Camada:** e2e
@@ -180,6 +180,14 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Arquivos:** `tests/e2e/_invariantes.ts`, `tests/e2e/_invariantes.spec.ts`, `tests/e2e/_paginas-de-prova/`, `playwright.config.ts`, `.github/workflows/ci.yml`, `tests/infra/ci.spec.ts`
 - **Fora do escopo:** invariantes por tipo de página (cada módulo).
 - **Depende de:** T-0005, T-0012
+
+**Decisões:** um `test()` por defeito, cada um numa página de prova mínima (`page.setContent`, sem
+precisar de rota/servidor), em vez de uma página só com todos os defeitos juntos — a reprovação
+fica inequívoca por tipo. Projetos do Playwright passaram de `chromium` para `computador`/`celular`
+(1440×900 e 390×844), afetando também `fumaca.spec.ts` e `estilo.spec.ts`, que agora rodam nos
+dois tamanhos (sem motivo para não rodar). `.github/workflows/ci.yml` não mudou: o job E2E já
+roda `pnpm run test:e2e` (que agora cobre os dois projetos sozinho) e já guarda o relatório na
+falha, desde a T-0012.
 
 ### [ ] T-0011 · A `main` só aceita o que passou em tudo, inclusive nas verificações de segurança
 
