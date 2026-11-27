@@ -151,7 +151,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   evita os dois poderem contradizer um ao outro. `porPagina <= 0` não é validado: nenhum caso pede
   isso e os chamadores (módulos de listagem) sempre fixam o valor, não vem de entrada externa.
 
-### [ ] T-0108 · Datas, números, telefones e plurais saem em pt-BR
+### [x] T-0108 · Datas, números, telefones e plurais saem em pt-BR — 2026-11-27
 
 - **Requisito:** REQ-01-09
 - **Camada:** domínio
@@ -168,6 +168,12 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/formatacao/datas.ts`, `numeros.ts`, `telefones.ts`, `formatacao.spec.ts`, `layers/shared/index.ts`
 - **Fora do escopo:** dinheiro (é do `Dinheiro`); validação de telefone (é do Relacionamento); máscara de campo.
 - **Depende de:** T-0003
+- **Decisões:** `plural` entrou em `numeros.ts` (a task não lista um arquivo próprio para ele, e é
+  formatação de quantidade). `formatarData` fixa `timeZone: 'UTC'` no `Intl.DateTimeFormat` e
+  calcula a data com `Date.UTC`, nunca com o fuso local — é isso que garante o mesmo resultado em
+  qualquer fuso do servidor (testado trocando `process.env.TZ` entre os casos). Data inválida é
+  detectada comparando ano/mês/dia de volta contra o que o `Date` normalizou (ex.: "2026-02-30"
+  viraria 2 de março se não fosse essa checagem).
 
 ### [ ] T-0109 · `Acordeao` abre e fecha cada item sozinho
 
