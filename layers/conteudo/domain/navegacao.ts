@@ -42,6 +42,16 @@ export type Departamento = {
   readonly aros: readonly Aro[]
 }
 
+/** T-0208 · REQ-02-07: só o que o mega menu do cabeçalho mostra — a Loja de verdade (módulo 12)
+ *  tem muito mais campo; Conteúdo não importa o contexto Lojas (docs/architecture.md, A5). */
+export type LojaDoMenu = {
+  readonly slug: string
+  readonly cidade: string
+  readonly uf: string
+  readonly endereco: string
+  readonly foto: Imagem
+}
+
 export type Marca = {
   readonly slug: string
   readonly nome: string

@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { rotas } from '#layers/shared'
+import { classificarHref, rotas } from '#layers/shared'
+import { tipoDoItemDeMenu, type LojaDoMenu } from '../../domain/navegacao'
 import { fornecerCoordenadorMegaMenu } from '../composables/use-coordenador-mega-menu'
 import { useNavegacao } from '../composables/use-navegacao'
 
-// T-0205/T-0206/T-0207 · REQ-02-02..REQ-02-06: barra de topo, logo, busca por medida, "Entrar",
-// carrinho e o menu Departamentos. "Entrar" ainda não tem destino (login fora do escopo, ver
-// Pendências de specs/02-conteudo-navegacao/tasks.md): mostrado como botão, sem ação. O
-// cabeçalho não importa Catálogo nem Carrinho — a contagem chega por prop. Lojas, Marcas e o
-// drawer do celular são das próximas tasks.
-defineProps<{ quantidadeNoCarrinho: number }>()
+// T-0205..T-0208 · REQ-02-02..REQ-02-08: barra de topo, logo, busca por medida, "Entrar",
+// carrinho e os menus (Departamentos, Lojas Físicas, Marcas e os links simples do menu). "Entrar"
+// ainda não tem destino (login fora do escopo, ver Pendências de
+// specs/02-conteudo-navegacao/tasks.md): mostrado como botão, sem ação. O cabeçalho não importa
+// Catálogo, Carrinho nem Lojas — a contagem e a lista de lojas chegam por prop (REQ-02-01, A5); o
+// drawer do celular é da próxima task.
+defineProps<{ quantidadeNoCarrinho: number; lojas: readonly LojaDoMenu[] }>()
 const emit = defineEmits<{
   buscar: [texto: string]
   'abrir-carrinho': []
@@ -76,6 +78,26 @@ function rotuloDoCarrinho(quantidade: number): string {
             </template>
           </MegaMenu>
         </li>
+        <template v-for="item in navegacao.menu" :key="item.rotulo">
+          <li v-if="tipoDoItemDeMenu(item) === 'lojas'">
+            <MegaMenuLojas
+              :lojas="lojas"
+              :telefone="navegacao.contato.telefone"
+              :whatsapp="navegacao.contato.whatsapp"
+            />
+          </li>
+          <li v-else-if="tipoDoItemDeMenu(item) === 'marcas'">
+            <MegaMenuMarcas :marcas="navegacao.marcas" />
+          </li>
+          <li v-else>
+            <NuxtLink v-if="classificarHref(item.href) === 'interno'" :to="item.href!">
+              {{ item.rotulo }}
+            </NuxtLink>
+            <a v-else-if="item.href" :href="item.href" target="_blank" rel="noopener noreferrer">
+              {{ item.rotulo }}
+            </a>
+          </li>
+        </template>
       </ul>
     </nav>
   </header>
