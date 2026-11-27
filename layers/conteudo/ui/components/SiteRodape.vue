@@ -132,4 +132,7 @@ const ano = useState('ano-do-rodape', () => new Date().getFullYear())
     </div>
   </footer>
   <footer v-else class="ts-rodape" />
+  <!-- T-0211: montado aqui (não em app/layouts/default.vue) para não abrir uma terceira busca a
+       /navegacao — ver Decisões da task. -->
+  <BotaoWhatsapp :numero="navegacao?.contato.whatsapp ?? null" />
 </template>

@@ -372,7 +372,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   Confirmado: `bin/pnpm test` (988/988), `typecheck`, `lint` (0 erros) e `format:check` limpos;
   `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
-### [ ] T-0211 · O botão flutuante do WhatsApp aparece sem cobrir barra fixa
+### [x] T-0211 · O botão flutuante do WhatsApp aparece sem cobrir barra fixa — 2026-11-27
 
 - **Requisito:** REQ-02-15
 - **Camada:** ui
@@ -386,6 +386,32 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/shared/ui/BotaoWhatsapp.vue`, `BotaoWhatsapp.spec.ts`, `app/layouts/default.vue`
 - **Fora do escopo:** as barras fixas em si (módulos 03 e 04); o e2e de sobreposição é da T-0219 e dos módulos que têm barra.
 - **Depende de:** T-0205, T-0108
+- **Decisões:** `formatarNumeroDeWhatsapp` (nova, `telefones.ts`) em vez de reusar
+  `formatarTelefone`: `Contato.whatsapp` (e o número de uma loja) vem com o DDI ("554133172251"),
+  formato diferente de `Contato.telefone` (já local). Tira o "55" só quando bate 12/13 dígitos
+  com esse prefixo; fora disso, devolve o texto original — mesma postura de "não validar,
+  só formatar" que `formatarTelefone` já tinha.
+  O modificador de alvo não existia no CSS do protótipo (ele nunca teve uma barra fixa de
+  verdade) — `.ts-fab--acima` é novo, reaproveitando `--ts-barra-h` (já usado pela barra fixa de
+  compra do catálogo) e `--ts-s-2`, em vez de inventar um valor solto.
+  **Achado que mudou o Arquivo:** montar em `app/layouts/default.vue` (como a task pedia) quebrou
+  "uma única chamada à porta" (T-0204/T-0205) — rodando a home de verdade (`bin/pnpm dev`),
+  `x-dev-chamadas-navegacao` virou "2". Causa: no SSR de verdade (não no ambiente "nuxt" do
+  Vitest, que é client-only — T-0118/T-0204), o `onServerPrefetch` do `useAsyncData` do PAI
+  (`default.vue`) é esperado por inteiro antes dos FILHOS (`SiteCabecalho`, `SiteRodape`)
+  começarem o próprio `setup()`; quando o pai chega lá, a chave já está `"success"` e sem
+  promessa em voo, e o branch de servidor do Nuxt chama o handler de novo sem checar o status
+  (só o branch de cliente checa) — o `dedupe: 'defer'` só evita a segunda chamada entre
+  `SiteCabecalho` e `SiteRodape` porque os dois são filhos DIRETOS do mesmo pai e começam o
+  `setup()` antes de qualquer um terminar a própria busca (achado confirmado com `console.log`
+  no handler, direto no `nuxt dev`, não só no teste). Resolvido montando `BotaoWhatsapp` dentro
+  de `SiteRodape.vue` (que já busca `navegacao`), não em `default.vue` — um `useNavegacao()` a
+  mais em outro nível da árvore volta a quebrar isto. `app/layouts/default.vue` segue listado
+  nos Arquivos porque o comentário dele foi atualizado explicando a decisão, mesmo sem montar o
+  componente diretamente.
+  Confirmado: `bin/pnpm test` (997/997), `typecheck`, `lint` (0 erros) e `format:check` limpos;
+  `bin/pnpm test:e2e` completo (60/60, inclui a chamada única voltando a "1") sem regressão;
+  `bin/pnpm build` limpo; `bin/pnpm dev` com `x-dev-chamadas-navegacao: 1` confirmado à mão.
 
 ### [ ] T-0212 · O aviso de cookies some no "Entendi" e fica lembrado
 
