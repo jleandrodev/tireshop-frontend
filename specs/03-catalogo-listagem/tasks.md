@@ -76,7 +76,7 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
   Verificação local: `produto-resumo.spec.ts` (8/8), `typecheck`, `lint` e `format:check`
   (0 erros); suíte inteira/e2e/build no CI do PR.
 
-### [ ] T-0304 · `CriterioDeListagem` combina facetas, ordem e página
+### [x] T-0304 · `CriterioDeListagem` combina facetas, ordem e página — 2026-11-27
 
 - **Requisito:** REQ-03-06, REQ-03-09
 - **Camada:** domínio
@@ -93,6 +93,18 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
 - **Arquivos:** `layers/catalogo/domain/criterio-de-listagem.ts`, `criterio-de-listagem.spec.ts`
 - **Fora do escopo:** chamada HTTP.
 - **Depende de:** T-0101
+- **Decisões:** `facetas` é um `Map<chave, Set<valor>>` interno — qualquer chave é aceita como
+  faceta (o domínio não fixa uma lista; quem vem da categoria/API decide quais existem). Por
+  isso "valores desconhecidos" não é sobre a chave, e sim sobre o **valor** dos dois parâmetros
+  reservados: `pagina` não numérica/menor que 1 (ex.: `pagina=abc`) é ignorada, mantendo a
+  página padrão — igual a "ordem inválida vira a padrão", só que no outro campo reservado.
+  `irParaPagina(0)` "recusado" = devolve o PRÓPRIO critério sem mudar (não lança, não é `Result`)
+  — mesma postura defensiva de `deQuery`: entrada ruim nunca quebra a tela, só não muda nada.
+  `paraQuery()`/`deQuery()` usam `URLSearchParams` (API padrão da Web, não é uma chamada HTTP:
+  só serializa/interpreta texto) — a ordem dos parâmetros na query confere com a dos testes
+  porque `Map`/`Set` preservam a ordem de inserção em JS.
+  Verificação local: `criterio-de-listagem.spec.ts` (13/13), `typecheck`, `lint` e
+  `format:check` (0 erros); suíte inteira/e2e/build no CI do PR.
 
 ### [ ] T-0305 · `Faceta` esconde o que não ajuda
 
