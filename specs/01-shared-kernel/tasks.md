@@ -228,7 +228,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   de `.ts-abas__aba` (`componentes.css`) já cobre os 44 px pedidos — nenhum CSS novo. Painel usa
   `hidden`, nunca `v-if` (igual ao `Acordeao`, T-0109): todos ficam no HTML do servidor.
 
-### [ ] T-0111 · `Carrossel` só anda quando o usuário manda
+### [x] T-0111 · `Carrossel` só anda quando o usuário manda — 2026-11-27
 
 - **Requisito:** REQ-01-12
 - **Camada:** ui
@@ -245,6 +245,16 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/ui/Carrossel.vue`, `Carrossel.spec.ts`
 - **Fora do escopo:** o conteúdo dos slides (`CarrosselBanners` é do módulo 09); a rotação do carrossel de Marcas (ver Pendências).
 - **Depende de:** T-0007
+- **Decisões:** "Ir para o slide" chama `scrollIntoView` no item (com `inline: 'start'`, igual ao
+  `scroll-snap-align: start` do trilho) em vez de calcular "largura do item + gap" na mão — o
+  navegador já faz essa conta, e funciona com qualquer largura responsiva sem medir nada em JS.
+  `behavior` vira `'instant'` quando `prefers-reduced-motion: reduce`. O estado de "guia atual"
+  (para desativar seta e marcar o ponto) só muda por clique nas setas/pontos, não por escutar o
+  `scroll` nativo do trilho (arrastar/deslizar continua funcionando pelo `scroll-snap` do CSS; só
+  não resincroniza as setas/pontos — registrado aqui como premissa, não como teste). Pontos
+  ganharam classe nova em `componentes.css` (`.ts-carrossel__ponto*`), nos mesmos 24 px de
+  `.ts-banner__ponto` — o protótipo só tinha ponto para o banner (módulo 09), não para o
+  `Carrossel` genérico do kernel.
 
 ### [ ] T-0112 · `Dialogo` é modal, prende o foco e fecha com Esc
 
