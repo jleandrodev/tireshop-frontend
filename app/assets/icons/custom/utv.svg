@@ -1,0 +1,9 @@
+<!-- UTV (side-by-side), no grid e traço do Lucide. N1.AG para TireShop. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M7 13 9.2 6.5h6.6L18 13"/>
+  <path d="M3 13h18"/>
+  <path d="M12 6.5V13"/>
+  <path d="M9.5 16.5h5"/>
+  <circle cx="6" cy="16.5" r="3"/>
+  <circle cx="18" cy="16.5" r="3"/>
+</svg>

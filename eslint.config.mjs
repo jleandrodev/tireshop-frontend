@@ -88,9 +88,21 @@ export default tseslint.config(
     rules: {
       // O roteamento por arquivo do Nuxt exige nome de um só termo: index.vue, [id].vue, error.vue.
       'vue/multi-word-component-names': 'off',
+      // Formatação é do Prettier (ver topo do arquivo); esta regra brigava com ele por quebra
+      // de linha de atributo, sem o Prettier nunca concordar.
+      'vue/max-attributes-per-line': 'off',
     },
   },
   ...regrasDeLayers,
+  {
+    files: ['layers/shared/ui/SpriteDeIcones.vue'],
+    rules: {
+      // Comentário de template do Vue vira nó real no HTML (poluiria toda página); por isso a
+      // exceção vem daqui, não de um <!-- eslint-disable --> dentro do <template>. O `sprite` é
+      // string fixa, montada em build time a partir dos SVGs do projeto — nunca dado do usuário.
+      'vue/no-v-html': 'off',
+    },
+  },
   {
     files: ['layers/**/*.{ts,vue}'],
     ignores: ['layers/*/adapters/http/**'],

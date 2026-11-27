@@ -1,0 +1,7 @@
+<!-- Pick-up/SUV, desenhado no grid e traço do Lucide (24, stroke 2). N1.AG para TireShop. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M19 17h2a1 1 0 0 0 1-1v-3.5h-9V8a1 1 0 0 0-1-1H7.6a1 1 0 0 0-.9.55L4.5 12.5H3a1 1 0 0 0-1 1V16a1 1 0 0 0 1 1h2"/>
+  <path d="M9 17h6"/>
+  <circle cx="7" cy="17" r="2"/>
+  <circle cx="17" cy="17" r="2"/>
+</svg>

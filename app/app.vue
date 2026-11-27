@@ -1,3 +1,4 @@
 <template>
+  <SpriteDeIcones />
   <NuxtPage />
 </template>

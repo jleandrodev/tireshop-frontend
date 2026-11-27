@@ -128,7 +128,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Fora do escopo:** corrigir CSS (não deve ser preciso).
 - **Depende de:** T-0005, T-0012
 
-### [ ] T-0007 · As imagens e os ícones do protótipo estão no projeto
+### [x] T-0007 · As imagens e os ícones do protótipo estão no projeto · 2026-11-27
 
 - **Requisito:** REQ-00-06
 - **Camada:** infra
@@ -136,7 +136,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
   - todo `src` de imagem citado em `docs/api/examples/**/*.json` existe em `public/`
   - o sprite de ícones contém os ícones usados (`i-whatsapp`, `i-shopping-cart`, `i-chevron-down`…)
 - **Pronto quando:** `public/img` espelha `img/` do protótipo; componente `<Icone nome>` de `shared/ui` renderiza do sprite. A cópia é feita de `/discovery`, com o `compose.discovery.yaml`, e fica versionada.
-- **Arquivos:** `public/img/**`, `app/assets/icons/**`, `layers/shared/ui/Icone.vue`, `tests/contract/ativos.spec.ts`
+- **Arquivos:** `public/img/**`, `app/assets/icons/**`, `layers/shared/ui/Icone.vue`, `layers/shared/ui/SpriteDeIcones.vue`, `layers/shared/ui/sprite.ts`, `layers/shared/ui/sprite.spec.ts`, `tests/contract/ativos.spec.ts`, `app/app.vue`, `layers/*/nuxt.config.ts`, `vitest.config.ts`, `eslint.config.mjs`
 - **Fora do escopo:** otimização de imagem.
 - **Depende de:** T-0004
 
@@ -206,6 +206,10 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Hospedagem (premissa P6 do PRD).** O CI ficou no GitHub Actions (ADR 0014). O provedor de hospedagem continua a confirmar com o TI; a T-1318 só publica a imagem.
 - **Tempo do job E2E.** Quando passar de 10 minutos, dividir em fatias (`--shard`) com matriz. Abrir task no módulo em que isso acontecer.
 - **Numeração dos marcos.** O roadmap vai de M0 a M6; o campo "Marco" de algumas specs usa outra numeração (a 13 diz M10; a 12, M9; as 09, 10 e 11, M8). Alinhar pelo roadmap.
+- **`ui/` precisou ser registrada como pasta de componentes em cada `nuxt.config.ts` de layer.** Sem isso, `<SpriteDeIcones>` e `<Icone>` não resolviam (Nuxt só auto-escaneia `components/` por padrão; um nome de pasta próprio pede `components: [{ path: './ui', pathPrefix: false }]`). Descoberto rodando o dev server de verdade — passava limpo no Vitest porque o teste não sobe o Nuxt inteiro. Registrado nas 8 layers de uma vez, já que toda vai precisar.
+- **`import.meta.glob` com caminho absoluto ("/app/...") funcionava no Vitest isolado e falhava silenciosamente no `nuxt dev` real** (sprite saía vazio, sem erro). A raiz que o Vite usa para resolver um glob "/" muda entre o Vitest puro e o pipeline do Nuxt. Troquei para caminho relativo ao próprio `sprite.ts` (`../../../app/assets/icons/...`), que não depende de qual raiz está em uso. Só descobri rodando o `nuxt dev` e lendo o HTML de verdade — nenhum teste automatizado pegou isso (fica como pendência de cobertura: nenhum teste roda contra o dev server real hoje).
+- **Comentário de `<!-- eslint-disable -->` dentro de `<template>` vira nó real no HTML.** Movido para `eslint.config.mjs`, escopado ao arquivo, em vez de um comentário inline — evita poluir toda página.
+- **Peso do sprite:** ~22 KB de markup, inline em toda página (55 ícones + 1 variante). Puxar para um `sprite.svg` externo cacheável é uma otimização futura, não necessária agora.
 - **`.ts-selo-loja__icone` usa `--ts-acao` fora de botão.** Ao implementar a regra nova (não existia no `tools/brand_lint.py` original), achei um uso real no CSS do protótipo: o ícone do selo de confiança no rodapé da loja, não um controle clicável. Como a task diz que o CSS atual não deve precisar de correção, registrei como exceção nomeada (`EXCECOES_ACAO`, com seletor e motivo, igual ao padrão de `_axe-excecoes.ts`) em vez de afrouxar a regra geral ou editar o CSS. **Revisar com o design antes da T-1314** (auditoria de marca e privacidade): o uso está no limite do que a ADR 0006 descreve ("verde só em seguir, comprar, confirmar").
 - **Lint de marca é line-based, não um parser de CSS completo.** Como o `tools/brand_lint.py` original. A regra do verde de ação usa um parse leve de blocos `seletor { declarações }` (regex, sem suporte real a `@media` aninhado além do primeiro nível); suficiente para o CSS atual, pode precisar de ajuste se aparecer um padrão mais aninhado.
 - **`fs.globSync` com `exclude`:** a opção só poda diretório durante a varredura, não filtra o arquivo final — descobri isso rodando contra o CSS real (o filtro de `tokens*.css` não funcionava). Corrigido com um `.filter()` depois do glob.
