@@ -64,3 +64,17 @@ test('aprova a página sem defeitos', async ({ page }) => {
   await abrirPaginaDeProva(page, 'limpa')
   await expect(conferirInvariantes(page)).resolves.toBeUndefined()
 })
+
+test.describe('exceções do alvo de toque', () => {
+  test('ponto de carrossel (24px) não é acusado como alvo pequeno', async ({ page }) => {
+    await abrirPaginaDeProva(page, 'ponto-de-carrossel')
+    await expect(conferirInvariantes(page)).resolves.toBeUndefined()
+  })
+
+  test('link de texto corrido (display: inline) não é acusado como alvo pequeno', async ({
+    page,
+  }) => {
+    await abrirPaginaDeProva(page, 'link-de-texto')
+    await expect(conferirInvariantes(page)).resolves.toBeUndefined()
+  })
+})
