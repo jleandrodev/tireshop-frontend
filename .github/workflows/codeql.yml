@@ -1,0 +1,31 @@
+name: CodeQL
+
+# Análise estática de segurança (T-0011, REQ-00-10). Fora do agregador "CI ok" de propósito: é
+# informativo por ora, não bloqueia merge (os achados pedem triagem; o roadmap pode tornar
+# obrigatório depois, como o Lighthouse do módulo 13).
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 6 * * 1' # toda segunda de manhã
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    name: CodeQL
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: github/codeql-action/init@915412ff23e8b7659517e607487dbeae018f2934 # v4.39.5
+        with:
+          languages: javascript-typescript
+      - uses: github/codeql-action/analyze@915412ff23e8b7659517e607487dbeae018f2934 # v4.39.5
+        with:
+          category: /language:javascript-typescript
