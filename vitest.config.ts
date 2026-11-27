@@ -30,7 +30,12 @@ export default defineConfig({
         test: {
           name: 'unidade',
           environment: 'node',
-          include: ['layers/**/*.spec.ts', 'tests/infra/**/*.spec.ts', 'scripts/**/*.spec.ts'],
+          include: [
+            'layers/**/*.spec.ts',
+            'tests/infra/**/*.spec.ts',
+            'tests/contract/**/*.spec.ts',
+            'scripts/**/*.spec.ts',
+          ],
           // Vários arquivos de tests/infra/ escrevem fixture no próprio repositório e rodam
           // `pnpm lint`/`pnpm format:check` contra ele (T-0002, T-0004). Em paralelo, um arquivo
           // pegaria a fixture do outro. Sequencial aqui, mas só neste projeto.

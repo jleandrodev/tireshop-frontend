@@ -1,3 +1,5 @@
-// Layer "lojas" (T-0004, ADR 0002). Vazia de propósito: cada contexto registra o que precisar
-// (módulos, runtimeConfig) quando a task dele chegar.
-export default defineNuxtConfig({})
+// Layer "lojas" (T-0004, ADR 0002). Registra ui/ como pasta de componentes (T-0007): o Nuxt só
+// auto-importa de components/ por padrão; um nome de pasta próprio precisa de registro explícito.
+export default defineNuxtConfig({
+  components: [{ path: './ui', pathPrefix: false }],
+})
