@@ -605,7 +605,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   Verificação local: `newsletter.post.spec.ts` (7/7) + `navegacao.get.spec.ts` (10/10, sem
   regressão), `typecheck`, `lint` e `format:check` (0 erros); suíte inteira/e2e/build no CI do PR.
 
-### [ ] T-0218 · `FormularioNewsletter` valida, envia e anuncia a confirmação
+### [x] T-0218 · `FormularioNewsletter` valida, envia e anuncia a confirmação — 2026-11-27
 
 - **Requisito:** REQ-02-12, REQ-02-13
 - **Camada:** ui
@@ -622,6 +622,33 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/relacionamento/ui/components/FormularioNewsletter.vue`, `FormularioNewsletter.spec.ts`, `layers/relacionamento/ui/composables/use-relacionamento.ts`, `layers/relacionamento/index.ts`, `app/plugins/16.relacionamento.ts`, `app/layouts/default.vue`
 - **Fora do escopo:** máscara de telefone; "Avise-me".
 - **Depende de:** T-0210, T-0215, T-0216, T-0217, T-0119
+- **Decisões:** o componente valida com `InscricaoNewsletter.de` (o mesmo VO do domínio, T-0214)
+  antes de chamar `assinarNewsletter` — um e-mail obviamente errado nunca gera a chamada; o que só
+  o servidor sabe (ex.: "e-mail já cadastrado") chega como `ErroDeValidacao` do caso de uso e é
+  tratado pelo mesmo caminho (mesmo campo, mesma exibição) que o erro local. `useRelacionamento()`
+  segue o mesmo padrão de injeção de `useNavegacao()` (T-0204): o `LeadsGateway` nasce só em
+  `app/plugins/16.relacionamento.ts`. Sem `useAsyncData` (não é busca de dado de página, é ação
+  disparada pelo usuário) — sem isso, nenhum risco do tipo "única chamada" da T-0211.
+  O formulário reaproveita as classes já existentes do protótipo (`.ts-rodape__news`,
+  `.ts-rodape__titulo--news`, `.ts-news`) em vez de criar `.ts-newsletter*` do zero — essas
+  classes já esperavam exatamente este formato (texto + três colunas: e-mail, WhatsApp, botão) e
+  estavam sem uso até aqui. Sem token de cor para erro no design system (ADR 0006: cor é decisão
+  do cliente) — a mensagem de erro usa só texto, sem vermelho. Rótulos "Seu e-mail"/"Seu WhatsApp"
+  existem via `<label>` (`.ts-sr-only`, já definida em `base.css`) com `placeholder` fazendo a
+  dica visual — o grid de três colunas do protótipo não sobra espaço para rótulo visível.
+  Achado rodando `test:e2e` com o layout padrão de verdade (mesma categoria de achado das tasks
+  anteriores, mas novo aqui): o formulário empurrou o selo "Site Seguro Google"
+  (`loading="lazy"`, `SiteRodape.vue`) além da distância que o Chromium dispara sem rolar, na
+  página de prova do kernel (14 componentes de prova + agora o formulário, bem mais alta que uma
+  página normal) — `tests/e2e/kernel.spec.ts` passou a rolar até o fim antes de
+  `conferirInvariantes`, imitando o que um visitante de verdade faria. Não é bug do componente
+  (confirmado comparando com a `main`: a mesma imagem carregava sem rolar, antes deste formulário
+  ocupar espaço acima dela) nem acontece em páginas mais curtas (`/nao-existe`, `/`) — só na do
+  kernel, por ter conteúdo de prova empilhado.
+  Verificação local: `FormularioNewsletter.spec.ts` (8/8), `typecheck`, `lint` e `format:check`
+  (0 erros) — e, por tocar o layout padrão compartilhado, `test:e2e` de `layout.spec.ts`,
+  `kernel.spec.ts` e `nao-encontrado.spec.ts` (70/70, sem regressão); suíte inteira/build no CI
+  do PR.
 
 ### [ ] T-0219 · A moldura do site funciona no computador e no celular
 
