@@ -133,7 +133,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   erro e a home provisória (`/`) continua respondendo 200 — ainda não há página consumindo
   `useNavegacao()` (a T-0205 monta o layout; "Fora do escopo: componentes" nesta task).
 
-### [ ] T-0205 · O layout padrão monta cabeçalho, conteúdo e rodapé
+### [x] T-0205 · O layout padrão monta cabeçalho, conteúdo e rodapé — 2026-11-27
 
 - **Requisito:** REQ-02-02, REQ-02-16
 - **Camada:** ui
@@ -148,6 +148,47 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `app/layouts/default.vue`, `app/app.vue`, `app/pages/index.vue`, `layers/conteudo/ui/components/SiteCabecalho.vue`, `SiteRodape.vue`, `tests/e2e/layout.spec.ts`
 - **Fora do escopo:** menus, rodapé completo, cookies e WhatsApp (tasks seguintes); layout `loja` (módulo 12).
 - **Depende de:** T-0204, T-0010
+- **Decisões:** primeira página de verdade a atravessar o `useAsyncData` + `ClienteHttp` com dado
+  real — achou três bugs latentes no kernel, nenhum visível só lendo as tasks anteriores:
+  (1) `fetch` do servidor (Node) não resolve URL relativa (`/api/mock`): o navegador resolve
+  contra a própria origem, o `fetch` do SSR não tem essa noção e falhava como `ErroDeRede` em
+  silêncio (a tela não quebrava, só a navegação vinha vazia). Corrigido em
+  `use-cliente-http.ts` (`montarConfiguracaoDoClienteHttp`): com `evento` (SSR) e uma `apiBase`
+  que começa com `/`, prefixa com `getRequestURL(evento).origin`; uma `apiBase` já absoluta (API
+  de produção) nunca é tocada. Dois casos novos em `use-cliente-http.spec.ts`.
+  (2) `Imagem` (T-0107) é uma `class` — o serializador do payload do SSR (`devalue`) só serializa
+  POJO, e `Navegacao.marcas[].logo` é uma `Imagem`; sem tratamento, a resposta vira 500
+  ("Cannot stringify arbitrary non-POJOs"). Corrigido com um `definePayloadReducer`/
+  `definePayloadReviver('Imagem', …)` novo, em `app/plugins/00.payload.ts` (prefixo "00." para
+  registrar antes de qualquer plugin que produza dado pro payload).
+  (3) Alvo de toque: o link "Pular para o conteúdo" (`.ts-skip`, CSS da T-0005, nunca usado de
+  verdade até aqui) tinha `position: absolute` sem `display` explícito — blockifica o `<a>`
+  (perde a isenção de link de texto do WCAG 2.5.8) com altura menor que 44px; e o telefone do
+  cabeçalho, inicialmente com a classe `.ts-topbar__numero` (que pressupõe estar dentro de
+  `.ts-topbar`, não de `.ts-header__row`, um grid), blockificava do mesmo jeito dentro do grid.
+  Corrigido: `.ts-skip` ganhou `display: inline-flex; align-items: center; min-height:
+  var(--ts-tap)` (`base.css`); o telefone passou a usar `.ts-header__acao` (já tem
+  `min-height: var(--ts-tap)`, é a classe certa para um link de ação do cabeçalho); e
+  `.ts-header__logo` ganhou `display: flex; align-items: center; min-height: var(--ts-tap)`
+  (a imagem por si só tem 32px de altura). Achado rodando `kernel.spec.ts` depois da mudança —
+  o layout padrão agora envolve toda página, inclusive a de prova do kernel.
+  Para os dois testes que o Playwright não alcança (a busca a `/navegacao` roda dentro do
+  processo do servidor, nunca passa pela rede do navegador): `app/plugins/12.conteudo.ts` ganhou
+  uma instrumentação só em desenvolvimento (`import.meta.dev`, cai por tree-shaking em produção)
+  — conta as chamadas e devolve no cabeçalho de resposta `x-dev-chamadas-navegacao`; e aceita
+  `?_falha_navegacao=500` na própria página para simular a falha sem precisar interceptar a rede.
+  Não reutiliza `?_falha=500` do mock (T-0008): esse parâmetro vale para a URL do recurso
+  chamado, e não há como uma página apontar "falhe só esta busca" por fora, já que o fetch nunca
+  passa pelo browser. É um padrão novo — mais módulos vão precisar do mesmo truque para CA de
+  "página responde 200 com a busca principal falhando" (ver `grep -rn '_falha=500' specs/`).
+  Confirmado à mão (`bin/pnpm dev`, `bin/pnpm build` + `bin/pnpm preview`) que a home renderiza
+  com telefone e texto fiscal de verdade, e que a suíte e2e completa (60 testes, os dois
+  tamanhos) passa. **Não verificado:** `bin/pnpm preview` com o mock ligado (config padrão) dá
+  500 em `/api/mock/navegacao` — `.output/` não leva `mocks/fixtures/` (Nitro só empacota o que
+  seu rastreador de dependências enxerga; a leitura é um `readFile` dinâmico). Isso é
+  pré-existente (nada desta task toca `server/utils/mock.ts` nem o build) e não é um caminho real:
+  produção de verdade aponta `NUXT_PUBLIC_API_BASE` para a API externa (mock fica "desligado"),
+  cenário que a T-1317 testa explicitamente. Registrado aqui, não como Pendência nova.
 
 ### [ ] T-0206 · O cabeçalho mostra barra de topo, logo, busca por medida, Entrar e carrinho
 
@@ -398,4 +439,6 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **UTV no menu (D7).** O contrato traz UTV só com o aro 15; aguardando o cliente dizer qual aro está errado.
 - **Âncoras da Home.** O menu e o rodapé apontam para `/#marcas`, `/#ofertas`, `/#entrega` e `/#departamentos`. Os destinos nascem no módulo 09; até lá o e2e não confere essas âncoras.
 - **Marcas sem página.** No protótipo, marca sem página leva a `home.html#marcas`; no contrato vem `href: null`, e aqui fica só o logotipo. Confirmar.
-- **Numeração dos plugins.** Usamos `12.conteudo.ts` e `16.relacionamento.ts`; a arquitetura só fixa `01.http`, `10.catalogo` e `11.lojas`.
+- **Numeração dos plugins.** Usamos `00.payload.ts` (T-0205, reducers/revivers do payload — tem
+  de registrar antes de qualquer outro produzir dado), `12.conteudo.ts` e `16.relacionamento.ts`;
+  a arquitetura só fixa `01.http`, `10.catalogo` e `11.lojas`.
