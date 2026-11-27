@@ -474,8 +474,12 @@ a.ts-selo-loja:hover { color: var(--ts-ink); text-decoration: none; outline: 2px
   border: 3px solid var(--ts-brand);
 }
 .ts-fab svg { width: 30px; height: 30px; }
-/* T-0211: página com barra fixa no rodapé (compra, filtros) — o botão sobe para não cobri-la. */
-.ts-fab--acima { bottom: calc(var(--ts-barra-h) + var(--ts-s-2)); }
+/* T-0211/T-0219: página com barra fixa no rodapé (compra, filtros) — o botão sobe para não
+   cobri-la. `.ts-fab.ts-fab--acima` (duas classes): o `.ts-fab` do breakpoint do celular (mais
+   abaixo neste arquivo) tem a mesma especificidade de um `.ts-fab--acima` sozinho — por vir
+   depois no arquivo, ganhava e cancelava o `bottom` daqui (achado rodando o e2e da T-0219 contra
+   `/_prova/barra-fixa`: o botão ficava colado na barra, não acima dela). */
+.ts-fab.ts-fab--acima { bottom: calc(var(--ts-barra-h) + var(--ts-s-2)); }
 .ts-cookies {
   position: fixed; left: var(--ts-s-4); bottom: var(--ts-s-4); z-index: var(--ts-z-cookies);
   display: flex; align-items: center; gap: var(--ts-s-4); max-width: 520px;
@@ -814,7 +818,16 @@ html:has(.ts-menu[open]) { overflow: hidden; }
   .ts-redes { justify-content: center; }
   .ts-rodape__base { text-align: center; }
   .ts-fab { right: var(--ts-s-4); bottom: var(--ts-s-4); width: 56px; height: 56px; }
-  .ts-cookies { left: var(--ts-s-3); right: var(--ts-s-3); bottom: var(--ts-s-3); max-width: none; flex-direction: column; align-items: stretch; }
+  /* T-0219 (REQ-02-15): o aviso de cookies virava largura total no celular (`right` igual ao
+     `left`) e cobria o canto do WhatsApp por baixo — a mesma altura perto do fundo, as duas
+     colunas se cruzando (achado rodando o e2e contra o Chromium de verdade: a caixa do `.ts-fab`
+     ficava inteira dentro da do `.ts-cookies`). `right` reserva a coluna do botão (56px + a
+     margem dele + um respiro) em vez de ir até a borda; a altura do aviso não importa mais,
+     porque as duas caixas não se cruzam na horizontal. */
+  .ts-cookies {
+    left: var(--ts-s-3); right: calc(56px + var(--ts-s-4) + var(--ts-s-2)); bottom: var(--ts-s-3);
+    max-width: none; flex-direction: column; align-items: stretch;
+  }
 }
 
 @media (min-width: 900px) {
