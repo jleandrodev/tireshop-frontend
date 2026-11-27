@@ -55,7 +55,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Fora do escopo:** regras de arquitetura (T-0004).
 - **Depende de:** T-0001
 
-### [ ] T-0012 · O CI roda qualidade, testes, e2e e build, e é conferido por teste
+### [x] T-0012 · O CI roda qualidade, testes, e2e e build, e é conferido por teste · 2026-11-27
 
 - **Requisito:** REQ-00-10
 - **Camada:** infra
@@ -69,7 +69,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
   - o `ruleset-main.json` exige `CI ok` e `Título do PR`, e só cita check que existe
   - `NODE_VERSION` do `Dockerfile` bate com o `.nvmrc` e com `engines.node`; `PNPM_VERSION` e `PLAYWRIGHT_VERSION` batem com `packageManager` e `@playwright/test` do `package.json`
 - **Pronto quando:** o teste passa; o PR desta task mostra os quatro jobs novos verdes; o job E2E guarda o relatório do Playwright como artefato quando falha. Dependência nova: `yaml` (leitura do workflow no teste), em `devDependencies`.
-- **Arquivos:** `.github/workflows/ci.yml`, `tests/infra/ci.spec.ts`, `package.json`
+- **Arquivos:** `.github/workflows/ci.yml`, `tests/infra/ci.spec.ts`, `package.json`, `pnpm-lock.yaml`, `playwright.config.ts`
 - **Fora do escopo:** cobertura (T-0003), lint de marca (T-0006), contrato (T-0009), segurança (T-0011).
 - **Depende de:** T-0002
 
@@ -210,6 +210,9 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **`vue/multi-word-component-names` desligada.** O roteamento por arquivo do Nuxt exige nomes de um termo só (`index.vue`, `error.vue`, futuramente `[id].vue`); a regra recomendada do `eslint-plugin-vue` reprovava isso. Desligada globalmente para `**/*.vue`.
 - **Prettier não cobre `docs/`, `specs/`, `prompts/` nem os `.md` da raiz.** Essa prosa foi revisada em sessões anteriores com formatação própria; reformatá-la agora geraria um diff gigante e alheio ao escopo desta task. `format`/`format:check` cobrem o código (TS, Vue, JSON, configs) e crescem com o projeto.
 - **`nuxt typecheck` em vez de `tsc --noEmit` direto.** O `tsconfig.json` da T-0001 é só um arquivo de projeto-referência (`files: []` + `references`) que o Nuxt gera; `strict` e `noUncheckedIndexedAccess` já vêm ligados por padrão nos tsconfigs gerados (confirmado, não precisou tocar `nuxt.config.ts`). A fixture de `any` implícito do teste mora em `tests/nuxt/_prova/`, o único padrão de `tests/**` que o Nuxt já inclui; `layers/*/domain` e `application/` (que ainda não existem) vão precisar de atenção na T-0004.
+- **Jobs sem `actions/setup-node`.** Qualidade, Testes, E2E e Build rodam tudo via `docker compose run --rm app`, na mesma imagem `dev` do projeto (consistente com "nada se instala fora do contêiner", ADR 0014), em vez de instalar Node direto no runner com `actions/setup-node` + `cache: pnpm`. Cada job builda a imagem com `cache-from/to: type=gha,scope=dev` (o mesmo escopo da "Imagem dev"); como rodam em paralelo, no primeiro PR nenhum reaproveita o cache dos outros (a cache só fica disponível depois que a execução que a gravou termina) — a partir do próximo push, todos se beneficiam do cache da execução anterior. Revisitar se o tempo total do CI incomodar: compartilhar uma imagem só construída (artefato ou GHCR) entre os jobs, em vez de reconstruir em cada um.
+- **`tests/infra/**` fora do `nuxt typecheck`.** Os tsconfig gerados pelo Nuxt só incluem `tests/nuxt/**`; arquivos em `tests/infra/*.spec.ts` (como o `ci.spec.ts` e o `qualidade.spec.ts` desta e da T-0002) não são typecheckados por `pnpm typecheck`, nem pelo Vitest (que só transpila, não confere tipo). Um erro de tipo nesses arquivos de teste passaria em silêncio. Avaliar `vitest --typecheck` ou alargar o include de alguma das layers quando isso incomodar.
+- **Repetição entre os jobs.** Os cinco jobs que buildam a imagem `dev` (Imagem dev, Qualidade, Testes, E2E, Build) repetem os mesmos três passos (checkout, setup-buildx, ler o `.nvmrc`, build). Extrair para uma action composta em `.github/actions/` quando o CI crescer mais, para não repetir a cada task.
 - **O pnpm baixa o próprio binário a cada comando.** Todo `bin/pnpm` começa com "Downloading the pnpm 12.23.0 binary", alguns segundos por execução, porque o contêiner é descartado e o cache não fica na imagem. Ajustar o `Dockerfile` (T-0000) para o binário já vir na imagem; conferir no `scripts/conferir-ambiente.sh`.
 - **Política de instalação do pnpm 12.** Pacote publicado há menos de um dia é recusado, e script de instalação só roda para o que está em `allowBuilds` do `pnpm-workspace.yaml` (hoje, só `esbuild`). Na T-0001 o `vue-router` ficou na 5.5.1 por isso. Dependência nova que precise de script de build entra nessa lista na task que a instala.
 - **Verificadores em dois lugares.** `scripts/handoff/` deste repositório é a cópia que vale. As de `tools/handoff/` no repositório de discovery ficaram para o dev decidir.
