@@ -1,0 +1,506 @@
+[
+  {
+    "slug": "prazo-de-entrega",
+    "titulo": "Prazo de Entrega",
+    "rotuloMenu": "Prazo de Entrega",
+    "icone": "truck",
+    "blocos": [
+      {
+        "tipo": "paragrafo",
+        "html": "A Tireshop.com.br atende todo o <strong>território nacional.</strong> <br/> Todos os nosso produtos são <strong>enviados com Nota Fiscal</strong> por <strong>transportadoras conveniadas</strong>, saindo de <strong>nosso centro de distribuição localizado em Curitiba no estado do Paraná.</strong>"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "<strong>Cada região possui um prazo de entrega que pode ser verificado na página do produto</strong> ou no <strong>carrinho de compra</strong>, colocando seu CEP no local indicado e clicando em calcular. <br/> Após o <strong>pedido liberado</strong> enviaremos seu produto <strong>no mesmo dia útil ou no dia útil seguinte</strong>, dependendo do horário que ocorrer a realização do pedido de compra e sua liberação."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Após o envio do pedido, poderá <strong>acompanhar o rastreamento online</strong> em nosso site, clicando na opção Meus Pedidos. Depois é só aguardar os produtos no endereço escolhido, <strong>entregaremos com todo cuidado, qualidade e segurança para você.</strong>"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "<strong>Todos os procedimentos são realizados em dias úteis em horário comercial.</strong>"
+      }
+    ],
+    "contatoHtml": "Caso tenha alguma dúvida, nossa equipe está à disposição para atender de Segunda-Feira à Sexta-Feira das 08:00 às 17:45 horas através do e-mail contato@tireshop.com.br, telefone 41-3317-2251 ou Whatsapp 41-3317-2251.",
+    "atualizadoEm": "2026-11-04",
+    "seo": {
+      "titulo": "Prazo de Entrega | Ajuda | TireShop",
+      "descricao": "Prazos de entrega por região da TireShop | Confira!"
+    }
+  },
+  {
+    "slug": "formas-de-pagamento",
+    "titulo": "Formas de Pagamento: Facilidade para Sua Compra",
+    "rotuloMenu": "Formas de Pagamento",
+    "icone": "credit-card",
+    "blocos": [
+      {
+        "tipo": "paragrafo",
+        "html": "Na Tireshop você poderá comprar <strong>à vista com 5% de desconto</strong> ou em até <strong>12 vezes sem juros</strong> no <strong>cartão de crédito.</strong>"
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Compras no Cartão de Crédito"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "As compras realizadas no cartão de crédito, podem ser divididas em até <strong>12 vezes sem juros no cartão</strong>. Após a liberação do pedido, ele será enviado no mesmo dia ou no máximo no primeiro dia útil seguinte."
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Compras no Boleto à vista"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Quando solicitar pela <strong>compra à vista</strong>, poderá fazer o pagamento via <strong>boleto bancário</strong>. Seu pedido será enviado no mesmo dia da <strong>identificação de pagamento</strong> pela nossa empresa."
+      }
+    ],
+    "contatoHtml": "Caso tenha alguma dúvida, nossa equipe está à disposição para atender de Segunda-Feira à Sexta-Feira das 08:00 às 17:45 horas através do e-mail contato@tireshop.com.br, telefone 41-3317-2251 ou Whatsapp 41-3317-2251.",
+    "atualizadoEm": "2026-11-04",
+    "seo": {
+      "titulo": "Formas de Pagamento | Ajuda | TireShop",
+      "descricao": "Formas de pagamento na TireShop | Compra facilitada!"
+    }
+  },
+  {
+    "slug": "garantia",
+    "titulo": "Politica de Garantia",
+    "rotuloMenu": "Política de Garantia",
+    "icone": "shield-check",
+    "blocos": [
+      {
+        "tipo": "paragrafo",
+        "html": "Todos os fabricantes que trabalhamos, passam por um <strong>rigoroso processo de qualidade</strong> antes dos produtos fazerem parte do nosso estoque, garantindo a <strong>qualidade e segurança</strong> dos nossos itens. Mesmo assim, caso ocorra algum eventual problema de fabricação, nós da TireShop procuramos resolver o problema da melhor forma, encaminhando a reclamação para o fabricante e cobrando para que tenha a resposta no <strong>menor espaço de tempo possível</strong>, buscando a satisfação dos nossos clientes ao final do processo."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Caso o produto apresente defeito de fabricação, o cliente deverá entrar em contato conosco através do e-mail <strong>contato@tireshop.com.br</strong>, informando a <strong>reclamação</strong> e <strong>número da NF.</strong>"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Com a sua reclamação, direcionaremos para o fabricante do produto. O fabricante passará as devidas orientações para realização do processo de análise técnica de garantia. <strong>Lembrando que garantias de produtos, são para defeitos de fabricação, e toda análise é de responsabilidade do fabricante, através do seu departamento técnico.</strong>"
+      },
+      {
+        "tipo": "aviso",
+        "html": "A TireShop.com.br dará auxílio e suporte para o cliente junto ao fabricante. O fabricante irá fazer todo o acompanhamento e análise do produto, dando o retorno positivo ou negativo referente a garantia através de um laudo técnico."
+      }
+    ],
+    "contatoHtml": "Caso tenha alguma dúvida, nossa equipe está à disposição para atender de Segunda-Feira à Sexta-Feira das 08:00 às 17:45 horas através do e-mail contato@tireshop.com.br, telefone 41-3317-2251 ou Whatsapp 41-3317-2251.",
+    "atualizadoEm": "2026-11-04",
+    "seo": {
+      "titulo": "Política de Garantia | Ajuda | TireShop",
+      "descricao": "Política de Garantia da TireShop | Saiba tudo sobre!"
+    }
+  },
+  {
+    "slug": "trocas-e-devolucoes",
+    "titulo": "Política de trocas e devoluções TireShop: Saiba como funciona",
+    "rotuloMenu": "Trocas e Devoluções",
+    "icone": "package",
+    "blocos": [
+      {
+        "tipo": "paragrafo",
+        "html": "Caso tenha comprado o produto e ele precise ser trocado ou devolvido, por não ser exatamente o que queria, estar em desacordo com a compra realizada ou por ter comprado o produto errado, entre em contato conosco por e-mail <strong>contato@tireshop.com.br</strong>, informando o <strong>número do Pedido</strong> ou a <strong>NF de compra,</strong> relatando o <strong>motivo</strong> da necessidade de troca ou devolução."
+      },
+      {
+        "tipo": "aviso",
+        "html": "O Prazo para realização da troca ou devolução é de 7 dias, a partir do recebimento da mercadoria."
+      },
+      {
+        "tipo": "aviso",
+        "html": "Para que o produto seja trocado ou devolvido, é necessário que esteja em perfeito estado, sem ter sido aplicado no veículo, com todos os seus componentes e com a embalagem em perfeitas condições, quando o produto tiver embalagem."
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Procedimentos de troca e devolução"
+      },
+      {
+        "tipo": "passos",
+        "itens": [
+          "Envie um e-mail para contato@tireshop.com.br, informando o motivo da troca ou devolução, com o número do Pedido ou Nota Fiscal de compra e pelo menos três imagens dos produtos com suas etiquetas. No prazo de 7 dias à partir do recebimento do produto.",
+          "Solicitaremos a coleta do produto no mesmo endereço de entrega, em horário comercial, pela mesma transportadora que fez a entrega.",
+          "Assim que o produto estiver em nossas mãos, vamos verificar no mesmo dia que chegar e entrar em contato com o cliente, autorizando ou não a troca ou devolução do produto.",
+          "Se for uma devolução, devolveremos o dinheiro ou cancelaremos a compra junto ao seu Cartão de crédito. Se for uma troca, informaremos o valor faltante para realizar a troca, ou devolveremos a diferença se o valor for inferior ao comprado inicialmente."
+        ]
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Devolução de compra realizada no cartão de crédito"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Solicitaremos o Estorno para sua operadora de Cartão, cada operadora possui um prazo para realizar essa operação, com isso a operação será cancelada, caso parcelas já tenham sido pagas, a operadora irá estornar o valor na próxima fatura."
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Devolução de compra realizada por Boleto"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Solicitaremos o número de uma Conta do responsável pela compra, <strong>a conta deve ser no mesmo CPF do comprador</strong>, para que possa ser realizada a devolução do dinheiro."
+      }
+    ],
+    "contatoHtml": "Caso tenha alguma dúvida, nossa equipe está à disposição para atender de Segunda-Feira à Sexta-Feira das 08:00 às 17:45 horas através do e-mail contato@tireshop.com.br, telefone 41-3317-2251 ou Whatsapp 41-3317-2251.",
+    "atualizadoEm": "2026-11-04",
+    "seo": {
+      "titulo": "Trocas e Devoluções | Ajuda | TireShop",
+      "descricao": "Política de Trocas e Devoluções da TireShop | Saiba mais"
+    }
+  },
+  {
+    "slug": "seguranca-e-privacidade",
+    "titulo": "Segurança e Privacidade: Compre com Confiança na TireShop",
+    "rotuloMenu": "Segurança e Privacidade",
+    "icone": "lock",
+    "blocos": [
+      {
+        "tipo": "paragrafo",
+        "html": "Comprar na <strong>TireShop.com.br</strong> é <strong>100% seguro.</strong> Todas as informações são de uso exclusivo da TireShop, não sendo repassados para terceiros, sejam <strong>Pessoas Físicas</strong> ou <strong>Jurídicas.</strong>"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Nosso site está hospedado em <strong>serviores seguros,</strong> sem nenhum risco ou perigo para os clientes. Também investimos em empresas que garantem <strong>100% de segurança para os consumidores,</strong> tornando a <strong>compra fácil</strong> e <strong>sem riscos.</strong> <br/> Nossa empresa também <strong>não armazena dados de cartões de crédito, </strong> mantendo o <strong>processo</strong> ainda <strong>mais seguro.</strong>"
+      },
+      {
+        "tipo": "aviso",
+        "html": "Ao se cadastrar você terá uma senha, essa senha é de uso exclusivo do titular do cadastro, não sendo alterada por outra pessoa, caso você esqueça sua senha, solicite a recuperação da senha e ela será enviada por e-mail."
+      }
+    ],
+    "contatoHtml": "Caso tenha alguma dúvida, nossa equipe está à disposição para atender de Segunda-Feira à Sexta-Feira das 08:00 às 17:45 horas através do e-mail contato@tireshop.com.br, telefone 41-3317-2251 ou Whatsapp 41-3317-2251.",
+    "atualizadoEm": "2026-11-04",
+    "seo": {
+      "titulo": "Segurança e Privacidade | Ajuda | TireShop",
+      "descricao": "Segurança e privacidade da TireShop | Conheça mais!"
+    }
+  },
+  {
+    "slug": "privacidade",
+    "titulo": "Politica de Privacidade",
+    "rotuloMenu": "Política de Privacidade",
+    "icone": "file-text",
+    "blocos": [
+      {
+        "tipo": "paragrafo",
+        "html": "A TireShop.com.br está comprometida com a conscientização de seus clientes em relação às suas informações coletadas e utilizadas para proporcionar uma melhor experiência de navegação. Apresentamos nossa política de privacidade, que tem por objetivo esclarecer o uso dessas informações e informar que estamos em conformidade com a <strong>LGPD</strong> – Lei Geral da Proteção de Dados."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "<strong>Ao navegar em Tireshop.com.br, você aceita as práticas descritas nesta política de privacidade.</strong> Caso qualquer item desta Política de Privacidade seja alterado, nos comprometemos a solicitar o consentimento do titular novamente."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Os dados cadastrais fornecidos não são divulgados para terceiros, exceto quando necessários para a realização de entrega e cobrança. Seus dados pessoais são peça fundamental para que o pedido chegue em segurança e no local solicitado, de acordo com o prazo de entrega informado no momento da compra. Seus dados são importantes e mantemos em total segurança."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "A TireShop.com.br coleta as informações fornecidas pelo cliente no momento do cadastro ou realização do pedido de compra em nossa loja online, criando uma conta em nosso site, no local denominado Cadastro."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "A Política de Privacidade é para todos os clientes da TireShop.com.br, que de alguma forma tenham os dados pessoais tratados por nós."
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Informações coletadas pela Tireshop"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "A TireShop.com.br coleta e armazena as seguintes informações:"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Informações fornecidas pelo cliente: Ocorrem quando o cliente cria uma conta e fornece dados no “Cadastre-se aqui”, quando o cliente faz um pedido pelo site; quando interage com os nossos canais de atendimento; As informações que solicitamos são: nome completo, e-mail, CPF, endereço, números de telefone e número do cartão de crédito em compras no cartão, porém não armazenamos as informações do cartão para segurança de nossos clientes. Informações recebidas automaticamente: Recebemos, coletamos e armazenamos determinadas informações sempre que o cliente interage conosco. Utilizamos cookies e obtemos informações quando seu navegador acessa o nosso site; quando você clica em anúncios, e-mails da nossa empresa e outros conteúdos fornecidos por nós em outros sites."
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Os dados são necessários para"
+      },
+      {
+        "tipo": "lista",
+        "itens": [
+          "Emissão da nota fiscal;",
+          "Garantir a segurança do site e dos dados recebidos;",
+          "Informar o cliente sobre o status do seu pedido, enviar ofertas e divulgar os nossos produtos;",
+          "Cumprir obrigações legais;",
+          "Fins administrativos e de gestão.",
+          "Entregar os produtos adquiridos através de nossos fornecedores parceiros;",
+          "Para a realização de trocas e análises de garantia, quando necessário;",
+          "Realizar o processo de troca ou devolução de produtos, dentro do prazo estabelecido pelo CDC (Código de Defesa do Consumidor);",
+          "Para enviar comunicações com objetivo de proporcionar a melhor experiência ao cliente.",
+          "Prestar atendimentos adequados às necessidades do cliente;",
+          "Melhorar a experiência de compra, através de pesquisas de Marketing",
+          "Fazer levantamentos de mercado;",
+          "Prevenir, detectar e investigar atividades que estejam em desacordo com a política da TireShop ou que sejam proibidas ou ilegais;",
+          "Realizar contatos para confirmações do pedido, buscando evitar possíveis fraudes com dados pessoais e financeiros de terceiros;",
+          "Melhorar nossa loja online, produtos e atendimento;"
+        ]
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Tempo de armazenamento dos dados"
+      },
+      {
+        "tipo": "lista",
+        "itens": [
+          "Armazenamos os dados pessoais de acordo com as normas do direito brasileiro. 5 anos no caso de garantias conta defeito de fabricação, fornecida pelos fabricantes de pneus."
+        ]
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Quando e com quem compartilhamos os dados coletados?"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "A Tireshop é a controladora e operadora dos dados, exceto quando fornecedores parceiros tornam-se operadores dos dados para a entrega de nossos produtos, como nos seguintes casos:"
+      },
+      {
+        "tipo": "lista",
+        "itens": [
+          "Para prestação dos serviços das empresas parceiras da TireShop.com.br, com objetivo de realizar a venda, entrega e pós venda relacionada ao pedido realizado em nossa loja online; <br/> - Prestadores de serviços que atuam principalmente para nos auxiliar nas análises antifraudes e intermediações de pagamento; <br/> - Proteção em caso de conflito; <br/> - Mediante decisão judicial ou requisição de autoridade competente; <br/> - Com empresas provedoras de infraestrutura tecnológica e operacional, como empresas intermediadoras de pagamento, transportadoras conveniadas e provedoras de serviço de armazenamento de informações."
+        ]
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "A TireShop.com.br não compartilhará ou apresentará os dados dos clientes para terceiros que não sejam seus fornecedores parceiros. <br/> Temos acordos comerciais com nossos fornecedores parceiros, baseados na LGPD, os quais também se comprometem a proteger os dados de nossos clientes, executando apenas o que é acordado e necessário para atender a Tireshop e não utilizando os dados para outros fins."
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Direitos do cliente"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "A Lei Geral de Proteção de Dados (LGPD) garante ao titular dos dados o direito de solicitar a TireShop.com.br, a qualquer momento, mediante requisição formal, informações referentes aos dados tratados."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "A TireShop terá 15 dias para responder às solicitações dos titulares. Os pedidos serão analisados conforme previsto em legislação vigente e, por questões legais, algumas solicitações podem não ser atendidas."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Os titulares dos dados, segundo a LGPD, podem exercer os seus direitos por meio de:"
+      },
+      {
+        "tipo": "lista",
+        "itens": [
+          "Confirmação da existência de tratamento;",
+          "Acesso aos dados;",
+          "Correção de dados incompletos, inexatos ou desatualizados;",
+          "Anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade com o disposto nesta Lei;",
+          "Eliminação dos dados pessoais tratados com o consentimento do titular;",
+          "Informação das entidades públicas e privadas com as quais o controlador realizou uso compartilhado de dados;",
+          "Informação sobre a possibilidade de não fornecer consentimento e sobre as consequências da negativa;",
+          "Revogação do consentimento."
+        ]
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "<strong>DPO</strong> <strong>CRISTOFER WILLIAM AGUILERA TOZONI</strong>"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Qualquer dúvida poderá ser encaminhada para o e-mail dpo@tireshop.com.br"
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Cookies e tecnologias semelhantes"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Cookies são identificações da interação com nosso site, anúncios ou publicidades, que são transferidas para o equipamento do cliente, como computador, celular, tablet, visando reconhecer o usuário na próxima navegação. Utilizamos cookies para proporcionar uma melhor experiência em nosso site, e viabilizar recursos personalizados, como direcionamento de produtos, informações adicionais e itens de interesse para o cliente, entre outros."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Com a utilização dos cookies e outras tecnologias para reconhecer seu navegador ou dispositivo, podemos aprender mais sobre seus interesses, assim como: - Acompanhar suas preferências e enviar anúncios de seu interesse."
+      },
+      {
+        "tipo": "lista",
+        "itens": [
+          "Acompanhar os itens armazenados no seu carrinho de compras;",
+          "Realização de pesquisas e levantamentos para melhorar o conteúdo, produtos e informações;",
+          "Impedir atividades fraudulentas;",
+          "Melhorar a segurança."
+        ]
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Caso queira bloqueá-los, cabe ao usuário configurar o seu navegador de internet para realização do bloqueio, nesse caso algumas funcionalidades do site podem não funcionar."
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Exclusão dos dados pessoais de nosso site ou aplicativo"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Para excluir os dados pessoais do nosso site ou aplicativo, basta enviar um e-mail para contato@tireshop.com.br, solicitando a exclusão. Caso não tenha realizado nenhum pedido em nosso site ou os produtos da última compra não estejam no período legal de garantia, os dados são excluídos de forma imediata. Se os produtos do último pedido realizado ainda estiverem no prazo legal de garantia, para segurança e comodidade do usuário, é necessário aguardar o fim da garantia para exclusão dos dados."
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Mantenha suas informações pessoais seguras"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "A Tireshop utiliza os melhores protocolos e procedimentos de segurança para preservar a privacidade dos dados dos clientes, mas também recomenda medidas de proteção por parte do usuário."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Para manter os seus dados seguros, não compartilhe seu login ou senha com terceiros. Caso utilize um dispositivo que não seja de seu uso pessoal, sendo público ou de terceiros, se certifique que saiu do seu login, após a utilizações, para que outras pessoas não possam entrar na sua conta indevidamente, para sair da sua conta é fácil, basta clicar em “Sair”, na parte superior direita do site."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "<strong>DESEJAMOS UMA ÓTIMA EXPERIÊNCIA EM NOSSAS PLATAFORMAS DIGITAIS E ESTAMOS À DISPOSIÇÃO PARA QUALQUER EVENTUALIDADE!</strong>"
+      }
+    ],
+    "contatoHtml": null,
+    "atualizadoEm": "2026-11-04",
+    "seo": {
+      "titulo": "Política de Privacidade | Ajuda | TireShop",
+      "descricao": "Políticas de Privacidades da TireShop | Tire suas dúvidas"
+    }
+  },
+  {
+    "slug": "como-comprar",
+    "titulo": "Como Comprar Pneus Online na TireShop de Forma Fácil",
+    "rotuloMenu": "Como Comprar",
+    "icone": "shopping-cart",
+    "blocos": [
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Comprar na TireShop é fácil e rápido. Seguem os passos abaixo para cliente NÃO CADASTRADO"
+      },
+      {
+        "tipo": "passos",
+        "itens": [
+          "Localize o produto e clique em comprar;",
+          "Coloque a quantidade desejada e o CEP e clique em Finalizar;",
+          "No local “Ainda não sou cadastrado”, coloque seu e-mail e CPF e clique em cadastrar",
+          "Preencha seus dados cadastrais e clique em continuar;",
+          "Selecione a forma de pagamento e parcelas e clique em continuar;",
+          "Para compras no cartão, coloque os dados solicitados e clique em finalizar, para comprar no boleto é só abrir o boleto para pagamento e Pronto, sua compra terá sido finalizada."
+        ]
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 2,
+        "texto": "Para clientes já cadastrados é ainda mais fácil"
+      },
+      {
+        "tipo": "passos",
+        "itens": [
+          "Localize o produto e clique em comprar;",
+          "Coloque a quantidade desejada e o CEP e clique em Finalizar;",
+          "No local “Já sou cliente”, coloque seu e-mail e senha e clique em Entrar.",
+          "Selecione a forma de pagamento e parcelas e clique em continuar;",
+          "Para compras no cartão, coloque os dados solicitados e clique em finalizar, para comprar no boleto é só abrir o boleto para pagamento e Pronto, sua compra terá sido finalizada."
+        ]
+      }
+    ],
+    "contatoHtml": "Caso tenha alguma dúvida, nossa equipe está à disposição para atender de Segunda-Feira à Sexta-Feira das 08:00 às 17:45 horas através do e-mail contato@tireshop.com.br, telefone 41-3317-2251 ou Whatsapp 41-3317-2251.",
+    "atualizadoEm": "2026-11-04",
+    "seo": {
+      "titulo": "Como Comprar | Ajuda | TireShop",
+      "descricao": "Como comprar seu produto TireShop | Com cadastro e sem"
+    }
+  },
+  {
+    "slug": "perguntas-frequentes",
+    "titulo": "Perguntas Frequentes",
+    "rotuloMenu": "Perguntas Frequentes",
+    "icone": "message-circle",
+    "blocos": [
+      {
+        "tipo": "faq",
+        "itens": [
+          {
+            "pergunta": "TireShop tem loja física?",
+            "respostaHtml": "<p>Sim, a TireShop possui lojas físicas. Para encontrar a loja mais próxima de você, basta acessar nossa <a href=\"https://www.tireshop.com.br/LojasFisicas\">página de Lojas Físicas</a>.</p>"
+          },
+          {
+            "pergunta": "É possível realizar a troca ou devolução dos pneus?",
+            "respostaHtml": "<p>Sim, você pode realizar a troca ou devolução de pneus de acordo com nossa <a href=\"https://www.tireshop.com.br/TrocasDevolucoes\">Política de Trocas e Devoluções</a>.</p>"
+          },
+          {
+            "pergunta": "Como posso rastrear meu pedido?",
+            "respostaHtml": "<p>O rastreamento do seu produto <strong>será enviado para você em até 24h após a confirmação de envio</strong>. Acompanhe seu pedido diretamente no site, na aba meus pedidos e, por último, mais detalhes.</p>"
+          },
+          {
+            "pergunta": "Não recebi meu pedido. E agora?",
+            "respostaHtml": "<p>Se você não recebeu seu pedido, <a href=\"https://www.tireshop.com.br/Contato\">entre em contato com a TireShop</a>. Nossa equipe está disponível para atendimento de segunda a sexta-feira, das 08h às 17h45. Você pode nos contatar pelos seguintes canais:</p> <ul> <li>E-mail: contato@tireshop.com.br</li> <li>Telefone: 41-3317-2251</li> <li>WhatsApp: 41-3317-2251</li> </ul>"
+          },
+          {
+            "pergunta": "Como entrar em contato com a TireShop?",
+            "respostaHtml": "<p>Se precisar de ajuda, nossa equipe está pronta para atendê-lo pelo e-mail contato@tireshop.com.br, pelo telefone 41-3317-2251 ou via WhatsApp 41-3317-2251.</p>"
+          },
+          {
+            "pergunta": "Quais tipos de pneus estão disponíveis na TireShop?",
+            "respostaHtml": "<p>A TireShop oferece uma variedade de pneus, incluindo:</p> <ul> <li><a href=\"https://www.tireshop.com.br/0/1/Pneus-para-carros\">Pneus para carros</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/5/Pneus-Pick-ups-e-SUVs\">Pneus para pick-ups e SUVs</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/15/Pneus-de-Van\">Pneus para vans</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/4/Pneus-Competicao\">Pneus para competição</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/20/Pneus-Agricola\">Pneus agrícolas</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/21/Pneus-para-Caminhao\">Pneus para caminhões</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/23/Pneus-UTV\">Pneus UTV</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/22/Pneus-OTR\">Pneus OTR</a>.</li> </ul>"
+          },
+          {
+            "pergunta": "Como saber o tamanho do pneu ideal para o meu veículo?",
+            "respostaHtml": "<p>Para escolher o pneu ideal, <strong>consulte as especificações do seu veículo no manual do fabricante</strong>, que indica o tamanho correto dos pneus. Se precisar de ajuda, nossa equipe especializada pode orientá-lo sobre a melhor escolha.</p>"
+          },
+          {
+            "pergunta": "Os pneus vendidos pela TireShop têm garantia?",
+            "respostaHtml": "<p>Sim, todos os pneus vendidos na TireShop têm garantia de 5 anos após a emissão da nota fiscal, conforme nossa <a href=\"https://www.tireshop.com.br/PoliticaGarantia\">Política de Garantia</a>.</p>"
+          },
+          {
+            "pergunta": "A TireShop realiza entregas para todo o Brasil?",
+            "respostaHtml": "<p>Sim, a TireShop realiza entregas para todo o Brasil, garantindo que você receba seu pedido com rapidez e segurança, conforme nossa <a href=\"https://www.tireshop.com.br/PrazoEntrega\">Política de prazos de entrega</a>.</p>"
+          },
+          {
+            "pergunta": "Quais formas de pagamento a TireShop aceita?",
+            "respostaHtml": "<p>A TireShop oferece diversas formas de pagamento, incluindo:</p> <ul> <li>PIX</li> <li>Boleto bancário</li> <li>Cartões de crédito, com parcelamento em até 12x sem juros</li> </ul>"
+          },
+          {
+            "pergunta": "O que fazer se meu pneu apresentar defeito?",
+            "respostaHtml": "<p>Se o seu pneu apresentar defeito, entre em contato com a TireShop. Estamos prontos para orientá-lo sobre os próximos passos.</p>"
+          },
+          {
+            "pergunta": "O que significa o índice de carga e velocidade do pneu?",
+            "respostaHtml": "<p>O índice de carga <strong>indica o peso máximo que o pneu pode suportar</strong>, enquanto o índice de velocidade indica a velocidade máxima que o pneu pode alcançar com segurança. Ambas as informações são fundamentais para garantir o desempenho e a segurança do veículo.</p>"
+          },
+          {
+            "pergunta": "Os pneus para competição são diferentes dos pneus comuns?",
+            "respostaHtml": "<p>Sim, os pneus para competição são projetados para oferecer desempenho superior em condições extremas, com características específicas de aderência, durabilidade e resistência. Eles são diferentes dos pneus comuns, que são feitos para uso diário em condições normais de estrada.</p>"
+          },
+          {
+            "pergunta": "Quais cuidados devo ter ao trocar os pneus do meu veículo?",
+            "respostaHtml": "<p>Ao trocar os pneus, é essencial garantir que eles sejam instalados corretamente, com o balanceamento adequado e alinhamento das rodas. Além disso, verifique se os pneus são do tamanho correto para o seu veículo.</p>"
+          },
+          {
+            "pergunta": "Como sei se preciso substituir os pneus do meu carro?",
+            "respostaHtml": "<p>Se os seus pneus <strong>apresentarem desgaste excessivo, cortes, rachaduras</strong> ou se a profundidade do sulco estiver abaixo do mínimo recomendado, é hora de substituí-los. A TireShop oferece pneus de alta qualidade para garantir a segurança do seu veículo.</p>"
+          },
+          {
+            "pergunta": "Quais marcas a TireShop trabalha?",
+            "respostaHtml": "<p>Trabalhamos com marcas renomadas, como:</p> <ul> <li>Yokohama</li> <li>Hankook</li> <li>Nexen</li> <li>Fortune</li> <li>Continental</li> <li>Goodyear</li> <li>Prinx</li> <li>Pirelli</li> <li>Bridgestone</li> <li>Entre outras</li> </ul> <p>Essas marcas são reconhecidas por sua qualidade e desempenho, garantindo a satisfação de nossos clientes.</p>"
+          },
+          {
+            "pergunta": "Comprei o pneu errado, como devo proceder?",
+            "respostaHtml": "<p>Caso perceba que comprou a medida errada e não tenha recebido o pedido, o ideal é entrar em contato imediatamente conosco através dos nossos canais de atendimento:</p> <ul> <li>Comercial: (41) 3317-2251</li> <li>WhatsApp: (41) 3317-2251</li> <li>E-mail: contato@tireshop.com.br</li> </ul> <p>Solicitaremos para a transportadora barrar a entrega e, caso tentem entregar, recuse o recebimento.</p>"
+          }
+        ]
+      }
+    ],
+    "contatoHtml": null,
+    "atualizadoEm": "2026-11-04",
+    "seo": {
+      "titulo": "Perguntas Frequentes | Ajuda | TireShop",
+      "descricao": "FAQ TireShop | Perguntas Frequentes e Dúvidas"
+    }
+  }
+]

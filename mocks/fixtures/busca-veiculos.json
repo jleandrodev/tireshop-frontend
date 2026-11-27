@@ -1,0 +1,57 @@
+{
+  "fabricantes": [
+    "Alfa Romeo",
+    "Audi",
+    "BMW",
+    "BYD",
+    "CAOA Chery",
+    "Chevrolet",
+    "Chrysler",
+    "Citroën",
+    "DS",
+    "Fiat",
+    "Honda",
+    "Hyundai",
+    "JAC",
+    "Jeep",
+    "Kia",
+    "Lexus",
+    "Lobini",
+    "Mercedes",
+    "Mini",
+    "Mitsubishi",
+    "Nissan",
+    "Peugeot",
+    "Renault",
+    "Subaru",
+    "Suzuki",
+    "Toyota",
+    "Volkswagen",
+    "Volvo"
+  ],
+  "modelos": [
+    "Creta",
+    "Elantra",
+    "New Creta",
+    "Veloster",
+    "i20",
+    "i30",
+    "i30 - i30 CW"
+  ],
+  "versoes": [
+    {
+      "versao": "1.8",
+      "ano": "2014 a 2017",
+      "medidas": [
+        {
+          "largura": 225,
+          "altura": 45,
+          "aro": "17",
+          "rotulo": "225/45 R17"
+        }
+      ]
+    }
+  ],
+  "aviso": "Não achou seu veículo? Busque pela medida escrita na lateral do pneu.",
+  "ilustrativo": true
+}

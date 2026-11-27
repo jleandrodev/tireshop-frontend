@@ -1,0 +1,29 @@
+{
+  "preco": [
+    {
+      "rotulo": "Até R$ 450",
+      "max": 450
+    },
+    {
+      "rotulo": "R$ 450 a R$ 550",
+      "min": 450,
+      "max": 550
+    },
+    {
+      "rotulo": "Acima de R$ 550",
+      "min": 550
+    }
+  ],
+  "terreno": [
+    "Asfalto",
+    "A/T",
+    "H/T",
+    "M/T",
+    "R/T"
+  ],
+  "desenho": [
+    "Assimétrico",
+    "Direcional",
+    "Simétrico"
+  ]
+}

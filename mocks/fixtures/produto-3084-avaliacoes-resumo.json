@@ -1,0 +1,61 @@
+{
+  "nota": 4.9,
+  "total": 31,
+  "destaques": [
+    {
+      "id": "3084-1",
+      "autor": "Fernanda S.",
+      "iniciais": "FS",
+      "cidade": "Caxias do Sul, RS",
+      "data": "2026-11-01",
+      "nota": 5,
+      "texto": "Preço à vista com desconto no Pix compensou. Chegou em 3 dias."
+    },
+    {
+      "id": "3084-2",
+      "autor": "Gustavo H.",
+      "iniciais": "GH",
+      "cidade": "Sorocaba, SP",
+      "data": "2026-11-01",
+      "nota": 5,
+      "texto": "Mandei entregar na oficina conveniada e saí de lá com os pneus montados no mesmo dia."
+    },
+    {
+      "id": "3084-3",
+      "autor": "Fábio K.",
+      "iniciais": "FK",
+      "cidade": "Caxias do Sul, RS",
+      "data": "2026-10-13",
+      "nota": 5,
+      "texto": "Chegou antes do prazo e muito bem embalado. Já instalei e o carro ficou bem mais silencioso."
+    },
+    {
+      "id": "3084-4",
+      "autor": "Fernanda B.",
+      "iniciais": "FB",
+      "cidade": "São Paulo, SP",
+      "data": "2026-10-09",
+      "nota": 5,
+      "texto": "Pneu de ótima qualidade. Na chuva o carro ficou muito mais firme nas curvas."
+    },
+    {
+      "id": "3084-5",
+      "autor": "Juliana P.",
+      "iniciais": "JP",
+      "cidade": "Pelotas, RS",
+      "data": "2026-09-22",
+      "nota": 5,
+      "texto": "Chegou em 2 dias úteis em Porto Alegre. Pneu com lote de 2026."
+    },
+    {
+      "id": "3084-6",
+      "autor": "Fernanda E.",
+      "iniciais": "FE",
+      "cidade": "Ribeirão Preto, SP",
+      "data": "2026-08-05",
+      "nota": 5,
+      "texto": "Bom custo-benefício. Não é o mais barato, mas vale cada centavo."
+    }
+  ],
+  "ilustrativo": true
+}

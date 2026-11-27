@@ -4,6 +4,13 @@ export default defineNuxtConfig({
   // SSR é decisão de arquitetura (ADR 0001); fica explícito para ninguém desligar por engano.
   ssr: true,
   devtools: { enabled: false },
+  // T-0008 (REQ-00-07, ADR 0003): a base da API, exposta ao cliente. "/api/mock" liga o mock
+  // interno (server/api/mock/**); qualquer outro valor desliga-o (server/utils/mock.ts).
+  runtimeConfig: {
+    public: {
+      apiBase: '/api/mock',
+    },
+  },
   // T-0005 (REQ-00-04, ADR 0006): tokens, fontes e componentes do protótipo, em toda página. As
   // folhas de página (catalogo, comparar, home, institucional) ficam em app/assets/css/ para
   // import explícito de cada página, não entram aqui.

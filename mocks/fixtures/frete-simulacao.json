@@ -1,0 +1,12 @@
+{
+  "prazo": {
+    "minimoDiasUteis": 2,
+    "maximoDiasUteis": 4
+  },
+  "frete": {
+    "tipo": "gratis",
+    "valor": null
+  },
+  "mensagem": "Chega em 2 a 4 dias úteis · Frete grátis",
+  "ilustrativo": true
+}

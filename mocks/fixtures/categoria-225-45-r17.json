@@ -1,0 +1,67 @@
+{
+  "slug": "225-45-r17",
+  "tipo": "medida",
+  "titulo": "Pneus 225/45 R17",
+  "departamento": {
+    "slug": "pneus-para-carros",
+    "nome": "Pneus para carros",
+    "icone": "carro"
+  },
+  "arte": {
+    "computador": {
+      "src": "/img/banners/seo-l@2x.webp",
+      "largura": 720,
+      "altura": 420,
+      "alt": "Dois pneus novos sobre fundo amarelo"
+    },
+    "celular": {
+      "src": "/img/banners/seo-m@2x.webp",
+      "largura": 390,
+      "altura": 290,
+      "alt": "Dois pneus novos sobre fundo amarelo"
+    },
+    "href": null
+  },
+  "busca": {
+    "aba": "medida",
+    "largura": 225,
+    "altura": 45,
+    "aro": "17"
+  },
+  "selecao": {
+    "medida": "225/45 R17"
+  },
+  "migalhas": [
+    {
+      "rotulo": "Pneus para carros",
+      "href": "/c/pneus-para-carros"
+    },
+    {
+      "rotulo": "Aro 17",
+      "href": "/c/carros-aro-17"
+    },
+    {
+      "rotulo": "225/45 R17",
+      "href": null
+    }
+  ],
+  "textoApoio": {
+    "titulo": "Pneus 225/45 R17: o que saber antes de comprar",
+    "html": "<p>A medida 225/45 R17 equipa de fábrica carros como Hyundai i30, VW Golf e Jetta, Honda Civic e Toyota Corolla em versões com roda de 17 polegadas. Nesta página estão só os pneus dessa medida, de marcas como Hankook, Bridgestone, Firestone, Fortune e Prinx, com frete grátis para o Sul e o Sudeste acima de R$ 1.000 e parcelamento em até 12x sem juros.</p><h2>Como ler a medida 225/45 R17</h2><p><strong>225</strong> é a largura do pneu em milímetros; <strong>45</strong> é a altura do flanco, em porcentagem da largura; <strong>R</strong> indica construção radial e <strong>17</strong> é o diâmetro do aro em polegadas. Use sempre a medida gravada na lateral do pneu atual ou a indicada no manual do veículo.</p>"
+  },
+  "faq": [
+    {
+      "pergunta": "Posso usar 225/50 R17 no lugar de 225/45 R17?",
+      "respostaHtml": "<p>Não recomendamos. A altura diferente muda o diâmetro total do pneu, o que altera a leitura do velocímetro e pode causar atrito na carroceria. Use a medida original do veículo.</p>"
+    },
+    {
+      "pergunta": "O índice de velocidade precisa ser igual ao original?",
+      "respostaHtml": "<p>Precisa ser igual ou superior ao indicado no manual. Um pneu 91V suporta 615 kg e até 240 km/h; um 91W, até 270 km/h.</p>"
+    }
+  ],
+  "seo": {
+    "titulo": "Pneus 225/45 R17 | TireShop",
+    "descricao": "Pneus 225/45 R17 com 5% de desconto à vista ou 12x sem juros e frete grátis para o Sul e o Sudeste acima de R$ 1.000."
+  },
+  "ilustrativo": true
+}

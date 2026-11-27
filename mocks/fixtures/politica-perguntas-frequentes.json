@@ -1,0 +1,87 @@
+{
+  "slug": "perguntas-frequentes",
+  "titulo": "Perguntas Frequentes",
+  "rotuloMenu": "Perguntas Frequentes",
+  "icone": "message-circle",
+  "blocos": [
+    {
+      "tipo": "faq",
+      "itens": [
+        {
+          "pergunta": "TireShop tem loja física?",
+          "respostaHtml": "<p>Sim, a TireShop possui lojas físicas. Para encontrar a loja mais próxima de você, basta acessar nossa <a href=\"https://www.tireshop.com.br/LojasFisicas\">página de Lojas Físicas</a>.</p>"
+        },
+        {
+          "pergunta": "É possível realizar a troca ou devolução dos pneus?",
+          "respostaHtml": "<p>Sim, você pode realizar a troca ou devolução de pneus de acordo com nossa <a href=\"https://www.tireshop.com.br/TrocasDevolucoes\">Política de Trocas e Devoluções</a>.</p>"
+        },
+        {
+          "pergunta": "Como posso rastrear meu pedido?",
+          "respostaHtml": "<p>O rastreamento do seu produto <strong>será enviado para você em até 24h após a confirmação de envio</strong>. Acompanhe seu pedido diretamente no site, na aba meus pedidos e, por último, mais detalhes.</p>"
+        },
+        {
+          "pergunta": "Não recebi meu pedido. E agora?",
+          "respostaHtml": "<p>Se você não recebeu seu pedido, <a href=\"https://www.tireshop.com.br/Contato\">entre em contato com a TireShop</a>. Nossa equipe está disponível para atendimento de segunda a sexta-feira, das 08h às 17h45. Você pode nos contatar pelos seguintes canais:</p> <ul> <li>E-mail: contato@tireshop.com.br</li> <li>Telefone: 41-3317-2251</li> <li>WhatsApp: 41-3317-2251</li> </ul>"
+        },
+        {
+          "pergunta": "Como entrar em contato com a TireShop?",
+          "respostaHtml": "<p>Se precisar de ajuda, nossa equipe está pronta para atendê-lo pelo e-mail contato@tireshop.com.br, pelo telefone 41-3317-2251 ou via WhatsApp 41-3317-2251.</p>"
+        },
+        {
+          "pergunta": "Quais tipos de pneus estão disponíveis na TireShop?",
+          "respostaHtml": "<p>A TireShop oferece uma variedade de pneus, incluindo:</p> <ul> <li><a href=\"https://www.tireshop.com.br/0/1/Pneus-para-carros\">Pneus para carros</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/5/Pneus-Pick-ups-e-SUVs\">Pneus para pick-ups e SUVs</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/15/Pneus-de-Van\">Pneus para vans</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/4/Pneus-Competicao\">Pneus para competição</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/20/Pneus-Agricola\">Pneus agrícolas</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/21/Pneus-para-Caminhao\">Pneus para caminhões</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/23/Pneus-UTV\">Pneus UTV</a>;</li> <li><a href=\"https://www.tireshop.com.br/0/22/Pneus-OTR\">Pneus OTR</a>.</li> </ul>"
+        },
+        {
+          "pergunta": "Como saber o tamanho do pneu ideal para o meu veículo?",
+          "respostaHtml": "<p>Para escolher o pneu ideal, <strong>consulte as especificações do seu veículo no manual do fabricante</strong>, que indica o tamanho correto dos pneus. Se precisar de ajuda, nossa equipe especializada pode orientá-lo sobre a melhor escolha.</p>"
+        },
+        {
+          "pergunta": "Os pneus vendidos pela TireShop têm garantia?",
+          "respostaHtml": "<p>Sim, todos os pneus vendidos na TireShop têm garantia de 5 anos após a emissão da nota fiscal, conforme nossa <a href=\"https://www.tireshop.com.br/PoliticaGarantia\">Política de Garantia</a>.</p>"
+        },
+        {
+          "pergunta": "A TireShop realiza entregas para todo o Brasil?",
+          "respostaHtml": "<p>Sim, a TireShop realiza entregas para todo o Brasil, garantindo que você receba seu pedido com rapidez e segurança, conforme nossa <a href=\"https://www.tireshop.com.br/PrazoEntrega\">Política de prazos de entrega</a>.</p>"
+        },
+        {
+          "pergunta": "Quais formas de pagamento a TireShop aceita?",
+          "respostaHtml": "<p>A TireShop oferece diversas formas de pagamento, incluindo:</p> <ul> <li>PIX</li> <li>Boleto bancário</li> <li>Cartões de crédito, com parcelamento em até 12x sem juros</li> </ul>"
+        },
+        {
+          "pergunta": "O que fazer se meu pneu apresentar defeito?",
+          "respostaHtml": "<p>Se o seu pneu apresentar defeito, entre em contato com a TireShop. Estamos prontos para orientá-lo sobre os próximos passos.</p>"
+        },
+        {
+          "pergunta": "O que significa o índice de carga e velocidade do pneu?",
+          "respostaHtml": "<p>O índice de carga <strong>indica o peso máximo que o pneu pode suportar</strong>, enquanto o índice de velocidade indica a velocidade máxima que o pneu pode alcançar com segurança. Ambas as informações são fundamentais para garantir o desempenho e a segurança do veículo.</p>"
+        },
+        {
+          "pergunta": "Os pneus para competição são diferentes dos pneus comuns?",
+          "respostaHtml": "<p>Sim, os pneus para competição são projetados para oferecer desempenho superior em condições extremas, com características específicas de aderência, durabilidade e resistência. Eles são diferentes dos pneus comuns, que são feitos para uso diário em condições normais de estrada.</p>"
+        },
+        {
+          "pergunta": "Quais cuidados devo ter ao trocar os pneus do meu veículo?",
+          "respostaHtml": "<p>Ao trocar os pneus, é essencial garantir que eles sejam instalados corretamente, com o balanceamento adequado e alinhamento das rodas. Além disso, verifique se os pneus são do tamanho correto para o seu veículo.</p>"
+        },
+        {
+          "pergunta": "Como sei se preciso substituir os pneus do meu carro?",
+          "respostaHtml": "<p>Se os seus pneus <strong>apresentarem desgaste excessivo, cortes, rachaduras</strong> ou se a profundidade do sulco estiver abaixo do mínimo recomendado, é hora de substituí-los. A TireShop oferece pneus de alta qualidade para garantir a segurança do seu veículo.</p>"
+        },
+        {
+          "pergunta": "Quais marcas a TireShop trabalha?",
+          "respostaHtml": "<p>Trabalhamos com marcas renomadas, como:</p> <ul> <li>Yokohama</li> <li>Hankook</li> <li>Nexen</li> <li>Fortune</li> <li>Continental</li> <li>Goodyear</li> <li>Prinx</li> <li>Pirelli</li> <li>Bridgestone</li> <li>Entre outras</li> </ul> <p>Essas marcas são reconhecidas por sua qualidade e desempenho, garantindo a satisfação de nossos clientes.</p>"
+        },
+        {
+          "pergunta": "Comprei o pneu errado, como devo proceder?",
+          "respostaHtml": "<p>Caso perceba que comprou a medida errada e não tenha recebido o pedido, o ideal é entrar em contato imediatamente conosco através dos nossos canais de atendimento:</p> <ul> <li>Comercial: (41) 3317-2251</li> <li>WhatsApp: (41) 3317-2251</li> <li>E-mail: contato@tireshop.com.br</li> </ul> <p>Solicitaremos para a transportadora barrar a entrega e, caso tentem entregar, recuse o recebimento.</p>"
+        }
+      ]
+    }
+  ],
+  "contatoHtml": null,
+  "atualizadoEm": "2026-11-04",
+  "seo": {
+    "titulo": "Perguntas Frequentes | Ajuda | TireShop",
+    "descricao": "FAQ TireShop | Perguntas Frequentes e Dúvidas"
+  }
+}

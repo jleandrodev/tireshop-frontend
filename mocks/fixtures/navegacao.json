@@ -1,0 +1,698 @@
+{
+  "contato": {
+    "telefone": "(41) 3317-2251",
+    "whatsapp": "554133172251",
+    "email": "contato@tireshop.com.br",
+    "atendimento": "Segunda a sexta, das 8h às 17h45",
+    "razaoSocial": "TireShop Comércio de Pneus e Rodas LTDA",
+    "cnpj": "80.171.671/0001-54"
+  },
+  "redes": [
+    {
+      "id": "instagram",
+      "nome": "Instagram",
+      "href": "https://www.instagram.com/tireshop.com.br/"
+    },
+    {
+      "id": "facebook",
+      "nome": "Facebook",
+      "href": "https://www.facebook.com/TireShopBR/"
+    },
+    {
+      "id": "youtube",
+      "nome": "YouTube",
+      "href": "https://www.youtube.com/@canaldatireshop132"
+    },
+    {
+      "id": "tiktok",
+      "nome": "TikTok",
+      "href": "https://www.tiktok.com/@tireshop.com.br"
+    }
+  ],
+  "menu": [
+    {
+      "rotulo": "Lojas Físicas",
+      "href": "/lojas"
+    },
+    {
+      "rotulo": "Marcas",
+      "href": "/#marcas"
+    },
+    {
+      "rotulo": "Promoções",
+      "href": "/#ofertas"
+    },
+    {
+      "rotulo": "Blog",
+      "href": "https://www.tireshop.com.br/Blog"
+    },
+    {
+      "rotulo": "Contato",
+      "href": "https://www.tireshop.com.br/Contato"
+    },
+    {
+      "rotulo": "Oficinas Conveniadas",
+      "href": "/#entrega"
+    },
+    {
+      "rotulo": "Sobre Nós",
+      "href": "/sobre-nos"
+    }
+  ],
+  "departamentos": [
+    {
+      "slug": "carros",
+      "nome": "Carros",
+      "icone": "carro",
+      "href": "/c/pneus-para-carros",
+      "resumoAros": "Aros 10 a 24",
+      "aros": [
+        {
+          "aro": "10",
+          "href": "https://www.tireshop.com.br/1/143/Pneus-para-carros_Pneu-Aro-10"
+        },
+        {
+          "aro": "12",
+          "href": "https://www.tireshop.com.br/1/138/Pneus-para-carros_Pneu-Aro-12"
+        },
+        {
+          "aro": "13",
+          "href": "https://www.tireshop.com.br/1/1/Pneus-para-carros_Pneu-Aro-13"
+        },
+        {
+          "aro": "14",
+          "href": "https://www.tireshop.com.br/1/2/Pneus-para-carros_Pneu-Aro-14"
+        },
+        {
+          "aro": "15",
+          "href": "https://www.tireshop.com.br/1/3/Pneus-para-carros_Pneu-Aro-15"
+        },
+        {
+          "aro": "16",
+          "href": "https://www.tireshop.com.br/1/4/Pneus-para-carros_Pneu-Aro-16"
+        },
+        {
+          "aro": "17",
+          "href": "/c/carros-aro-17"
+        },
+        {
+          "aro": "18",
+          "href": "https://www.tireshop.com.br/1/6/Pneus-para-carros_Pneu-Aro-18"
+        },
+        {
+          "aro": "19",
+          "href": "https://www.tireshop.com.br/1/7/Pneus-para-carros_Pneu-Aro-19"
+        },
+        {
+          "aro": "20",
+          "href": "https://www.tireshop.com.br/1/8/Pneus-para-carros_Pneu-Aro-20"
+        },
+        {
+          "aro": "21",
+          "href": "https://www.tireshop.com.br/1/9/Pneus-para-carros_Pneu-Aro-21"
+        },
+        {
+          "aro": "22",
+          "href": "https://www.tireshop.com.br/1/10/Pneus-para-carros_Pneu-Aro-22"
+        },
+        {
+          "aro": "23",
+          "href": "https://www.tireshop.com.br/1/11/Pneus-para-carros_Pneu-Aro-23"
+        },
+        {
+          "aro": "24",
+          "href": "https://www.tireshop.com.br/1/12/Pneus-para-carros_Pneu-Aro-24"
+        }
+      ]
+    },
+    {
+      "slug": "pick-ups-e-suvs",
+      "nome": "Pick-ups e SUVs",
+      "icone": "suv",
+      "href": "https://www.tireshop.com.br/0/5/Pneus-Pick-ups-e-SUVs",
+      "resumoAros": "Aros 15 a 24",
+      "aros": [
+        {
+          "aro": "15",
+          "href": "https://www.tireshop.com.br/1/28/Pneus-Pick-ups-e-SUVs_Pneu-Aro-15"
+        },
+        {
+          "aro": "16",
+          "href": "https://www.tireshop.com.br/1/29/Pneus-Pick-ups-e-SUVs_Pneu-Aro-16"
+        },
+        {
+          "aro": "17",
+          "href": "https://www.tireshop.com.br/1/30/Pneus-Pick-ups-e-SUVs_Pneu-Aro-17"
+        },
+        {
+          "aro": "18",
+          "href": "https://www.tireshop.com.br/1/31/Pneus-Pick-ups-e-SUVs_Pneu-Aro-18"
+        },
+        {
+          "aro": "19",
+          "href": "https://www.tireshop.com.br/1/33/Pneus-Pick-ups-e-SUVs_Pneu-Aro-19"
+        },
+        {
+          "aro": "20",
+          "href": "https://www.tireshop.com.br/1/32/Pneus-Pick-ups-e-SUVs_Pneu-Aro-20"
+        },
+        {
+          "aro": "21",
+          "href": "https://www.tireshop.com.br/1/129/Pneus-Pick-ups-e-SUVs_Pneu-Aro-21"
+        },
+        {
+          "aro": "22",
+          "href": "https://www.tireshop.com.br/1/34/Pneus-Pick-ups-e-SUVs_Pneu-Aro-22"
+        },
+        {
+          "aro": "23",
+          "href": "https://www.tireshop.com.br/1/35/Pneus-Pick-ups-e-SUVs_Pneu-Aro-23"
+        },
+        {
+          "aro": "24",
+          "href": "https://www.tireshop.com.br/1/36/Pneus-Pick-ups-e-SUVs_Pneu-Aro-24"
+        }
+      ]
+    },
+    {
+      "slug": "vans",
+      "nome": "Vans",
+      "icone": "van",
+      "href": "https://www.tireshop.com.br/0/15/Pneus-de-Van",
+      "resumoAros": "Aros 14, 15 e 16",
+      "aros": [
+        {
+          "aro": "14",
+          "href": "https://www.tireshop.com.br/1/120/Pneus-de-Van_Pneu-Aro-14"
+        },
+        {
+          "aro": "15",
+          "href": "https://www.tireshop.com.br/1/118/Pneus-de-Van_Pneu-Aro-15"
+        },
+        {
+          "aro": "16",
+          "href": "https://www.tireshop.com.br/1/119/Pneus-de-Van_Pneu-Aro-16"
+        }
+      ]
+    },
+    {
+      "slug": "caminhoes",
+      "nome": "Caminhões",
+      "icone": "caminhao",
+      "href": "https://www.tireshop.com.br/0/21/Pneus-para-Caminhao",
+      "resumoAros": "Aros 17,5, 22,5 e 24",
+      "aros": [
+        {
+          "aro": "17,5",
+          "href": "https://www.tireshop.com.br/1/178/Pneus-para-Caminhao_Pneu-Aro-17.5"
+        },
+        {
+          "aro": "22,5",
+          "href": "https://www.tireshop.com.br/1/156/Pneus-para-Caminhao_Pneu-Aro-22,5"
+        },
+        {
+          "aro": "24",
+          "href": "https://www.tireshop.com.br/1/158/Pneus-para-Caminhao_Pneu-Aro-24"
+        }
+      ]
+    },
+    {
+      "slug": "agricola",
+      "nome": "Agrícola",
+      "icone": "agricola",
+      "href": "https://www.tireshop.com.br/0/20/Pneus-Agricola",
+      "resumoAros": "Aros 15 a 48",
+      "aros": [
+        {
+          "aro": "15",
+          "href": "https://www.tireshop.com.br/1/164/Pneus-Agricola_Pneu-Aro-15"
+        },
+        {
+          "aro": "15,5",
+          "href": "https://www.tireshop.com.br/1/163/Pneus-Agricola_Pneu-Aro-15.5"
+        },
+        {
+          "aro": "16",
+          "href": "https://www.tireshop.com.br/1/145/Pneus-Agricola_Pneu-Aro-16"
+        },
+        {
+          "aro": "17",
+          "href": "https://www.tireshop.com.br/1/177/Pneus-Agricola_Pneu-Aro-17"
+        },
+        {
+          "aro": "18",
+          "href": "https://www.tireshop.com.br/1/144/Pneus-Agricola_Pneu-Aro-18"
+        },
+        {
+          "aro": "20",
+          "href": "https://www.tireshop.com.br/1/162/Pneus-Agricola_Pneu-Aro-20"
+        },
+        {
+          "aro": "24",
+          "href": "https://www.tireshop.com.br/1/146/Pneus-Agricola_Pneu-Aro-24"
+        },
+        {
+          "aro": "25",
+          "href": "https://www.tireshop.com.br/1/161/Pneus-Agricola_Pneu-Aro-25"
+        },
+        {
+          "aro": "26",
+          "href": "https://www.tireshop.com.br/1/147/Pneus-Agricola_Pneu-Aro-26"
+        },
+        {
+          "aro": "26,5",
+          "href": "https://www.tireshop.com.br/1/160/Pneus-Agricola_Pneu-Aro-26.5"
+        },
+        {
+          "aro": "28",
+          "href": "https://www.tireshop.com.br/1/153/Pneus-Agricola_Pneu-Aro-28"
+        },
+        {
+          "aro": "30",
+          "href": "https://www.tireshop.com.br/1/148/Pneus-Agricola_Pneu-Aro-30"
+        },
+        {
+          "aro": "30,5",
+          "href": "https://www.tireshop.com.br/1/173/Pneus-Agricola_Pneu-Aro-30.5"
+        },
+        {
+          "aro": "32",
+          "href": "https://www.tireshop.com.br/1/150/Pneus-Agricola_Pneu-Aro-32"
+        },
+        {
+          "aro": "34",
+          "href": "https://www.tireshop.com.br/1/149/Pneus-Agricola_Pneu-Aro-34"
+        },
+        {
+          "aro": "38",
+          "href": "https://www.tireshop.com.br/1/151/Pneus-Agricola_Pneu-Aro-38"
+        },
+        {
+          "aro": "42",
+          "href": "https://www.tireshop.com.br/1/167/Pneus-Agricola_Pneu-Aro-42"
+        },
+        {
+          "aro": "44",
+          "href": "https://www.tireshop.com.br/1/171/Pneus-Agricola_Pneu-Aro-44"
+        },
+        {
+          "aro": "46",
+          "href": "https://www.tireshop.com.br/1/152/Pneus-Agricola_Pneu-Aro-46"
+        },
+        {
+          "aro": "48",
+          "href": "https://www.tireshop.com.br/1/176/Pneus-Agricola_Pneu-Aro-48"
+        }
+      ]
+    },
+    {
+      "slug": "competicao",
+      "nome": "Competição",
+      "icone": "competicao",
+      "href": "https://www.tireshop.com.br/0/4/Pneus-Competicao",
+      "resumoAros": "Aros 13 a 18",
+      "aros": [
+        {
+          "aro": "13",
+          "href": "https://www.tireshop.com.br/1/22/Pneus-Competicao_Pneu-Aro-13"
+        },
+        {
+          "aro": "14",
+          "href": "https://www.tireshop.com.br/1/23/Pneus-Competicao_Pneu-Aro-14"
+        },
+        {
+          "aro": "15",
+          "href": "https://www.tireshop.com.br/1/24/Pneus-Competicao_Pneu-Aro-15"
+        },
+        {
+          "aro": "17",
+          "href": "https://www.tireshop.com.br/1/26/Pneus-Competicao_Pneu-Aro-17"
+        },
+        {
+          "aro": "18",
+          "href": "https://www.tireshop.com.br/1/27/Pneus-Competicao_Pneu-Aro-18"
+        }
+      ]
+    },
+    {
+      "slug": "utv",
+      "nome": "UTV",
+      "icone": "utv",
+      "href": "https://www.tireshop.com.br/0/23/Pneus-UTV",
+      "resumoAros": "Aro 15",
+      "aros": [
+        {
+          "aro": "15",
+          "href": "https://www.tireshop.com.br/1/169/Pneus-UTV_Pneu-Aro-15"
+        }
+      ]
+    },
+    {
+      "slug": "otr",
+      "nome": "OTR",
+      "icone": "otr",
+      "href": "https://www.tireshop.com.br/0/22/Pneus-OTR",
+      "resumoAros": "Aros 25, 33 e 35",
+      "aros": [
+        {
+          "aro": "25",
+          "href": "https://www.tireshop.com.br/1/165/Pneus-OTR_Pneu-Aro-25"
+        },
+        {
+          "aro": "33",
+          "href": "https://www.tireshop.com.br/1/166/Pneus-OTR_Pneu-Aro-33"
+        },
+        {
+          "aro": "35",
+          "href": "https://www.tireshop.com.br/1/168/Pneus-OTR_Pneu-Aro-35"
+        }
+      ]
+    }
+  ],
+  "ajuda": [
+    {
+      "rotulo": "Calculadora de Pneus",
+      "href": "https://www.tireshop.com.br/CalculadoraPneus"
+    },
+    {
+      "rotulo": "Medida dos Pneus",
+      "href": "https://www.tireshop.com.br/MedidaPneus"
+    },
+    {
+      "rotulo": "Como Comprar",
+      "href": "/ajuda/como-comprar"
+    },
+    {
+      "rotulo": "Todos os aros",
+      "href": null
+    }
+  ],
+  "extras": [
+    {
+      "rotulo": "Capotas Marítimas",
+      "href": "https://www.tireshop.com.br/0/17/Capotas-Maritimas"
+    }
+  ],
+  "marcas": [
+    {
+      "slug": "alliance",
+      "nome": "Alliance",
+      "logo": {
+        "src": "/img/marcas-web/alliance.webp",
+        "largura": 152,
+        "altura": 25,
+        "alt": "Alliance"
+      },
+      "href": null
+    },
+    {
+      "slug": "apollo",
+      "nome": "Apollo",
+      "logo": {
+        "src": "/img/marcas-web/apollo.webp",
+        "largura": 117,
+        "altura": 40,
+        "alt": "Apollo"
+      },
+      "href": null
+    },
+    {
+      "slug": "barum",
+      "nome": "Barum",
+      "logo": {
+        "src": "/img/marcas-web/barum.webp",
+        "largura": 152,
+        "altura": 22,
+        "alt": "Barum"
+      },
+      "href": null
+    },
+    {
+      "slug": "bridgestone",
+      "nome": "Bridgestone",
+      "logo": {
+        "src": "/img/marcas-web/bridgestone.webp",
+        "largura": 152,
+        "altura": 19,
+        "alt": "Bridgestone"
+      },
+      "href": null
+    },
+    {
+      "slug": "continental",
+      "nome": "Continental",
+      "logo": {
+        "src": "/img/marcas-web/continental.webp",
+        "largura": 152,
+        "altura": 28,
+        "alt": "Continental"
+      },
+      "href": null
+    },
+    {
+      "slug": "cooper",
+      "nome": "Cooper",
+      "logo": {
+        "src": "/img/marcas-web/cooper.webp",
+        "largura": 139,
+        "altura": 34,
+        "alt": "Cooper"
+      },
+      "href": null
+    },
+    {
+      "slug": "firestone",
+      "nome": "Firestone",
+      "logo": {
+        "src": "/img/marcas-web/firestone.webp",
+        "largura": 152,
+        "altura": 22,
+        "alt": "Firestone"
+      },
+      "href": null
+    },
+    {
+      "slug": "fortune",
+      "nome": "Fortune",
+      "logo": {
+        "src": "/img/marcas-web/fortune.webp",
+        "largura": 152,
+        "altura": 22,
+        "alt": "Fortune"
+      },
+      "href": null
+    },
+    {
+      "slug": "galaxy",
+      "nome": "Galaxy",
+      "logo": {
+        "src": "/img/marcas-web/galaxy.webp",
+        "largura": 109,
+        "altura": 43,
+        "alt": "Galaxy"
+      },
+      "href": null
+    },
+    {
+      "slug": "general-tire",
+      "nome": "General Tire",
+      "logo": {
+        "src": "/img/marcas-web/general-tire.webp",
+        "largura": 152,
+        "altura": 20,
+        "alt": "General Tire"
+      },
+      "href": null
+    },
+    {
+      "slug": "goodyear",
+      "nome": "Goodyear",
+      "logo": {
+        "src": "/img/marcas-web/goodyear.webp",
+        "largura": 152,
+        "altura": 26,
+        "alt": "Goodyear"
+      },
+      "href": null
+    },
+    {
+      "slug": "hankook",
+      "nome": "Hankook",
+      "logo": {
+        "src": "/img/marcas-web/hankook.webp",
+        "largura": 152,
+        "altura": 19,
+        "alt": "Hankook"
+      },
+      "href": "/c/hankook"
+    },
+    {
+      "slug": "nexen",
+      "nome": "Nexen",
+      "logo": {
+        "src": "/img/marcas-web/nexen.webp",
+        "largura": 98,
+        "altura": 48,
+        "alt": "Nexen"
+      },
+      "href": null
+    },
+    {
+      "slug": "pirelli",
+      "nome": "Pirelli",
+      "logo": {
+        "src": "/img/marcas-web/pirelli.webp",
+        "largura": 149,
+        "altura": 32,
+        "alt": "Pirelli"
+      },
+      "href": null
+    },
+    {
+      "slug": "prinx",
+      "nome": "Prinx",
+      "logo": {
+        "src": "/img/marcas-web/prinx.webp",
+        "largura": 135,
+        "altura": 35,
+        "alt": "Prinx"
+      },
+      "href": null
+    },
+    {
+      "slug": "vredestein",
+      "nome": "Vredestein",
+      "logo": {
+        "src": "/img/marcas-web/vredestein.webp",
+        "largura": 122,
+        "altura": 39,
+        "alt": "Vredestein"
+      },
+      "href": null
+    },
+    {
+      "slug": "yokohama",
+      "nome": "Yokohama",
+      "logo": {
+        "src": "/img/marcas-web/yokohama.webp",
+        "largura": 152,
+        "altura": 22,
+        "alt": "Yokohama"
+      },
+      "href": null
+    }
+  ],
+  "rodape": {
+    "colunas": [
+      {
+        "titulo": "Comprar",
+        "links": [
+          {
+            "rotulo": "Departamentos",
+            "href": "/#departamentos"
+          },
+          {
+            "rotulo": "Aros",
+            "href": null
+          },
+          {
+            "rotulo": "Marcas",
+            "href": "/#marcas"
+          },
+          {
+            "rotulo": "Promoções",
+            "href": "/#ofertas"
+          },
+          {
+            "rotulo": "Black Friday",
+            "href": "https://www.tireshop.com.br/1/1/BlackFriday"
+          },
+          {
+            "rotulo": "Calculadora de Pneus",
+            "href": "https://www.tireshop.com.br/CalculadoraPneus"
+          }
+        ]
+      },
+      {
+        "titulo": "Ajuda para escolher",
+        "links": [
+          {
+            "rotulo": "Como Comprar",
+            "href": "/ajuda/como-comprar"
+          },
+          {
+            "rotulo": "Medida dos Pneus",
+            "href": "https://www.tireshop.com.br/MedidaPneus"
+          },
+          {
+            "rotulo": "Comparar pneus",
+            "href": "/comparar"
+          },
+          {
+            "rotulo": "Blog",
+            "href": "https://www.tireshop.com.br/Blog"
+          },
+          {
+            "rotulo": "Perguntas frequentes",
+            "href": "/ajuda/perguntas-frequentes"
+          }
+        ]
+      },
+      {
+        "titulo": "Entrega e pagamento",
+        "links": [
+          {
+            "rotulo": "Prazo de entrega",
+            "href": "/ajuda/prazo-de-entrega"
+          },
+          {
+            "rotulo": "Formas de pagamento",
+            "href": "/ajuda/formas-de-pagamento"
+          },
+          {
+            "rotulo": "Entrega em oficina conveniada",
+            "href": "/#entrega"
+          },
+          {
+            "rotulo": "Rastrear pedido",
+            "href": null
+          }
+        ]
+      },
+      {
+        "titulo": "Atendimento e empresa",
+        "links": [
+          {
+            "rotulo": "WhatsApp (41) 3317-2251",
+            "href": "https://wa.me/554133172251"
+          },
+          {
+            "rotulo": "Fale conosco",
+            "href": "https://www.tireshop.com.br/Contato"
+          },
+          {
+            "rotulo": "Trocas e devoluções",
+            "href": "/ajuda/trocas-e-devolucoes"
+          },
+          {
+            "rotulo": "Garantia",
+            "href": "/ajuda/garantia"
+          },
+          {
+            "rotulo": "Meus Pedidos",
+            "href": null
+          },
+          {
+            "rotulo": "Sobre nós",
+            "href": "/sobre-nos"
+          },
+          {
+            "rotulo": "Política de Privacidade",
+            "href": "/ajuda/privacidade"
+          }
+        ]
+      }
+    ],
+    "textoFiscal": "© Todos os direitos reservados. Os preços, as promoções, o frete de entrega e as condições de pagamento informados no site, são válidos apenas para compras via Internet vinculado a disponibilidade de estoque, vendas realizadas apenas para Pessoa Física, através de CPF. A Loja de TireShop reserva-se no direito de corrigir ou alterar informações e preços a qualquer momento."
+  }
+}

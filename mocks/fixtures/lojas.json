@@ -1,0 +1,257 @@
+{
+  "titulo": "Lojas físicas TireShop: pneus e serviços automotivos",
+  "intro": "A TireShop tem 5 lojas físicas. Cada uma é um autocenter completo: pneus com instalação na hora, alinhamento, balanceamento, freios e suspensão.",
+  "lojas": [
+    {
+      "slug": "novo-hamburgo",
+      "cidade": "Novo Hamburgo",
+      "uf": "RS",
+      "nome": "TireShop Autocenter Novo Hamburgo",
+      "endereco": {
+        "logradouro": "Rua Coronel Frederico Linck, 88",
+        "cidade": "Novo Hamburgo",
+        "uf": "RS"
+      },
+      "horario": [
+        "Segunda a Sexta das 08:00 às 18:00",
+        "Sábado das 08:00 às 12:00"
+      ],
+      "telefone": "(51) 3593-8888",
+      "whatsapp": [
+        "555135938888"
+      ],
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/fachada.webp",
+        "largura": 525,
+        "altura": 241,
+        "alt": "Fachada da TireShop Novo Hamburgo"
+      },
+      "servicosResumo": [
+        "Pneus",
+        "Freios",
+        "Suspensão",
+        "Amortecedores",
+        "Molas",
+        "Troca de Óleo e Filtros",
+        "Regulagem de Faróis",
+        "Limpeza de Ar Condicionado",
+        "Conserto e Pintura de Rodas",
+        "Alinhamento e Balanceamento",
+        "Calibragem com Nitrogênio"
+      ],
+      "agendamentoUrl": "https://www.tireshop.com.br/Lojas/NovoHamburgo/Agendamento",
+      "mapaUrl": "https://goo.gl/ycBei9"
+    },
+    {
+      "slug": "joinville",
+      "cidade": "Joinville",
+      "uf": "SC",
+      "nome": "TireShop Autocenter Joinville",
+      "endereco": {
+        "logradouro": "Rua Dr. João Colin, 3033 - Santo Antônio",
+        "cidade": "Joinville",
+        "uf": "SC"
+      },
+      "horario": [
+        "Segunda a Sexta das 08:00 às 18:00",
+        "Sábado das 08:00 às 12:00"
+      ],
+      "telefone": "(47) 3028-4433",
+      "whatsapp": [
+        "554799320955"
+      ],
+      "foto": {
+        "src": "/img/lojas/joinville/fachada.webp",
+        "largura": 525,
+        "altura": 241,
+        "alt": "Fachada da TireShop Joinville"
+      },
+      "servicosResumo": [
+        "Pneus",
+        "Freios",
+        "Suspensão",
+        "Correia Dentada",
+        "Embreagem",
+        "Bateria",
+        "Palhetas",
+        "Regulagem de Faróis",
+        "Higienização de Ar Condicionado",
+        "Troca de Óleo e Filtros",
+        "Conserto e Personalização de Rodas",
+        "Alinhamento e Balanceamento"
+      ],
+      "agendamentoUrl": null,
+      "mapaUrl": "https://goo.gl/maps/fguje1yKAVA2"
+    },
+    {
+      "slug": "curitiba",
+      "cidade": "Curitiba",
+      "uf": "PR",
+      "nome": "TireShop Autocenter Curitiba",
+      "endereco": {
+        "logradouro": "Rua Westphalen, 2880",
+        "cidade": "Curitiba",
+        "uf": "PR"
+      },
+      "horario": [
+        "Segunda a Sexta das 08:00 às 18:00",
+        "Sábado das 08:00 às 12:00"
+      ],
+      "telefone": "(41) 3333-1777",
+      "whatsapp": [
+        "5541984816579",
+        "5541991558619"
+      ],
+      "foto": {
+        "src": "/img/lojas/curitiba/fachada.webp",
+        "largura": 525,
+        "altura": 241,
+        "alt": "Fachada da TireShop Curitiba"
+      },
+      "servicosResumo": [
+        "Pneus",
+        "Rodas",
+        "Molas",
+        "Abafadores",
+        "Geometria",
+        "Balanceamento",
+        "Alinhamento",
+        "Suspensão",
+        "Freios e Recuperação/personalização de rodas."
+      ],
+      "agendamentoUrl": null,
+      "mapaUrl": "https://goo.gl/maps/JVwDw5Xw4fx"
+    },
+    {
+      "slug": "sao-paulo",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "nome": "TireShop Autocenter São Paulo",
+      "endereco": {
+        "logradouro": "Av. Odilon Egydio do Amaral Souza, 280",
+        "cidade": "São Paulo",
+        "uf": "SP"
+      },
+      "horario": [
+        "Segunda a Sexta das 08:30 às 17:30",
+        "Sábado das 08:30 às 12:30"
+      ],
+      "telefone": "(11) 2619.0748",
+      "whatsapp": [
+        "551126190748",
+        "5511947209397"
+      ],
+      "foto": {
+        "src": "/img/lojas/sao-paulo/fachada.webp",
+        "largura": 525,
+        "altura": 233,
+        "alt": "Fachada da TireShop São Paulo"
+      },
+      "servicosResumo": [
+        "Pneus",
+        "Alinhamento 3D / Geometria 3D",
+        "Balanceamento Computadorizado",
+        "Conserto Rodas",
+        "Restauração de Rodas",
+        "Calibragem com Nitrogênio",
+        "Conserto Pneus",
+        "Montagem e desmontagem pneus para carros Blindado",
+        "Freios / Retifica de discos",
+        "Suspensão",
+        "Molas Esportivas (Eibach)",
+        "Higienização Ar Condicionado (ozônio)",
+        "Óleo de motores e filtros em geral",
+        "Revisão Básica",
+        "Lavagem",
+        "Estética Automotiva",
+        "Pintura de pinças de freio",
+        "Serviços de Leva e Traz (plataforma/guincho)",
+        "Diagnostico Sensor Pressão Pneus (TPMS)"
+      ],
+      "agendamentoUrl": null,
+      "mapaUrl": "https://goo.gl/maps/MYk1DVAVveH2"
+    },
+    {
+      "slug": "ribeirao-preto",
+      "cidade": "Ribeirão Preto",
+      "uf": "SP",
+      "nome": "TireShop Autocenter Ribeirão Preto",
+      "endereco": {
+        "logradouro": "R. Florêncio de Abreu, 1587 -Vila Seixas",
+        "cidade": "Ribeirão Preto",
+        "uf": "SP"
+      },
+      "horario": [
+        "Segunda a Sexta das 08:00 às 18:00",
+        "Sábado das 08:00 às 13:00"
+      ],
+      "telefone": "(16) 3771-0852",
+      "whatsapp": [
+        "5516996382628"
+      ],
+      "foto": {
+        "src": "/img/lojas/ribeirao-preto/fachada.webp",
+        "largura": 525,
+        "altura": 241,
+        "alt": "Fachada da TireShop Ribeirão Preto"
+      },
+      "servicosResumo": [
+        "Alinhamento",
+        "Balanceamento",
+        "Rodízio de pneus",
+        "Check up preventivo",
+        "Suspensão",
+        "Freios",
+        "Troca de óleo",
+        "Substituição de filtros",
+        "Conserto de rodas",
+        "Palhetas",
+        "Higienização do ar condicionado"
+      ],
+      "agendamentoUrl": "https://www.tireshop.com.br/Lojas/RibeiraoPreto/Agendamento",
+      "mapaUrl": "https://goo.gl/maps/wwJ7PnCHM56XmA3w8"
+    }
+  ],
+  "textoApoio": {
+    "titulo": null,
+    "html": "<h2>Lojas físicas TireShop: pneus e soluções automotivas presenciais</h2><p>Se você busca onde comprar pneus com confiança e atendimento personalizado, as lojas físicas TireShop são a escolha ideal. Presente em cidades estratégicas como Curitiba, Joinville, Ribeirão Preto, São Paulo e Novo Hamburgo, cada unidade é um autocenter completo, reunindo ampla seleção de pneus, rodas e serviços para todas as necessidades do seu veículo.</p><p>Nas lojas físicas TireShop, o foco é garantir <strong>transparência, segurança e um atendimento competente,</strong> com profissionais qualificados e tecnologia de ponta à disposição. Aqui, você pode avaliar de perto os produtos, aproveitar condições especiais e experimentar toda a conveniência de um atendimento presencial diferenciado.</p><h3>Pneus para todas as necessidades e veículos</h3><p>Quem procura comprar <a href=\"/c/pneus-para-carros\">pneus para o carro</a>, pickup, SUV e mais<a href=\"https://www.tireshop.com.br/0/20/Pneus-Agricola\" rel=\"noopener\"> </a>— seja para uso urbano ou campo — encontra variedade e exclusividade nas lojas físicas TireShop. Trabalhamos com as maiores marcas do mercado, incluindo Fortune, Prinx e Yokohama. Ao visitar uma de nossas lojas de pneus, você pode:</p><ul><li>Solicitar orientação técnica para comparar medidas e aplicações;</li><li>Avaliar de perto modelos para chuva, off-road ou uso esportivo;</li><li>Encontrar linhas exclusivas para carros de passeio, pickups e vans;</li><li>Consultar pneus de alta performance, inclusive para carros blindados, na loja de São Paulo;</li><li>Aproveitar promoções regionais e condições de pagamento diferenciadas;</li><li>Retirar rapidamente itens do estoque próprio.</li></ul><p>Seja para comprar pneus em Joinville, São Paulo, Curitiba, Novo Hamburgo ou Ribeirão Preto, você encontra soluções sob medida, sempre com garantia de procedência e excelente custo-benefício.</p><h3>Serviços automotivos TireShop: além da loja de pneus</h3><p>Além de referência como loja de pneus, as lojas físicas TireShop contam com estrutura de autocenter robusta em cada unidade. Entre os serviços disponíveis, estão:</p><ul><li>Alinhamento, balanceamento e geometria (inclusive 3D);</li><li>Troca de óleo e filtros com rigor técnico;</li><li>Manutenção e reparo de freios e suspensão;</li><li>Higienização de ar-condicionado;</li><li>Conserto, pintura e personalização de rodas (incluindo recuperação estrutural);</li><li>Serviço leva e traz (exclusivo na unidade de São Paulo);</li><li>Diagnóstico digital (TPMS), regulagem de faróis e serviços premium em SP e NH;</li><li>Montagem/desmontagem para pneus de carros blindados (SP).</li></ul><p>Conte com <strong>experiência, agilidade e equipamentos modernos</strong>, tudo pensado para oferecer praticidade e segurança.</p><h3>Rodas automotivas: originalidade e personalização</h3><p>A escolha da roda certa impacta visual, desempenho e segurança. As lojas físicas TireShop disponibilizam modelos originais, esportivos e de alta resistência, com orientação profissional para encontrar a melhor compatibilidade, acabamento e personalização — do conserto à customização. Precisa modernizar ou recuperar rodas em Curitiba, Joinville ou Ribeirão Preto? Conheça as opções TireShop para deixar seu veículo único.</p><h3>Benefícios exclusivos nas lojas físicas TireShop</h3><ul><li>Atendimento presencial com equipe técnica qualificada;</li><li>Estoque 100% próprio, variedade em pneus e rodas;</li><li>Explicação técnica ao vivo, escolha esclarecida e personalizada;</li><li>Serviços automotivos completos em um só local;</li><li>Parcelamento em até 10x sem juros e promoções regionais frequentes;</li><li>Retirada facilitada após compra online, sem custo de frete para Sul e Sudeste (consulte condições);</li><li>Autocenter com tecnologia de ponta e vínculo robusto com grandes distribuidoras;</li><li>Linhas exclusivas de pneus para carros, <a href=\"https://www.tireshop.com.br/0/5/Pneus-Pick-ups-e-SUVs\" rel=\"noopener\">pickups e SUVs</a> (aros 17 a 22).</li></ul><p>Buscando onde comprar pneus presencialmente ou quer promoções em cidades como Curitiba, Joinville, Ribeirão Preto, Novo Hamburgo ou São Paulo? TireShop tem sempre uma solução à sua medida.</p><h2>Onde estão localizadas as lojas físicas TireShop?</h2><p>As lojas físicas TireShop estão presentes em Curitiba, São Paulo, Ribeirão Preto, Novo Hamburgo e Joinville. Consulte sempre a página de Lojas Físicas TireShop para<strong> informações atualizadas sobre horários de atendimento e os serviços disponíveis</strong>.</p><h2>Como funciona o atendimento nas lojas físicas TireShop?</h2><p>O atendimento pode ser por ordem de chegada ou por agendamento prévio, dependendo do serviço. Para revisões ou manutenções mais complexas, recomendamos agendar para garantir comodidade.</p><h2>Quais serviços estão disponíveis nas lojas físicas TireShop?</h2><p>Além da venda de pneus, todas as unidades oferecem alinhamento, balanceamento, geometria, troca de óleo, freios, suspensão, higienização de ar-condicionado, personalização de rodas, diagnóstico digital, revisão básica e, em algumas cidades, montagem e serviços especiais para carros blindados.</p><h2>Quais marcas de pneus posso encontrar nas lojas TireShop?</h2><p>Trabalhamos com as principais marcas em nossa loja online: Michelin, Pirelli, Bridgestone, Goodyear, Continental, Firestone, Fortune, Yokohama, Prinx e outras exclusividades. Isso proporciona ampla escolha para todos os perfis de uso e veículos.</p><h2>Posso comprar online e retirar na loja física?</h2><p>Sim, ao comprar pneus no site da TireShop, o cliente pode escolher como montar os pneus, inclusive optando pelas lojas físicas que funcionam como pontos de montagem e serviços automotivos especializados. Isso<strong> une a facilidade da compra online com a segurança e a qualidade do atendimento presencial</strong> oferecido pelas unidades TireShop.</p><h2>Quais são as opções de pagamento nas lojas físicas TireShop?</h2><p>Aceitamos cartões de crédito, débito e parcelamento em até 10x sem juros no cartão em todas as unidades. Verifique condições especiais de acordo com campanhas regionais.</p><h2>Os preços praticados nas lojas físicas TireShop são os mesmos do site?</h2><p>Os preços do site TireShop são exclusivos para o e-commerce, focando em oferecer condições competitivas e transparentes online. As lojas físicas têm sua própria dinâmica de preço, pois oferecem serviços adicionais que complementam a experiência, destacando a praticidade e qualidade no atendimento presencial.</p><h2>Qual é o grande diferencial das lojas físicas TireShop?</h2><p>Além da exclusividade em estoque, pagamento facilitado e retirada rápida, as lojas físicas TireShop oferecem variedade de marcas, atendimento especializado e uma experiência que une tecnologia, transparência e tradição regional em autocenter.<br/><br/>Agora que você conhece todos os benefícios das lojas físicas TireShop, aproveite para explorar nossas subcategorias de pneus, conferir <a href=\"https://www.tireshop.com.br/1/1/PromocaoEspecial\" rel=\"noopener\">produtos em oferta</a> ou agendar sua visita presencial.<strong> Conte sempre com a competência TireShop para cuidar do seu veículo!</strong></p>"
+  },
+  "faq": [
+    {
+      "pergunta": "Onde estão localizadas as lojas físicas TireShop?",
+      "respostaHtml": "<p>As lojas físicas TireShop estão presentes em Curitiba, São Paulo, Ribeirão Preto, Novo Hamburgo e Joinville. Consulte sempre a página de Lojas Físicas TireShop para<strong> informações atualizadas sobre horários de atendimento e os serviços disponíveis</strong>.</p>"
+    },
+    {
+      "pergunta": "Como funciona o atendimento nas lojas físicas TireShop?",
+      "respostaHtml": "<p>O atendimento pode ser por ordem de chegada ou por agendamento prévio, dependendo do serviço. Para revisões ou manutenções mais complexas, recomendamos agendar para garantir comodidade.</p>"
+    },
+    {
+      "pergunta": "Quais serviços estão disponíveis nas lojas físicas TireShop?",
+      "respostaHtml": "<p>Além da venda de pneus, todas as unidades oferecem alinhamento, balanceamento, geometria, troca de óleo, freios, suspensão, higienização de ar-condicionado, personalização de rodas, diagnóstico digital, revisão básica e, em algumas cidades, montagem e serviços especiais para carros blindados.</p>"
+    },
+    {
+      "pergunta": "Quais marcas de pneus posso encontrar nas lojas TireShop?",
+      "respostaHtml": "<p>Trabalhamos com as principais marcas em nossa loja online: Michelin, Pirelli, Bridgestone, Goodyear, Continental, Firestone, Fortune, Yokohama, Prinx e outras exclusividades. Isso proporciona ampla escolha para todos os perfis de uso e veículos.</p>"
+    },
+    {
+      "pergunta": "Posso comprar online e retirar na loja física?",
+      "respostaHtml": "<p>Sim, ao comprar pneus no site da TireShop, o cliente pode escolher como montar os pneus, inclusive optando pelas lojas físicas que funcionam como pontos de montagem e serviços automotivos especializados. Isso<strong> une a facilidade da compra online com a segurança e a qualidade do atendimento presencial</strong> oferecido pelas unidades TireShop.</p>"
+    },
+    {
+      "pergunta": "Quais são as opções de pagamento nas lojas físicas TireShop?",
+      "respostaHtml": "<p>Aceitamos cartões de crédito, débito e parcelamento em até 10x sem juros no cartão em todas as unidades. Verifique condições especiais de acordo com campanhas regionais.</p>"
+    },
+    {
+      "pergunta": "Os preços praticados nas lojas físicas TireShop são os mesmos do site?",
+      "respostaHtml": "<p>Os preços do site TireShop são exclusivos para o e-commerce, focando em oferecer condições competitivas e transparentes online. As lojas físicas têm sua própria dinâmica de preço, pois oferecem serviços adicionais que complementam a experiência, destacando a praticidade e qualidade no atendimento presencial.</p>"
+    },
+    {
+      "pergunta": "Qual é o grande diferencial das lojas físicas TireShop?",
+      "respostaHtml": "<p>Além da exclusividade em estoque, pagamento facilitado e retirada rápida, as lojas físicas TireShop oferecem variedade de marcas, atendimento especializado e uma experiência que une tecnologia, transparência e tradição regional em autocenter.<br/><br/>Agora que você conhece todos os benefícios das lojas físicas TireShop, aproveite para explorar nossas subcategorias de pneus, conferir <a href=\"https://www.tireshop.com.br/1/1/PromocaoEspecial\" rel=\"noopener\">produtos em oferta</a> ou agendar sua visita presencial.<strong> Conte sempre com a competência TireShop para cuidar do seu veículo!</strong></p>"
+    }
+  ],
+  "seo": {
+    "titulo": "Lojas Físicas TireShop: Pneus e Serviços Automotivos",
+    "descricao": "Conheça as lojas físicas TireShop e garanta pneus premium com montagem profissional: parcele em 12x e aproveite serviços de autocenter. Visite-nos!"
+  }
+}

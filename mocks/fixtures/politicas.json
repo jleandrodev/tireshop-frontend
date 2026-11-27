@@ -1,0 +1,44 @@
+{
+  "itens": [
+    {
+      "slug": "prazo-de-entrega",
+      "rotuloMenu": "Prazo de Entrega",
+      "icone": "truck"
+    },
+    {
+      "slug": "formas-de-pagamento",
+      "rotuloMenu": "Formas de Pagamento",
+      "icone": "credit-card"
+    },
+    {
+      "slug": "garantia",
+      "rotuloMenu": "Política de Garantia",
+      "icone": "shield-check"
+    },
+    {
+      "slug": "trocas-e-devolucoes",
+      "rotuloMenu": "Trocas e Devoluções",
+      "icone": "package"
+    },
+    {
+      "slug": "seguranca-e-privacidade",
+      "rotuloMenu": "Segurança e Privacidade",
+      "icone": "lock"
+    },
+    {
+      "slug": "privacidade",
+      "rotuloMenu": "Política de Privacidade",
+      "icone": "file-text"
+    },
+    {
+      "slug": "como-comprar",
+      "rotuloMenu": "Como Comprar",
+      "icone": "shopping-cart"
+    },
+    {
+      "slug": "perguntas-frequentes",
+      "rotuloMenu": "Perguntas Frequentes",
+      "icone": "message-circle"
+    }
+  ]
+}

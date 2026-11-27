@@ -22,3 +22,8 @@ CLAUDE.md
 # portal/alta-fidelidade/css/. Reformatar mudaria o diff contra a fonte sem motivo; a qualidade
 # desse CSS é do lint de marca (T-0006), não do Prettier.
 app/assets/css/
+
+# Cópia viva de docs/api/examples (T-0008, pnpm mocks:sincronizar). Precisa ficar byte a byte
+# igual à origem para `mocks:sincronizar --conferir` comparar; reformatar aqui e não lá
+# (docs/ já está fora do Prettier) faria a conferência acusar divergência à toa.
+mocks/fixtures/

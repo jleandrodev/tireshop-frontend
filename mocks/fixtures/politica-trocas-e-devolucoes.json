@@ -1,0 +1,58 @@
+{
+  "slug": "trocas-e-devolucoes",
+  "titulo": "Política de trocas e devoluções TireShop: Saiba como funciona",
+  "rotuloMenu": "Trocas e Devoluções",
+  "icone": "package",
+  "blocos": [
+    {
+      "tipo": "paragrafo",
+      "html": "Caso tenha comprado o produto e ele precise ser trocado ou devolvido, por não ser exatamente o que queria, estar em desacordo com a compra realizada ou por ter comprado o produto errado, entre em contato conosco por e-mail <strong>contato@tireshop.com.br</strong>, informando o <strong>número do Pedido</strong> ou a <strong>NF de compra,</strong> relatando o <strong>motivo</strong> da necessidade de troca ou devolução."
+    },
+    {
+      "tipo": "aviso",
+      "html": "O Prazo para realização da troca ou devolução é de 7 dias, a partir do recebimento da mercadoria."
+    },
+    {
+      "tipo": "aviso",
+      "html": "Para que o produto seja trocado ou devolvido, é necessário que esteja em perfeito estado, sem ter sido aplicado no veículo, com todos os seus componentes e com a embalagem em perfeitas condições, quando o produto tiver embalagem."
+    },
+    {
+      "tipo": "titulo",
+      "nivel": 2,
+      "texto": "Procedimentos de troca e devolução"
+    },
+    {
+      "tipo": "passos",
+      "itens": [
+        "Envie um e-mail para contato@tireshop.com.br, informando o motivo da troca ou devolução, com o número do Pedido ou Nota Fiscal de compra e pelo menos três imagens dos produtos com suas etiquetas. No prazo de 7 dias à partir do recebimento do produto.",
+        "Solicitaremos a coleta do produto no mesmo endereço de entrega, em horário comercial, pela mesma transportadora que fez a entrega.",
+        "Assim que o produto estiver em nossas mãos, vamos verificar no mesmo dia que chegar e entrar em contato com o cliente, autorizando ou não a troca ou devolução do produto.",
+        "Se for uma devolução, devolveremos o dinheiro ou cancelaremos a compra junto ao seu Cartão de crédito. Se for uma troca, informaremos o valor faltante para realizar a troca, ou devolveremos a diferença se o valor for inferior ao comprado inicialmente."
+      ]
+    },
+    {
+      "tipo": "titulo",
+      "nivel": 2,
+      "texto": "Devolução de compra realizada no cartão de crédito"
+    },
+    {
+      "tipo": "paragrafo",
+      "html": "Solicitaremos o Estorno para sua operadora de Cartão, cada operadora possui um prazo para realizar essa operação, com isso a operação será cancelada, caso parcelas já tenham sido pagas, a operadora irá estornar o valor na próxima fatura."
+    },
+    {
+      "tipo": "titulo",
+      "nivel": 2,
+      "texto": "Devolução de compra realizada por Boleto"
+    },
+    {
+      "tipo": "paragrafo",
+      "html": "Solicitaremos o número de uma Conta do responsável pela compra, <strong>a conta deve ser no mesmo CPF do comprador</strong>, para que possa ser realizada a devolução do dinheiro."
+    }
+  ],
+  "contatoHtml": "Caso tenha alguma dúvida, nossa equipe está à disposição para atender de Segunda-Feira à Sexta-Feira das 08:00 às 17:45 horas através do e-mail contato@tireshop.com.br, telefone 41-3317-2251 ou Whatsapp 41-3317-2251.",
+  "atualizadoEm": "2026-11-04",
+  "seo": {
+    "titulo": "Trocas e Devoluções | Ajuda | TireShop",
+    "descricao": "Política de Trocas e Devoluções da TireShop | Saiba mais"
+  }
+}

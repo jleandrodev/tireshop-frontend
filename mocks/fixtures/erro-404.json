@@ -1,0 +1,7 @@
+{
+  "type": "https://api.tireshop.com.br/erros/nao-encontrado",
+  "title": "Produto não encontrado",
+  "status": 404,
+  "detail": "Não existe produto com o código 9999.",
+  "instance": "/produtos/9999"
+}
