@@ -260,7 +260,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   Confirmado: `bin/pnpm test` (962/962), `typecheck`, `lint` (0 erros) e `format:check` limpos;
   `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
-### [ ] T-0208 · Os mega menus de Lojas Físicas e de Marcas
+### [x] T-0208 · Os mega menus de Lojas Físicas e de Marcas — 2026-11-27
 
 - **Requisito:** REQ-02-06, REQ-02-07, REQ-02-08
 - **Camada:** ui
@@ -276,6 +276,25 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/conteudo/ui/components/MegaMenuLojas.vue`, `MegaMenuMarcas.vue`, `MegaMenusDeLista.spec.ts`, `SiteCabecalho.vue`, `layers/conteudo/domain/navegacao.ts`
 - **Fora do escopo:** buscar as lojas (`GET /lojas`, módulo 12); página de marca.
 - **Depende de:** T-0207
+- **Decisões:** `app/layouts/default.vue` passa `:lojas="[]"` ao `SiteCabecalho` (prop obrigatória,
+  sem dado real até o módulo 12 — mesmo padrão de `quantidade-no-carrinho` na T-0206); "Lojas
+  Físicas" aparece como link simples em toda página até lá (a Pendência "Mega menu de Lojas" já
+  registrava isso).
+  Reaproveitado de propósito: o coordenador de mega menu e o `classificarHref`/`NuxtLink` vs
+  `<a target="_blank">` da T-0207, agora também em "Ajuda"/"Blog"/"Sobre Nós" do próprio
+  `navegacao.menu` e nos cartões de loja/logotipo de marca — mesmo padrão em todo link do
+  cabeçalho, sem reinventar por mega menu.
+  `MegaMenu` ganhou a prop opcional `variante` (sufixo de classe `ts-mega--<variante>`, o estilo
+  de summary que o protótipo já reservava para Lojas/Marcas) — a única mudança no componente
+  genérico da T-0207, do jeito que a Decisão de lá previa.
+  Achado de teste (mesma classe da T-0204/T-0205): `MegaMenusDeLista.spec.ts` varia `marcas`/
+  `menu` a cada teste — com um `NavegacaoRepositoryFalso` novo por `montar()` (como a primeira
+  versão deste arquivo fazia), só o PRIMEIRO teste do arquivo era respeitado (o handler do
+  `useAsyncData('navegacao', …)` fica fixo nele); corrigido com um único falso por `describe`,
+  reprogramado por teste. `SiteCabecalho.spec.ts` (T-0206) também precisou de `lojas: []` no
+  `montar()`, por causa da prop nova.
+  Confirmado: `bin/pnpm test` (969/969), `typecheck`, `lint` (0 erros) e `format:check` limpos;
+  `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
 ### [ ] T-0209 · O menu do celular abre em gaveta, com departamentos e aros em acordeão
 
