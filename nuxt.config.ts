@@ -51,6 +51,12 @@ export default defineNuxtConfig({
         path: '/_prova/kernel',
         file: fileURLToPath(new URL('./tests/e2e/_paginas-de-prova/kernel.vue', import.meta.url)),
       })
+      // T-0213 (REQ-02-17): lança um erro 500 de propósito, pro e2e conferir `app/error.vue`.
+      pages.push({
+        name: 'prova-erro',
+        path: '/_prova/erro',
+        file: fileURLToPath(new URL('./tests/e2e/_paginas-de-prova/erro.vue', import.meta.url)),
+      })
     },
   },
 })
