@@ -25,7 +25,9 @@ ENV COREPACK_HOME=/opt/corepack \
     NUXT_TELEMETRY_DISABLED=1
 
 RUN apt-get update \
- && apt-get install -y --no-install-recommends ca-certificates git \
+ # procps (ps): o Stryker (T-0121) usa pra encerrar os processos de teste órfãos; a imagem
+ # node:bookworm-slim não traz por padrão.
+ && apt-get install -y --no-install-recommends ca-certificates git procps \
  && rm -rf /var/lib/apt/lists/*
 
 # pnpm pelo corepack, na versão fixada.

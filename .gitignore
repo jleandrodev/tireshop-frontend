@@ -12,6 +12,7 @@ playwright-report/
 test-results/
 .lighthouseci/
 reports/
+.stryker-tmp/
 
 # Ambiente e credenciais: nunca versionar
 .env

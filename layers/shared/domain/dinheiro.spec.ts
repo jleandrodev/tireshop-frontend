@@ -41,6 +41,37 @@ describe('Dinheiro.deCentavos', () => {
     const resultado = Dinheiro.deCentavos(100, 'USD')
     expect(resultado.ok).toBe(false)
   })
+
+  test('recusa moeda diferente de BRL, com o motivo', () => {
+    const resultado = Dinheiro.deCentavos(100, 'USD')
+    if (resultado.ok) throw new Error('esperava falha')
+
+    expect(resultado.erro).toEqual({ tipo: 'DinheiroInvalido', motivo: 'moeda não suportada: USD' })
+  })
+
+  test('aceita BRL explícito (o mesmo valor do padrão)', () => {
+    expect(Dinheiro.deCentavos(100, 'BRL').ok).toBe(true)
+  })
+
+  test('recusa centavos não inteiros, com o motivo', () => {
+    const resultado = Dinheiro.deCentavos(529.9)
+    if (resultado.ok) throw new Error('esperava falha')
+
+    expect(resultado.erro).toEqual({
+      tipo: 'DinheiroInvalido',
+      motivo: 'centavos precisa ser inteiro: 529.9',
+    })
+  })
+
+  test('recusa negativo, com o motivo', () => {
+    const resultado = Dinheiro.deCentavos(-100)
+    if (resultado.ok) throw new Error('esperava falha')
+
+    expect(resultado.erro).toEqual({
+      tipo: 'DinheiroInvalido',
+      motivo: 'centavos não pode ser negativo: -100',
+    })
+  })
 })
 
 describe('somar', () => {

@@ -1,0 +1,48 @@
+name: Mutação
+
+# T-0121 (REQ-01-21, ADR 0005/0014): mede o que os testes de domain/ e application/ do kernel
+# pegam de verdade (stryker.config.mjs). Fora do ci.yml e dos checks obrigatórios de propósito:
+# demora minutos e muda devagar — nunca em pull_request, só segunda de manhã e sob demanda.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1' # toda segunda de manhã
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mutacao:
+    name: Mutação
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - name: Lê a versão do Node do .nvmrc
+        id: node
+        run: echo "versao=$(tr -d 'v[:space:]' < .nvmrc)" >> "$GITHUB_OUTPUT"
+      - name: Constrói a imagem de desenvolvimento
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          target: dev
+          build-args: NODE_VERSION=${{ steps.node.outputs.versao }}
+          load: true
+          tags: tireshop-frontend-dev
+          cache-from: type=gha,scope=dev
+          cache-to: type=gha,scope=dev,mode=max
+      - name: Teste de mutação (domain e application do kernel)
+        run: |
+          DEV_UID="$(id -u)"
+          DEV_GID="$(id -g)"
+          export DEV_UID DEV_GID
+          docker compose run --rm -T app sh -c "pnpm install --frozen-lockfile && pnpm run test:mutacao"
+      - name: Guarda o relatório de mutação
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: mutation-report
+          path: reports/mutation/
+          retention-days: 30

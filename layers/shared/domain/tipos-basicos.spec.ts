@@ -23,6 +23,16 @@ describe('Slug.de', () => {
   ])('recusa %s', (_motivo, valor) => {
     expect(Slug.de(valor).ok).toBe(false)
   })
+
+  test('recusa com o motivo, citando o valor recebido', () => {
+    const resultado = Slug.de('Pneus-Para-Carros')
+    if (resultado.ok) throw new Error('esperava falha')
+
+    expect(resultado.erro).toEqual({
+      tipo: 'SlugInvalido',
+      motivo: 'formato inválido: "Pneus-Para-Carros"',
+    })
+  })
 })
 
 describe('Imagem.de', () => {
@@ -49,6 +59,26 @@ describe('Imagem.de', () => {
   ])('recusa %s', (_motivo, entrada) => {
     expect(Imagem.de(entrada).ok).toBe(false)
   })
+
+  test('recusa largura com o motivo, citando o valor recebido', () => {
+    const resultado = Imagem.de({ src: '/img/x.webp', largura: 0, altura: 10, alt: '' })
+    if (resultado.ok) throw new Error('esperava falha')
+
+    expect(resultado.erro).toEqual({
+      tipo: 'ImagemInvalida',
+      motivo: 'largura precisa ser positiva: 0',
+    })
+  })
+
+  test('recusa altura com o motivo, citando o valor recebido', () => {
+    const resultado = Imagem.de({ src: '/img/x.webp', largura: 10, altura: -1, alt: '' })
+    if (resultado.ok) throw new Error('esperava falha')
+
+    expect(resultado.erro).toEqual({
+      tipo: 'ImagemInvalida',
+      motivo: 'altura precisa ser positiva: -1',
+    })
+  })
 })
 
 describe('Pagina.de', () => {
@@ -72,10 +102,24 @@ describe('Pagina.de', () => {
     expect(resultado.ok).toBe(false)
   })
 
+  test('recusa pagina menor que 1, com o motivo', () => {
+    const resultado = Pagina.de({ pagina: 0, porPagina: 12, total: 26, itens: [] })
+    if (resultado.ok) throw new Error('esperava falha')
+
+    expect(resultado.erro).toEqual({ tipo: 'PaginaInvalida', motivo: 'pagina precisa ser >= 1: 0' })
+  })
+
   test('vazia (total 0) é válida e não tem próxima', () => {
     const resultado = Pagina.de({ pagina: 1, porPagina: 12, total: 0, itens: [] })
     if (!resultado.ok) throw new Error('esperava sucesso: ' + JSON.stringify(resultado.erro))
 
     expect(resultado.valor.temProxima()).toBe(false)
+  })
+
+  test('totalPaginas é 0 quando total é 0, mesmo com porPagina 0 (evita NaN)', () => {
+    const resultado = Pagina.de({ pagina: 1, porPagina: 0, total: 0, itens: [] })
+    if (!resultado.ok) throw new Error('esperava sucesso: ' + JSON.stringify(resultado.erro))
+
+    expect(resultado.valor.totalPaginas).toBe(0)
   })
 })

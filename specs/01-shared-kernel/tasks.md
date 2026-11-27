@@ -488,7 +488,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   começar, e `test.slow()`/tempo limite maior nas asserções mais sensíveis à hidratação; ver nota
   ampliada na Pendência "Tempo do job E2E" de `specs/00-fundacao/tasks.md`.
 
-### [ ] T-0121 · O teste de mutação mostra onde os testes do domínio não pegam defeito
+### [x] T-0121 · O teste de mutação mostra onde os testes do domínio não pegam defeito — 2026-11-27
 
 - **Requisito:** REQ-01-21
 - **Camada:** infra
@@ -503,6 +503,27 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `stryker.config.mjs`, `package.json`, `.github/workflows/mutacao.yml`, `tests/infra/mutacao.spec.ts`, `.gitignore`, arquivos `*.spec.ts` do kernel (só casos novos)
 - **Fora do escopo:** rodar em todo pull request; mutar `ui/` e `adapters/`; alterar caso de teste já aprovado (só acrescentar).
 - **Depende de:** T-0120, T-0012
+- **Decisões:** três achados rodando o Stryker de verdade (nenhum visível só lendo a config):
+  (1) o glob padrão de plugins (`@stryker-mutator/*`) não achou o `vitest-runner` dentro do
+  node_modules não-plano do pnpm — `plugins: ['@stryker-mutator/vitest-runner']` nomeado explícito
+  resolve; (2) o Stryker mata os processos de teste órfãos com `ps`, que a imagem
+  `node:bookworm-slim` não tem — `procps` entrou no `Dockerfile` (comentário explica o motivo);
+  (3) `.nuxt/` está numa lista interna do Stryker que NUNCA copia pro sandbox (não dá pra mudar
+  por config), e o `tsconfig.json` da raiz só tem `references` pra dentro dela — sem isso o
+  esbuild do Vite quebra ao resolver a config. `buildCommand: 'npx nuxt prepare'` recria `.nuxt/`
+  dentro do sandbox antes dos testes, a partir do que sobra (`nuxt.config.ts`, `layers/`).
+  `vitest.mutacao.config.ts` (dedicado, só o projeto "unidade") repete as mesmas exclusões do
+  `vitest.config.ts` principal (`ui/*.spec.ts`, `use-*.spec.ts` — precisam do Nuxt pra montar/
+  injetar, e não são mutados mesmo).
+  **Mutante sobrevivente aceito:** `Dinheiro.igual` compara `this.moeda === outro.moeda`; hoje a
+  API só aceita `'BRL'`, então não existe como construir dois `Dinheiro` com moeda diferente para
+  diferenciar do mutante (`&&  true`) — equivalente de fato enquanto for moeda única. Se o projeto
+  um dia aceitar mais de uma moeda, essa comparação passa a ser alcançável e merece teste.
+  **Fora da lista desta task:** `html-seguro.ts` tem 15 mutantes sobreviventes (a maioria nas
+  regex de tag/atributo/href) e 1 trecho sem cobertura — a task não cita este arquivo
+  explicitamente na lista de "cada mutante que sobreviveu"; registrado aqui para abrir como task
+  própria (regex mutada é o caso clássico onde "matar todo mutante" exige entradas adversariais
+  específicas, não só os casos de uso normais já cobertos).
 
 ---
 
@@ -512,6 +533,11 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Autenticação da API (D1).** O `ClienteHttp` repassa cookie e nada mais. Se o backend exigir token, muda só a T-0103 e a T-0118.
 - **Tempo limite padrão de 8 s** é premissa nossa; validar com o TI.
 - **Limite da mutação.** Os 80% da T-0121 são ponto de partida. Subir quando os contextos de negócio (módulos 03 a 12) estiverem estáveis; a meta é 90%.
+- **`html-seguro.ts` com 15 mutantes sobreviventes.** A T-0121 só cobriu `Result`, `Dinheiro`,
+  `Slug`, `Imagem`, `Pagina` e os erros (é a lista literal da task); `html-seguro.ts` ficou em
+  82% de mutação, a maior parte na regex de tag/atributo/href (`REGEX_TAG`, `REGEX_HREF`) — regex
+  mutada costuma precisar de entrada adversarial específica pra matar cada mutante, não só os
+  casos de uso normais já cobertos. Abrir task própria quando chegar a vez deste arquivo.
 - **`Paginacao` sem reticências.** Com mais de 7 páginas a linha não cabe em 390 px. Abrir task quando o catálogo real passar disso.
 - **Caminhos legados.** `resolverRota` reconhece o padrão do site atual (`/1/5/…`) mas não sabe o destino; a consulta à API prevista no ADR 0008 depende da decisão D2.
 - **`formatar()` com espaço inseparável.** Escolha nossa, para o preço não quebrar de linha; os testes de tela comparam texto com espaço normalizado.
