@@ -73,7 +73,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Fora do escopo:** cobertura (T-0003), lint de marca (T-0006), contrato (T-0009), segurança (T-0011).
 - **Depende de:** T-0002
 
-### [ ] T-0003 · Vitest roda testes de unidade sem carregar o Nuxt
+### [x] T-0003 · Vitest roda testes de unidade sem carregar o Nuxt · 2026-11-27
 
 - **Requisito:** REQ-00-02
 - **Camada:** infra
@@ -81,7 +81,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
   - um teste trivial roda em ambiente `node` em menos de 1 s
   - `pnpm test:cobertura` gera relatório e aplica o limite de 90% em `**/domain/**` e `**/application/**`
 - **Pronto quando:** dois projetos no Vitest (`unidade` em `node`, `nuxt` para componentes); scripts `test`, `test:watch`, `test:cobertura`. **CI:** o job Testes passa a rodar `test:cobertura` e a guardar `coverage/` como artefato; o caso entra no `ci.spec.ts`.
-- **Arquivos:** `vitest.config.ts`, `package.json`, `layers/shared/domain/prova.spec.ts`, `.github/workflows/ci.yml`, `tests/infra/ci.spec.ts`
+- **Arquivos:** `vitest.config.ts`, `package.json`, `pnpm-lock.yaml`, `layers/shared/domain/prova.ts`, `layers/shared/domain/prova.spec.ts`, `.nuxtrc`, `.github/workflows/ci.yml`, `tests/infra/ci.spec.ts`
 - **Fora do escopo:** testes de componente reais.
 - **Depende de:** T-0012
 
@@ -206,6 +206,8 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Hospedagem (premissa P6 do PRD).** O CI ficou no GitHub Actions (ADR 0014). O provedor de hospedagem continua a confirmar com o TI; a T-1318 só publica a imagem.
 - **Tempo do job E2E.** Quando passar de 10 minutos, dividir em fatias (`--shard`) com matriz. Abrir task no módulo em que isso acontecer.
 - **Numeração dos marcos.** O roadmap vai de M0 a M6; o campo "Marco" de algumas specs usa outra numeração (a 13 diz M10; a 12, M9; as 09, 10 e 11, M8). Alinhar pelo roadmap.
+- **Aviso "Cannot extend config from `layers/shared/`".** O Nuxt 4 varre `layers/*` por convenção e tenta estender cada subpasta como layer (`@nuxt/kit`, `glob("layers/*", ...)`) — é como a T-0004 vai funcionar sem precisar listar `extends:` à mão no `nuxt.config.ts` raiz. Até lá, `layers/shared/` não tem `nuxt.config.ts` próprio, e o aviso aparece em `typecheck`, `build` e no projeto `nuxt` do Vitest; não é erro (sai sempre com código 0) e some quando a T-0004 criar o `nuxt.config.ts` de cada layer.
+- **Função de domínio e teste em arquivos separados.** A task citava só `prova.spec.ts`; separei em `prova.ts` (a função) + `prova.spec.ts` (o teste), porque a cobertura exclui todo `*.spec.ts` de `include` — com os dois juntos, `somar` ficaria de fora da medição e o relatório daria 0% em vez de 100%. Confirmado na prática: com um ramo sem teste, `pnpm test:cobertura` reprova citando `"**/domain/**" threshold (90%)`, com o arquivo e a linha.
 - **ESLint sem o módulo `@nuxt/eslint`.** Optei por `typescript-eslint` + `eslint-plugin-vue` direto em `eslint.config.mjs`, sem instalar `@nuxt/eslint` nem tocar `nuxt.config.ts` (fora do "Arquivos" da T-0002). Perde-se a detecção automática de auto-imports do Nuxt nas regras de lint; se isso gerar falso positivo mais adiante (variável de auto-import marcada como não definida), revisitar e trocar pelo módulo oficial.
 - **`vue/multi-word-component-names` desligada.** O roteamento por arquivo do Nuxt exige nomes de um termo só (`index.vue`, `error.vue`, futuramente `[id].vue`); a regra recomendada do `eslint-plugin-vue` reprovava isso. Desligada globalmente para `**/*.vue`.
 - **Prettier não cobre `docs/`, `specs/`, `prompts/` nem os `.md` da raiz.** Essa prosa foi revisada em sessões anteriores com formatação própria; reformatá-la agora geraria um diff gigante e alheio ao escopo desta task. `format`/`format:check` cobrem o código (TS, Vue, JSON, configs) e crescem com o projeto.

@@ -162,12 +162,16 @@ describe('ci.yml: os quatro jobs novos da T-0012 existem', () => {
     }
   })
 
-  test('Testes roda a suíte de unidade', () => {
+  test('Testes roda a suíte de unidade com cobertura e guarda o relatório', () => {
     const job = Object.values(ci.jobs).find((j) => j.name === 'Testes')
     const run = job?.steps?.map((p) => p.run ?? '').join('\n') ?? ''
+    const guardaCobertura = job?.steps?.some(
+      (p) => p.uses?.includes('actions/upload-artifact') && p.with?.path === 'coverage/',
+    )
 
     expect(job, 'não existe um job chamado "Testes"').toBeTruthy()
-    expect(scriptsChamados(run)).toContain('test')
+    expect(scriptsChamados(run)).toContain('test:cobertura')
+    expect(guardaCobertura, 'o job Testes não guarda coverage/ como artefato').toBe(true)
   })
 
   test('E2E roda o Playwright dentro da imagem do projeto e guarda o relatório na falha', () => {

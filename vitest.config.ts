@@ -1,10 +1,44 @@
+import { defineVitestProject } from '@nuxt/test-utils/config'
 import { defineConfig } from 'vitest/config'
 
-// Configuração mínima para a T-0002 rodar o próprio teste de qualidade. A T-0003 divide isto em
-// dois projetos (unidade em node, nuxt para componentes) e liga a cobertura.
+// Dois projetos (T-0003): "unidade" roda em node, sem carregar o Nuxt — domínio, aplicação e os
+// testes de infra; "nuxt" roda com o ambiente do Nuxt, para componentes (ainda sem teste real; a
+// primeira task de UI do shared kernel usa este projeto).
+//
+// A cobertura mede layers/**: 90% de linhas, funções e ramos em domain/ e application/ de cada
+// contexto (REQ-00-02; a T-1313 torna o limite por contexto). Fica fora: fábricas, falsos de teste,
+// os próprios .spec.ts e a API pública de cada contexto (index.ts só reexporta).
 export default defineConfig({
   test: {
-    environment: 'node',
-    include: ['tests/infra/**/*.spec.ts'],
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
+      include: ['layers/**/*.ts'],
+      exclude: [
+        'layers/**/*.spec.ts',
+        'layers/**/index.ts',
+        'layers/**/__fabricas__/**',
+        'layers/**/__falsos__/**',
+      ],
+      thresholds: {
+        '**/domain/**': { statements: 90, branches: 90, functions: 90, lines: 90 },
+        '**/application/**': { statements: 90, branches: 90, functions: 90, lines: 90 },
+      },
+    },
+    projects: [
+      {
+        test: {
+          name: 'unidade',
+          environment: 'node',
+          include: ['layers/**/*.spec.ts', 'tests/infra/**/*.spec.ts'],
+        },
+      },
+      await defineVitestProject({
+        test: {
+          name: 'nuxt',
+          include: ['tests/nuxt/**/*.spec.ts'],
+        },
+      }),
+    ],
   },
 })

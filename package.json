@@ -18,10 +18,13 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:cobertura": "vitest run --coverage"
   },
   "devDependencies": {
+    "@nuxt/test-utils": "4.4.0",
     "@playwright/test": "1.65.1",
+    "@vitest/coverage-v8": "5.1.2",
     "eslint": "10.15.0",
     "eslint-plugin-vue": "10.12.1",
     "prettier": "3.10.1",
