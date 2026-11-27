@@ -1,9 +1,9 @@
 name: PR
 
 # O título do PR vira a mensagem do commit na main (o merge é sempre squash). Por isso ele segue
-# a convenção de commit do projeto (AGENTS.md, seção 7):
-#   T-0304: filtra a listagem por aro
-# Fora de task, um destes prefixos: CI, Docs, Deps, Handoff.
+# Conventional Commits, em inglês (AGENTS.md, seção 7). O id da task vai no escopo:
+#   feat(T-0304): filter the listing by rim size
+# Fora de task, o escopo é livre ou não existe: "ci: add the build job", "build(deps): bump nuxt".
 
 on:
   pull_request:
@@ -22,12 +22,13 @@ jobs:
           # Pelo ambiente, nunca interpolado no script: o título é texto de quem abre o PR.
           TITULO: ${{ github.event.pull_request.title }}
         run: |
-          padrao='^(T-[0-9]{4}|CI|Docs|Deps|Handoff): [^[:space:]].*[^.[:space:]]$'
+          padrao='^(feat|fix|refactor|test|docs|build|ci|chore|perf)(\([A-Za-z0-9._/-]+\))?!?: [a-z0-9].*[^.[:space:]]$'
           if printf '%s' "$TITULO" | grep -Eq "$padrao"; then
             echo "ok: $TITULO"
           else
             echo "::error::Título fora da convenção: \"$TITULO\""
-            echo "Use \"T-0304: filtra a listagem por aro\" (id da task, dois-pontos, verbo no"
-            echo "imperativo, sem ponto final) ou um dos prefixos CI, Docs, Deps, Handoff."
+            echo "Use Conventional Commits em inglês: \"feat(T-0304): filter the listing by rim size\"."
+            echo "Tipos: feat, fix, refactor, test, docs, build, ci, chore, perf. O assunto começa com"
+            echo "minúscula, no imperativo, sem ponto final. Em task, o escopo é o id dela."
             exit 1
           fi

@@ -19,7 +19,7 @@ O projeto começa sem código, com 238 tasks em TDD. Três fatos pedem decisão 
 
 **`main` protegida.** Uma task é uma branch, um pull request e um commit na `main` (squash). O ruleset versionado em `.github/ruleset-main.json` proíbe push direto, force-push e exclusão, e exige dois checks: `Título do PR` e `CI ok`. O `CI ok` é um job agregador com `if: always()` que depende de todos os outros; job novo entra no `needs` dele, e a lista de checks obrigatórios não muda. O ruleset é aplicado e conferido por `scripts/aplicar-ruleset.sh`.
 
-**Commits.** A IA não commita, não dá push e não abre PR: no fechamento da task, sugere a branch, a sequência de commits e o título do PR. O título segue a convenção de commit (`T-0304: filtra a listagem por aro`), porque vira a mensagem do squash.
+**Commits.** A IA não commita, não dá push e não abre PR: no fechamento da task, sugere a branch, a sequência de commits e o título do PR. Commits e títulos de PR seguem **Conventional Commits, em inglês**, com o id da task no escopo (`feat(T-0304): filter the listing by rim size`); o título vira a mensagem do squash e é conferido pelo check `Título do PR`. É a única exceção ao português do ADR 0013, que continua valendo para código, domínio, testes e documentos.
 
 **Actions fixadas por SHA**, atualizadas pelo Dependabot. Permissão padrão dos workflows: `contents: read`.
 
@@ -34,6 +34,7 @@ O projeto começa sem código, com 238 tasks em TDD. Três fatos pedem decisão 
 | Listar cada job como check obrigatório | Foi o que falhou na referência: job novo fica de fora sem ninguém perceber. |
 | Hooks locais (husky, lint-staged) no lugar da proteção | Hook se pula; e rodaria fora do contêiner. A barreira é o CI. |
 | A IA commitar e abrir o PR | O dev quer rever e assinar cada commit. |
+| Commits em português (`T-0304: filtra a listagem por aro`) | Era o plano inicial; o time preferiu o padrão de mercado, que as ferramentas (Dependabot, geradores de changelog) já entendem. |
 
 ## Consequências
 

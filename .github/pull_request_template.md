@@ -1,4 +1,5 @@
-<!-- Título do PR = mensagem do commit na main: "T-0304: filtra a listagem por aro" -->
+<!-- Título do PR = mensagem do commit na main, em Conventional Commits:
+     "feat(T-0304): filter the listing by rim size" -->
 
 ## Task
 
