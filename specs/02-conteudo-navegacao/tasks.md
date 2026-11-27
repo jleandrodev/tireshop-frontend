@@ -510,7 +510,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   Verificação local (ritmo acordado com o dev na T-0213): só o arquivo de teste tocado (12/12) e
   `typecheck`/`lint` (0 erros) — a suíte inteira e o e2e ficam para o CI do PR.
 
-### [ ] T-0215 · Caso de uso `assinarNewsletter`
+### [x] T-0215 · Caso de uso `assinarNewsletter` — 2026-11-27
 
 - **Requisito:** REQ-02-12, REQ-02-13
 - **Camada:** aplicação
@@ -525,6 +525,16 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/relacionamento/domain/portas.ts`, `application/assinar-newsletter.ts`, `assinar-newsletter.spec.ts`, `application/__falsos__/leads-gateway-falso.ts`
 - **Fora do escopo:** `pedirAviso` (declarado na porta, implementado no módulo 04).
 - **Depende de:** T-0214, T-0103
+- **Decisões:** `assinarNewsletter` valida com `InscricaoNewsletter.de` antes de chamar a porta; uma
+  falha local vira `erroDeValidacao([campoInvalido])` (kernel) — mesmo tipo que a porta devolve
+  num 422, então a tela trata os dois do mesmo jeito. `LeadsGateway` só declara `assinar`:
+  `pedirAviso` fica inteiro para o módulo 04 (precisa de `PedidoAviso`, fora do escopo aqui) —
+  não é um método a mais sem implementação na mesma porta. A pendência "Porta `LeadsGateway`"
+  (fim deste arquivo) já estava resolvida: `docs/domain/relacionamento.md` já declara
+  `Confirmacao`/`ErroDeRelacionamento` (não o `Result<void, …>` que a pendência descrevia) —
+  removida da lista.
+  Verificação local: `assinar-newsletter.spec.ts` (6/6) + `inscricao-newsletter.spec.ts` (12/12),
+  `typecheck`, `lint` e `format:check` (0 erros); suíte inteira/e2e/build no CI do PR.
 
 ### [ ] T-0216 · `HttpLeadsGateway.assinar` envia a inscrição para `POST /newsletter`
 
@@ -604,7 +614,6 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Textos fixos da moldura que não estão no contrato.** O parágrafo da marca no rodapé ("Pneus novos com nota fiscal…"), o título e o apoio da newsletter, o texto do aviso de cookies e a lista de formas de pagamento estão escritos no protótipo. O `relacionamento.md` diz que o texto de consentimento ao lado do formulário "vem da navegação", mas `navegacao.json` não tem esse campo. Decidir: incluir em `/navegacao` (premissa P5) ou manter fixo no frontend.
 - **Selo "Loja confiável".** O protótipo mostra a nota da Trustvox no rodapé; ela vem de `GET /avaliacoes/resumo`. Neste módulo o selo aparece sem a nota; o módulo de Avaliações passa a nota por prop.
 - **Modelo de `Navegacao` no domínio.** O `docs/domain/conteudo.md` não lista `extras` nem `marcas`, e põe `textoFiscal` e `redes` na raiz; o contrato tem `extras`, `marcas`, `redes` na raiz e `rodape.textoFiscal`. A T-0201 segue o contrato; atualizar o `conteudo.md` no fechamento.
-- **Porta `LeadsGateway`.** O `docs/domain/relacionamento.md` declara `assinar` devolvendo `Result<void, …>`, mas o caso de uso devolve a mensagem de confirmação, que vem do `201` da API. A T-0215 faz a porta devolver a confirmação; atualizar o `relacionamento.md` no fechamento.
 - **UTV no menu (D7).** O contrato traz UTV só com o aro 15; aguardando o cliente dizer qual aro está errado.
 - **Âncoras da Home.** O menu e o rodapé apontam para `/#marcas`, `/#ofertas`, `/#entrega` e `/#departamentos`. Os destinos nascem no módulo 09; até lá o e2e não confere essas âncoras.
 - **Marcas sem página.** No protótipo, marca sem página leva a `home.html#marcas`; no contrato vem `href: null`, e aqui fica só o logotipo. Confirmar.
