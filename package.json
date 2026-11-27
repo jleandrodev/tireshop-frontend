@@ -24,6 +24,7 @@
     "mocks:sincronizar": "node scripts/sincronizar-mocks.ts"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.14.1",
     "@nuxt/test-utils": "4.4.0",
     "@playwright/test": "1.65.1",
     "@types/node": "22.20.7",
