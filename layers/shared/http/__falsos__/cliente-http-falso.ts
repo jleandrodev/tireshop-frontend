@@ -1,15 +1,18 @@
 import type { ErroDoKernel } from '../../domain/erros'
 import { ok, type Result } from '../../domain/result'
-import type { ClienteHttp } from '../cliente-http'
+import type { ClienteHttp, Consulta } from '../cliente-http'
 
 // T-0103 (docs/testing.md, "Portas falsas"): implementação em memória do ClienteHttp, para os
 // adaptadores dos contextos testarem sem subir rede nenhuma.
 // T-0216: `chamadas` guarda o que cada adaptador de fato enviou — primeiro consumidor que precisa
 // conferir o corpo de um POST (os anteriores só liam, com `obter`).
+// T-0309: `consulta` também — primeiro consumidor que precisa conferir os parâmetros de um GET
+// (os anteriores, `navegacao`, não tinham nenhum).
 export type ChamadaHttp = {
   readonly metodo: string
   readonly caminho: string
   readonly corpo: unknown
+  readonly consulta?: Consulta
 }
 
 export type ClienteHttpFalso = ClienteHttp & {
@@ -31,8 +34,8 @@ export function criarClienteHttpFalso(): ClienteHttpFalso {
     chamadas,
     programarSucesso: (caminho, valor) => respostas.set(caminho, ok(valor)),
     programarFalha: (caminho, erro) => respostas.set(caminho, { ok: false, erro }),
-    obter: async (caminho) => {
-      chamadas.push({ metodo: 'GET', caminho, corpo: undefined })
+    obter: async (caminho, opcoes) => {
+      chamadas.push({ metodo: 'GET', caminho, corpo: undefined, consulta: opcoes?.consulta })
       return resposta(caminho)
     },
     enviar: async (metodo, caminho, corpo) => {
