@@ -29,8 +29,8 @@ seus. No VS Code, "Reopen in Container" usa o mesmo ambiente (`.devcontainer/`).
 
 A `main` é protegida: **uma task, uma branch, um pull request, um commit** (squash). O merge só
 libera com dois checks verdes: `CI ok`, que agrega todos os jobs do
-[ci.yml](.github/workflows/ci.yml), e `Título do PR`, que confere a convenção
-`T-0304: filtra a listagem por aro`. O CI cresce com o projeto: cada verificação entra na task que a
+[ci.yml](.github/workflows/ci.yml), e `Título do PR`, que confere Conventional Commits em inglês,
+com o id da task no escopo (`feat(T-0304): filter the listing by rim size`). O CI cresce com o projeto: cada verificação entra na task que a
 cria (a tabela está no [roadmap](specs/roadmap.md)). Depois de criar o repositório no GitHub, a
 proteção se aplica com `sh scripts/aplicar-ruleset.sh`.
 

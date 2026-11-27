@@ -1,6 +1,7 @@
 version: 2
 
-# O prefixo "Deps" é o que o check "Título do PR" aceita para atualização de dependência.
+# Os prefixos seguem Conventional Commits, para o título do PR passar no check "Título do PR":
+# "ci(deps): bump ..." para actions e "build(deps): bump ..." para o resto.
 # O ecossistema npm entra na T-0001, quando o package.json passa a existir.
 updates:
   - package-ecosystem: github-actions
@@ -8,14 +9,16 @@ updates:
     schedule:
       interval: monthly
     commit-message:
-      prefix: Deps
+      prefix: ci
+      include: scope
 
   - package-ecosystem: docker
     directory: /
     schedule:
       interval: monthly
     commit-message:
-      prefix: Deps
+      prefix: build
+      include: scope
     ignore:
       # Node 22 é decisão de arquitetura (ADR 0001); trocar de major é task, não atualização.
       - dependency-name: node

@@ -104,10 +104,10 @@ Docs atualizadas: <caminhos, ou "nenhuma">
 Pendências anotadas: <lista, ou "nenhuma">
 
 Sugestão de commits
-Branch: t-xxxx-<resumo-em-kebab>
+Branch: <tipo>/t-xxxx-<summary-in-kebab-case>
 1. <mensagem>   <arquivos>
 2. <mensagem>   <arquivos>
-Título do PR: T-xxxx: <o comportamento, no imperativo>
+Título do PR: <tipo>(T-xxxx): <the behavior, in English, imperative>
 No CI deste PR: <jobs que devem aparecer, e o que há de novo>
 Próxima task: T-yyyy · <título>
 ```
@@ -155,8 +155,15 @@ O contrato vive em três lugares que precisam concordar: o schema Zod do adaptad
 - Domínio e contratos em **português** (linguagem ubíqua: `Produto`, `Medida`, `Loja`, `precoAVista`).
 - Termos técnicos de padrão em inglês (`Repository`, `Gateway`, `UseCase`, `Mapper`, `Schema`).
 - Arquivos de teste ao lado do código: `x.ts` e `x.spec.ts`. Testes de ponta a ponta em `tests/e2e/`.
-- Commits em português, no imperativo, com o id da task: `T-0304: filtra a listagem por aro`.
-  Fora de task, um destes prefixos: `CI:`, `Docs:`, `Deps:`, `Handoff:`.
+- **Commits e títulos de PR em inglês, em Conventional Commits**, com o id da task no escopo:
+  `feat(T-0304): filter the listing by rim size`. É a única exceção ao português: o código, o
+  domínio, os testes e os documentos continuam em português.
+  - Tipos: `feat` (comportamento novo), `fix` (correção), `test` (só teste), `refactor` (sem mudar
+    comportamento), `docs`, `ci` (workflows), `build` (dependências, Docker, ferramentas), `perf`,
+    `chore` (o resto).
+  - Assunto no imperativo, começando com minúscula, sem ponto final. Nomes do domínio ficam como
+    estão no código, entre crases quando ajudar: ``feat(T-0301): validate `Medida` on creation``.
+  - Fora de task, sem escopo ou com escopo livre: `ci: add the build job`, `build(deps): bump nuxt`.
 
 ## 8. Git, commits e pull request
 
@@ -164,15 +171,17 @@ A `main` é protegida: só recebe mudança por pull request, com squash, e com o
 `Título do PR` verdes (ADR 0014). **Quem commita, dá push, abre o PR e faz o merge é o dev.** Você
 não roda `git commit`, `git push` nem `gh pr`: você **sugere**, no portão 5.
 
-- **Uma task, uma branch, um PR.** Branch `t-0304-filtra-por-aro`, criada a partir da `main` atualizada.
+- **Uma task, uma branch, um PR.** Branch `feat/t-0304-filter-by-rim-size` (tipo, id e resumo em inglês), criada a partir da `main` atualizada.
 - **Commits que contam o ciclo.** Sugira, na ordem, com a lista de arquivos de cada um:
-  1. `T-0304: testa o filtro da listagem por aro` (só os arquivos de teste)
-  2. `T-0304: filtra a listagem por aro` (o código de produção)
-  3. `T-0304: extrai <o que foi extraído>` (só se a refatoração foi relevante)
-  4. `T-0304: fecha a task` (`tasks.md`, docs e Pendências; pode entrar no commit 2 se for pequeno)
+  1. `test(T-0304): cover the listing filter by rim size` (só os arquivos de teste)
+  2. `feat(T-0304): filter the listing by rim size` (o código de produção)
+  3. `refactor(T-0304): extract <o que foi extraído>` (só se a refatoração foi relevante)
+  4. `docs(T-0304): close the task` (`tasks.md`, docs e Pendências; pode entrar no commit 2 se for pequeno)
 
-  Task pequena pode ser um commit só. Mudança de CI da task vai no commit do código que ela verifica.
-- **Título do PR = mensagem do squash**: `T-0304: filtra a listagem por aro`. O check `Título do PR`
-  reprova fora desse formato.
+  Task pequena pode ser um commit só. Mudança de CI da task vai no commit do código que ela verifica
+  (ou em um `ci(T-0304): ...` próprio, se for grande).
+- **Título do PR = mensagem do squash**: `feat(T-0304): filter the listing by rim size`. O tipo é o
+  do que a task entrega: `feat` para comportamento, `build` ou `ci` para task de infraestrutura,
+  `test` para task que só audita. O check `Título do PR` reprova fora do formato.
 - Diga o que o dev deve ver no CI daquele PR (os jobs, e o que a task acrescentou). Se o CI reprovar,
   o dev cola a falha e você corrige dentro do ciclo: teste aprovado não se altera para passar.
