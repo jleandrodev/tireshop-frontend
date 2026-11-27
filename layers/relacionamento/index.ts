@@ -3,3 +3,6 @@
 export * from './domain/email'
 export * from './domain/telefone'
 export * from './domain/inscricao-newsletter'
+export * from './domain/portas'
+export * from './application/assinar-newsletter'
+export * from './application/__falsos__/leads-gateway-falso'
