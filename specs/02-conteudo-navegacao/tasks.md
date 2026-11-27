@@ -483,7 +483,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   Confirmado: `bin/pnpm test` (1002/1002), `typecheck`, `lint` (0 erros) e `format:check` limpos;
   `bin/pnpm test:e2e` completo (70/70) sem regressão; `bin/pnpm build` limpo.
 
-### [ ] T-0214 · `Email`, `Telefone` e `InscricaoNewsletter` validam o contato
+### [x] T-0214 · `Email`, `Telefone` e `InscricaoNewsletter` validam o contato — 2026-11-27
 
 - **Requisito:** REQ-02-12
 - **Camada:** domínio
@@ -499,6 +499,16 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/relacionamento/domain/email.ts`, `telefone.ts`, `inscricao-newsletter.ts`, `inscricao-newsletter.spec.ts`
 - **Fora do escopo:** `PedidoAviso` (módulo 04).
 - **Depende de:** T-0101
+- **Decisões:** o fator estático se chama `de` (`Email.de`, `Telefone.de`), não `criar` — segue a
+  convenção já usada por todo VO do kernel (`Slug.de`, `Imagem.de`, `Dinheiro.deCentavos`); "criar"
+  no "Pronto quando" é a descrição do padrão (factory + `Result`), não o nome literal do método.
+  A falha de `InscricaoNewsletter.de` reusa `CampoInvalido` do kernel (`#layers/shared`, mesmo
+  formato `{ campo, mensagem }` que a task descreve) em vez de um tipo próprio — já é exatamente o
+  que REQ-02-12 pede, sem duplicar a forma. `layers/relacionamento/index.ts` (API pública do
+  contexto, antes só `export {}`) passa a reexportar os três tipos — primeira task do módulo
+  Relacionamento, mesmo padrão de quando o Conteúdo abriu o próprio `index.ts` na T-0201.
+  Verificação local (ritmo acordado com o dev na T-0213): só o arquivo de teste tocado (12/12) e
+  `typecheck`/`lint` (0 erros) — a suíte inteira e o e2e ficam para o CI do PR.
 
 ### [ ] T-0215 · Caso de uso `assinarNewsletter`
 
