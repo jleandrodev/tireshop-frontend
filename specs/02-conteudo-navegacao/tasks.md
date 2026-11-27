@@ -536,7 +536,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   Verificação local: `assinar-newsletter.spec.ts` (6/6) + `inscricao-newsletter.spec.ts` (12/12),
   `typecheck`, `lint` e `format:check` (0 erros); suíte inteira/e2e/build no CI do PR.
 
-### [ ] T-0216 · `HttpLeadsGateway.assinar` envia a inscrição para `POST /newsletter`
+### [x] T-0216 · `HttpLeadsGateway.assinar` envia a inscrição para `POST /newsletter` — 2026-11-27
 
 - **Requisito:** REQ-02-12, REQ-02-13
 - **Camada:** adaptador
@@ -551,6 +551,25 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/relacionamento/adapters/http/newsletter.schema.ts`, `http-leads-gateway.ts`, `http-leads-gateway.spec.ts`
 - **Fora do escopo:** `POST /produtos/{id}/avise-me`.
 - **Depende de:** T-0215
+- **Decisões:** o contrato já existia pronto (`docs/api/openapi.yaml`, `docs/api/examples/` e
+  `mocks/fixtures/` já tinham `InscricaoNewsletter`/`Confirmacao` e as duas fixtures) — não é
+  mudança de contrato (seção 5 do AGENTS.md), só o primeiro adaptador a consumi-lo.
+  404 (`NaoEncontrado`), 422 (`ErroDeValidacao`, do corpo `erros`) e falha de rede já chegam
+  prontos do `ClienteHttp` (`layers/shared/http/cliente-http.ts`, já testado de forma genérica em
+  `cliente-http.spec.ts`) — o adaptador só traduz um `NaoEncontrado` impossível em
+  `ErroDeContrato` (mesmo padrão de `http-navegacao-repository.ts`) e repassa o resto.
+  "201 sem `mensagem` vira `ErroDeContrato`" é coberto onde a lógica de fato mora: o teste direto
+  do schema (`ConfirmacaoSchema.safeParse({}).success === false`) mais o teste genérico já
+  existente de `cliente-http.spec.ts` (schema que falha → `ErroDeContrato`) — `ClienteHttpFalso`
+  nunca roda o schema (é um substituto da porta inteira, não do parsing), então não dá para
+  observar isso por ele.
+  `ClienteHttpFalso` (`layers/shared/http/__falsos__/cliente-http-falso.ts`, fora da lista de
+  Arquivos desta task) ganhou `chamadas` — até aqui nenhum adaptador enviava corpo (só
+  `obter`), e sem isso não tinha como o teste conferir o que foi enviado. Mudança aditiva
+  (campo novo), os dois outros consumidores continuam passando sem alteração.
+  Verificação local: `http-leads-gateway.spec.ts` (8/8) + os dois consumidores existentes do
+  `ClienteHttpFalso` (17/17), `typecheck`, `lint` e `format:check` (0 erros); suíte inteira/e2e/
+  build no CI do PR.
 
 ### [ ] T-0217 · O mock de `POST /newsletter` aceita, recusa e não revela quem já assinou
 
