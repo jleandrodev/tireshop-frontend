@@ -162,7 +162,7 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
   Verificação local: `listar-produtos.spec.ts` (4/4) + todo o módulo Catálogo (52/52 ao todo),
   `typecheck`, `lint` e `format:check` (0 erros); suíte inteira/e2e/build no CI do PR.
 
-### [ ] T-0307 · Caso de uso `obterCategoria`
+### [x] T-0307 · Caso de uso `obterCategoria` — 2026-11-27
 
 - **Requisito:** REQ-03-01, REQ-03-16
 - **Camada:** aplicação
@@ -174,6 +174,20 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
 - **Arquivos:** `layers/catalogo/domain/categoria.ts`, `categoria.spec.ts`, `application/obter-categoria.ts`, `obter-categoria.spec.ts`
 - **Fora do escopo:** metadados de SEO (T-0318).
 - **Depende de:** T-0306
+- **Decisões:** `Categoria` é um tipo passivo (mesma linha de `ProdutoResumo`/`Faceta`) com
+  `abaInicialDaBusca` como função livre — o `slug` já chega validado (`Slug` do kernel), sem
+  invariante nova para checar na criação. Só `slug` e `tipo` por agora: H1, ícone, arte,
+  migalhas etc. (docs/domain/catalogo.md) entram quando a task que os mostrar precisar — nenhum
+  teste aqui os exige. `abaInicialDaBusca` devolve `'medida'` para `departamento`/`marca`
+  (padrão não testado explicitamente na spec, mas citado como "Pronto quando": a busca sempre
+  abre em algum lugar, e `medida` é a aba padrão do widget de busca).
+  `CategoriaRepository` (nova em `domain/portas.ts`, ao lado de `ProdutoRepository` da T-0306)
+  usa `Slug` (não `string`) no parâmetro de `obter`, igual ao `docs/domain/catalogo.md`. Sem
+  falso em `__falsos__/` (não listado nos Arquivos desta task): o teste do caso de uso usa um
+  objeto `CategoriaRepository` construído ali mesmo, só para este teste.
+  Verificação local: `categoria.spec.ts` (3/3) + `obter-categoria.spec.ts` (2/2) + todo o
+  módulo Catálogo (57/57 ao todo), `typecheck`, `lint` e `format:check` (0 erros); suíte
+  inteira/e2e/build no CI do PR.
 
 ### [ ] T-0308 · O schema e o mapper de `ProdutoResumo` entendem a API
 
