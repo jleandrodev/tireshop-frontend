@@ -376,7 +376,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   `vue/html-self-closing` reprova para elemento void; `eslint . ` não falha com warning (só com
   erro), por isso passou no CI da T-0115 — corrigido aqui de passagem.
 
-### [ ] T-0117 · `CapaDeVideo` e `CapaDeMapa` só carregam o `iframe` ao tocar
+### [x] T-0117 · `CapaDeVideo` e `CapaDeMapa` só carregam o `iframe` ao tocar — 2026-11-27
 
 - **Requisito:** REQ-01-18
 - **Camada:** ui
@@ -392,6 +392,13 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/ui/CapaDeVideo.vue`, `CapaDeMapa.vue`, `Capas.spec.ts`
 - **Fora do escopo:** conteúdo do Sobre nós (módulo 11) e das lojas (módulo 12); consentimento de cookies de terceiros.
 - **Depende de:** T-0107
+- **Decisões:** usa as classes já existentes `ts-video*` e `ts-mapa*` de `institucional.css` — o
+  protótipo mostra que lojas (módulo 12) já importa essa folha de estilo junto com Sobre nós
+  (módulo 11), então não é uma folha "só do institucional" apesar do nome. `.ts-mapa__capa`
+  (nova) reserva o mesmo `aspect-ratio` do `iframe` nos dois breakpoints — o protótipo nunca tinha
+  um estado "antes do toque" para o mapa, só o `CapaDeVideo` já tinha `.ts-video__capa`. Foco só
+  é movido explicitamente para o `iframe` em `CapaDeVideo` (é o único caso testado); `CapaDeMapa`
+  não move foco, por simetria com o que foi pedido, não por limitação técnica.
 
 ### [ ] T-0118 · O `ClienteHttp` é criado em um lugar só, um por requisição
 
