@@ -189,7 +189,7 @@ dois tamanhos (sem motivo para não rodar). `.github/workflows/ci.yml` não mudo
 roda `pnpm run test:e2e` (que agora cobre os dois projetos sozinho) e já guarda o relatório na
 falha, desde a T-0012.
 
-### [ ] T-0011 · A `main` só aceita o que passou em tudo, inclusive nas verificações de segurança
+### [x] T-0011 · A `main` só aceita o que passou em tudo, inclusive nas verificações de segurança · 2026-11-27
 
 - **Requisito:** REQ-00-10, REQ-00-12
 - **Camada:** infra
@@ -205,6 +205,14 @@ falha, desde a T-0012.
 - **Arquivos:** `.github/workflows/ci.yml`, `.github/workflows/codeql.yml`, `.github/dependabot.yml`, `tests/infra/ci.spec.ts`
 - **Fora do escopo:** publicação (T-1318); mutação (T-0121); Lighthouse, regressão visual e backend externo (módulo 13).
 - **Depende de:** T-0006, T-0009, T-0010, T-0012
+
+**Decisões:** `codeql.yml` fica fora do agregador `CI ok` de propósito — é informativo (achado pede
+triagem), não bloqueia merge, mesmo padrão que o Lighthouse do módulo 13 vai seguir. A revisão de
+dependências (`dependency-review-action`) é um passo `if: pull_request` dentro do job Segurança,
+não um job separado — por isso o `CI ok` também passou a aceitar `skipped` (nenhum job hoje depende
+de outro, então "pulado" só pode ser de propósito, nunca herdado de uma falha). `pnpm audit --prod`
+encontrou 1 vulnerabilidade moderada (abaixo de `--audit-level=high`, não reprova); registrar para
+acompanhar quando aparecer um corretivo.
 
 ---
 

@@ -32,7 +32,9 @@ type Workflow = {
 
 let ci: Workflow
 let pr: Workflow
+let codeql: Workflow
 let ruleset: { rules: Array<{ type: string; parameters?: Record<string, unknown> }> }
+let dependabot: { updates: Array<{ 'package-ecosystem': string }> }
 let pacote: {
   scripts: Record<string, string>
   packageManager: string
@@ -43,7 +45,9 @@ let dockerfile: string
 beforeAll(() => {
   ci = parse(readFileSync(join(raiz, '.github', 'workflows', 'ci.yml'), 'utf8'))
   pr = parse(readFileSync(join(raiz, '.github', 'workflows', 'pr.yml'), 'utf8'))
+  codeql = parse(readFileSync(join(raiz, '.github', 'workflows', 'codeql.yml'), 'utf8'))
   ruleset = JSON.parse(readFileSync(join(raiz, '.github', 'ruleset-main.json'), 'utf8'))
+  dependabot = parse(readFileSync(join(raiz, '.github', 'dependabot.yml'), 'utf8'))
   pacote = JSON.parse(readFileSync(join(raiz, 'package.json'), 'utf8'))
   dockerfile = readFileSync(join(raiz, 'Dockerfile'), 'utf8')
 })
@@ -239,5 +243,104 @@ describe('Dockerfile e package.json: as mesmas versões', () => {
 
     expect(pacote.packageManager).toBe(`pnpm@${pnpmDoDockerfile}`)
     expect(pacote.devDependencies['@playwright/test']).toBe(playwrightDoDockerfile)
+  })
+})
+
+describe('T-0011: ci.yml roda tudo, até o fim do módulo 00', () => {
+  test('todo script de qualidade, teste e build está em algum job', () => {
+    const chamados = new Set(
+      todosOsPassos(ci)
+        .map((p) => p.run ?? '')
+        .flatMap(scriptsChamados),
+    )
+    for (const script of [
+      'format:check',
+      'lint',
+      'lint:marca',
+      'typecheck',
+      'test:cobertura',
+      'test:e2e',
+      'build',
+    ]) {
+      expect(chamados, `nenhum job chama "pnpm ${script}"`).toContain(script)
+    }
+  })
+})
+
+describe('ci.yml: job Segurança', () => {
+  const job = () => Object.values(ci.jobs).find((j) => j.name === 'Segurança')
+
+  test('existe e varre segredos e dependências de produção', () => {
+    const passos = job()?.steps ?? []
+    const run = passos.map((p) => p.run ?? '').join('\n')
+
+    expect(job(), 'não existe um job chamado "Segurança"').toBeTruthy()
+    expect(run, 'não roda o gitleaks').toMatch(/gitleaks/)
+    expect(run, 'não roda pnpm audit --prod').toMatch(/pnpm audit --prod/)
+    expect(run, 'o audit precisa de --audit-level=high').toMatch(/--audit-level[= ]high/)
+  })
+
+  test('a revisão de dependências só roda em pull_request', () => {
+    const passos = job()?.steps ?? []
+    const passo = passos.find((p) => p.uses?.includes('dependency-review-action'))
+
+    expect(passo, 'falta o passo de dependency-review-action').toBeTruthy()
+    expect(passo?.if, 'a revisão de dependências deveria rodar só em pull_request').toMatch(
+      /pull_request/,
+    )
+  })
+
+  test('está no needs do CI ok', () => {
+    const needs = Array.isArray(ci.jobs['ci-ok']?.needs) ? ci.jobs['ci-ok']!.needs : []
+    expect(needs).toContain('seguranca')
+  })
+})
+
+describe('ci.yml: "CI ok" aceita job pulado de propósito (if: do próprio job), não só sucesso', () => {
+  test('o script do CI ok trata "skipped" como aceitável', () => {
+    const passo = ci.jobs['ci-ok']?.steps?.[0]
+    expect(
+      passo?.run,
+      'ci-ok precisa aceitar jobs puláveis (dependency-review fora de PR)',
+    ).toMatch(/skipped/)
+  })
+})
+
+describe('codeql.yml: analisa javascript-typescript em PR, push na main e semanalmente', () => {
+  test('gatilhos e idioma', () => {
+    expect(codeql.on.pull_request).toBeTruthy()
+    expect(codeql.on.push?.branches).toContain('main')
+    expect((codeql.on as Record<string, unknown>).schedule).toBeTruthy()
+
+    const run = todosOsPassos(codeql)
+      .map((p) => JSON.stringify(p.with ?? {}))
+      .join('\n')
+    expect(run).toContain('javascript-typescript')
+  })
+})
+
+describe('Dependabot cobre npm, github-actions e docker', () => {
+  test.each(['npm', 'github-actions', 'docker'])('%s', (ecossistema) => {
+    const ecossistemas = dependabot.updates.map((u) => u['package-ecosystem'])
+    expect(ecossistemas).toContain(ecossistema)
+  })
+})
+
+describe('Nenhum workflow pede permissão de escrita, além de security-events: write no CodeQL', () => {
+  test.each(['ci.yml', 'pr.yml'])('%s', (nome) => {
+    const workflow = nome === 'ci.yml' ? ci : pr
+    const permissoesDoWorkflow = Object.entries(workflow.permissions ?? {})
+    const permissoesDosJobs = Object.values(workflow.jobs).flatMap((j) =>
+      Object.entries((j as unknown as { permissions?: Record<string, string> }).permissions ?? {}),
+    )
+    for (const [, valor] of [...permissoesDoWorkflow, ...permissoesDosJobs]) {
+      expect(valor).toBe('read')
+    }
+  })
+
+  test('codeql.yml', () => {
+    const permissoes = Object.entries(codeql.permissions ?? {})
+    const escritas = permissoes.filter(([, valor]) => valor === 'write')
+    expect(escritas).toEqual([['security-events', 'write']])
   })
 })
