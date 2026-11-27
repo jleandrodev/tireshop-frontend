@@ -17,11 +17,19 @@ export type Paginacao = {
   readonly totalPaginas: number
 }
 
+// `OpcaoDeOrdenacao` (não `Ordenacao` solta): a API devolve rótulo pronto pro seletor de ordem
+// (docs/api/openapi.yaml, ListaDeProdutos.ordenacoes) — achado na T-0309, lendo o contrato de
+// verdade; ajustado aqui porque é o mesmo campo que a T-0306 só supôs sem checar.
+export type OpcaoDeOrdenacao = {
+  readonly valor: Ordenacao
+  readonly rotulo: string
+}
+
 export type ListaDeProdutos = {
   readonly itens: readonly ProdutoResumo[]
   readonly paginacao: Paginacao
   readonly facetas: readonly Faceta[]
-  readonly ordenacoes: readonly Ordenacao[]
+  readonly ordenacoes: readonly OpcaoDeOrdenacao[]
 }
 
 export type ProdutoRepository = {
