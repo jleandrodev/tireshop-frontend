@@ -129,7 +129,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Fora do escopo:** `Product` e `AutomotiveBusiness` (cada contexto monta o seu); `useSeoMeta` e `useHead` (só na página).
 - **Depende de:** T-0105
 
-### [ ] T-0107 · `Slug`, `Imagem` e `Pagina<T>` validam os próprios invariantes
+### [x] T-0107 · `Slug`, `Imagem` e `Pagina<T>` validam os próprios invariantes — 2026-11-27
 
 - **Requisito:** REQ-01-08
 - **Camada:** domínio
@@ -145,6 +145,11 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/domain/slug.ts`, `imagem.ts`, `pagina.ts`, `tipos-basicos.spec.ts`
 - **Fora do escopo:** gerar slug a partir de texto livre; `srcset` e otimização de imagem.
 - **Depende de:** T-0101
+- **Decisões:** `Pagina<T>.de` recebe `itens: readonly T[]` junto de `pagina`/`porPagina`/`total` (a
+  entidade genérica guarda a própria página de itens); `totalPaginas` é calculado
+  (`Math.ceil(total / porPagina)`, com `0` quando `total` é `0`), nunca recebido como parâmetro —
+  evita os dois poderem contradizer um ao outro. `porPagina <= 0` não é validado: nenhum caso pede
+  isso e os chamadores (módulos de listagem) sempre fixam o valor, não vem de entrada externa.
 
 ### [ ] T-0108 · Datas, números, telefones e plurais saem em pt-BR
 
