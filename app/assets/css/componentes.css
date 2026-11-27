@@ -416,7 +416,7 @@
 .ts-redes svg { width: 20px; height: 20px; }
 .ts-rodape__titulo { color: var(--ts-paper); font-size: var(--ts-fs-md); font-weight: var(--w-bold); margin-bottom: var(--ts-s-3); }
 .ts-rodape__lista { display: grid; gap: var(--ts-s-2); }
-.ts-rodape__coluna summary { list-style: none; }
+.ts-rodape__coluna summary { display: flex; align-items: center; min-height: var(--ts-tap); list-style: none; }
 .ts-rodape__coluna summary::-webkit-details-marker { display: none; }
 .ts-rodape__news { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ts-s-8); align-items: end; margin-top: var(--ts-s-12); padding-top: var(--ts-s-8); border-top: 1px solid var(--neutral-700); }
 .ts-rodape__titulo { display: block; }
