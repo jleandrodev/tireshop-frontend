@@ -15,7 +15,21 @@ describe('CriterioDeListagem.inicial', () => {
 
     expect(criterio.pagina).toBe(1)
     expect(criterio.ordem).toBe('mais_vendidos')
+    expect(criterio.porPagina).toBe(12)
     expect(POR_PAGINA).toBe(12)
+  })
+
+  test('aceita outro porPagina (T-0306: o comparador pede até 48 pela mesma porta)', () => {
+    expect(CriterioDeListagem.inicial('pneus-para-carros', 48).porPagina).toBe(48)
+  })
+})
+
+describe('comPorPagina', () => {
+  test('troca o porPagina, sem mudar o resto', () => {
+    const criterio = umCriterio().irParaPagina(2).comPorPagina(48)
+
+    expect(criterio.porPagina).toBe(48)
+    expect(criterio.pagina).toBe(2)
   })
 })
 
