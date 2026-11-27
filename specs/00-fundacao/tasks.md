@@ -29,7 +29,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Fora do escopo:** qualquer coisa de Nuxt (T-0001); imagem de produção (T-1317); jobs de lint, teste, e2e e build (T-0012).
 - **Depende de:** nada
 
-### [ ] T-0001 · O projeto Nuxt sobe e renderiza no servidor
+### [x] T-0001 · O projeto Nuxt sobe e renderiza no servidor · 2026-11-27
 
 - **Requisito:** REQ-00-01
 - **Camada:** infra
@@ -37,7 +37,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
   - `GET /` responde 200
   - o HTML bruto contém "TireShop"
 - **Pronto quando:** `bin/pnpm dev` sobe e responde em `http://localhost:3000`; o teste passa no contêiner; `package.json` fixa o Node do `.nvmrc` (`engines`) e o pnpm (`packageManager`) na versão do `Dockerfile`; `@playwright/test` está na versão exata do `ARG PLAYWRIGHT_VERSION`; o `pnpm-lock.yaml` está versionado; o Dependabot passa a cobrir o ecossistema `npm`.
-- **Arquivos:** `package.json`, `pnpm-lock.yaml`, `nuxt.config.ts`, `tsconfig.json`, `app/app.vue`, `app/pages/index.vue`, `playwright.config.ts`, `.gitignore`, `.github/dependabot.yml`
+- **Arquivos:** `package.json`, `pnpm-lock.yaml`, `pnpm-workspace.yaml`, `nuxt.config.ts`, `tsconfig.json`, `app/app.vue`, `app/pages/index.vue`, `playwright.config.ts`, `.gitignore`, `.github/dependabot.yml`
 - **Fora do escopo:** layout, CSS, layers; jobs de CI (T-0012).
 - **Depende de:** T-0000
 
@@ -206,4 +206,6 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Hospedagem (premissa P6 do PRD).** O CI ficou no GitHub Actions (ADR 0014). O provedor de hospedagem continua a confirmar com o TI; a T-1318 só publica a imagem.
 - **Tempo do job E2E.** Quando passar de 10 minutos, dividir em fatias (`--shard`) com matriz. Abrir task no módulo em que isso acontecer.
 - **Numeração dos marcos.** O roadmap vai de M0 a M6; o campo "Marco" de algumas specs usa outra numeração (a 13 diz M10; a 12, M9; as 09, 10 e 11, M8). Alinhar pelo roadmap.
+- **O pnpm baixa o próprio binário a cada comando.** Todo `bin/pnpm` começa com "Downloading the pnpm 12.23.0 binary", alguns segundos por execução, porque o contêiner é descartado e o cache não fica na imagem. Ajustar o `Dockerfile` (T-0000) para o binário já vir na imagem; conferir no `scripts/conferir-ambiente.sh`.
+- **Política de instalação do pnpm 12.** Pacote publicado há menos de um dia é recusado, e script de instalação só roda para o que está em `allowBuilds` do `pnpm-workspace.yaml` (hoje, só `esbuild`). Na T-0001 o `vue-router` ficou na 5.5.1 por isso. Dependência nova que precise de script de build entra nessa lista na task que a instala.
 - **Verificadores em dois lugares.** `scripts/handoff/` deste repositório é a cópia que vale. As de `tools/handoff/` no repositório de discovery ficaram para o dev decidir.
