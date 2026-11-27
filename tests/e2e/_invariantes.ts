@@ -60,8 +60,11 @@ const ALVO_MINIMO_PX = 44
 
 // Exceções nomeadas: nenhuma sem seletor e motivo (mesmo padrão de scripts/lint-marca.ts).
 // `.ts-carrossel__ponto` é 24px de propósito (T-0111): navegação redundante, as setas (44px)
-// já cobrem o alvo mínimo.
-const EXCECOES_ALVO_PEQUENO = ['.ts-carrossel__ponto']
+// já cobrem o alvo mínimo. `.ts-mega__aros a` (30px) e `.ts-mega__grupo a` (36px, "Ajuda para
+// escolher"/"Também vendemos") são de propósito (T-0219, CA-02-03: "pelo menos 24 px") —
+// computador, mouse, painel com dezenas de aros por departamento; 44px inflaria o painel sem
+// ajudar quem usa teclado ou toque (o painel nem abre no celular, que tem a gaveta).
+const EXCECOES_ALVO_PEQUENO = ['.ts-carrossel__ponto', '.ts-mega__aros a', '.ts-mega__grupo a']
 
 async function conferirAlvosDeToque(page: Page): Promise<void> {
   const alvos = await page

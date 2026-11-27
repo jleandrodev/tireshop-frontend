@@ -61,7 +61,10 @@ describe('responderFixture: GET /api/mock/navegacao', () => {
       lerFixture: async () => ({}),
     })
 
-    expect(Date.now() - antes).toBeGreaterThanOrEqual(300)
+    // Achado no CI (T-0219, job "Testes"): 299ms medidos para um `setTimeout(…, 300)` — não é
+    // atraso curto de menos, é a precisão do relógio sob carga (`Date.now()` arredonda; o próprio
+    // Node só garante "não antes de" 300ms). Poucos ms de tolerância, não a asserção toda.
+    expect(Date.now() - antes).toBeGreaterThanOrEqual(295)
   }, 10_000)
 
   test('com NUXT_PUBLIC_API_BASE externo, o mock está desligado', async () => {

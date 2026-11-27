@@ -57,6 +57,14 @@ export default defineNuxtConfig({
         path: '/_prova/erro',
         file: fileURLToPath(new URL('./tests/e2e/_paginas-de-prova/erro.vue', import.meta.url)),
       })
+      // T-0219 (REQ-02-15): uma barra fixa de prova, pro e2e conferir que o WhatsApp não a cobre.
+      pages.push({
+        name: 'prova-barra-fixa',
+        path: '/_prova/barra-fixa',
+        file: fileURLToPath(
+          new URL('./tests/e2e/_paginas-de-prova/barra-fixa.vue', import.meta.url),
+        ),
+      })
     },
   },
 })
