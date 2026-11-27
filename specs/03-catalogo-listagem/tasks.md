@@ -46,7 +46,7 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
   adiante no módulo). Verificação local: `preco.spec.ts` (7/7), `typecheck`, `lint` e
   `format:check` (0 erros); suíte inteira/e2e/build no CI do PR.
 
-### [ ] T-0303 · `ProdutoResumo` sabe se pode ser comprado e o que mostrar
+### [x] T-0303 · `ProdutoResumo` sabe se pode ser comprado e o que mostrar — 2026-11-27
 
 - **Requisito:** REQ-03-03, REQ-03-04
 - **Camada:** domínio
@@ -60,6 +60,21 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
 - **Arquivos:** `layers/catalogo/domain/produto-resumo.ts`, `produto-resumo.spec.ts`, `__fabricas__/produto.ts`, `index.ts`
 - **Fora do escopo:** o `Produto` completo (módulo 04).
 - **Depende de:** T-0301, T-0302
+- **Decisões:** `ProdutoResumo` é um tipo passivo (não classe): `podeComprar`/`mostraPreco`/
+  `seloFrete`/`estrelasCheias` são funções livres sobre ele, mesmo padrão de `Navegacao`
+  (T-0201) — é um read-model montado de partes já válidas (`Preco`), sem invariante própria (ao
+  contrário de `Medida`/`Preco`, que validam na criação). Campo do selo chamado `frete` (não
+  `seloFrete`): evita um campo e uma função com o mesmo nome no mesmo arquivo — `SeloFrete`
+  (tipo) e `seloFrete` (função) já coexistem sem problema (namespaces diferentes em TS), não
+  valia a pena arriscar a leitura com um terceiro `seloFrete` como chave de objeto.
+  Campos de exibição que o card vai precisar (nome, imagem, marca) ficam para quando a própria
+  task que os testar precisar — nenhum campo sem teste que o exija (mesma disciplina das tasks
+  anteriores). Achado escrevendo o teste: `Dinheiro.formatar()` usa espaço inseparável (` `)
+  antes do valor, não espaço comum — o texto esperado do selo precisa do mesmo caractere.
+  Fábrica exportada no `index.ts` (pedido explícito do "Pronto quando" desta task; diferente da
+  prática de `conteudo`, que não publica a própria `__fabricas__`).
+  Verificação local: `produto-resumo.spec.ts` (8/8), `typecheck`, `lint` e `format:check`
+  (0 erros); suíte inteira/e2e/build no CI do PR.
 
 ### [ ] T-0304 · `CriterioDeListagem` combina facetas, ordem e página
 
