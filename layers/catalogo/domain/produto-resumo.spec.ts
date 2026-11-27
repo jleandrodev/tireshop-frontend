@@ -47,6 +47,12 @@ describe('estrelasCheias', () => {
 
     expect(estrelasCheias(produto)).toBe(esperado)
   })
+
+  test('sem nota, devolve nada (T-0308: avaliacao: null na API)', () => {
+    const produto = umProdutoResumo({ nota: undefined })
+
+    expect(estrelasCheias(produto)).toBeUndefined()
+  })
 })
 
 describe('umProdutoResumo', () => {
