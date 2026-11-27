@@ -351,7 +351,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   certo. `vue/no-v-html` ganhou uma terceira exceção por arquivo (`TextoDeApoio.vue`, mesma razão
   do `Acordeao`: o conteúdo só chega como `HtmlSeguro`).
 
-### [ ] T-0116 · `Migalhas` vai de Home até a página atual
+### [x] T-0116 · `Migalhas` vai de Home até a página atual — 2026-11-27
 
 - **Requisito:** REQ-01-17
 - **Camada:** ui
@@ -365,6 +365,16 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/ui/Migalhas.vue`, `Migalhas.spec.ts`
 - **Fora do escopo:** emitir o JSON-LD (a página aplica o `breadcrumbList` da T-0106 com as mesmas migalhas).
 - **Depende de:** T-0105, T-0106
+- **Decisões:** o prop `migalhas` traz só o resto da trilha (categoria, página atual…) — a Home
+  nunca vem nele; o componente sempre prepende `{ rotulo: 'Home', href: rotas.home() }`. Quando a
+  página aplicar `breadcrumbList` (T-0106) "com as mesmas migalhas", ela monta separadamente o
+  array completo (com Home) pro JSON-LD; os dois nunca leem o Home um do outro, pra não haver
+  dependência entre `shared/ui` e `shared/seo` além da própria `Migalha`. Quem decide ser o último
+  item (texto, `aria-current="page"`) é a posição na lista final, não o `href`: mesmo vindo com
+  `href`, o último nunca é link.
+  Correção avulsa de lint: `TextoDeApoio.vue` tinha um `<img />` autofechado que o
+  `vue/html-self-closing` reprova para elemento void; `eslint . ` não falha com warning (só com
+  erro), por isso passou no CI da T-0115 — corrigido aqui de passagem.
 
 ### [ ] T-0117 · `CapaDeVideo` e `CapaDeMapa` só carregam o `iframe` ao tocar
 
