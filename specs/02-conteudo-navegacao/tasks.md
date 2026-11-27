@@ -296,7 +296,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   Confirmado: `bin/pnpm test` (969/969), `typecheck`, `lint` (0 erros) e `format:check` limpos;
   `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
-### [ ] T-0209 · O menu do celular abre em gaveta, com departamentos e aros em acordeão
+### [x] T-0209 · O menu do celular abre em gaveta, com departamentos e aros em acordeão — 2026-11-27
 
 - **Requisito:** REQ-02-09
 - **Camada:** ui
@@ -313,6 +313,25 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/conteudo/ui/components/MenuCelular.vue`, `MenuCelular.spec.ts`, `SiteCabecalho.vue`
 - **Fora do escopo:** lojas e marcas dentro da gaveta (no celular são links simples, como no protótipo).
 - **Depende de:** T-0206, T-0112
+- **Decisões:** não usa `Acordeao.vue` (T-0109) — ele é específico de FAQ (`pergunta`/`resposta`
+  em `HtmlSeguro`), com as classes `ts-faq*`. A gaveta usa `<details>` nativo direto, do mesmo
+  jeito que o `MegaMenu` do computador (T-0207), só que aninhado: "Departamentos"
+  (`.ts-menu__grupo`) contém um `<details class="ts-menu__sub">` por departamento, cada um com
+  os aros em `.ts-menu__aros` (grade do CSS) — "Todos os pneus de {nome}" é o primeiro item dessa
+  mesma lista (link para `departamento.href`), não um aro de verdade.
+  `SiteCabecalho` guarda o estado da gaveta (`gavetaAberta`, local) em vez de só repassar
+  `abrir-menu` para o layout — ele já tinha o emit da T-0206 (mantido, para quem ainda escuta) e
+  agora também abre a gaveta direto, fechando-a quando `MenuCelular` emite `fechar` (escolher
+  qualquer link, Esc, clique fora ou X — tudo por dentro do `Dialogo`, T-0112).
+  `.ts-dialogo__cabeca` (X de fechar) do `Dialogo` substitui o `.ts-menu__cabeca`/`.ts-menu__logo`
+  do protótipo original: a task não pede logo na gaveta, e duplicar cabeçalhos (um do Dialogo,
+  um do protótipo) seria inventar UI sem teste cobrindo.
+  Achado de teste (repete T-0208): `SiteCabecalho.spec.ts` (T-0206) buscava
+  `a[href="https://wa.me/554133172251"]` na página inteira esperando um só resultado; a gaveta
+  também tem um link de WhatsApp no pé (REQ-02-09), então agora há dois — o teste passou a
+  buscar dentro de `.ts-topbar` (o que ele sempre quis dizer com "a barra de topo").
+  Confirmado: `bin/pnpm test` (977/977), `typecheck`, `lint` (0 erros) e `format:check` limpos;
+  `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
 ### [ ] T-0210 · O rodapé mostra colunas, redes, selos, pagamentos e os dados fiscais
 

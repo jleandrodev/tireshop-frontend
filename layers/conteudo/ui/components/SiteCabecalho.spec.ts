@@ -26,7 +26,7 @@ describe('SiteCabecalho', () => {
   test('a barra de topo é um link só para o WhatsApp, com o número e o rótulo "Telefone e WhatsApp"', async () => {
     const wrapper = await montar()
 
-    const links = wrapper.findAll('a[href="https://wa.me/554133172251"]')
+    const links = wrapper.get('.ts-topbar').findAll('a[href="https://wa.me/554133172251"]')
     expect(links).toHaveLength(1)
     expect(links[0]!.attributes('aria-label')).toBe('Telefone e WhatsApp')
     expect(links[0]!.text()).toContain('(41) 3317-2251')
