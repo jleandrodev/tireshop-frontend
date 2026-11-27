@@ -333,7 +333,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   Confirmado: `bin/pnpm test` (977/977), `typecheck`, `lint` (0 erros) e `format:check` limpos;
   `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
-### [ ] T-0210 · O rodapé mostra colunas, redes, selos, pagamentos e os dados fiscais
+### [x] T-0210 · O rodapé mostra colunas, redes, selos, pagamentos e os dados fiscais — 2026-11-27
 
 - **Requisito:** REQ-02-10, REQ-02-11
 - **Camada:** ui
@@ -350,6 +350,27 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/conteudo/ui/components/SiteRodape.vue`, `SiteRodape.spec.ts`
 - **Fora do escopo:** formulário de newsletter (T-0218); a nota do selo "Loja confiável" (vem de Avaliações; ver Pendências).
 - **Depende de:** T-0205
+- **Decisões:** texto da marca ("Pneus novos com nota fiscal…"), os ícones dos 3 selos e as 7
+  formas de pagamento (Pix e Boleto com ícone + texto, `.ts-pagamento--texto`; Visa, Mastercard,
+  Amex, Elo e Diners com imagem) saíram do HTML real do protótipo (`portal/alta-fidelidade/
+  lojas.html`, fora deste repositório) — não inventados; já registrado como fixo no frontend na
+  Pendência "Textos fixos da moldura". "Loja confiável" aparece sem a nota (5 estrelas, "4,8 de 5
+  na Trustvox" no protótipo): a nota de verdade é do contexto Avaliações, fora do escopo; mostrar
+  estrelas cheias sem dado real seria inventar uma avaliação.
+  Ano de "Todos os direitos reservados" por `useState('ano-do-rodape', () => new
+  Date().getFullYear())`: calculado uma vez (no servidor, numa requisição de verdade) e
+  reaproveitado tal qual na hidratação — um `new Date()` direto no `<script setup>` rodaria de
+  novo no cliente, podendo divergir do servidor bem na virada do ano (achado, não comprovado em
+  produção: o unit test só confere o valor, não a reutilização entre servidor e cliente).
+  Achado de alvo de toque (mesma classe de T-0205/T-0206, desta vez sem blockificação): o
+  `<summary>` de cada coluna do rodapé não tinha `min-height` nenhum na regra base — só a media
+  query do celular dava 52px; no computador (onde a regra `@media (min-width: 900px)` só desliga
+  o clique, `pointer-events: none`, já que lá as colunas ficam sempre abertas) sobrava o tamanho
+  do texto, 24,8px. Corrigido com `min-height: var(--ts-tap)` na regra base de
+  `.ts-rodape__coluna summary` — achado rodando `kernel.spec.ts` no tamanho computador (a página
+  de prova do kernel também usa o layout padrão, com o rodapé de verdade agora).
+  Confirmado: `bin/pnpm test` (988/988), `typecheck`, `lint` (0 erros) e `format:check` limpos;
+  `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
 ### [ ] T-0211 · O botão flutuante do WhatsApp aparece sem cobrir barra fixa
 
