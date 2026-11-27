@@ -2,3 +2,5 @@
 // layer (tests/infra/arquitetura.spec.ts reprova import de caminho interno).
 export * from './domain/medida'
 export * from './domain/preco'
+export * from './domain/produto-resumo'
+export * from './domain/__fabricas__/produto'
