@@ -206,7 +206,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   teria como passar. `vue/no-v-html` ganhou uma segunda exceção, por arquivo, em
   `eslint.config.mjs` (a resposta é `HtmlSeguro`, já filtrada pela T-0104).
 
-### [ ] T-0110 · `Guias` troca de painel com clique, setas, Home e End
+### [x] T-0110 · `Guias` troca de painel com clique, setas, Home e End — 2026-11-27
 
 - **Requisito:** REQ-01-11
 - **Camada:** ui
@@ -223,6 +223,10 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/ui/Guias.vue`, `Guias.spec.ts`
 - **Fora do escopo:** conteúdo das guias (filtro de pneus no módulo 05; marcas da loja no módulo 12).
 - **Depende de:** T-0007
+- **Decisões:** o conteúdo de cada painel vem por slot nomeado com o id da guia (`<slot :name="guia.id" />`),
+  já que o conteúdo é de cada contexto consumidor (fora do escopo desta task). `min-height: 48px`
+  de `.ts-abas__aba` (`componentes.css`) já cobre os 44 px pedidos — nenhum CSS novo. Painel usa
+  `hidden`, nunca `v-if` (igual ao `Acordeao`, T-0109): todos ficam no HTML do servidor.
 
 ### [ ] T-0111 · `Carrossel` só anda quando o usuário manda
 
