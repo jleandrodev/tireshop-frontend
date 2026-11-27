@@ -27,6 +27,14 @@ async function abrirPaginaDoKernel(page: Page): Promise<void> {
 
 test('conferirInvariantes(page) passa na página de prova do kernel', async ({ page }) => {
   await abrirPaginaDoKernel(page)
+  // T-0218: `FormularioNewsletter` (no rodapé real, por baixo de 14 componentes de prova)
+  // empurrou o selo "Site Seguro Google" (`loading="lazy"`) além da distância que o Chromium
+  // dispara sem rolar — como em qualquer página real, só rola a tela que a imagem carrega; sem
+  // isso, `conferirImagens` acusava "quebrada" por nunca ter entrado perto do viewport, não por
+  // um defeito do componente (achado comparando com `main`: a mesma imagem, sem este formulário
+  // por cima, carregava sem rolar nada).
+  await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight))
+  await page.waitForLoadState('networkidle')
   await expect(conferirInvariantes(page)).resolves.toBeUndefined()
 })
 
