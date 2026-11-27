@@ -74,4 +74,14 @@ describe('faqPage', () => {
 
     expect(JSON.parse(JSON.stringify(resultado))).toEqual(resultado)
   })
+
+  test('tags sobrepostas não deixam nenhum "<" no texto (CWE-116)', () => {
+    // Uma só passada de replace pode deixar <script> inteiro quando duas aberturas se
+    // sobrepõem; sem "<" sobrando, não há como reconstruir uma tag.
+    const resultado = faqPage([
+      { pergunta: 'x', respostaHtml: '<<script>script>alert(1)</script>' },
+    ])
+
+    expect(resultado?.mainEntity[0]?.acceptedAnswer.text).not.toContain('<')
+  })
 })

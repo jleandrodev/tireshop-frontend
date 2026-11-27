@@ -41,11 +41,18 @@ export type FaqPage = {
   readonly mainEntity: readonly Question[]
 }
 
+// Remove até estabilizar (CWE-116, "incomplete multi-character sanitization"): uma única
+// passada de `replace` pode deixar uma tag inteira se duas aberturas se sobrepuserem
+// (ex.: "<<script>script>...</script>"). Achado pelo CodeQL na T-0106.
 function textoSemTags(html: string): string {
-  return html
-    .replace(/<[^>]+>/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
+  let anterior: string
+  let atual = html
+  do {
+    anterior = atual
+    atual = anterior.replace(/<[^>]+>/g, '')
+  } while (atual !== anterior)
+
+  return atual.replace(/\s+/g, ' ').trim()
 }
 
 /** Sem pergunta, devolve nada: a página não emite o bloco (um FAQPage vazio não faz sentido). */
