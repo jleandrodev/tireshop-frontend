@@ -107,6 +107,11 @@
 .ts-hub__enderecos span { color: var(--ts-text); }
 .ts-mapa { border-radius: var(--ts-r-md); overflow: hidden; background: var(--ts-surface); border: 1px solid var(--ts-line-strong); }
 .ts-mapa iframe { display: block; width: 100%; aspect-ratio: 16 / 10; border: 0; }
+/* T-0117: mesmo tamanho do iframe, pra tocar em "Ver o mapa" não dar salto de layout */
+.ts-mapa__capa {
+  display: grid; place-content: center; gap: var(--ts-s-3); width: 100%; aspect-ratio: 16 / 10;
+  padding: var(--ts-s-5); text-align: center;
+}
 
 /* --- cabeçalho e rodapé da loja (23/11): lojas independentes do e-commerce ------------------ */
 .ts-lojahead { background: var(--ts-brand); color: var(--ts-on-brand); }
@@ -240,7 +245,7 @@
   .ts-loja-hub__acoes .ts-btn { flex: 1 1 100%; }
   .ts-tres { grid-template-columns: minmax(0, 1fr); gap: var(--ts-s-3); }
   .ts-hub__mapa, .ts-loja-mapa { grid-template-columns: minmax(0, 1fr); gap: var(--ts-s-5); }
-  .ts-mapa iframe { aspect-ratio: 4 / 3; }
+  .ts-mapa iframe, .ts-mapa__capa { aspect-ratio: 4 / 3; }
   .ts-loja-hero__grade { grid-template-columns: minmax(0, 1fr); gap: var(--ts-s-6); padding-block: var(--ts-s-8); }
   .ts-lojahead__row { gap: var(--ts-s-2) var(--ts-s-4); }
   .ts-lojahead__marca { flex: 1 1 0; min-width: 0; gap: var(--ts-s-3); }
