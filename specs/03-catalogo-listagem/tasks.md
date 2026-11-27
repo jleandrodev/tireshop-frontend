@@ -189,7 +189,7 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
   módulo Catálogo (57/57 ao todo), `typecheck`, `lint` e `format:check` (0 erros); suíte
   inteira/e2e/build no CI do PR.
 
-### [ ] T-0308 · O schema e o mapper de `ProdutoResumo` entendem a API
+### [x] T-0308 · O schema e o mapper de `ProdutoResumo` entendem a API — 2026-11-27
 
 - **Requisito:** REQ-03-03, REQ-03-04
 - **Camada:** adaptador
@@ -204,6 +204,24 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
 - **Arquivos:** `layers/catalogo/adapters/http/produto-resumo.schema.ts`, `produto-resumo.mapper.ts`, `produto-resumo.mapper.spec.ts`
 - **Fora do escopo:** o schema do produto completo.
 - **Depende de:** T-0303, T-0103 (`ClienteHttp`)
+- **Decisões:** o schema confere o contrato inteiro (os 16 campos de `ProdutoResumo` no
+  `docs/api/openapi.yaml`, igual ao DTO de verdade), mas o mapper só traduz para o domínio o que
+  esta task testa — preço, selo de frete, nota e disponibilidade. Nome, imagem, marca, medida,
+  departamento, `promocao` (redundante com `preco.de`), `tem360`, `runFlat`, terreno e desenho
+  ficam fora do `ProdutoResumo` por agora: nenhum teste os exige, e entram quando a task que os
+  mostrar (o card) precisar — mesma disciplina de toda task deste módulo até aqui.
+  **Achado escrevendo o teste:** `preco:null` e `avaliacao:null` só fazem sentido mapear para
+  "ausência" se `ProdutoResumo.preco`/`.nota` puderem ser `undefined` — mas a T-0303 os deixou
+  obrigatórios. Os dois campos passaram a opcionais (mudança aditiva: a fábrica `umProdutoResumo`
+  continua preenchendo os dois por padrão, nenhum teste antigo quebra) e `estrelasCheias` passou
+  a devolver `number | undefined`.
+  `Preco.de`/`Dinheiro.deCentavos` (já existentes) fazem a validação de verdade; o mapper só
+  traduz `Dinheiro{centavos,moeda}` do DTO e repassa erro como `ErroDeContrato` com o caminho do
+  campo (mesmo padrão de `navegacao.mapper.ts`) se algo escapar do schema mas ainda assim for
+  inválido para o domínio (não deveria acontecer, mas o mapper não confia cegamente).
+  Verificação local: `produto-resumo.mapper.spec.ts` (7/7) + `produto-resumo.spec.ts` (9/9) +
+  todo o módulo Catálogo (65/65), `typecheck`, `lint` e `format:check` (0 erros); por tocar o
+  contrato da API, também `bin/pnpm test` completo (1108/1108); e2e/build no CI do PR.
 
 ### [ ] T-0309 · `HttpProdutoRepository.listar` chama a API e trata falhas
 
