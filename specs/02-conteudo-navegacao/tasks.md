@@ -40,7 +40,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   contagem de aros de `docs/api/examples/navegacao.json` (59), sem copiar cada `href` real.
 
 
-### [ ] T-0202 · `HttpNavegacaoRepository` entende `GET /navegacao`
+### [x] T-0202 · `HttpNavegacaoRepository` entende `GET /navegacao` — 2026-11-27
 
 - **Requisito:** REQ-02-01, REQ-02-18
 - **Camada:** adaptador
@@ -55,6 +55,16 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/conteudo/adapters/http/navegacao.schema.ts`, `navegacao.mapper.ts`, `http-navegacao-repository.ts`, `http-navegacao-repository.spec.ts`
 - **Fora do escopo:** os outros endpoints de conteúdo.
 - **Depende de:** T-0201, T-0103
+- **Decisões:** primeiro uso real de Zod no projeto — `zod` entrou em `dependencies`. Isso expôs
+  um tipo estreito demais no kernel (T-0103, `cliente-http.ts`): `SchemaComSafeParse<T>` dizia
+  `path: ReadonlyArray<string | number>`, mas o Zod de verdade devolve `PropertyKey[]` (inclui
+  `symbol`) em `issue.path`; corrigido para `PropertyKey` — nenhum schema aqui usa chave
+  `symbol` (dado vem de JSON), então `.join('.')` continua seguro em tempo de execução, só o
+  tipo estava errado. `ErroDeConteudo` (T-0201) é mais estreito que `ErroDoKernel` (não tem
+  `NaoEncontrado`/`ErroDeValidacao`, que não fazem sentido para um recurso global sem parâmetro);
+  o repositório converte qualquer um dos dois em `ErroDeContrato` na borda
+  (`paraErroDeConteudo`), em vez de alargar o tipo da porta. `NavegacaoSchema` não usa `.strict()`
+  de propósito: campo novo da API não quebra o adaptador.
 
 ### [ ] T-0203 · O mock de `/navegacao` responde no contrato do adaptador
 
