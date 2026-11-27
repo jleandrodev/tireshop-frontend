@@ -190,7 +190,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   produção de verdade aponta `NUXT_PUBLIC_API_BASE` para a API externa (mock fica "desligado"),
   cenário que a T-1317 testa explicitamente. Registrado aqui, não como Pendência nova.
 
-### [ ] T-0206 · O cabeçalho mostra barra de topo, logo, busca por medida, Entrar e carrinho
+### [x] T-0206 · O cabeçalho mostra barra de topo, logo, busca por medida, Entrar e carrinho — 2026-11-27
 
 - **Requisito:** REQ-02-03, REQ-02-04
 - **Camada:** ui
@@ -207,6 +207,25 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/conteudo/ui/components/SiteCabecalho.vue`, `BarraDeTopo.vue`, `BuscaPorMedida.vue`, `SiteCabecalho.spec.ts`
 - **Fora do escopo:** interpretar a medida e navegar (módulo 05); contagem real e minicart (módulo 06); destino de "Entrar" e de "Meus Pedidos" (ver Pendências).
 - **Depende de:** T-0205, T-0119
+- **Decisões:** "Meus Pedidos" (REQ-02-03 pede os dois atalhos, "Ajuda" e "Meus Pedidos") é mostrado
+  como texto simples, sem link — mesma falta de destino já registrada na Pendência (login fora do
+  escopo). "Entrar" idem: `<button>` (classe `.ts-header__acao`, que o CSS já previa também para
+  botão, não só link) sem ação. `app/layouts/default.vue` passou a dar `:quantidade-no-carrinho="0"`
+  ao `SiteCabecalho` (prop obrigatória, sem valor real até o módulo 06).
+  Blockificação de CSS de novo (T-0205 já achou duas): o link do WhatsApp (`.ts-topbar__contato`)
+  e o link "Ajuda" são filhos diretos de containers flex (`.ts-topbar__row`, `.ts-topbar__links`)
+  — todo filho direto de flex/grid vira `display: block` computado, perdendo a isenção de "link
+  de texto" do WCAG 2.5.8, não só com `position: absolute` (o caso da T-0205). Com `min-height`
+  mas sem largura mínima, "Ajuda" ainda ficava abaixo de 44px (o texto é curto). Corrigido com
+  `min-height`/`min-width: var(--ts-tap)` + `padding-inline` em `.ts-topbar__contato` e
+  `.ts-topbar__links a`; e, no celular, `.ts-header__acao` (Entrar, Carrinho, só ícone lá) ganhou
+  `min-width: var(--ts-tap)` — o padding menor do breakpoint (`--ts-s-2` em vez de `--ts-s-3`)
+  deixava o botão com 40px de largura. Achado rodando `kernel.spec.ts` e `layout.spec.ts` nos
+  dois tamanhos depois de montar o cabeçalho de verdade — padrão a vigiar em toda task que puser
+  link/botão dentro de uma barra `flex`/`grid` (`docs/architecture.md` não tem nada sobre isto
+  ainda; vale uma nota lá se aparecer uma quarta vez).
+  Confirmado: `bin/pnpm test` (951/951), `typecheck`, `lint` (0 erros) e `format:check` limpos;
+  `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
 ### [ ] T-0207 · O mega menu Departamentos mostra os aros de cada departamento
 
