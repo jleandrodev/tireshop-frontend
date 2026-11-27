@@ -112,6 +112,9 @@
   display: grid; place-content: center; gap: var(--ts-s-3); width: 100%; aspect-ratio: 16 / 10;
   padding: var(--ts-s-5); text-align: center;
 }
+/* T-0120: filho de display:grid é "blockificado" (CSS Display), perde a isenção de alvo mínimo
+   que um link de texto corrido tem — por isso o próprio alvo precisa da altura de 44px aqui. */
+.ts-mapa__capa a { display: inline-flex; align-items: center; justify-content: center; min-height: var(--ts-tap); }
 
 /* --- cabeçalho e rodapé da loja (23/11): lojas independentes do e-commerce ------------------ */
 .ts-lojahead { background: var(--ts-brand); color: var(--ts-on-brand); }

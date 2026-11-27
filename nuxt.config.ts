@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'node:url'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2026-11-01',
@@ -39,4 +41,16 @@ export default defineNuxtConfig({
     './layers/avaliacoes',
     './layers/relacionamento',
   ],
+  // T-0120 (REQ-01-10...REQ-01-20): a página de prova dos componentes do kernel, só fora de
+  // produção — não é conteúdo de verdade, é onde o e2e exercita cada componente de `shared/ui`.
+  hooks: {
+    'pages:extend'(pages) {
+      if (process.env.NODE_ENV === 'production') return
+      pages.push({
+        name: 'prova-kernel',
+        path: '/_prova/kernel',
+        file: fileURLToPath(new URL('./tests/e2e/_paginas-de-prova/kernel.vue', import.meta.url)),
+      })
+    },
+  },
 })

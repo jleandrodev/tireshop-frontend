@@ -452,7 +452,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   como propriedades de slot, não como atributos de elemento; a correção foi um `v-bind` com um
   objeto literal (`{ 'aria-invalid': ... }`), que preserva a chave como escrita.
 
-### [ ] T-0120 · Os componentes do kernel funcionam com teclado no computador e no celular
+### [x] T-0120 · Os componentes do kernel funcionam com teclado no computador e no celular — 2026-11-27
 
 - **Requisito:** REQ-01-10, REQ-01-11, REQ-01-12, REQ-01-13, REQ-01-14, REQ-01-15, REQ-01-16, REQ-01-17, REQ-01-18, REQ-01-20
 - **Camada:** e2e
@@ -468,6 +468,25 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `tests/e2e/kernel.spec.ts`, `tests/e2e/_paginas-de-prova/kernel.vue`, `nuxt.config.ts` (registro da página de prova)
 - **Fora do escopo:** regressão visual (as páginas-modelo são dos módulos de tela).
 - **Depende de:** T-0109, T-0110, T-0111, T-0112, T-0113, T-0114, T-0115, T-0116, T-0117, T-0119, T-0010
+- **Decisões:** a rota (`/_prova/kernel`) entra por `pages:extend` em `nuxt.config.ts`, guardada por
+  `process.env.NODE_ENV !== 'production'` — confirmado que não aparece em `.output/` depois de
+  `nuxt build`. A página importa `catalogo.css` e `institucional.css` explicitamente (Paginacao,
+  CapaDeVideo e CapaDeMapa usam classes dessas folhas, não carregadas globalmente). Dois achados
+  de acessibilidade genuínos, corrigidos nos próprios componentes (não só no teste): (1) o alvo de
+  toque de `conferirAlvosDeToque` (`tests/e2e/_invariantes.ts`, T-0010) ganhou duas isenções —
+  `.ts-carrossel__ponto` (24px de propósito, T-0111) e qualquer link com `display: inline` (o que
+  o WCAG 2.5.8 já isenta: link de texto corrido, como em `Migalhas`); (2) o link "Abrir no Google
+  Maps" de `CapaDeMapa` (T-0117) não tinha os 44px de alvo mínimo — filho de `display: grid` é
+  "blockificado" (CSS Display) e perde a isenção de link inline, então o alvo precisava de altura
+  própria (`institucional.css`). Achado só ao montar os componentes juntos numa página real — não
+  apareceu nos testes de unidade de nenhum dos dois. `tests/e2e/_paginas-de-prova/ponto-de-carrossel.html`
+  e `link-de-texto.html` cobrem as duas isenções em `_invariantes.spec.ts`.
+  **Concorrência no e2e:** a página de prova, com 14 componentes hidratando de uma vez, tornou o
+  primeiro lote de testes em paralelo (6 workers) instável (achado rodando `pnpm test:e2e`
+  completo repetidas vezes — nunca sozinho). Resolvido com `test.describe.configure({ mode:
+  'serial' })` nos testes do kernel, `globalSetup` esquentando a rota antes do paralelismo
+  começar, e `test.slow()`/tempo limite maior nas asserções mais sensíveis à hidratação; ver nota
+  ampliada na Pendência "Tempo do job E2E" de `specs/00-fundacao/tasks.md`.
 
 ### [ ] T-0121 · O teste de mutação mostra onde os testes do domínio não pegam defeito
 
