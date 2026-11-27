@@ -20,6 +20,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:cobertura": "vitest run --coverage",
+    "test:mutacao": "stryker run",
     "lint:marca": "node scripts/lint-marca.ts",
     "mocks:sincronizar": "node scripts/sincronizar-mocks.ts"
   },
@@ -27,6 +28,8 @@
     "@axe-core/playwright": "4.14.1",
     "@nuxt/test-utils": "4.4.0",
     "@playwright/test": "1.65.1",
+    "@stryker-mutator/core": "^10.1.1",
+    "@stryker-mutator/vitest-runner": "^10.1.1",
     "@types/node": "22.20.7",
     "@vitest/coverage-v8": "5.1.2",
     "@vue/test-utils": "^2.6.0",
