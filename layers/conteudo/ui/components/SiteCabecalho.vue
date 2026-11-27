@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { rotas } from '#layers/shared'
+import { fornecerCoordenadorMegaMenu } from '../composables/use-coordenador-mega-menu'
 import { useNavegacao } from '../composables/use-navegacao'
 
-// T-0205/T-0206 · REQ-02-02..REQ-02-04: barra de topo, logo, busca por medida, "Entrar" e
-// carrinho. "Entrar" ainda não tem destino (login fora do escopo, ver Pendências de
-// specs/02-conteudo-navegacao/tasks.md): mostrado como botão, sem ação. O cabeçalho não importa
-// Catálogo nem Carrinho — a contagem chega por prop; os menus (Departamentos, Lojas, Marcas) e o
+// T-0205/T-0206/T-0207 · REQ-02-02..REQ-02-06: barra de topo, logo, busca por medida, "Entrar",
+// carrinho e o menu Departamentos. "Entrar" ainda não tem destino (login fora do escopo, ver
+// Pendências de specs/02-conteudo-navegacao/tasks.md): mostrado como botão, sem ação. O
+// cabeçalho não importa Catálogo nem Carrinho — a contagem chega por prop. Lojas, Marcas e o
 // drawer do celular são das próximas tasks.
 defineProps<{ quantidadeNoCarrinho: number }>()
 const emit = defineEmits<{
@@ -15,6 +16,7 @@ const emit = defineEmits<{
 }>()
 
 const { navegacao } = useNavegacao()
+fornecerCoordenadorMegaMenu()
 
 function rotuloDoCarrinho(quantidade: number): string {
   if (quantidade === 0) return 'Carrinho, vazio'
@@ -60,5 +62,21 @@ function rotuloDoCarrinho(quantidade: number): string {
         </button>
       </div>
     </div>
+    <nav v-if="navegacao" class="ts-nav">
+      <ul class="ts-nav__lista">
+        <li class="ts-nav__deps">
+          <MegaMenu rotulo="Departamentos">
+            <template #default="{ fechar }">
+              <MegaMenuDepartamentos
+                :departamentos="navegacao.departamentos"
+                :ajuda="navegacao.ajuda"
+                :extras="navegacao.extras"
+                @fechar="fechar"
+              />
+            </template>
+          </MegaMenu>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
