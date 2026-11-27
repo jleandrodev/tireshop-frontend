@@ -442,7 +442,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   Confirmado: `bin/pnpm test` (1002/1002), `typecheck`, `lint` (0 erros) e `format:check` limpos;
   `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
-### [ ] T-0213 · Rota inexistente mostra a página de não encontrado, com status 404
+### [x] T-0213 · Rota inexistente mostra a página de não encontrado, com status 404 — 2026-11-27
 
 - **Requisito:** REQ-02-17
 - **Camada:** ui
@@ -456,6 +456,32 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `app/error.vue`, `tests/e2e/nao-encontrado.spec.ts`, `tests/e2e/_paginas-de-prova/erro.vue`
 - **Fora do escopo:** sugestões de produto na página de erro; redirecionamento de URL legada (D2).
 - **Depende de:** T-0205, T-0113
+- **Decisões:** `app/error.vue` substitui `app.vue` por inteiro quando o Nuxt mostra um erro fatal
+  (404 de rota, ou `createError` lançado por qualquer página) — por isso ele mesmo entra num
+  `<NuxtLayout name="default">`: sem isso, não haveria cabeçalho nem rodapé. O rodapé (`SiteRodape`)
+  já traz o link do WhatsApp para toda página que usa o layout padrão; `app/error.vue` não chama
+  `useNavegacao()` de novo (evita repetir o bug da T-0211: um fetch a mais no nível do pai quebra
+  a "única chamada" com os filhos). O link para a Home é o único conteúdo próprio da página
+  ("Voltar para a Home", `Botao` variante `acao`, `rotas.home()`); o `.ts-btn` já tem
+  `min-height: var(--ts-tap)` por padrão (T-0119), sem CSS novo.
+  A página de prova `tests/e2e/_paginas-de-prova/erro.vue` (registrada em `nuxt.config.ts` do
+  mesmo jeito que `/_prova/kernel`, só fora de produção) lança `createError({ statusCode: 500 })`
+  no próprio `setup()` para o e2e provocar o status 500.
+  Achado rodando contra `bin/pnpm dev`: em desenvolvimento, qualquer erro não tratado com
+  status ≥ 500 também abre a sobreposição de depuração do Vite (pacote `my-bad`, que o Nuxt usa
+  como página de erro de desenvolvimento) — ela mesma tem um `h1` dentro de um shadow root
+  aberto, que o Playwright atravessa normalmente. Isso não existe em produção (a sobreposição só
+  roda com `import.meta.hot`, achado lendo
+  `node_modules/nuxt/dist/app/plugins/dev-error-overlay.client.js`); o teste do 500 conta `h1`
+  dentro de `#__nuxt` (o container da nossa própria página), não da página inteira — mesma
+  categoria de achado "dev-only" das tasks anteriores (`x-dev-chamadas-navegacao`,
+  `_falha_navegacao`).
+  "as páginas dos contextos usam `createError({ statusCode: 404 })` quando o caso de uso devolve
+  `NaoEncontrado`" (o segundo "Pronto quando"): nenhuma página de contexto existe ainda (categoria,
+  produto, loja — chegam nos módulos 03/08/12); fica registrado aqui como a regra que essas
+  páginas futuras devem seguir, não algo que esta task implementa.
+  Confirmado: `bin/pnpm test` (1002/1002), `typecheck`, `lint` (0 erros) e `format:check` limpos;
+  `bin/pnpm test:e2e` completo (70/70) sem regressão; `bin/pnpm build` limpo.
 
 ### [ ] T-0214 · `Email`, `Telefone` e `InscricaoNewsletter` validam o contato
 
