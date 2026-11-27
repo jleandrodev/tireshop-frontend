@@ -13,7 +13,7 @@ function montar(quantidadeNoCarrinho = 0) {
   const falso = criarNavegacaoRepositoryFalso()
   falso.programarSucesso(umaNavegacao())
   return mountSuspended(SiteCabecalho, {
-    props: { quantidadeNoCarrinho },
+    props: { quantidadeNoCarrinho, lojas: [] },
     global: { provide: { [SIMBOLO_NAVEGACAO_REPOSITORY as unknown as string]: falso } },
   })
 }
