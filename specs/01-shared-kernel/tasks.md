@@ -95,7 +95,7 @@ com `/` mas n茫o `//`, 芒ncora `#...`), n茫o s贸 um bloqueio de `javascript:` 鈥
 `data:`, protocolo relativo etc. Confirmado contra a fixture real (links absolutos
 `https://www.tireshop.com.br/...` no texto de apoio).
 
-### [ ] T-0105 路 `rotas` gera toda URL interna e `resolverRota` faz o caminho de volta
+### [x] T-0105 路 `rotas` gera toda URL interna e `resolverRota` faz o caminho de volta 路 2026-11-27
 
 - **Requisito:** REQ-01-06
 - **Camada:** dom铆nio
