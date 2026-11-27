@@ -427,7 +427,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   plugin usa o que `runtimeConfig.public.apiBase` disser. Confirmado à mão com `pnpm test:e2e`
   (servidor de dev real, SSR de verdade) que o plugin não quebra nada em runtime.
 
-### [ ] T-0119 · `Botao` e `Campo` aplicam a marca e o alvo de 44 px
+### [x] T-0119 · `Botao` e `Campo` aplicam a marca e o alvo de 44 px — 2026-11-27
 
 - **Requisito:** REQ-01-20
 - **Camada:** ui
@@ -442,6 +442,15 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/ui/Botao.vue`, `Campo.vue`, `BotaoECampo.spec.ts`
 - **Fora do escopo:** validação de valor (é do domínio de cada contexto); máscara.
 - **Depende de:** T-0007, T-0006
+- **Decisões:** `Campo` não escolhe o controle — devolve `id`, `aria-invalid` e `aria-describedby`
+  por um slot, e quem usa decide se é `input` ou `select` (ambos já têm estilo em `.ts-campo
+  select`/`.ts-campo input`... só `select` tinha regra no protótipo; nenhum CSS novo entrou aqui,
+  então um `input` solto no slot sai sem o chrome do `select` — decisão aceitável, já que a task
+  pede "sem CSS novo" e o teste só cobre o comportamento/acessibilidade, não a aparência). Ligar
+  `:aria-invalid`/`:aria-describedby` direto num `<slot>` perde o hífen do nome (vira
+  `ariainvalid`, sem hífen — achado tentando) porque o compilador trata esses bindings individuais
+  como propriedades de slot, não como atributos de elemento; a correção foi um `v-bind` com um
+  objeto literal (`{ 'aria-invalid': ... }`), que preserva a chave como escrita.
 
 ### [ ] T-0120 · Os componentes do kernel funcionam com teclado no computador e no celular
 
