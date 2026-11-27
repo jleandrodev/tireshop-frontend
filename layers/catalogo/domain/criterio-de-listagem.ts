@@ -24,10 +24,14 @@ export class CriterioDeListagem {
     readonly facetas: ReadonlyMap<string, ReadonlySet<string>>,
     readonly ordem: Ordenacao,
     readonly pagina: number,
+    readonly porPagina: number,
   ) {}
 
-  static inicial(categoria?: string): CriterioDeListagem {
-    return new CriterioDeListagem(categoria, new Map(), ORDEM_PADRAO, PAGINA_PADRAO)
+  // `porPagina` não vem da URL (`paraQuery`/`deQuery` não o incluem): quem escolhe é o caso de
+  // uso que monta o critério (T-0306: `listarProdutos` sempre pede 12; o comparador, 48 — mesma
+  // porta, cada caso de uso com o próprio limite), não a tela.
+  static inicial(categoria?: string, porPagina: number = POR_PAGINA): CriterioDeListagem {
+    return new CriterioDeListagem(categoria, new Map(), ORDEM_PADRAO, PAGINA_PADRAO, porPagina)
   }
 
   alternar(chave: string, valor: string): CriterioDeListagem {
@@ -39,20 +43,42 @@ export class CriterioDeListagem {
     if (valores.size === 0) facetas.delete(chave)
     else facetas.set(chave, valores)
 
-    return new CriterioDeListagem(this.categoria, facetas, this.ordem, PAGINA_PADRAO)
+    return new CriterioDeListagem(
+      this.categoria,
+      facetas,
+      this.ordem,
+      PAGINA_PADRAO,
+      this.porPagina,
+    )
   }
 
   comOrdem(ordem: Ordenacao): CriterioDeListagem {
-    return new CriterioDeListagem(this.categoria, this.facetas, ordem, PAGINA_PADRAO)
+    return new CriterioDeListagem(
+      this.categoria,
+      this.facetas,
+      ordem,
+      PAGINA_PADRAO,
+      this.porPagina,
+    )
+  }
+
+  comPorPagina(porPagina: number): CriterioDeListagem {
+    return new CriterioDeListagem(this.categoria, this.facetas, this.ordem, this.pagina, porPagina)
   }
 
   irParaPagina(pagina: number): CriterioDeListagem {
     if (!Number.isInteger(pagina) || pagina < 1) return this
-    return new CriterioDeListagem(this.categoria, this.facetas, this.ordem, pagina)
+    return new CriterioDeListagem(this.categoria, this.facetas, this.ordem, pagina, this.porPagina)
   }
 
   limpar(): CriterioDeListagem {
-    return new CriterioDeListagem(this.categoria, new Map(), this.ordem, PAGINA_PADRAO)
+    return new CriterioDeListagem(
+      this.categoria,
+      new Map(),
+      this.ordem,
+      PAGINA_PADRAO,
+      this.porPagina,
+    )
   }
 
   temFiltro(): boolean {
@@ -69,7 +95,11 @@ export class CriterioDeListagem {
     return query
   }
 
-  static deQuery(query: URLSearchParams, categoria?: string): CriterioDeListagem {
+  static deQuery(
+    query: URLSearchParams,
+    categoria?: string,
+    porPagina: number = POR_PAGINA,
+  ): CriterioDeListagem {
     const facetas = new Map<string, Set<string>>()
     let ordem = ORDEM_PADRAO
     let pagina = PAGINA_PADRAO
@@ -89,6 +119,6 @@ export class CriterioDeListagem {
       facetas.set(chave, valores)
     }
 
-    return new CriterioDeListagem(categoria, facetas, ordem, pagina)
+    return new CriterioDeListagem(categoria, facetas, ordem, pagina, porPagina)
   }
 }
