@@ -28,6 +28,8 @@
     "@playwright/test": "1.65.1",
     "@types/node": "22.20.7",
     "@vitest/coverage-v8": "5.1.2",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
     "eslint": "10.15.0",
     "eslint-plugin-vue": "10.12.1",
     "prettier": "3.10.1",

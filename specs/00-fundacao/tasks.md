@@ -154,7 +154,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Fora do escopo:** as outras rotas (cada módulo cria as suas).
 - **Depende de:** T-0004
 
-### [ ] T-0009 · O teste de contrato valida toda fixture contra o OpenAPI
+### [x] T-0009 · O teste de contrato valida toda fixture contra o OpenAPI · 2026-11-27
 
 - **Requisito:** REQ-00-08
 - **Camada:** infra
@@ -164,7 +164,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
   - falha se um arquivo de `mocks/fixtures` (fora de `_base`) não é citado
   - uma fixture adulterada no teste (campo obrigatório removido) é reprovada com o caminho do campo
 - **Pronto quando:** o teste passa com as fixtures atuais; `pnpm test` o inclui; ele acusa tudo o que o `scripts/handoff/validar_contratos.py` acusava. **CI:** o contrato passa a rodar no job Testes, e o job Specs deixa de chamar o `validar_contratos.py` (o `conferir.sh` fica só com as specs).
-- **Arquivos:** `tests/contract/openapi.spec.ts`, `tests/contract/_validador.ts`, `scripts/handoff/conferir.sh`, `scripts/handoff/requirements.txt`
+- **Arquivos:** `tests/contract/openapi.spec.ts`, `tests/contract/_validador.ts`, `scripts/handoff/conferir.sh`, `package.json`
 - **Fora do escopo:** schemas Zod (cada adaptador traz o seu, e o teste de contrato do adaptador é da task dele); apagar o `validar_contratos.py` (listar para o dev decidir).
 - **Depende de:** T-0008
 
@@ -206,6 +206,9 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Hospedagem (premissa P6 do PRD).** O CI ficou no GitHub Actions (ADR 0014). O provedor de hospedagem continua a confirmar com o TI; a T-1318 só publica a imagem.
 - **Tempo do job E2E.** Quando passar de 10 minutos, dividir em fatias (`--shard`) com matriz. Abrir task no módulo em que isso acontecer.
 - **Numeração dos marcos.** O roadmap vai de M0 a M6; o campo "Marco" de algumas specs usa outra numeração (a 13 diz M10; a 12, M9; as 09, 10 e 11, M8). Alinhar pelo roadmap.
+- **Valida contra `mocks/fixtures`, não `docs/api/examples`.** O `validar_contratos.py` original validava a fonte; este teste valida o que o servidor de mocks serve de verdade (T-0008), resolvendo o nome do arquivo do `externalValue` do OpenAPI direto em `mocks/fixtures/`. As duas pastas continuam precisando ficar em dia (`pnpm mocks:sincronizar --conferir`, no CI desde a T-0008).
+- **`ajv-formats` entrou** para `format: date`/`format: email` do schema serem checados de verdade, não só ignorados com aviso (como o `ajv` puro faz).
+- **`validar_contratos.py` não é mais chamado pelo `conferir.sh`**, mas continua no repositório — apagar é decisão do dev (fora do escopo). `requirements.txt` não mudou: ainda serve o Python, se alguém rodar à mão.
 - **Núcleo puro + invólucro fino.** `responderFixture` (server/utils/mock.ts) não usa `#imports` nem lê `useRuntimeConfig()`: lê `process.env.NUXT_PUBLIC_API_BASE` direto (é exatamente o que o runtimeConfig público faria) e recebe query/instância por parâmetro. Testável com Vitest puro, sem subir o Nitro. A rota (`navegacao.get.ts`) só liga isso a `getQuery`/`setResponseStatus`/`createError` do h3, com import explícito. Confirmado de ponta a ponta à mão contra `bin/pnpm dev` (GET normal, `_falha=500` com `content-type: application/problem+json`, `_atraso=300` demorando de verdade, `NUXT_PUBLIC_API_BASE` externo devolvendo 404) — nenhum teste automatizado cobre esse caminho completo hoje; é a mesma lacuna já registrada na T-0007.
 - **`@types/node` estava faltando.** `server/**` é tipado pelo Nuxt (diferente de `tests/infra/`/`scripts/`, que ficam fora do `nuxt typecheck` — Pendência da T-0003); sem o pacote, `node:fs`, `node:path` e `process` quebravam o typecheck. Instalado como devDependency, na versão da linha do Node 22.
 - **`mocks/fixtures/` saiu do Prettier.** `pnpm format` reformatava a cópia (não a origem, que já estava fora via `docs/`), fazendo `mocks:sincronizar --conferir` acusar divergência por espaçamento, com o conteúdo idêntico. Mesmo padrão da T-0005/T-0006: cópia fiel da fonte, formatação não é o que se verifica aqui.
