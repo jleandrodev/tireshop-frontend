@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
-# Aplica .github/ruleset-main.json no repositório do GitHub e confere que ficou ativo.
+# Aplica a proteção da main no repositório do GitHub e confere que ficou ativa. São duas partes:
+#   1. o ruleset de .github/ruleset-main.json (PR obrigatório, checks, sem force-push);
+#   2. as configurações de merge do repositório: só squash, e a branch some depois do merge.
 # Um arquivo de ruleset versionado não protege nada sozinho: é este script que o aplica.
 #
 #   sh scripts/aplicar-ruleset.sh              aplica (cria ou atualiza) e confere
@@ -22,6 +24,13 @@ if [ "${1:-}" != "--conferir" ]; then
     id="$(gh api --method POST "repos/$repo/rulesets" --input "$arquivo" --jq .id)"
     echo "ruleset \"$nome\" criado em $repo"
   fi
+
+  gh repo edit "$repo" \
+    --enable-squash-merge \
+    --enable-merge-commit=false \
+    --enable-rebase-merge=false \
+    --delete-branch-on-merge > /dev/null
+  echo "merge do repositório: só squash, branch apagada depois do merge"
 fi
 
 [ -n "$id" ] || { echo "o ruleset \"$nome\" não existe em $repo"; exit 1; }
@@ -35,4 +44,9 @@ exigidos="$(gh api "repos/$repo/rules/branches/$padrao" \
 esperados="$(jq -r '[.rules[] | select(.type == "required_status_checks") | .parameters.required_status_checks[].context] | sort | join(", ")' "$arquivo")"
 [ "$exigidos" = "$esperados" ] || { echo "checks exigidos na $padrao: [$exigidos]; esperado: [$esperados]"; exit 1; }
 
-echo "ativo na $padrao · checks obrigatórios: $exigidos"
+merge="$(gh repo view "$repo" --json squashMergeAllowed,mergeCommitAllowed,rebaseMergeAllowed,deleteBranchOnMerge \
+  --jq '"squash=\(.squashMergeAllowed) merge=\(.mergeCommitAllowed) rebase=\(.rebaseMergeAllowed) apaga=\(.deleteBranchOnMerge)"')"
+esperado_merge="squash=true merge=false rebase=false apaga=true"
+[ "$merge" = "$esperado_merge" ] || { echo "merge do repositório: [$merge]; esperado: [$esperado_merge]"; exit 1; }
+
+echo "ativo na $padrao · checks obrigatórios: $exigidos · merge só por squash, branch apagada no merge"

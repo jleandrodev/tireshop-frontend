@@ -17,7 +17,7 @@ O projeto começa sem código, com 238 tasks em TDD. Três fatos pedem decisão 
 
 **CI progressivo.** O CI é GitHub Actions e nasce na T-0000 com o que já dá para verificar sem código (specs, contrato, workflows, imagem). Daí em diante, **a task que cria uma verificação a acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`**, no mesmo PR. O e2e e a regressão visual rodam dentro da imagem `dev`. O que demora e muda devagar (mutação) fica fora do PR, semanal e sob demanda.
 
-**`main` protegida.** Uma task é uma branch, um pull request e um commit na `main` (squash). O ruleset versionado em `.github/ruleset-main.json` proíbe push direto, force-push e exclusão, e exige dois checks: `Título do PR` e `CI ok`. O `CI ok` é um job agregador com `if: always()` que depende de todos os outros; job novo entra no `needs` dele, e a lista de checks obrigatórios não muda. O ruleset é aplicado e conferido por `scripts/aplicar-ruleset.sh`.
+**`main` protegida.** Uma task é uma branch, um pull request e um commit na `main` (squash). O ruleset versionado em `.github/ruleset-main.json` proíbe push direto, force-push e exclusão, e exige dois checks: `Título do PR` e `CI ok`. O `CI ok` é um job agregador com `if: always()` que depende de todos os outros; job novo entra no `needs` dele, e a lista de checks obrigatórios não muda. No repositório, só o squash fica habilitado como forma de merge, e a branch é apagada depois do merge. O ruleset e essas configurações são aplicados e conferidos por `scripts/aplicar-ruleset.sh`.
 
 **Commits.** A IA não commita, não dá push e não abre PR: no fechamento da task, sugere a branch, a sequência de commits e o título do PR. Commits e títulos de PR seguem **Conventional Commits, em inglês**, com o id da task no escopo (`feat(T-0304): filter the listing by rim size`); o título vira a mensagem do squash e é conferido pelo check `Título do PR`. É a única exceção ao português do ADR 0013, que continua valendo para código, domínio, testes e documentos.
 
@@ -47,6 +47,6 @@ O projeto começa sem código, com 238 tasks em TDD. Três fatos pedem decisão 
 
 ## Como verificar
 
-- `sh scripts/conferir-ambiente.sh` (ambiente) e `sh scripts/aplicar-ruleset.sh --conferir` (proteção ativa, com os dois checks).
+- `sh scripts/conferir-ambiente.sh` (ambiente) e `sh scripts/aplicar-ruleset.sh --conferir` (proteção ativa, com os dois checks, e merge só por squash).
 - `tests/infra/ci.spec.ts`, a partir da T-0012: gatilhos, permissões, actions por SHA, scripts existentes, todo job no `needs` do `CI ok`, ruleset coerente, versões do `Dockerfile` iguais às do `package.json`.
 - A tabela "O CI cresce com o projeto" em [specs/roadmap.md](../../specs/roadmap.md).
