@@ -35,6 +35,7 @@ export default defineConfig({
             'tests/infra/**/*.spec.ts',
             'tests/contract/**/*.spec.ts',
             'scripts/**/*.spec.ts',
+            'server/**/*.spec.ts',
           ],
           // Vários arquivos de tests/infra/ escrevem fixture no próprio repositório e rodam
           // `pnpm lint`/`pnpm format:check` contra ele (T-0002, T-0004). Em paralelo, um arquivo
