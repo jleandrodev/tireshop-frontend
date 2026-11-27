@@ -15,7 +15,18 @@ export default defineConfig({
     baseURL: 'http://localhost:3000',
     trace: 'retain-on-failure',
   },
-  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  // T-0010 (REQ-00-09): os dois tamanhos do protótipo. "computador" e "celular" (não
+  // "desktop"/"mobile"): o resto do projeto está em português.
+  projects: [
+    {
+      name: 'computador',
+      use: { ...devices['Desktop Chrome'], viewport: { width: 1440, height: 900 } },
+    },
+    {
+      name: 'celular',
+      use: { ...devices['Desktop Chrome'], viewport: { width: 390, height: 844 } },
+    },
+  ],
   webServer: {
     command: 'pnpm dev',
     url: 'http://localhost:3000',
