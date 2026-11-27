@@ -571,7 +571,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   `ClienteHttpFalso` (17/17), `typecheck`, `lint` e `format:check` (0 erros); suíte inteira/e2e/
   build no CI do PR.
 
-### [ ] T-0217 · O mock de `POST /newsletter` aceita, recusa e não revela quem já assinou
+### [x] T-0217 · O mock de `POST /newsletter` aceita, recusa e não revela quem já assinou — 2026-11-27
 
 - **Requisito:** REQ-02-12, REQ-02-13
 - **Camada:** mock
@@ -586,6 +586,24 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `server/api/mock/newsletter.post.ts`, `newsletter.post.spec.ts`
 - **Fora do escopo:** envio de e-mail de verdade.
 - **Depende de:** T-0008, T-0216
+- **Decisões:** `server/utils/mock.ts` ganhou `simularRede` — a parte de `responderFixture`
+  (`?_atraso`, `?_falha`, mock desligado) que não depende de servir uma fixture estática, extraída
+  para esta ser a primeira rota além de "ler e devolver um arquivo". `responderFixture` manteve a
+  própria assinatura e comportamento (os 10 testes de `navegacao.get.spec.ts` continuam passando
+  sem alteração) — mudança de implementação, não de contrato.
+  "Não revela quem já assinou" é tratado ao pé da letra: a rota é sem estado (nenhum `Set`/`Map`
+  de e-mails já vistos, nada em disco) — o mesmo e-mail sempre dá 201, não porque algo verificou e
+  deixou passar, mas porque nada verifica.
+  A validação (formato de e-mail, WhatsApp só dígitos 10-11) é própria do mock, em regex — não
+  reusa `Email`/`Telefone` do contexto Relacionamento (`layers/`): o mock simula o backend
+  externo, que não compartilha código com o frontend (nenhuma rota do mock importa de `layers/`
+  até hoje; mantido assim). `InscricaoNewsletterSchema`/`ConfirmacaoSchema` (T-0216) continuam
+  só de forma (sem regra de negócio) — a profundidade fica para o domínio e para este mock, cada
+  um à própria maneira.
+  Confirmado à mão contra `bin/pnpm dev`: 201 (com e sem WhatsApp), 422 (e-mail e WhatsApp
+  inválidos) e `?_falha=500`, todos com o corpo esperado.
+  Verificação local: `newsletter.post.spec.ts` (7/7) + `navegacao.get.spec.ts` (10/10, sem
+  regressão), `typecheck`, `lint` e `format:check` (0 erros); suíte inteira/e2e/build no CI do PR.
 
 ### [ ] T-0218 · `FormularioNewsletter` valida, envia e anuncia a confirmação
 
