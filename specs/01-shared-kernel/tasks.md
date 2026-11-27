@@ -8,7 +8,7 @@ T-0117 são citados por outros módulos: não renumere.
 
 ---
 
-### [ ] T-0101 · `Result` representa sucesso ou falha sem exceção
+### [x] T-0101 · `Result` representa sucesso ou falha sem exceção · 2026-11-27
 
 - **Requisito:** REQ-01-01
 - **Camada:** domínio
@@ -23,6 +23,13 @@ T-0117 são citados por outros módulos: não renumere.
 - **Arquivos:** `layers/shared/domain/result.ts`, `result.spec.ts`, `layers/shared/index.ts`
 - **Fora do escopo:** versões assíncronas (`Promise<Result>` se resolve com `await`); erros do kernel (T-0103).
 - **Depende de:** T-0003
+
+**Pendência:** o `@ts-expect-error` sozinho não bastava — `resultado.valor` como expressão solta
+reprovava no `@typescript-eslint/no-unused-expressions`. Resolvido com `// eslint-disable-line`
+na mesma linha (um `eslint-disable-next-line` separado, numa linha acima do `@ts-expect-error`,
+mira a linha errada: a do comentário, não a da expressão). Confirmado que `nuxt typecheck` cobre
+`layers/*/domain/**`, inclusive `.spec.ts` — ao contrário de `tests/infra/`, `scripts/` e
+`tests/contract/` (Pendência da T-0003): o teste de tipo é mesmo verificado.
 
 ### [ ] T-0102 · `Dinheiro` guarda centavos inteiros e formata em reais
 
