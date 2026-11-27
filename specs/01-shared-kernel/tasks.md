@@ -256,7 +256,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   `.ts-banner__ponto` — o protótipo só tinha ponto para o banner (módulo 09), não para o
   `Carrossel` genérico do kernel.
 
-### [ ] T-0112 · `Dialogo` é modal, prende o foco e fecha com Esc
+### [x] T-0112 · `Dialogo` é modal, prende o foco e fecha com Esc — 2026-11-27
 
 - **Requisito:** REQ-01-13
 - **Camada:** ui
@@ -273,6 +273,17 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/ui/Dialogo.vue`, `Dialogo.spec.ts`
 - **Fora do escopo:** conteúdo das gavetas (módulos 02, 03 e 06).
 - **Depende de:** T-0007
+- **Decisões:** o estado inicial (`showModal()`/`close()` para `aberto`) é sincronizado em
+  `onMounted`, nunca por um `watch` com `immediate: true` — o `ref` do `<dialog>` só existe depois
+  do mount; um `immediate` roda ainda em `setup()` e `showModal()` nunca seria chamado (achado
+  testando a própria task: os 5 primeiros casos falhavam porque o diálogo nunca abria de verdade).
+  `Esc` e "clicar fora" têm handler explícito (`@keydown.esc`, comparar `event.target` com o
+  próprio `<dialog>` no `@click`) porque o happy-dom não simula esses dois comportamentos nativos
+  do navegador (confirmado à mão antes de escrever o teste); em um navegador real eles são
+  redundantes com o nativo, não o substituem. O foco anterior é guardado e devolvido explicitamente
+  no `@close` (não só confiado ao nativo) pelo mesmo motivo. Classes novas em `componentes.css`:
+  `.ts-dialogo*` — uma base genérica para a gaveta lateral; o protótipo só tinha `.ts-minicart` e
+  `.ts-menu`, específicas de cada consumidor (módulos 02/03), sem uma versão compartilhada.
 
 ### [ ] T-0113 · `EstadoVazio`, `EstadoDeErro` e `Esqueleto` cobrem os estados que não são sucesso
 
