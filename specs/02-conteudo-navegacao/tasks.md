@@ -650,7 +650,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   `kernel.spec.ts` e `nao-encontrado.spec.ts` (70/70, sem regressão); suíte inteira/build no CI
   do PR.
 
-### [ ] T-0219 · A moldura do site funciona no computador e no celular
+### [x] T-0219 · A moldura do site funciona no computador e no celular — 2026-11-27
 
 - **Requisito:** REQ-02-02, REQ-02-05, REQ-02-06, REQ-02-09, REQ-02-10, REQ-02-11, REQ-02-12, REQ-02-14, REQ-02-15, REQ-02-18
 - **Camada:** e2e
@@ -667,6 +667,37 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `tests/e2e/navegacao.spec.ts`, `tests/e2e/navegacao-celular.spec.ts`, `tests/e2e/_paginas-de-prova/barra-fixa.vue`
 - **Fora do escopo:** busca por medida funcionando (módulo 05); minicart (módulo 06).
 - **Depende de:** T-0207, T-0208, T-0209, T-0210, T-0211, T-0212, T-0213, T-0218
+- **Decisões:** cada arquivo roda só no próprio projeto (`test.skip(testInfo.project.name !== …)`
+  num `beforeEach`) — o `playwright.config.ts` roda todo arquivo nos dois projetos por padrão, e
+  mega menu (computador) e gaveta (celular) são telas demais diferentes para um teste servir nos
+  dois tamanhos.
+  Achado batendo no Chromium de verdade: `<summary>` do `<details>` do mega menu tem role
+  "group" (o rótulo vira o nome do grupo), não "button" — `getByRole('button', …)` nunca
+  resolvia; os testes usam `page.locator('.ts-mega summary', { hasText: … })`.
+  Dois achados de alvo de toque dentro do mega menu aberto, registrados como exceção em
+  `tests/e2e/_invariantes.ts` (CA-02-03 já sanciona "pelo menos 24 px", abaixo do padrão de 44):
+  `.ts-mega__aros a` (30px) e `.ts-mega__grupo a` (36px, "Ajuda para escolher"/"Também vendemos").
+  `tests/e2e/_paginas-de-prova/barra-fixa.vue` (registrada em `nuxt.config.ts`, só fora de
+  produção, mesmo padrão de `/_prova/kernel`): `layout: false` — com o layout padrão, o
+  `SiteRodape` montaria um segundo `BotaoWhatsapp` sem `acima-da-barra`, concorrendo com a prova.
+  **Dois bugs de CSS de verdade, achados rodando o e2e contra `/_prova/barra-fixa` (não existiam
+  antes por falta de teste, não por mudança nesta task):**
+  1. `.ts-fab--acima` (T-0211) nunca erguia o botão: o `.ts-fab` do breakpoint do celular (mesma
+     especificidade, mais abaixo no arquivo) ganhava por ordem no CSS e cancelava o `bottom`.
+     Virou `.ts-fab.ts-fab--acima` (duas classes, especificidade maior, ganha com qualquer ordem).
+  2. O aviso de cookies no celular (`right` igual ao `left`, "largura total") cobria o canto do
+     `.ts-fab` por baixo, na página real (`/`), com ou sem barra — as duas caixas perto do fundo,
+     se cruzando. `right` do aviso passou a reservar a coluna do botão (56px + a margem dele + um
+     respiro) em vez de ir até a borda.
+  Confirmado à mão (`node` com Playwright, medindo `boundingBox()`): as duas caixas não se cruzam
+  mais, antes e depois comparado lado a lado.
+  `conferirInvariantes` com o mega menu aberto (mais de 100 links) ganhou `test.slow()` — mesma
+  categoria de achado do `kernel.spec.ts` (T-0120): sozinho sempre passou rápido, sob contenção
+  (suíte inteira em paralelo) passava dos 30s.
+  Verificação local: `navegacao.spec.ts` (10/10) + `navegacao-celular.spec.ts` (8/8),
+  `typecheck`, `lint` e `format:check` (0 erros); por tocar CSS compartilhado (`.ts-fab`,
+  `.ts-cookies`) e os invariantes, também `test:e2e` completo (88/88, sem regressão), `bin/pnpm
+  test` completo (1043/1043) e `bin/pnpm build` — esta é a última task do módulo 02.
 
 ---
 
