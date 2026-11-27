@@ -1,0 +1,13 @@
+/* ============================================================================
+   tokens-terceiros.css — cores de MARCAS DE TERCEIROS, não da TireShop.
+
+   O manual da TireShop permite amarelo, preto e branco. O verde do WhatsApp
+   entra só onde a marca WhatsApp aparece (botões de contato), como pede a
+   própria Meta. Fica num arquivo separado para o lint de marca continuar
+   barrando qualquer outra cor nos componentes.
+   ============================================================================ */
+:root {
+  --ts-whatsapp:        #25D366;  /* WhatsApp Green (guia de marca da Meta) */
+  --ts-whatsapp-escuro: #1DA851;  /* hover */
+  --ts-on-whatsapp:     #000000;  /* texto sobre o verde: 11:1. Branco daria 2:1 */
+}

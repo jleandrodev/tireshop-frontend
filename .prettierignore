@@ -17,3 +17,8 @@ prompts/
 README.md
 AGENTS.md
 CLAUDE.md
+
+# CSS do protótipo (T-0005, ADR 0006): copiado sem alteração de ui/css/ e de
+# portal/alta-fidelidade/css/. Reformatar mudaria o diff contra a fonte sem motivo; a qualidade
+# desse CSS é do lint de marca (T-0006), não do Prettier.
+app/assets/css/

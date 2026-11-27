@@ -1,0 +1,123 @@
+/* ============================================================================
+   tokens.css — A IDENTIDADE VISUAL MORA AQUI, E SÓ AQUI.
+
+   Fonte da verdade: Manual_Uso_Correto_Marca_TireShop.pdf (raiz do projeto).
+   Se o cliente mandar um manual novo, ou a licença da Muller aparecer, este é
+   o único arquivo que muda. doc.css e documento.html.j2 não podem conter
+   nenhum #hex, rgb(), hsl(), @font-face nem font-family literal — o build
+   roda um lint que falha se contiverem.
+
+   Camadas, de baixo para cima:
+     1. primitivas da marca   — direto do manual, sem interpretação
+     2. escala neutra         — derivada (o manual não define cinzas)
+     3. aliases semânticos    — é SÓ ISTO que o doc.css enxerga
+     4. tipografia
+     5. geometria de página
+   ============================================================================ */
+
+/* --- 1. PRIMITIVAS DA MARCA ---------------------------------------------- */
+:root {
+  /* Manual, pág. 4: "As cores da marca devem seguir os padrões adotados.
+     Não será permitido o uso de nenhuma cor que não esteja conforme as
+     definidas neste manual." São três, e só três. */
+  --brand-amarelo: #FBAD30;   /* R251 G173 B48 · CMYK 0/38/85/0 */
+  --brand-preto:   #000000;   /* Black 100% */
+  --brand-branco:  #FFFFFF;   /* White 0% */
+
+  /* ATENÇÃO DE CONTRASTE: #FBAD30 sobre branco dá ~1,8:1 — reprova em
+     qualquer critério de legibilidade. O amarelo NUNCA é cor de texto.
+     Só entra como fundo, filete, número de capítulo e realce, e o que vai
+     por cima dele é sempre preto (o próprio manual determina isso na pág. 7:
+     "Com cores mais claras, usa-se o logotipo original, amarelo e preto"). */
+}
+
+/* --- 2. ESCALA NEUTRA (derivada — o manual não especifica cinzas) -------- */
+:root {
+  --neutral-900: #14161a;
+  --neutral-800: #24272d;
+  --neutral-700: #3a3f47;
+  --neutral-600: #565c66;
+  --neutral-500: #767d88;
+  --neutral-400: #9aa1ab;
+  --neutral-300: #c3c8cf;
+  --neutral-200: #e0e3e8;
+  --neutral-100: #eff1f4;
+  --neutral-050: #f7f8fa;
+}
+
+/* --- 3. ALIASES SEMÂNTICOS (a única superfície que o doc.css usa) -------- */
+:root {
+  --c-page-bg:            var(--brand-branco);
+  --c-body:               var(--neutral-700);
+  --c-heading:            var(--neutral-900);
+  --c-muted:              var(--neutral-500);
+  --c-faint:              var(--neutral-400);
+  --c-rule:               var(--neutral-200);
+  --c-rule-strong:        var(--neutral-300);
+
+  --c-accent:             var(--brand-amarelo);
+  --c-accent-contrast:    var(--brand-preto);   /* texto SOBRE o amarelo */
+  --c-accent-wash:        #fef3e0;              /* amarelo a ~10%, para fundos */
+
+  --c-cover-bg:           var(--brand-amarelo);
+  --c-cover-fg:           var(--brand-preto);
+
+  --c-chapter-number:     var(--brand-amarelo);
+  --c-surface:            var(--neutral-050);
+  --c-surface-border:     var(--neutral-200);
+  --c-table-head-bg:      var(--neutral-100);
+  --c-table-stripe:       var(--neutral-050);
+  --c-code-bg:            var(--neutral-100);
+
+  /* estados — derivados dos neutros, para não violar a regra das 3 cores:
+     "existe hoje" x "é novo" aparecem como peso, não como cor extra */
+  --c-tag-existe-bg:      var(--neutral-100);
+  --c-tag-existe-fg:      var(--neutral-600);
+  --c-tag-novo-bg:        var(--brand-amarelo);
+  --c-tag-novo-fg:        var(--brand-preto);
+}
+
+/* --- 4. TIPOGRAFIA ------------------------------------------------------- */
+/* Os @font-face vivem em tokens-fonts.css (gerado por gen_tokens_fonts.py,
+   base64) e declaram a família 'TS Sans'. Trocar a fonte = trocar aquele
+   arquivo e o valor de --font-sans aqui. Mais nada. */
+:root {
+  --font-sans: 'TS Sans', 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'DejaVu Sans Mono', ui-monospace, monospace;
+
+  /* O manual define exatamente três pesos para a Muller. Mantemos a mesma
+     disciplina no substituto: Light, Regular e Bold carregam o documento;
+     500 e 800 entram só onde a hierarquia exige. */
+  --w-light:   300;
+  --w-regular: 400;
+  --w-medium:  500;
+  --w-bold:    700;
+  --w-black:   800;
+
+  --fs-cover-title: 40pt;
+  --fs-chapter:     23pt;
+  --fs-h2:          13pt;
+  --fs-h3:          10.5pt;
+  --fs-lead:        11.5pt;
+  --fs-body:        9.6pt;
+  --fs-small:       8.4pt;
+  --fs-caption:     7.6pt;
+  --fs-tag:         7pt;
+
+  --lh-body:  1.5;
+  --lh-tight: 1.24;
+  --measure:  68ch;
+}
+
+/* --- 5. GEOMETRIA DE PÁGINA --------------------------------------------- */
+:root {
+  --page-margin-top:    20mm;
+  --page-margin-bottom: 17mm;
+  --page-margin-inner:  18mm;
+  --page-margin-outer:  18mm;
+
+  --radius:      3px;
+  --radius-lg:   6px;
+  --rule-weight: 1px;
+  --accent-bar:  3.5px;   /* espessura do filete amarelo dos títulos */
+}
