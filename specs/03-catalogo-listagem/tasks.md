@@ -223,7 +223,7 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
   todo o módulo Catálogo (65/65), `typecheck`, `lint` e `format:check` (0 erros); por tocar o
   contrato da API, também `bin/pnpm test` completo (1108/1108); e2e/build no CI do PR.
 
-### [ ] T-0309 · `HttpProdutoRepository.listar` chama a API e trata falhas
+### [x] T-0309 · `HttpProdutoRepository.listar` chama a API e trata falhas — 2026-11-27
 
 - **Requisito:** REQ-03-06, REQ-03-07
 - **Camada:** adaptador
@@ -237,6 +237,24 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
 - **Arquivos:** `layers/catalogo/adapters/http/lista-de-produtos.schema.ts`, `lista-de-produtos.mapper.ts`, `http-produto-repository.ts`, `http-produto-repository.spec.ts`
 - **Fora do escopo:** os outros métodos da porta.
 - **Depende de:** T-0306, T-0308
+- **Decisões:** **Achado lendo o contrato de verdade (`docs/api/openapi.yaml`):** `ListaDeProdutos`
+  é plana na API (`pagina`, `porPagina`, `total`, `totalPaginas` na raiz) — o mapper é quem monta
+  a `paginacao` aninhada do domínio. `ordenacoes` vem com rótulo pronto
+  (`{ valor, rotulo }[]`, não `Ordenacao[]` solta) — a T-0306 supôs a forma errada sem checar o
+  schema a fundo; corrigido aqui (`OpcaoDeOrdenacao`, novo em `domain/portas.ts`) e propagado para
+  o fixture de teste da T-0306 (`listar-produtos.spec.ts`), sem mudar o que aquele teste verifica.
+  `ClienteHttpFalso` (`layers/shared`) ganhou `consulta` em `ChamadaHttp` — até aqui nenhum
+  adaptador com `GET` tinha parâmetro de busca para conferir (`navegacao` não tem nenhum);
+  mudança aditiva, os consumidores existentes continuam passando.
+  `/produtos` não tem parâmetro de caminho: 404 e 422 do `ErroDoKernel` nunca deveriam vir, mas
+  o `ClienteHttp` os admite para qualquer endpoint — viram `ErroDeContrato`, mesmo padrão de
+  `http-navegacao-repository.ts`. "Resposta fora do contrato" é coberto onde a lógica mora (o
+  teste do schema + o genérico de `cliente-http.spec.ts`), não através do falso — ele só devolve
+  o que foi programado, nunca roda o schema (mesma lição da T-0216).
+  Verificação local: `http-produto-repository.spec.ts` (10/10) + todo o módulo Catálogo (75/75),
+  `typecheck`, `lint` e `format:check` (0 erros); por tocar `ClienteHttpFalso` (compartilhado) e
+  o contrato, também `bin/pnpm test` completo (1118/1118) e `bin/pnpm test:e2e` completo
+  (88/88) — sem regressão nos dois; build no CI do PR.
 
 ### [ ] T-0310 · `HttpCategoriaRepository` busca a categoria e trata o 404
 
