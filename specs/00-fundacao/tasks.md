@@ -41,7 +41,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Fora do escopo:** layout, CSS, layers; jobs de CI (T-0012).
 - **Depende de:** T-0000
 
-### [ ] T-0002 · TypeScript estrito, ESLint e typecheck reprovam o que devem
+### [x] T-0002 · TypeScript estrito, ESLint e typecheck reprovam o que devem · 2026-11-27
 
 - **Requisito:** REQ-00-02
 - **Camada:** infra
@@ -51,7 +51,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
   - `pnpm format:check` falha com um arquivo de prova mal formatado
   - os três passam sem os arquivos de prova
 - **Pronto quando:** scripts `lint`, `typecheck`, `format`, `format:check` e `test` existem; `strict` e `noUncheckedIndexedAccess` ligados; o Prettier segue o `.editorconfig`. Dependências novas: as do ESLint do Nuxt, `vitest` e `prettier`, em `devDependencies`.
-- **Arquivos:** `eslint.config.mjs`, `tsconfig.json`, `vitest.config.ts`, `.prettierrc`, `.prettierignore`, `package.json`, `tests/infra/`
+- **Arquivos:** `eslint.config.mjs`, `tsconfig.json`, `vitest.config.ts`, `.prettierrc`, `.prettierignore`, `package.json`, `tests/infra/`, `.gitignore`
 - **Fora do escopo:** regras de arquitetura (T-0004).
 - **Depende de:** T-0001
 
@@ -206,6 +206,10 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Hospedagem (premissa P6 do PRD).** O CI ficou no GitHub Actions (ADR 0014). O provedor de hospedagem continua a confirmar com o TI; a T-1318 só publica a imagem.
 - **Tempo do job E2E.** Quando passar de 10 minutos, dividir em fatias (`--shard`) com matriz. Abrir task no módulo em que isso acontecer.
 - **Numeração dos marcos.** O roadmap vai de M0 a M6; o campo "Marco" de algumas specs usa outra numeração (a 13 diz M10; a 12, M9; as 09, 10 e 11, M8). Alinhar pelo roadmap.
+- **ESLint sem o módulo `@nuxt/eslint`.** Optei por `typescript-eslint` + `eslint-plugin-vue` direto em `eslint.config.mjs`, sem instalar `@nuxt/eslint` nem tocar `nuxt.config.ts` (fora do "Arquivos" da T-0002). Perde-se a detecção automática de auto-imports do Nuxt nas regras de lint; se isso gerar falso positivo mais adiante (variável de auto-import marcada como não definida), revisitar e trocar pelo módulo oficial.
+- **`vue/multi-word-component-names` desligada.** O roteamento por arquivo do Nuxt exige nomes de um termo só (`index.vue`, `error.vue`, futuramente `[id].vue`); a regra recomendada do `eslint-plugin-vue` reprovava isso. Desligada globalmente para `**/*.vue`.
+- **Prettier não cobre `docs/`, `specs/`, `prompts/` nem os `.md` da raiz.** Essa prosa foi revisada em sessões anteriores com formatação própria; reformatá-la agora geraria um diff gigante e alheio ao escopo desta task. `format`/`format:check` cobrem o código (TS, Vue, JSON, configs) e crescem com o projeto.
+- **`nuxt typecheck` em vez de `tsc --noEmit` direto.** O `tsconfig.json` da T-0001 é só um arquivo de projeto-referência (`files: []` + `references`) que o Nuxt gera; `strict` e `noUncheckedIndexedAccess` já vêm ligados por padrão nos tsconfigs gerados (confirmado, não precisou tocar `nuxt.config.ts`). A fixture de `any` implícito do teste mora em `tests/nuxt/_prova/`, o único padrão de `tests/**` que o Nuxt já inclui; `layers/*/domain` e `application/` (que ainda não existem) vão precisar de atenção na T-0004.
 - **O pnpm baixa o próprio binário a cada comando.** Todo `bin/pnpm` começa com "Downloading the pnpm 12.23.0 binary", alguns segundos por execução, porque o contêiner é descartado e o cache não fica na imagem. Ajustar o `Dockerfile` (T-0000) para o binário já vir na imagem; conferir no `scripts/conferir-ambiente.sh`.
 - **Política de instalação do pnpm 12.** Pacote publicado há menos de um dia é recusado, e script de instalação só roda para o que está em `allowBuilds` do `pnpm-workspace.yaml` (hoje, só `esbuild`). Na T-0001 o `vue-router` ficou na 5.5.1 por isso. Dependência nova que precise de script de build entra nessa lista na task que a instala.
 - **Verificadores em dois lugares.** `scripts/handoff/` deste repositório é a cópia que vale. As de `tools/handoff/` no repositório de discovery ficaram para o dev decidir.
