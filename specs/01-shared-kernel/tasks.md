@@ -400,7 +400,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   é movido explicitamente para o `iframe` em `CapaDeVideo` (é o único caso testado); `CapaDeMapa`
   não move foco, por simetria com o que foi pedido, não por limitação técnica.
 
-### [ ] T-0118 · O `ClienteHttp` é criado em um lugar só, um por requisição
+### [x] T-0118 · O `ClienteHttp` é criado em um lugar só, um por requisição — 2026-11-27
 
 - **Requisito:** REQ-01-19
 - **Camada:** infra
@@ -414,6 +414,18 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `app/plugins/01.http.ts`, `layers/shared/http/use-cliente-http.ts`, `use-cliente-http.spec.ts`, `nuxt.config.ts` (runtimeConfig)
 - **Fora do escopo:** adaptadores dos contextos; regras de cache (`routeRules`) de cada página.
 - **Depende de:** T-0103, T-0008
+- **Decisões:** o ambiente "nuxt" do Vitest aqui é client-only — `useRequestEvent()` nunca devolve
+  um evento de verdade nele (confirmado tentando: nem mockado via `mockNuxtImport` ele muda, porque
+  a implementação real depende de `nuxtApp.ssrContext`, que só existe numa SSR de verdade). Por
+  isso a montagem da configuração (base, tempo limite, cabeçalho `cookie`) foi extraída do plugin
+  para `montarConfiguracaoDoClienteHttp` (`use-cliente-http.ts`), testada direto, sem
+  `mountSuspended` — é exatamente o que o plugin chama, só que testável sem simular SSR. O teste
+  do cabeçalho `cookie` e o de "duas requisições não compartilham cookie" passaram a testar essa
+  função com dois `H3Event` falsos, em vez de dois mounts. "Mudando `NUXT_PUBLIC_API_BASE`" virou
+  "mudando a `apiBase` recebida": provar que a variável de ambiente realmente sobrescreve o
+  runtimeConfig é garantia do próprio Nuxt, não desta task; o que esta task garante é que o
+  plugin usa o que `runtimeConfig.public.apiBase` disser. Confirmado à mão com `pnpm test:e2e`
+  (servidor de dev real, SSR de verdade) que o plugin não quebra nada em runtime.
 
 ### [ ] T-0119 · `Botao` e `Campo` aplicam a marca e o alvo de 44 px
 
@@ -476,3 +488,13 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Caminhos legados.** `resolverRota` reconhece o padrão do site atual (`/1/5/…`) mas não sabe o destino; a consulta à API prevista no ADR 0008 depende da decisão D2.
 - **`formatar()` com espaço inseparável.** Escolha nossa, para o preço não quebrar de linha; os testes de tela comparam texto com espaço normalizado.
 - O [specs/README.md](../README.md) cita `roadmap.md`, que ainda não existe na pasta `specs/`.
+- **`vue/html-self-closing` (void) e `vue/html-indent` discordam do Prettier** para `<img>` com
+  vários atributos — `eslint --fix` desfaz o que `prettier --write` acabou de fazer, e vice-versa,
+  num ciclo sem fim (visto em `CapaDeVideo.vue`/`TextoDeApoio.vue`, T-0117/T-0115). Não bloqueia o
+  CI (são warnings; `eslint .` sai com código 0 do mesmo jeito) — mas vale ajustar a opção `void`
+  da regra pra bater com o Prettier numa task de qualidade, em vez de corrigir isso task a task.
+- **Ambiente "nuxt" do Vitest aqui é client-only** (T-0118): `useRequestEvent()` nunca devolve um
+  evento de verdade, nem mockado via `mockNuxtImport` (a implementação real lê
+  `nuxtApp.ssrContext`, que só existe numa SSR de verdade). Quem precisar testar algo que só existe
+  no servidor (cookie, cabeçalho, IP) deve extrair a lógica pra uma função pura testável direto,
+  como `montarConfiguracaoDoClienteHttp` — não tentar simular SSR por `mountSuspended`.

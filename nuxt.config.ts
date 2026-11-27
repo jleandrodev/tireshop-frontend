@@ -6,9 +6,12 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   // T-0008 (REQ-00-07, ADR 0003): a base da API, exposta ao cliente. "/api/mock" liga o mock
   // interno (server/api/mock/**); qualquer outro valor desliga-o (server/utils/mock.ts).
+  // T-0118 (REQ-01-19): o tempo limite do ClienteHttp, também público — o cliente (navegador)
+  // decide quando desistir, não só o servidor.
   runtimeConfig: {
     public: {
       apiBase: '/api/mock',
+      apiTempoLimiteMs: 8000,
     },
   },
   // T-0005 (REQ-00-04, ADR 0006): tokens, fontes e componentes do protótipo, em toda página. As
