@@ -26,3 +26,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 *.log
+
+# Cache do vue-tsc em modo incremental (nuxt typecheck)
+*.tsbuildinfo
