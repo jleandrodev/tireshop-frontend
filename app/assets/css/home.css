@@ -1,0 +1,152 @@
+/* ============================================================================
+   home.css — só o layout da Home (07 §4); o que é global (grade de produtos,
+   cards de loja, avaliações, texto de apoio, FAQ e todo o responsivo do
+   cabeçalho, filtro, card e rodapé) está em componentes.css desde 29/10/2026.
+   Só var(--...), nenhuma cor literal.
+   Primeira dobra na variante C, escolhida pelo cliente em 29/10 (R2-01).
+   ============================================================================ */
+
+/* --- Primeira dobra: banner de ponta a ponta, card de busca sobreposto ----- */
+.ts-hero { padding-top: 0; }
+.ts-hero__grade { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+.ts-hero__filtro { position: relative; z-index: 2; }
+.ts-hero--c .ts-banner { --ts-banner-raio: 0; margin-inline: calc(-1 * var(--ts-gutter)); }
+.ts-hero--c .ts-hero__filtro { margin-top: calc(-1 * var(--ts-s-16)); max-width: 820px; margin-inline: auto; width: 100%; }
+.ts-hero--c .ts-banner__controles { bottom: calc(var(--ts-s-16) + var(--ts-s-3)); }
+.ts-hero--c .ts-container--hero { max-width: none; padding-inline: var(--ts-gutter); }
+.ts-hero + .ts-secao { padding-top: var(--ts-s-12); }   /* as ofertas vêm logo depois da busca (R2-09) */
+
+/* --- Benefícios: fundo claro, não a faixa preta (R2-17); ícone preto em disco amarelo */
+.ts-secao--beneficios { padding-block: var(--ts-s-8); background: var(--ts-surface); border-block: 1px solid var(--ts-line); }
+.ts-beneficios { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ts-s-4); }
+.ts-beneficio {
+  display: grid; grid-template-columns: auto 1fr; gap: var(--ts-s-1) var(--ts-s-4); align-items: start;
+  padding: var(--ts-s-5); border-radius: var(--ts-r-md); background: var(--ts-paper); border: 1px solid var(--ts-line);
+}
+.ts-beneficio__icone {
+  grid-row: span 2; display: grid; place-items: center; width: 52px; height: 52px;
+  border-radius: var(--ts-r-pill); background: var(--ts-brand); color: var(--ts-on-brand);
+}
+.ts-beneficio__icone svg { width: 28px; height: 28px; }
+.ts-beneficio h3 { font-size: var(--ts-fs-lg); color: var(--ts-ink); }
+.ts-beneficio p { font-size: var(--ts-fs-sm); color: var(--ts-text); }
+
+/* --- Departamentos: ícones navegacionais (LS06) ------------------------- */
+/* todas as linhas com a altura do card mais alto ("Pick-ups e SUVs" quebra em
+   duas linhas): os cards ficam sempre do mesmo tamanho */
+.ts-deps { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: var(--ts-s-3); }
+.ts-deps > li { display: flex; min-width: 0; }
+.ts-dep {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--ts-s-2);
+  padding: var(--ts-s-5) var(--ts-s-2); border: 1px solid var(--ts-line-strong); border-radius: var(--ts-r-md);
+  background: var(--ts-paper); color: var(--ts-ink); text-decoration: none;
+}
+.ts-dep:hover { border-color: var(--ts-ink); box-shadow: inset 0 -4px 0 var(--ts-brand); }
+.ts-dep svg { width: 48px; height: 48px; }
+.ts-dep strong { font-size: var(--ts-fs-md); line-height: 1.2; }
+.ts-dep span { font-size: var(--ts-fs-xs); color: var(--ts-text-soft); font-variant-numeric: tabular-nums; }
+
+/* --- Entrega em todo o Brasil ------------------------------------------- */
+.ts-entrega { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ts-s-6); }
+.ts-entrega__opcao { padding: var(--ts-s-8); border-radius: var(--ts-r-md); border: 2px solid var(--ts-ink); background: var(--ts-paper); }
+.ts-entrega__opcao h3 { font-size: var(--ts-fs-2xl); margin-top: var(--ts-s-4); }
+.ts-entrega__opcao p { margin-top: var(--ts-s-3); max-width: 44ch; }
+.ts-entrega__opcao svg { width: 44px; height: 44px; }
+.ts-entrega__opcao .ts-link { display: inline-block; margin-top: var(--ts-s-4); }
+
+/* --- Marcas: carrossel manual (LS05) ------------------------------------ */
+/* logotipos menores (R2-19): 7 por tela no computador, 3 no celular */
+.ts-marcas { --ts-carrossel-item: 168px; }
+.ts-marca {
+  display: grid; place-items: center; height: 76px; padding: 0 var(--ts-s-3);
+  border: 1px solid var(--ts-line-strong); border-radius: var(--ts-r-md); background: var(--ts-paper);
+  font-size: var(--ts-fs-xl); font-weight: var(--w-black); letter-spacing: -0.02em; color: var(--ts-ink);
+  text-decoration: none; text-align: center; line-height: 1.1;
+}
+.ts-marca:hover { border-color: var(--ts-ink); }
+.ts-marca img { max-width: 100%; height: auto; }
+
+/* --- Compre com segurança ----------------------------------------------- */
+.ts-seguranca { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ts-s-6); }
+.ts-seguranca__item svg { width: 32px; height: 32px; color: var(--ts-ink); }
+.ts-seguranca__item h3 { margin-top: var(--ts-s-3); font-size: var(--ts-fs-lg); }
+.ts-seguranca__item p { margin-top: var(--ts-s-1); font-size: var(--ts-fs-sm); color: var(--ts-text-soft); }
+.ts-seguranca__cta { margin-top: var(--ts-s-8); }
+
+/* --- Blog (C11): cards tipográficos ------------------------------------- */
+.ts-blog { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--ts-s-6); }
+.ts-blog__controles { display: none; }
+.ts-artigo {
+  position: relative; display: flex; flex-direction: column; gap: var(--ts-s-2); height: 100%;
+  border-radius: var(--ts-r-md); background: var(--ts-surface); overflow: hidden;
+}
+.ts-artigo__img { width: 100%; height: auto; aspect-ratio: 400 / 241; object-fit: cover; }
+.ts-artigo > :not(img) { padding-inline: var(--ts-s-5); }
+.ts-artigo > :last-child { padding-bottom: var(--ts-s-5); }
+.ts-artigo__cat { margin-top: var(--ts-s-2); }
+.ts-artigo__cat { font-size: var(--ts-fs-sm); font-weight: var(--w-bold); color: var(--ts-text-soft); }
+.ts-artigo h3 { font-size: var(--ts-fs-xl); }
+.ts-artigo h3 a { text-decoration: none; }
+.ts-artigo h3 a::after { content: ""; position: absolute; inset: 0; }
+.ts-artigo:hover h3 a { text-decoration: underline; text-decoration-color: var(--ts-brand); text-decoration-thickness: 3px; }
+.ts-artigo p { color: var(--ts-text); font-size: var(--ts-fs-sm); }
+
+/* ============================================================================
+   Responsivo da Home. Breakpoints 600/900/1200.
+   ============================================================================ */
+@media (max-width: 1199px) {
+  .ts-deps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 899px) {
+  .ts-hero .ts-container--hero { padding-inline: 0; }
+  .ts-hero--c .ts-banner { margin-inline: 0; }
+  .ts-hero--c .ts-hero__filtro { margin-top: calc(-1 * var(--ts-s-6)); }
+  .ts-hero--c .ts-banner__controles { bottom: calc(var(--ts-s-6) + var(--ts-s-2)); }
+  .ts-hero__filtro { padding-inline: var(--ts-gutter); }
+
+  #ofertas .ts-grade-produtos > :nth-child(n+7) { display: none; }   /* 3 linhas de 2 no celular */
+
+  .ts-secao--beneficios { padding-block: var(--ts-s-6); }
+  .ts-beneficios { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ts-s-3); }
+  .ts-beneficio { grid-template-columns: minmax(0, 1fr); justify-items: center; align-content: start; text-align: center; padding: var(--ts-s-4) var(--ts-s-3); }
+  .ts-beneficio__icone { grid-row: auto; width: 44px; height: 44px; }
+  .ts-beneficio__icone svg { width: 24px; height: 24px; }
+  .ts-beneficio h3 { font-size: var(--ts-fs-md); text-wrap: balance; }
+  .ts-beneficio p { text-wrap: balance; }
+
+  .ts-deps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--ts-s-2); }
+  .ts-dep { padding: var(--ts-s-3) var(--ts-s-1); }
+  .ts-dep svg { width: 36px; height: 36px; }
+  .ts-dep strong { font-size: var(--ts-fs-xs); }   /* "Competição" cabe em 1/4 da tela de 360px */
+  .ts-dep span { display: none; }
+
+  .ts-marcas { --ts-carrossel-item: 112px; }
+  .ts-marca { height: 60px; padding: 0 var(--ts-s-2); }
+  .ts-marca img { max-width: 84%; }
+  .ts-entrega { grid-template-columns: minmax(0, 1fr); }
+  .ts-entrega__opcao { padding: var(--ts-s-6); }
+  .ts-seguranca { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* no celular o Guia do Pneu vira carrossel manual: um artigo e a ponta do próximo */
+  .ts-blog {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(320px, 82%);
+    gap: var(--ts-s-4); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    padding-bottom: var(--ts-s-1);
+  }
+  .ts-blog::-webkit-scrollbar { display: none; }
+  .ts-blog > li { scroll-snap-align: start; }
+  .ts-blog__controles { display: flex; margin-top: var(--ts-s-4); }
+}
+
+@media (max-width: 599px) {
+  .ts-seguranca { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--ts-s-6) var(--ts-s-4); }
+  .ts-seguranca__item h3 { font-size: var(--ts-fs-md); text-wrap: balance; }
+  .ts-deps { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* celulares muito estreitos (360px): "Competição" ainda precisa caber em 1/4 da tela */
+@media (max-width: 379px) {
+  .ts-dep { min-width: 0; padding-inline: 2px; }
+  .ts-dep strong { font-size: 0.75rem; }
+}

@@ -1,0 +1,15 @@
+/* ============================================================================
+   tokens-acao.css — a cor de AÇÃO, fora do manual da TireShop.
+
+   O manual permite amarelo, preto e branco. Em 29/10/2026 o cliente decidiu
+   (Segundo Retorno N1.pdf, resposta 2): verde "sempre que tiver o objetivo de
+   seguir, comprar, confirmar". Entra só nesses botões (Comprar, Buscar pneus,
+   Ir para o carrinho, Assinar, Entendi). O amarelo continua sendo a marca.
+   Fica num arquivo separado para o lint de marca seguir barrando qualquer
+   outra cor nos componentes.
+   ============================================================================ */
+:root {
+  --ts-acao:        #15803D;  /* branco sobre ele: 5,0:1 (AA) */
+  --ts-acao-escuro: #166534;  /* hover */
+  --ts-on-acao:     #FFFFFF;
+}
