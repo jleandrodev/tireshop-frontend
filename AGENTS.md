@@ -4,6 +4,28 @@ Este arquivo vale para qualquer assistente de IA que trabalhe aqui (Claude Code,
 Leia antes de qualquer ação. Em conflito, este arquivo vence o hábito do modelo; o dev vence este
 arquivo quando disser isso com todas as letras.
 
+## 0. Modo autônomo (vigente desde 27/11/2026)
+
+O dev pediu, com todas as letras, para a IA conduzir as 238 tasks sozinha, do início ao fim do
+projeto, sem parar para aprovação em cada portão e cuidando também de commit, push, PR e merge.
+Isso substitui, até o dev dizer o contrário, os pontos do resto deste arquivo que pressupõem parada:
+
+- **Portões 1, 2 e 5 não esperam resposta.** A IA escreve o teste, julga se ele falha pelo motivo
+  esperado (o mesmo critério que pediria ao dev: asserção, não erro de import ou sintaxe), implementa
+  o mínimo, refatora e fecha — tudo em sequência, sem perguntar "posso começar?" ou "aprovado?".
+- **Git é da IA.** Commit, push, `gh pr create`, acompanhar o CI e o squash merge: seção 8.
+- **O que ainda para a IA, mesmo em modo autônomo:** dúvida de requisito que mudaria o teste (seção
+  6), decisão do PRD marcada `[cliente Dn]`, qualquer coisa destrutiva ou irreversível fora do ciclo
+  normal de task (apagar coisa, forçar push, reescrever histórico), e credencial ou acesso que falte.
+  Nesses casos a IA registra em Pendências e segue para a próxima task que não dependa disso, em vez
+  de travar o projeto inteiro.
+- **O que continua igual:** uma task por vez, na ordem do roadmap; nenhuma linha de produção antes
+  de um teste que falhe pelo motivo certo; teste aprovado não se altera para passar; o CI cresce com
+  a task.
+- A IA informa o progresso em uma linha por task (ou por lote pequeno), guardando o detalhe maior só
+  para anomalia ou decisão real. Ao fim do projeto (ou quando parar por um bloqueio genuíno), reporta
+  o tempo total decorrido desde o início deste modo.
+
 ## 1. Como a sessão começa
 
 O dev não cola instruções de TDD nem diz onde estão as tasks. **Você já sabe.** Ele diz algo como
@@ -18,7 +40,8 @@ O dev não cola instruções de TDD nem diz onde estão as tasks. **Você já sa
    - Senão, a próxima é a **primeira `[ ]`**, na ordem do arquivo (não a do número), cuja linha
      "Depende de" só cita tasks `[x]`.
    - Task `[!]` (bloqueada) é pulada; diga o motivo que está escrito abaixo dela.
-3. **Antes de escrever qualquer coisa, apresente a task** neste formato e espere o "pode ir":
+3. **Em modo autônomo (seção 0), registre a task neste formato e siga direto para o portão 1**, sem
+   esperar resposta:
 
 ```
 PRÓXIMA TASK: T-xxxx · <título>
@@ -28,13 +51,14 @@ Camada: <camada>
 Teste que vou escrever: <arquivo> — <casos, em uma linha cada>
 Depende de: <ids> (todas concluídas)
 CI: <o que esta task acrescenta ao ci.yml, ou "sem mudança">
-Vou ler antes: <spec do módulo, arquivo do contexto, endpoint>
-Posso começar pelo teste?
 ```
 
-4. Com o "pode ir", marque a task como `[~]` em `tasks.md`, leia
-   [docs/architecture.md](docs/architecture.md), o arquivo do contexto em
-   [docs/domain/](docs/domain/context-map.md) e a `spec.md` do módulo, e vá para o portão 1.
+   Fora do modo autônomo, apresente a task nesse formato e espere o "pode ir" antes de escrever
+   qualquer coisa.
+
+4. Marque a task como `[~]` em `tasks.md`, leia [docs/architecture.md](docs/architecture.md), o
+   arquivo do contexto em [docs/domain/](docs/domain/context-map.md) e a `spec.md` do módulo, e vá
+   para o portão 1.
 
 **Quando ele citar um id:** confira as dependências. Se alguma não estiver `[x]`, não comece: diga
 quais faltam e qual seria a próxima pela ordem.
@@ -51,13 +75,13 @@ dela e pare.
 
 ## 2. O ciclo (inegociável)
 
-| Portão | O que você faz | Onde você PARA |
+| Portão | O que você faz | Onde você PARA (fora do modo autônomo) / O que faz (modo autônomo, seção 0) |
 |---|---|---|
-| 1 Vermelho | Escreve **só o teste** descrito na task. Roda. Mostra o comando e a falha. | Para e pede a revisão do teste. |
-| 2 Revisão | Nada. O dev lê e aprova, ou pede ajuste. | Espera "aprovado" ou equivalente. |
-| 3 Verde | Escreve o **mínimo** de código de produção para o teste passar. Roda a suíte do módulo. | Segue para o 4 sem parar, se tudo passou. |
-| 4 Refatoração | Remove duplicação e melhora nomes, com a suíte verde a cada passo. | Para e mostra o resultado. |
-| 5 Fechamento | Depois do "ok" do dev: marca a task como `[x]` com a data em `tasks.md`, atualiza docs tocadas, anota Pendências e **entrega as sugestões de commit** (seção 8). Depois diz qual é a próxima task, em uma linha. | Fim da task. Não começa a próxima sem o dev pedir. |
+| 1 Vermelho | Escreve **só o teste** descrito na task. Roda. Mostra o comando e a falha. | Para e pede a revisão do teste. / Julga se a falha é pelo motivo certo e segue. |
+| 2 Revisão | Nada. O dev lê e aprova, ou pede ajuste. | Espera "aprovado" ou equivalente. / Autoaprova com o mesmo critério; se o teste está errado, corrige antes de seguir. |
+| 3 Verde | Escreve o **mínimo** de código de produção para o teste passar. Roda a suíte do módulo. | Segue para o 4 sem parar, se tudo passou. (igual nos dois modos) |
+| 4 Refatoração | Remove duplicação e melhora nomes, com a suíte verde a cada passo. | Para e mostra o resultado. / Segue para o 5 sem parar. |
+| 5 Fechamento | Marca a task como `[x]` com a data em `tasks.md`, atualiza docs tocadas, anota Pendências. | Fora do autônomo: depois do "ok" do dev, **entrega as sugestões de commit** (seção 8) e não começa a próxima sem o dev pedir. Em modo autônomo: commita, dá push, abre o PR, espera o CI e faz o squash merge (seção 8), e segue direto para a próxima task. |
 
 Regras do ciclo:
 
@@ -168,8 +192,12 @@ O contrato vive em três lugares que precisam concordar: o schema Zod do adaptad
 ## 8. Git, commits e pull request
 
 A `main` é protegida: só recebe mudança por pull request, com squash, e com os checks `CI ok` e
-`Título do PR` verdes (ADR 0014). **Quem commita, dá push, abre o PR e faz o merge é o dev.** Você
-não roda `git commit`, `git push` nem `gh pr`: você **sugere**, no portão 5.
+`Título do PR` verdes (ADR 0014).
+
+**Em modo autônomo (seção 0, vigente desde 27/11/2026): quem commita, dá push, abre o PR, acompanha
+o CI e faz o merge é a IA.** Fora dele, é o dev: a IA só **sugere**, no portão 5, sem rodar `git
+commit`, `git push` nem `gh pr`. A sequência de commits e o título do PR são os mesmos nos dois
+casos — o que muda é quem aperta o botão.
 
 - **Uma task, uma branch, um PR.** Branch `feat/t-0304-filter-by-rim-size` (tipo, id e resumo em inglês), criada a partir da `main` atualizada.
 - **Commits que contam o ciclo.** Sugira, na ordem, com a lista de arquivos de cada um:
