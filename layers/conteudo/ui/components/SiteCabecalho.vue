@@ -1,15 +1,15 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { classificarHref, rotas } from '#layers/shared'
 import { tipoDoItemDeMenu, type LojaDoMenu } from '../../domain/navegacao'
 import { fornecerCoordenadorMegaMenu } from '../composables/use-coordenador-mega-menu'
 import { useNavegacao } from '../composables/use-navegacao'
 
-// T-0205..T-0208 · REQ-02-02..REQ-02-08: barra de topo, logo, busca por medida, "Entrar",
-// carrinho e os menus (Departamentos, Lojas Físicas, Marcas e os links simples do menu). "Entrar"
-// ainda não tem destino (login fora do escopo, ver Pendências de
-// specs/02-conteudo-navegacao/tasks.md): mostrado como botão, sem ação. O cabeçalho não importa
-// Catálogo, Carrinho nem Lojas — a contagem e a lista de lojas chegam por prop (REQ-02-01, A5); o
-// drawer do celular é da próxima task.
+// T-0205..T-0209 · REQ-02-02..REQ-02-09: barra de topo, logo, busca por medida, "Entrar",
+// carrinho, os mega menus do computador e a gaveta do celular. "Entrar" ainda não tem destino
+// (login fora do escopo, ver Pendências de specs/02-conteudo-navegacao/tasks.md): mostrado como
+// botão, sem ação. O cabeçalho não importa Catálogo, Carrinho nem Lojas — a contagem e a lista
+// de lojas chegam por prop (REQ-02-01, A5).
 defineProps<{ quantidadeNoCarrinho: number; lojas: readonly LojaDoMenu[] }>()
 const emit = defineEmits<{
   buscar: [texto: string]
@@ -19,6 +19,12 @@ const emit = defineEmits<{
 
 const { navegacao } = useNavegacao()
 fornecerCoordenadorMegaMenu()
+const gavetaAberta = ref(false)
+
+function abrirGaveta(): void {
+  gavetaAberta.value = true
+  emit('abrir-menu')
+}
 
 function rotuloDoCarrinho(quantidade: number): string {
   if (quantidade === 0) return 'Carrinho, vazio'
@@ -38,7 +44,7 @@ function rotuloDoCarrinho(quantidade: number): string {
         type="button"
         class="ts-header__menu-btn"
         aria-label="Abrir menu"
-        @click="emit('abrir-menu')"
+        @click="abrirGaveta"
       >
         <Icone nome="menu" />
       </button>
@@ -100,5 +106,16 @@ function rotuloDoCarrinho(quantidade: number): string {
         </template>
       </ul>
     </nav>
+    <MenuCelular
+      v-if="navegacao"
+      :aberto="gavetaAberta"
+      :departamentos="navegacao.departamentos"
+      :menu="navegacao.menu"
+      :ajuda="navegacao.ajuda"
+      :telefone="navegacao.contato.telefone"
+      :whatsapp="navegacao.contato.whatsapp"
+      :atendimento="navegacao.contato.atendimento"
+      @fechar="gavetaAberta = false"
+    />
   </header>
 </template>
