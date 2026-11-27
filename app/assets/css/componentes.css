@@ -474,6 +474,8 @@ a.ts-selo-loja:hover { color: var(--ts-ink); text-decoration: none; outline: 2px
   border: 3px solid var(--ts-brand);
 }
 .ts-fab svg { width: 30px; height: 30px; }
+/* T-0211: página com barra fixa no rodapé (compra, filtros) — o botão sobe para não cobri-la. */
+.ts-fab--acima { bottom: calc(var(--ts-barra-h) + var(--ts-s-2)); }
 .ts-cookies {
   position: fixed; left: var(--ts-s-4); bottom: var(--ts-s-4); z-index: var(--ts-z-cookies);
   display: flex; align-items: center; gap: var(--ts-s-4); max-width: 520px;

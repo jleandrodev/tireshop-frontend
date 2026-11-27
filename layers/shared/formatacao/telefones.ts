@@ -4,16 +4,32 @@ function soDigitos(valor: string): string {
   return valor.replace(/\D/g, '')
 }
 
-/** "(DD) NNNN-NNNN" com 10 dígitos, "(DD) NNNNN-NNNN" com 11. Fora disso: o texto original. */
-export function formatarTelefone(valor: string): string {
-  const digitos = soDigitos(valor)
+/** "(DD) NNNN-NNNN" com 10 dígitos, "(DD) NNNNN-NNNN" com 11. Fora disso: `valorOriginal`. */
+function formatarDigitosLocais(digitos: string, valorOriginal: string): string {
   if (digitos.length === 10) {
     return `(${digitos.slice(0, 2)}) ${digitos.slice(2, 6)}-${digitos.slice(6)}`
   }
   if (digitos.length === 11) {
     return `(${digitos.slice(0, 2)}) ${digitos.slice(2, 7)}-${digitos.slice(7)}`
   }
-  return valor
+  return valorOriginal
+}
+
+export function formatarTelefone(valor: string): string {
+  return formatarDigitosLocais(soDigitos(valor), valor)
+}
+
+// T-0211 · REQ-02-15: `Contato.whatsapp`/o número de uma loja vêm com o DDI ("55..."), formato
+// diferente de `Contato.telefone` (já local) — por isso uma função própria, não um uso a mais de
+// `formatarTelefone`. Só tira o "55" quando o resultado bate 12 ou 13 dígitos (DDI + local);
+// fora disso, é texto solto, não telefone — devolve sem tocar.
+export function formatarNumeroDeWhatsapp(valor: string): string {
+  const digitos = soDigitos(valor)
+  const local =
+    digitos.startsWith('55') && (digitos.length === 12 || digitos.length === 13)
+      ? digitos.slice(2)
+      : digitos
+  return formatarDigitosLocais(local, valor)
 }
 
 /** `tel:+55` seguido só dos dígitos — aceita o telefone já formatado. */
