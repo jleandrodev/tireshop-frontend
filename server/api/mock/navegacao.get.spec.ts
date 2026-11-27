@@ -1,5 +1,9 @@
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 import { afterEach, describe, expect, test } from 'vitest'
-import { responderFixture } from '../../utils/mock'
+import { classificarHref, resolverRota } from '#layers/shared'
+import { NavegacaoSchema } from '../../../layers/conteudo/adapters/http/navegacao.schema'
+import { lerFixtureJson, responderFixture } from '../../utils/mock'
 
 // T-0008 · REQ-00-07: o servidor de mocks serve fixtures, com atraso e falha simuláveis.
 //
@@ -82,5 +86,92 @@ describe('responderFixture: GET /api/mock/navegacao', () => {
     })
 
     expect(resultado).toEqual({ tipo: 'ok', corpo: { ok: true } })
+  })
+})
+
+// T-0203 · REQ-02-01, REQ-02-05: a resposta de verdade (mocks/fixtures/navegacao.json, lida por
+// `responderFixture`) tem de valer o contrato que o adaptador (T-0202) espera — não só a fixture
+// reduzida dos testes acima.
+
+const raiz = join(import.meta.dirname, '..', '..', '..')
+const categorias = JSON.parse(
+  readFileSync(join(raiz, 'mocks', 'fixtures', '_base', 'categorias.json'), 'utf8'),
+) as ReadonlyArray<{ slug: string }>
+const slugsDeCategoria = new Set(categorias.map((categoria) => categoria.slug))
+
+function hrefsDaFixture(valor: unknown): string[] {
+  if (Array.isArray(valor)) return valor.flatMap(hrefsDaFixture)
+  if (valor !== null && typeof valor === 'object') {
+    return Object.entries(valor as Record<string, unknown>).flatMap(([chave, campo]) =>
+      chave === 'href' && typeof campo === 'string' ? [campo] : hrefsDaFixture(campo),
+    )
+  }
+  return []
+}
+
+describe('GET /api/mock/navegacao: a resposta de verdade honra o contrato do adaptador', () => {
+  async function navegacaoDeVerdade(): Promise<unknown> {
+    delete process.env[chaveApiBase]
+    const resultado = await responderFixture({
+      query: {},
+      instancia: '/api/mock/navegacao',
+      lerFixture: () => lerFixtureJson('navegacao'),
+    })
+    if (resultado.tipo !== 'ok') throw new Error('esperava sucesso: ' + JSON.stringify(resultado))
+    return resultado.corpo
+  }
+
+  test('valida no NavegacaoSchema do adaptador', async () => {
+    const resultado = NavegacaoSchema.safeParse(await navegacaoDeVerdade())
+    expect(resultado.success).toBe(true)
+  })
+
+  test('tem 8 departamentos e pelo menos 50 links de aro no total', async () => {
+    const navegacao = (await navegacaoDeVerdade()) as { departamentos: Array<{ aros: unknown[] }> }
+
+    expect(navegacao.departamentos).toHaveLength(8)
+    const totalDeAros = navegacao.departamentos.reduce((total, dep) => total + dep.aros.length, 0)
+    expect(totalDeAros).toBeGreaterThanOrEqual(50)
+  })
+
+  test('todo href interno é reconhecido por resolverRota (nenhum "desconhecida")', async () => {
+    const internos = hrefsDaFixture(await navegacaoDeVerdade()).filter(
+      (href) => classificarHref(href) === 'interno',
+    )
+
+    expect(internos.length).toBeGreaterThan(0)
+    for (const href of internos) {
+      expect(resolverRota(href).tipo, `href interno não reconhecido: ${href}`).not.toBe(
+        'desconhecida',
+      )
+    }
+  })
+
+  test('todo href de categoria (/c/<slug>) aponta para um slug em categorias.json', async () => {
+    const hrefsDeCategoria = hrefsDaFixture(await navegacaoDeVerdade()).filter((href) =>
+      href.startsWith('/c/'),
+    )
+
+    expect(hrefsDeCategoria.length).toBeGreaterThan(0)
+    for (const href of hrefsDeCategoria) {
+      const slug = href.slice('/c/'.length)
+      expect(slugsDeCategoria.has(slug), `slug sem categoria: ${slug}`).toBe(true)
+    }
+  })
+
+  test('?_falha=500 continua devolvendo problem+json mesmo lendo a fixture de verdade', async () => {
+    delete process.env[chaveApiBase]
+
+    const resultado = await responderFixture({
+      query: { _falha: '500' },
+      instancia: '/api/mock/navegacao',
+      lerFixture: () => lerFixtureJson('navegacao'),
+    })
+
+    expect(resultado).toMatchObject({
+      tipo: 'falha',
+      status: 500,
+      corpo: { status: 500, type: expect.any(String), title: expect.any(String) },
+    })
   })
 })

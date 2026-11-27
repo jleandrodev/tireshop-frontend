@@ -66,7 +66,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   (`paraErroDeConteudo`), em vez de alargar o tipo da porta. `NavegacaoSchema` não usa `.strict()`
   de propósito: campo novo da API não quebra o adaptador.
 
-### [ ] T-0203 · O mock de `/navegacao` responde no contrato do adaptador
+### [x] T-0203 · O mock de `/navegacao` responde no contrato do adaptador — 2026-11-27
 
 - **Requisito:** REQ-02-01, REQ-02-05
 - **Camada:** mock
@@ -80,6 +80,20 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `server/api/mock/navegacao.get.spec.ts`, `docs/api/examples/navegacao.json`, `mocks/fixtures/navegacao.json`
 - **Fora do escopo:** mudar o formato do contrato (se for preciso, é a seção 5 do `AGENTS.md`).
 - **Depende de:** T-0008, T-0202
+- **Decisões:** a "Pendência" abaixo (e o "Pronto quando" desta task) descrevia um erro no aro 17
+  de Carros (`/c/carros-aro?pagina=17`) que **não existe nos dois arquivos** — confirmado por
+  `diff` e pelo histórico do git: os dois já trazem `/c/carros-aro-17` desde o commit inicial do
+  projeto (`1f26d26`, antes de qualquer task deste repositório). Decisão (detalhe, não requisito):
+  nenhuma edição de fixture era necessária; a task virou só o teste de contrato, travando o que já
+  é verdade (nenhum arquivo de produção mudou, só o `.spec.ts` — sem commit `build`). Os 5 casos
+  novos leem a fixture de verdade (`lerFixtureJson('navegacao')`, não a fixture reduzida dos
+  testes da T-0008) e passaram de primeira: `NavegacaoSchema` (importado direto de
+  `adapters/http/`, como `tests/contract/ativos.spec.ts` já faz com `shared/ui/sprite.ts` — fora de
+  `layers/`, a regra do ESLint de "só pela API pública" não se aplica, e o schema é intencionalmente
+  interno ao adaptador, não exportado pelo `index.ts`), 8 departamentos e 59 aros (≥ 50), todo href
+  interno reconhecido por `resolverRota` e todo `/c/<slug>` existente em
+  `mocks/fixtures/_base/categorias.json`. Removida a Pendência da fixture (resolvida: nunca existiu
+  no código versionado).
 
 ### [ ] T-0204 · O contexto Conteúdo é ligado em um lugar só, com uma busca por requisição
 
@@ -351,7 +365,6 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 
 ## Pendências
 
-- **Erro na fixture.** Em `docs/api/examples/navegacao.json`, o aro 17 de Carros aponta para `/c/carros-aro?pagina=17`; o certo é `/c/carros-aro-17`. A T-0203 corrige nos dois lugares.
 - **Mega menu de Lojas.** `/navegacao` não traz as lojas; o `docs/api/README.md` diz que o mega menu usa `GET /lojas`, que é do módulo 12. Até lá o item "Lojas Físicas" é um link simples. Abrir task no módulo 12: o layout padrão busca as lojas e passa a lista ao `MegaMenuLojas`.
 - **Como saber qual item do menu é mega menu.** O protótipo decide pelo rótulo ("Lojas Físicas", "Marcas"). Aqui a decisão é pelo destino (`tipoDoItemDeMenu`). Proposta ao TI: um campo `tipo` (`link`, `lojas`, `marcas`) em `menu[]`; seria mudança de contrato (a seção 5 do `AGENTS.md`).
 - **Itens com `href` nulo.** "Meus Pedidos", "Rastrear pedido", "Aros" e "Todos os aros" vêm sem destino. A spec não os renderiza. Confirmar com o cliente se devem apontar para as páginas do site atual; "Entrar" e "Meus Pedidos" do cabeçalho também não têm URL no contrato (login está fora do escopo).
