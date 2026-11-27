@@ -3,5 +3,6 @@
 export * from './domain/result'
 export * from './domain/dinheiro'
 export * from './domain/erros'
+export * from './domain/html-seguro'
 export * from './http/cliente-http'
 export * from './http/__falsos__/cliente-http-falso'
