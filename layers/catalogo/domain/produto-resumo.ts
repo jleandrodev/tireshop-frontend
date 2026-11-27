@@ -13,8 +13,8 @@ export type SeloFrete = {
 
 export type ProdutoResumo = {
   readonly disponibilidade: Disponibilidade
-  readonly preco: Preco
-  readonly nota: number
+  readonly preco?: Preco
+  readonly nota?: number
   readonly frete?: SeloFrete
 }
 
@@ -31,6 +31,6 @@ export function seloFrete(produto: ProdutoResumo): string | undefined {
   return `Frete grátis ${produto.frete.regiao} acima de ${produto.frete.valorMinimo.formatar()}`
 }
 
-export function estrelasCheias(produto: ProdutoResumo): number {
-  return Math.round(produto.nota)
+export function estrelasCheias(produto: ProdutoResumo): number | undefined {
+  return produto.nota === undefined ? undefined : Math.round(produto.nota)
 }
