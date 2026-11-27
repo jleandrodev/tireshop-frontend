@@ -18,8 +18,11 @@ export type SchemaComSafeParse<T> = {
   safeParse: (dado: unknown) => { success: true; data: T } | { success: false; error: ErroDeParse }
 }
 
+// `PropertyKey` (não só `string | number`): é o que o Zod de verdade devolve em `issue.path`
+// (T-0202, primeiro adaptador a usar um schema real — o tipo daqui foi escrito antes e ficou
+// estreito demais). Dado vindo de JSON nunca tem `symbol` na prática: `.join('.')` não quebra.
 export type ErroDeParse = {
-  issues: ReadonlyArray<{ path: ReadonlyArray<string | number>; message: string }>
+  issues: ReadonlyArray<{ path: ReadonlyArray<PropertyKey>; message: string }>
 }
 
 export type ValorDeConsulta = string | number | boolean | undefined
