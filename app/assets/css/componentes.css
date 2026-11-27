@@ -41,15 +41,19 @@
   min-height: 36px;
 }
 .ts-topbar__contato {
-  display: inline-flex; align-items: center; gap: var(--ts-s-2);
+  display: inline-flex; align-items: center; gap: var(--ts-s-2); min-height: var(--ts-tap);
   font-weight: var(--w-bold); color: var(--ts-paper); text-decoration: none;
 }
 .ts-topbar__icones { display: inline-flex; gap: 4px; }
 .ts-topbar__contato svg { width: 18px; height: 18px; color: var(--ts-brand); }  /* sobre preto */
 .ts-topbar__numero { text-decoration: underline; text-underline-offset: 0.2em; text-decoration-color: var(--ts-brand); }
 .ts-topbar__rotulo { font-weight: var(--w-regular); color: var(--ts-on-ink-soft); }
-.ts-topbar__links { display: flex; gap: var(--ts-s-6); }
-.ts-topbar__links a { color: var(--ts-on-ink-soft); text-decoration: none; }
+.ts-topbar__links { display: flex; align-items: center; gap: var(--ts-s-6); }
+.ts-topbar__links a {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: var(--ts-tap); min-width: var(--ts-tap); padding-inline: var(--ts-s-2);
+  color: var(--ts-on-ink-soft); text-decoration: none;
+}
 .ts-topbar__links a:hover { color: var(--ts-paper); text-decoration: underline; }
 
 /* --- Cabeçalho ----------------------------------------------------------- */
@@ -735,7 +739,7 @@ html:has(.ts-menu[open]) { overflow: hidden; }
   .ts-topbar__links { display: none; }
   .ts-header__row { grid-template-columns: auto 1fr auto; min-height: 60px; gap: var(--ts-s-2); }
   .ts-header__acoes { grid-row: 1; grid-column: 3; gap: 0; }
-  .ts-header__acao { padding: 0 var(--ts-s-2); }
+  .ts-header__acao { padding: 0 var(--ts-s-2); min-width: var(--ts-tap); justify-content: center; }
   .ts-header__menu-btn {
     display: grid; place-items: center; width: var(--ts-tap); height: var(--ts-tap);
     border: 0; background: none; color: var(--ts-ink); margin-left: calc(-1 * var(--ts-s-2));
