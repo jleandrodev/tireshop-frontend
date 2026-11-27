@@ -413,7 +413,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   `bin/pnpm test:e2e` completo (60/60, inclui a chamada única voltando a "1") sem regressão;
   `bin/pnpm build` limpo; `bin/pnpm dev` com `x-dev-chamadas-navegacao: 1` confirmado à mão.
 
-### [ ] T-0212 · O aviso de cookies some no "Entendi" e fica lembrado
+### [x] T-0212 · O aviso de cookies some no "Entendi" e fica lembrado — 2026-11-27
 
 - **Requisito:** REQ-02-14
 - **Camada:** ui
@@ -428,6 +428,19 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/shared/ui/AvisoCookies.vue`, `AvisoCookies.spec.ts`, `app/layouts/default.vue`
 - **Fora do escopo:** gestão de consentimento por categoria; bloqueio de scripts de terceiros.
 - **Depende de:** T-0205, T-0119
+- **Decisões:** "no HTML do servidor o aviso não aparece" vem do `<ClientOnly>` (mecanismo do
+  próprio Nuxt), não de um `v-if` escondendo depois de montar — garante a ausência sem depender
+  de nenhuma corrida entre SSR e hidratação. Não dá para observar isso no `AvisoCookies.spec.ts`:
+  o ambiente "nuxt" do Vitest é client-only (mesmo achado da T-0118/T-0204), então `mountSuspended`
+  já entrega o componente com `onMounted` resolvido, nunca o estado "antes de montar". Confirmado
+  à mão com `bin/pnpm dev`: `curl http://localhost:3000/` não traz nenhum texto do aviso.
+  Achado de alvo de toque (mesma classe das tasks anteriores, mas sem blockificação desta vez):
+  `.ts-cookies .ts-btn` tinha `min-height: 40px` fixo no CSS do protótipo — abaixo dos 44px que
+  este projeto exige; o protótipo original nunca precisou disso. Trocado para
+  `min-height: var(--ts-tap)` — achado rodando `kernel.spec.ts` (a página de prova do kernel usa
+  o layout padrão, com o aviso de cookies de verdade agora).
+  Confirmado: `bin/pnpm test` (1002/1002), `typecheck`, `lint` (0 erros) e `format:check` limpos;
+  `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
 ### [ ] T-0213 · Rota inexistente mostra a página de não encontrado, com status 404
 
