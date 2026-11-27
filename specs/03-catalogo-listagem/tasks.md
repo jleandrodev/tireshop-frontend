@@ -129,7 +129,7 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
   Verificação local: `faceta.spec.ts` (6/6), `typecheck`, `lint` e `format:check` (0 erros);
   suíte inteira/e2e/build no CI do PR.
 
-### [ ] T-0306 · As portas do catálogo e o caso de uso `listarProdutos`
+### [x] T-0306 · As portas do catálogo e o caso de uso `listarProdutos` — 2026-11-27
 
 - **Requisito:** REQ-03-02, REQ-03-06
 - **Camada:** aplicação
@@ -142,6 +142,25 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
 - **Arquivos:** `layers/catalogo/domain/portas.ts`, `application/listar-produtos.ts`, `listar-produtos.spec.ts`, `application/__falsos__/produto-repository-falso.ts`
 - **Fora do escopo:** `obter`, `relacionados` e `porIds` (declarados na porta, implementados no módulo 04 e 08).
 - **Depende de:** T-0303, T-0304, T-0305
+- **Decisões:** `ProdutoRepository` declara só `listar` por agora — mesmo padrão de
+  `NavegacaoRepository`/`ErroDeConteudo` (T-0201): a porta cresce quando a task que precisar do
+  método chegar (módulo 04: `obter`/`relacionados`; módulo 08: `porIds`), não antes, porque
+  nenhum teste desta task os exercita e os tipos de retorno (`Produto`, `ProdutoId`) nem
+  existem ainda. `CategoriaRepository` também fica para a T-0307 (a próxima), que é quem de
+  fato testa `obterCategoria` — nada nesta task bate nele; o "Pronto quando" nomeia as duas
+  portas, mas só uma tem teste aqui.
+  **Achado escrevendo o teste:** "nunca pede mais de 12 por página, mesmo que a entrada peça"
+  só faz sentido se `CriterioDeListagem` puder PEDIR mais de 12 — mas a T-0304 fixou
+  `porPagina` como constante (`POR_PAGINA`), sem campo nenhum. Precisava de um campo de
+  verdade: `CriterioDeListagem` ganhou `porPagina` (T-0304, estendido aqui) — quem escolhe é o
+  caso de uso que monta o critério (`listarProdutos` sempre com 12; o comparador, quando
+  chegar, com 48 pela mesma porta, docs/domain/catalogo.md), nunca a URL (`paraQuery`/`deQuery`
+  continuam sem esse parâmetro — a tela não deixa o usuário escolher o tamanho da página).
+  `comPorPagina(n)` (novo método imutável, mesmo padrão de `comOrdem`) é o que `listarProdutos`
+  usa para forçar o limite antes de chamar a porta — testado em `criterio-de-listagem.spec.ts`
+  (15/15 agora, 2 casos novos), já que é uma extensão do VO da T-0304, não desta task.
+  Verificação local: `listar-produtos.spec.ts` (4/4) + todo o módulo Catálogo (52/52 ao todo),
+  `typecheck`, `lint` e `format:check` (0 erros); suíte inteira/e2e/build no CI do PR.
 
 ### [ ] T-0307 · Caso de uso `obterCategoria`
 
