@@ -14,7 +14,7 @@ function umaLista() {
     itens: [umProdutoResumo()],
     paginacao: { pagina: 1, porPagina: 12, total: 1, totalPaginas: 1 },
     facetas: [],
-    ordenacoes: ['mais_vendidos' as const],
+    ordenacoes: [{ valor: 'mais_vendidos' as const, rotulo: 'Mais vendidos' }],
   }
 }
 
@@ -60,7 +60,7 @@ describe('listarProdutos', () => {
       itens: [],
       paginacao: { pagina: 1, porPagina: 12, total: 0, totalPaginas: 0 },
       facetas: [],
-      ordenacoes: ['mais_vendidos' as const],
+      ordenacoes: [{ valor: 'mais_vendidos' as const, rotulo: 'Mais vendidos' }],
     })
     const criterio = CriterioDeListagem.inicial('pneus-para-carros')
 
