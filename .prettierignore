@@ -1,0 +1,19 @@
+.nuxt/
+.output/
+.data/
+dist/
+node_modules/
+coverage/
+playwright-report/
+test-results/
+.lighthouseci/
+pnpm-lock.yaml
+
+# Documentação, specs e contratos do handoff: formatação já revisada antes desta task (T-0002
+# cuida do código, não de reformatar prosa e exemplos de API alheios ao seu escopo).
+docs/
+specs/
+prompts/
+README.md
+AGENTS.md
+CLAUDE.md
