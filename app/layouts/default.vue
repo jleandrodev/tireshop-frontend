@@ -7,7 +7,8 @@
 
 <template>
   <a href="#conteudo" class="ts-skip">Pular para o conteúdo</a>
-  <SiteCabecalho />
+  <!-- T-0206: a contagem real do carrinho é do módulo 06 (fora do escopo até lá). -->
+  <SiteCabecalho :quantidade-no-carrinho="0" />
   <main id="conteudo" tabindex="-1">
     <slot />
   </main>
