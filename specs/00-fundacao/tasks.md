@@ -85,7 +85,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Fora do escopo:** testes de componente reais.
 - **Depende de:** T-0012
 
-### [ ] T-0004 · As layers existem e a regra de dependência é verificada
+### [x] T-0004 · As layers existem e a regra de dependência é verificada · 2026-11-27
 
 - **Requisito:** REQ-00-03
 - **Camada:** infra
@@ -97,7 +97,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
   - reprova `$fetch`, `useFetch` e `fetch` fora de `adapters/http` e de `server/`
   - aprova a estrutura vazia criada nesta task
 - **Pronto quando:** existem `layers/shared` e as sete layers de contexto com `nuxt.config.ts`, `index.ts` e as quatro pastas; `nuxt.config.ts` raiz estende todas; o teste passa. **CI:** sem job novo; a regra roda no `lint` (job Qualidade) e no `test` (job Testes).
-- **Arquivos:** `layers/**`, `nuxt.config.ts`, `eslint.config.mjs`, `tests/infra/arquitetura.spec.ts`
+- **Arquivos:** `layers/**` (`.gitkeep` nas pastas ainda vazias), `nuxt.config.ts`, `eslint.config.mjs`, `tests/infra/arquitetura.spec.ts`, `vitest.config.ts`
 - **Fora do escopo:** qualquer código dentro das layers.
 - **Depende de:** T-0003
 
@@ -206,6 +206,8 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Hospedagem (premissa P6 do PRD).** O CI ficou no GitHub Actions (ADR 0014). O provedor de hospedagem continua a confirmar com o TI; a T-1318 só publica a imagem.
 - **Tempo do job E2E.** Quando passar de 10 minutos, dividir em fatias (`--shard`) com matriz. Abrir task no módulo em que isso acontecer.
 - **Numeração dos marcos.** O roadmap vai de M0 a M6; o campo "Marco" de algumas specs usa outra numeração (a 13 diz M10; a 12, M9; as 09, 10 e 11, M8). Alinhar pelo roadmap.
+- **`no-restricted-imports` em vez de `import-x/no-restricted-paths`.** A regra de caminho do `eslint-plugin-import-x` precisa resolver o import a um arquivo real (`resolve()` do plugin); como quase nada dentro das layers existe ainda, ela saía em silêncio sem apontar nada. Troquei por `no-restricted-imports` (núcleo do ESLint), que casa com a *string* do import — funciona mesmo sem arquivo do outro lado. Desinstalei o `eslint-plugin-import-x`.
+- **Um bloco de config por (contexto × pasta), não um por regra.** Em flat config, duas entradas que configuram a mesma regra (`no-restricted-imports`) para o mesmo arquivo não somam: a última vence por inteiro. Por isso a restrição de camada (domain/application/ui) e a de contexto (só index.ts de fora) foram combinadas num `patterns` só, por combinação, em vez de em blocos separados.
 - **Aviso "Cannot extend config from `layers/shared/`".** O Nuxt 4 varre `layers/*` por convenção e tenta estender cada subpasta como layer (`@nuxt/kit`, `glob("layers/*", ...)`) — é como a T-0004 vai funcionar sem precisar listar `extends:` à mão no `nuxt.config.ts` raiz. Até lá, `layers/shared/` não tem `nuxt.config.ts` próprio, e o aviso aparece em `typecheck`, `build` e no projeto `nuxt` do Vitest; não é erro (sai sempre com código 0) e some quando a T-0004 criar o `nuxt.config.ts` de cada layer.
 - **Função de domínio e teste em arquivos separados.** A task citava só `prova.spec.ts`; separei em `prova.ts` (a função) + `prova.spec.ts` (o teste), porque a cobertura exclui todo `*.spec.ts` de `include` — com os dois juntos, `somar` ficaria de fora da medição e o relatório daria 0% em vez de 100%. Confirmado na prática: com um ramo sem teste, `pnpm test:cobertura` reprova citando `"**/domain/**" threshold (90%)`, com o arquivo e a linha.
 - **ESLint sem o módulo `@nuxt/eslint`.** Optei por `typescript-eslint` + `eslint-plugin-vue` direto em `eslint.config.mjs`, sem instalar `@nuxt/eslint` nem tocar `nuxt.config.ts` (fora do "Arquivos" da T-0002). Perde-se a detecção automática de auto-imports do Nuxt nas regras de lint; se isso gerar falso positivo mais adiante (variável de auto-import marcada como não definida), revisitar e trocar pelo módulo oficial.
