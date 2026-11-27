@@ -175,7 +175,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   detectada comparando ano/mês/dia de volta contra o que o `Date` normalizou (ex.: "2026-02-30"
   viraria 2 de março se não fosse essa checagem).
 
-### [ ] T-0109 · `Acordeao` abre e fecha cada item sozinho
+### [x] T-0109 · `Acordeao` abre e fecha cada item sozinho — 2026-11-27
 
 - **Requisito:** REQ-01-10
 - **Camada:** ui
@@ -192,6 +192,19 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/ui/Acordeao.vue`, `Acordeao.spec.ts`
 - **Fora do escopo:** JSON-LD `FAQPage` (T-0106, aplicado pela página); acordeão do rodapé (é `details`, módulo 02).
 - **Depende de:** T-0104
+- **Decisões:** primeira task de UI do módulo — o projeto Vitest "nuxt" (até aqui sem teste real)
+  passou a valer; `vitest.config.ts` move toda `layers/*/ui/**/*.spec.ts` para ele (a pasta decide
+  o projeto, não o conteúdo do arquivo — `sprite.spec.ts` foi junto, sem mudar). Isso exigiu duas
+  `devDependencies` novas, exigidas pelo próprio `@nuxt/test-utils` para montar componente
+  (`mountSuspended`) e que a task não citava: `happy-dom` (ambiente DOM) e `@vue/test-utils`
+  (resolução do import opcional que o `@nuxt/test-utils` faz internamente). Cada pergunta abre e
+  fecha por si (estado por id, não um índice único de "aberta"), por isso `abrir(id)` pode abrir
+  qualquer uma sem fechar as demais. O painel usa o atributo `hidden`, nunca `v-if`: o conteúdo
+  continua no HTML do servidor mesmo fechado. Enter e Espaço têm handler próprio
+  (`@keydown.enter.prevent`/`@keydown.space.prevent`) porque o ambiente de teste (happy-dom) não
+  sintetiza o `click` que um `<button>` real dispara nessas teclas — sem eles, o caso de teste não
+  teria como passar. `vue/no-v-html` ganhou uma segunda exceção, por arquivo, em
+  `eslint.config.mjs` (a resposta é `HtmlSeguro`, já filtrada pela T-0104).
 
 ### [ ] T-0110 · `Guias` troca de painel com clique, setas, Home e End
 
