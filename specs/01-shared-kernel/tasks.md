@@ -48,7 +48,7 @@ mira a linha errada: a do comentário, não a da expressão). Confirmado que `nu
 - **Fora do escopo:** parcelamento e desconto (vêm prontos da API; `Preco` é do módulo 03).
 - **Depende de:** T-0101
 
-### [ ] T-0103 · `ClienteHttp` valida a resposta e converte toda falha em erro do kernel
+### [x] T-0103 · `ClienteHttp` valida a resposta e converte toda falha em erro do kernel · 2026-11-27
 
 - **Requisito:** REQ-01-03, REQ-01-04
 - **Camada:** adaptador
@@ -65,6 +65,13 @@ mira a linha errada: a do comentário, não a da expressão). Confirmado que `nu
 - **Arquivos:** `layers/shared/domain/erros.ts`, `erros.spec.ts`, `layers/shared/http/cliente-http.ts`, `cliente-http.spec.ts`, `layers/shared/http/__falsos__/cliente-http-falso.ts`, `layers/shared/index.ts`
 - **Fora do escopo:** ler o `runtimeConfig` e os cabeçalhos da requisição do Nuxt (T-0118); autenticação (dúvida D1 do PRD); repetição automática.
 - **Depende de:** T-0101
+
+**Decisões:** o erro de `safeParse` segue o formato real do `SafeParseReturnType` do Zod
+(`{ success: false, error: { issues: [{ path, message }] } }`) — mesmo sem importar o pacote, é
+esse formato que um schema Zod de verdade devolve. `ErroDeContrato.caminho` vem de
+`issues[0].path.join('.')`. Qualquer status de falha fora de 404/422 vira `ErroDeRede`. Acrescentei
+`argsIgnorePattern: '^_'` ao ESLint (global): parâmetro não usado prefixado com `_` é intencional
+(apareceu no fake de fetch e deve se repetir em portas/falsos futuros).
 
 ### [ ] T-0104 · `HtmlSeguro` só aceita a lista branca de tags
 

@@ -77,6 +77,16 @@ export default tseslint.config(
     ],
   },
   tseslint.configs.recommended,
+  {
+    // Parâmetro/variável prefixado com "_" é intencionalmente não usado (ex.: um método de uma
+    // interface que a implementação em questão ignora, como em cliente-http-falso.ts).
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+    },
+  },
   ...pluginVue.configs['flat/recommended'],
   {
     files: ['**/*.vue'],
