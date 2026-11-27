@@ -27,7 +27,8 @@
     "prettier": "3.10.1",
     "typescript-eslint": "8.74.0",
     "vitest": "5.1.2",
-    "vue-tsc": "3.3.14"
+    "vue-tsc": "3.3.14",
+    "yaml": "2.9.1"
   },
   "dependencies": {
     "nuxt": "4.7.0",
