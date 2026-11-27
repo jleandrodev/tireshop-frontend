@@ -22,6 +22,9 @@ export type ResultadoMock =
   | { tipo: 'falha'; status: number; corpo: Problema }
   | { tipo: 'ok'; corpo: unknown }
 
+export type ResultadoDeRede =
+  { tipo: 'desligado' } | { tipo: 'falha'; status: number; corpo: Problema } | { tipo: 'pronto' }
+
 export function apiBaseAtual(): string {
   return process.env.NUXT_PUBLIC_API_BASE || BASE_INTERNA
 }
@@ -31,21 +34,22 @@ function numeroDaQuery(valor: unknown): number | undefined {
   return Number.isFinite(n) && n > 0 ? n : undefined
 }
 
-export async function responderFixture(opcoes: {
-  query: Record<string, unknown>
-  instancia: string
-  lerFixture: () => Promise<unknown>
-}): Promise<ResultadoMock> {
+/** `?_atraso`/`?_falha`/mock desligado — comum a toda rota do mock. Devolve `'pronto'` quando a
+ *  rota deve seguir com a própria lógica (T-0217: a primeira rota além de servir uma fixture). */
+export async function simularRede(
+  query: Record<string, unknown>,
+  instancia: string,
+): Promise<ResultadoDeRede> {
   if (apiBaseAtual() !== BASE_INTERNA) {
     return { tipo: 'desligado' }
   }
 
-  const atraso = numeroDaQuery(opcoes.query._atraso)
+  const atraso = numeroDaQuery(query._atraso)
   if (atraso) {
     await new Promise((resolve) => setTimeout(resolve, atraso))
   }
 
-  const falha = numeroDaQuery(opcoes.query._falha)
+  const falha = numeroDaQuery(query._falha)
   if (falha) {
     return {
       tipo: 'falha',
@@ -54,10 +58,21 @@ export async function responderFixture(opcoes: {
         type: 'https://api.tireshop.com.br/erros/simulado',
         title: 'Falha simulada',
         status: falha,
-        instance: opcoes.instancia,
+        instance: instancia,
       },
     }
   }
+
+  return { tipo: 'pronto' }
+}
+
+export async function responderFixture(opcoes: {
+  query: Record<string, unknown>
+  instancia: string
+  lerFixture: () => Promise<unknown>
+}): Promise<ResultadoMock> {
+  const rede = await simularRede(opcoes.query, opcoes.instancia)
+  if (rede.tipo !== 'pronto') return rede
 
   return { tipo: 'ok', corpo: await opcoes.lerFixture() }
 }
