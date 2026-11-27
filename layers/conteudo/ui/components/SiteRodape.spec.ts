@@ -167,6 +167,12 @@ describe('SiteRodape', () => {
     expect(wrapper.get('.ts-rodape__direitos').text()).toContain(String(new Date().getFullYear()))
   })
 
+  test('T-0211: monta o botão flutuante do WhatsApp, com o número do contato', async () => {
+    const wrapper = await montar()
+
+    expect(wrapper.get('a.ts-fab').attributes('href')).toBe('https://wa.me/554133172251')
+  })
+
   test('expõe o lugar "newsletter"', async () => {
     const falsoComSlot = criarNavegacaoRepositoryFalso()
     falsoComSlot.programarSucesso(
