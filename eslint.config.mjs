@@ -105,11 +105,13 @@ export default tseslint.config(
   },
   ...regrasDeLayers,
   {
-    files: ['layers/shared/ui/SpriteDeIcones.vue'],
+    files: ['layers/shared/ui/SpriteDeIcones.vue', 'layers/shared/ui/Acordeao.vue'],
     rules: {
       // Comentário de template do Vue vira nó real no HTML (poluiria toda página); por isso a
-      // exceção vem daqui, não de um <!-- eslint-disable --> dentro do <template>. O `sprite` é
-      // string fixa, montada em build time a partir dos SVGs do projeto — nunca dado do usuário.
+      // exceção vem daqui, não de um <!-- eslint-disable --> dentro do <template>. Em
+      // SpriteDeIcones, `sprite` é string fixa, montada em build time a partir dos SVGs do
+      // projeto. Em Acordeao, a resposta só chega como `HtmlSeguro` (T-0104): já passou pela
+      // lista branca de tags/atributos, nunca é HTML arbitrário do usuário.
       'vue/no-v-html': 'off',
     },
   },
