@@ -363,6 +363,15 @@
 }
 .ts-carrossel__ponto[aria-current="true"]::before { background: var(--ts-ink); }
 
+/* --- Esqueleto, EstadoVazio e EstadoDeErro (T-0113): sem protótipo de alta  */
+/* fidelidade pra seguir — são os estados que não são sucesso.               */
+.ts-esqueleto { background: var(--ts-surface-2); border-radius: var(--ts-r-sm); }
+.ts-estado-vazio, .ts-estado-erro {
+  display: grid; gap: var(--ts-s-2); padding: var(--ts-s-6); text-align: center; justify-items: center;
+}
+.ts-estado-vazio__titulo, .ts-estado-erro__texto { font-size: var(--ts-fs-lg); font-weight: var(--w-bold); color: var(--ts-ink); }
+.ts-estado-vazio__texto { color: var(--ts-text-soft); max-width: var(--ts-measure); }
+
 /* --- Estrelas ------------------------------------------------------------ */
 .ts-estrelas { display: inline-flex; gap: 2px; color: var(--ts-ink); }
 .ts-estrelas svg { width: 18px; height: 18px; }
