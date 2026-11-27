@@ -101,7 +101,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Fora do escopo:** qualquer código dentro das layers.
 - **Depende de:** T-0003
 
-### [ ] T-0005 · O CSS e as fontes do protótipo carregam
+### [x] T-0005 · O CSS e as fontes do protótipo carregam · 2026-11-27
 
 - **Requisito:** REQ-00-04
 - **Camada:** infra
@@ -110,7 +110,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
   - `--ts-brand` e `--ts-acao` existem em `:root`
   - um botão de prova com `ts-btn ts-btn--acao` tem a cor de fundo do token
 - **Pronto quando:** as folhas globais entram pelo `nuxt.config.ts`; as de página ficam disponíveis para import por página; nenhuma classe foi renomeada. A cópia é feita de `/discovery`, com o `compose.discovery.yaml`, e os arquivos copiados ficam versionados (o CI não enxerga o repositório de discovery).
-- **Arquivos:** `app/assets/css/**`, `public/fonts/**`, `nuxt.config.ts`, `tests/e2e/estilo.spec.ts`
+- **Arquivos:** `app/assets/css/**`, `public/fonts/**`, `nuxt.config.ts`, `tests/e2e/estilo.spec.ts`, `.prettierignore`
 - **Fora do escopo:** componentes.
 - **Depende de:** T-0001
 
@@ -210,6 +210,9 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Um bloco de config por (contexto × pasta), não um por regra.** Em flat config, duas entradas que configuram a mesma regra (`no-restricted-imports`) para o mesmo arquivo não somam: a última vence por inteiro. Por isso a restrição de camada (domain/application/ui) e a de contexto (só index.ts de fora) foram combinadas num `patterns` só, por combinação, em vez de em blocos separados.
 - **Aviso "Cannot extend config from `layers/shared/`".** O Nuxt 4 varre `layers/*` por convenção e tenta estender cada subpasta como layer (`@nuxt/kit`, `glob("layers/*", ...)`) — é como a T-0004 vai funcionar sem precisar listar `extends:` à mão no `nuxt.config.ts` raiz. Até lá, `layers/shared/` não tem `nuxt.config.ts` próprio, e o aviso aparece em `typecheck`, `build` e no projeto `nuxt` do Vitest; não é erro (sai sempre com código 0) e some quando a T-0004 criar o `nuxt.config.ts` de cada layer.
 - **Função de domínio e teste em arquivos separados.** A task citava só `prova.spec.ts`; separei em `prova.ts` (a função) + `prova.spec.ts` (o teste), porque a cobertura exclui todo `*.spec.ts` de `include` — com os dois juntos, `somar` ficaria de fora da medição e o relatório daria 0% em vez de 100%. Confirmado na prática: com um ramo sem teste, `pnpm test:cobertura` reprova citando `"**/domain/**" threshold (90%)`, com o arquivo e a linha.
+- **`tokens-fonts-web.css` teve o `url(../fonts/...)` reescrito para `url(/fonts/...)`.** No protótipo esse CSS é servido ao lado de uma pasta `fonts/` irmã; aqui as fontes vão para `public/fonts/` (servido na raiz) e o CSS global, para `app/assets/css/` (processado pelo Vite) — o relativo original não alcançaria `public/`. É a única mudança de conteúdo nos arquivos copiados; nenhuma classe mudou.
+- **`app/assets/css/` fora do Prettier.** Todo CSS daqui vem do protótipo, verbatim (ADR 0006); reformatar aumentaria o diff contra a fonte sem ganho — a qualidade desse CSS é do lint de marca (T-0006), não do Prettier.
+- **`catalogo.css`, `comparar.css`, `home.css` e `institucional.css` copiados, ainda sem página que os use.** Ficam disponíveis para import quando a task da página chegar (T-03xx, T-08xx, T-09xx, T-11xx); nenhum nuxt.config.ts os carrega global.
 - **ESLint sem o módulo `@nuxt/eslint`.** Optei por `typescript-eslint` + `eslint-plugin-vue` direto em `eslint.config.mjs`, sem instalar `@nuxt/eslint` nem tocar `nuxt.config.ts` (fora do "Arquivos" da T-0002). Perde-se a detecção automática de auto-imports do Nuxt nas regras de lint; se isso gerar falso positivo mais adiante (variável de auto-import marcada como não definida), revisitar e trocar pelo módulo oficial.
 - **`vue/multi-word-component-names` desligada.** O roteamento por arquivo do Nuxt exige nomes de um termo só (`index.vue`, `error.vue`, futuramente `[id].vue`); a regra recomendada do `eslint-plugin-vue` reprovava isso. Desligada globalmente para `**/*.vue`.
 - **Prettier não cobre `docs/`, `specs/`, `prompts/` nem os `.md` da raiz.** Essa prosa foi revisada em sessões anteriores com formatação própria; reformatá-la agora geraria um diff gigante e alheio ao escopo desta task. `format`/`format:check` cobrem o código (TS, Vue, JSON, configs) e crescem com o projeto.
