@@ -73,7 +73,7 @@ esse formato que um schema Zod de verdade devolve. `ErroDeContrato.caminho` vem 
 `argsIgnorePattern: '^_'` ao ESLint (global): parâmetro não usado prefixado com `_` é intencional
 (apareceu no fake de fetch e deve se repetir em portas/falsos futuros).
 
-### [ ] T-0104 · `HtmlSeguro` só aceita a lista branca de tags
+### [x] T-0104 · `HtmlSeguro` só aceita a lista branca de tags · 2026-11-27
 
 - **Requisito:** REQ-01-05
 - **Camada:** domínio
@@ -89,6 +89,11 @@ esse formato que um schema Zod de verdade devolve. `ErroDeContrato.caminho` vem 
 - **Arquivos:** `layers/shared/domain/html-seguro.ts`, `html-seguro.spec.ts`
 - **Fora do escopo:** limpar ou corrigir o HTML (o kernel recusa; quem conserta é o backend); renderização.
 - **Depende de:** T-0103
+
+**Decisão:** o esquema do `href` é lista branca (`https:`, `mailto:`, `tel:`, caminho começando
+com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` — mais seguro contra
+`data:`, protocolo relativo etc. Confirmado contra a fixture real (links absolutos
+`https://www.tireshop.com.br/...` no texto de apoio).
 
 ### [ ] T-0105 · `rotas` gera toda URL interna e `resolverRota` faz o caminho de volta
 
