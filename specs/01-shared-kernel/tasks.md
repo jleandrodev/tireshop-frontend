@@ -31,7 +31,7 @@ mira a linha errada: a do comentário, não a da expressão). Confirmado que `nu
 `layers/*/domain/**`, inclusive `.spec.ts` — ao contrário de `tests/infra/`, `scripts/` e
 `tests/contract/` (Pendência da T-0003): o teste de tipo é mesmo verificado.
 
-### [ ] T-0102 · `Dinheiro` guarda centavos inteiros e formata em reais
+### [x] T-0102 · `Dinheiro` guarda centavos inteiros e formata em reais · 2026-11-27
 
 - **Requisito:** REQ-01-02
 - **Camada:** domínio
