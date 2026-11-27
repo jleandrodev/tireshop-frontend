@@ -113,7 +113,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Fora do escopo:** consultar a API para resolver caminho legado; redirecionamentos; a decisão final de URL (dúvida D2 do PRD).
 - **Depende de:** T-0003
 
-### [ ] T-0106 · `shared/seo` define os metadados e monta `BreadcrumbList` e `FAQPage`
+### [x] T-0106 · `shared/seo` define os metadados e monta `BreadcrumbList` e `FAQPage` · 2026-11-27
 
 - **Requisito:** REQ-01-07
 - **Camada:** domínio
