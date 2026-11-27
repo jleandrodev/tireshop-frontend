@@ -2,8 +2,24 @@ version: 2
 
 # Os prefixos seguem Conventional Commits, para o título do PR passar no check "Título do PR":
 # "ci(deps): bump ..." para actions e "build(deps): bump ..." para o resto.
-# O ecossistema npm entra na T-0001, quando o package.json passa a existir.
 updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: build
+      include: scope
+    groups:
+      nuxt:
+        patterns: ['nuxt', '@nuxt/*', 'vue', 'vue-router']
+      playwright:
+        patterns: ['@playwright/*']
+    ignore:
+      # O Playwright sobe junto com o ARG PLAYWRIGHT_VERSION do Dockerfile, à mão (a T-0012 confere).
+      - dependency-name: '@playwright/test'
+
   - package-ecosystem: github-actions
     directory: /
     schedule:

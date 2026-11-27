@@ -1,0 +1,3 @@
+# Só estes pacotes podem rodar script de build na instalação (o pnpm barra os demais).
+allowBuilds:
+  esbuild: true

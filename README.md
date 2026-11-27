@@ -6,8 +6,8 @@ O backend é do cliente. Este repositório entrega **só o frontend**, que conso
 mesmo formato, e trocar um pelo outro é mudar uma variável de ambiente.
 
 > **Estado em 26/11/2026:** base documental pronta (arquitetura, ADRs, domínio, contratos, specs e
-> tasks), ambiente em contêiner e esqueleto do CI (`T-0000`). **Ainda não há código Nuxt.** O projeto
-> nasce na task `T-0001`, seguindo o ciclo abaixo.
+> tasks), ambiente em contêiner e esqueleto do CI (`T-0000`). O projeto Nuxt nasceu na `T-0001`
+> (27/11/2026): sobe com SSR e tem o primeiro teste de ponta a ponta. As telas vêm nas tasks seguintes.
 
 ## Como rodar
 
