@@ -227,7 +227,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   Confirmado: `bin/pnpm test` (951/951), `typecheck`, `lint` (0 erros) e `format:check` limpos;
   `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
-### [ ] T-0207 · O mega menu Departamentos mostra os aros de cada departamento
+### [x] T-0207 · O mega menu Departamentos mostra os aros de cada departamento — 2026-11-27
 
 - **Requisito:** REQ-02-05, REQ-02-06
 - **Camada:** ui
@@ -243,6 +243,22 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/conteudo/ui/components/MegaMenu.vue`, `MegaMenuDepartamentos.vue`, `MegaMenuDepartamentos.spec.ts`, `MegaMenu.spec.ts`, `SiteCabecalho.vue`
 - **Fora do escopo:** menus de Lojas e de Marcas (T-0208).
 - **Depende de:** T-0206
+- **Decisões:** "avisa o cabeçalho ao abrir, para os outros fecharem" virou um coordenador
+  pequeno (`use-coordenador-mega-menu.ts`, não citado nas tasks por nome): `SiteCabecalho`
+  fornece um `Ref<symbol | null>` uma vez (`fornecerCoordenadorMegaMenu`); cada `MegaMenu` lê o
+  mesmo ref e se fecha quando outro grava o próprio id — zero mudança nele quando a T-0208
+  acrescentar Lojas e Marcas, só mais uma instância lendo o mesmo coordenador. Sem provedor
+  acima (`MegaMenu.spec.ts` montando um só), a fábrica do `inject` cria um coordenador isolado,
+  sem aviso no console — a instância só não tem ninguém para fechar.
+  `departamento.icone` ("carro", "suv"…) não bate com os nomes do sprite (MDI, "mdi-car-side"…);
+  `icone-do-departamento.ts` traduz os 8 valores fixos do contrato — mapa, não lógica, então
+  também serve de pronto para o menu do celular (T-0209).
+  Todo link do painel (título do departamento, aro, "Ajuda para escolher", "Também vendemos")
+  decide `NuxtLink` ou `<a target="_blank" rel="noopener noreferrer">` por `classificarHref`
+  (T-0105) — nenhum grupo assume de antemão se é interno ou externo; na fábrica (e no contrato
+  real, T-0203), os aros são externos (site legado) e os departamentos, internos.
+  Confirmado: `bin/pnpm test` (962/962), `typecheck`, `lint` (0 erros) e `format:check` limpos;
+  `bin/pnpm test:e2e` completo (60/60) sem regressão; `bin/pnpm build` limpo.
 
 ### [ ] T-0208 · Os mega menus de Lojas Físicas e de Marcas
 
