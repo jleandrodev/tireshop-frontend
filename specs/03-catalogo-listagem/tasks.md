@@ -4,7 +4,7 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
 
 ---
 
-### [ ] T-0301 · `Medida` valida e formata a medida do pneu
+### [x] T-0301 · `Medida` valida e formata a medida do pneu — 2026-11-27
 
 - **Requisito:** REQ-03-03
 - **Camada:** domínio
@@ -18,6 +18,13 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
 - **Arquivos:** `layers/catalogo/domain/medida.ts`, `medida.spec.ts`
 - **Fora do escopo:** resolver a busca em rota (módulo 05).
 - **Depende de:** T-0101 (`Result`)
+- **Decisões:** o fator estático se chama `de` (`Medida.de`), não `criar` — mesma convenção de
+  todo VO do kernel (`Slug.de`, `Email.de`, `Dinheiro.deCentavos`); "criar" no "Pronto quando" é
+  o nome do padrão, não o método literal (mesma nota da T-0214). Igualdade por `igual(outra)`
+  (método próprio, não `toEqual` no teste) — mesmo padrão de `Dinheiro.igual`. Primeira task do
+  módulo Catálogo: `layers/catalogo/index.ts` (antes só `export {}`) passa a reexportar `Medida`.
+  Verificação local: `medida.spec.ts` (12/12), `typecheck`, `lint` e `format:check` (0 erros);
+  suíte inteira/e2e/build no CI do PR.
 
 ### [ ] T-0302 · `Preco` expõe parcelado, à vista e preço anterior sem recalcular
 
