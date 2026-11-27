@@ -26,7 +26,7 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
   Verificação local: `medida.spec.ts` (12/12), `typecheck`, `lint` e `format:check` (0 erros);
   suíte inteira/e2e/build no CI do PR.
 
-### [ ] T-0302 · `Preco` expõe parcelado, à vista e preço anterior sem recalcular
+### [x] T-0302 · `Preco` expõe parcelado, à vista e preço anterior sem recalcular — 2026-11-27
 
 - **Requisito:** REQ-03-03
 - **Camada:** domínio
@@ -39,6 +39,12 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
 - **Arquivos:** `layers/catalogo/domain/preco.ts`, `preco.spec.ts`
 - **Fora do escopo:** formatação (é do `Dinheiro`).
 - **Depende de:** T-0102 (`Dinheiro`)
+- **Decisões:** `Preco.de` (não `criar`, mesma nota da T-0214/T-0301). A invariante de `de` (preço
+  anterior > parcelado) já é conferida na criação — `emPromocao()` confere de novo, de propósito
+  (é exatamente o que a CA descreve, e um `Preco` nunca existe com `de` inválido mesmo assim).
+  `Parcelado`/`AVista` exportados como tipos próprios (usados pelo adaptador e pelo card mais
+  adiante no módulo). Verificação local: `preco.spec.ts` (7/7), `typecheck`, `lint` e
+  `format:check` (0 erros); suíte inteira/e2e/build no CI do PR.
 
 ### [ ] T-0303 · `ProdutoResumo` sabe se pode ser comprado e o que mostrar
 
