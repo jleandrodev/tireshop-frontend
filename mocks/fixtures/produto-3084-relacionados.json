@@ -1,0 +1,268 @@
+{
+  "itens": [
+    {
+      "id": "2715",
+      "slug": "pneu-fortune-fsr-701-205-55-r17-95w",
+      "nome": "Pneu Fortune FSR-701 205/55 R17 95W",
+      "marca": {
+        "slug": "fortune",
+        "nome": "Fortune"
+      },
+      "medida": {
+        "largura": 205,
+        "altura": 55,
+        "aro": "17",
+        "rotulo": "205/55 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/2715-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Fortune FSR-701 205/55 R17 95W"
+      },
+      "preco": {
+        "de": {
+          "centavos": 57100,
+          "moeda": "BRL"
+        },
+        "parcelado": {
+          "total": {
+            "centavos": 53400,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 4450,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 50730,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": true,
+      "freteGratis": {
+        "regiao": "Sul e Sudeste",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": true,
+      "avaliacao": {
+        "nota": 4.5,
+        "total": 23
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Assimétrico"
+    },
+    {
+      "id": "2716",
+      "slug": "pneu-fortune-fsr-701-205-45-zr17-88w",
+      "nome": "Pneu Fortune FSR-701 205/45 ZR17 88W",
+      "marca": {
+        "slug": "fortune",
+        "nome": "Fortune"
+      },
+      "medida": {
+        "largura": 205,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "205/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/2716-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Fortune FSR-701 205/45 ZR17 88W"
+      },
+      "preco": {
+        "de": {
+          "centavos": 39900,
+          "moeda": "BRL"
+        },
+        "parcelado": {
+          "total": {
+            "centavos": 37300,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 3108,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 35435,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": true,
+      "freteGratis": {
+        "regiao": "Sul e Sudeste",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": true,
+      "avaliacao": {
+        "nota": 4.6,
+        "total": 43
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Assimétrico"
+    },
+    {
+      "id": "3817",
+      "slug": "pneu-fortune-fsr-701-215-45-zr17-91y-xl",
+      "nome": "Pneu Fortune FSR-701 215/45 ZR17 91Y XL",
+      "marca": {
+        "slug": "fortune",
+        "nome": "Fortune"
+      },
+      "medida": {
+        "largura": 215,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "215/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/3817-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Fortune FSR-701 215/45 ZR17 91Y XL"
+      },
+      "preco": {
+        "de": {
+          "centavos": 43100,
+          "moeda": "BRL"
+        },
+        "parcelado": {
+          "total": {
+            "centavos": 40200,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 3350,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 38190,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": true,
+      "freteGratis": {
+        "regiao": "Sul e Sudeste",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": true,
+      "avaliacao": {
+        "nota": 4.7,
+        "total": 24
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Simétrico"
+    },
+    {
+      "id": "3162",
+      "slug": "pneu-fortune-fsr-802-205-50-r17-93v",
+      "nome": "Pneu Fortune FSR-802 205/50 R17 93V",
+      "marca": {
+        "slug": "fortune",
+        "nome": "Fortune"
+      },
+      "medida": {
+        "largura": 205,
+        "altura": 50,
+        "aro": "17",
+        "rotulo": "205/50 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/3162-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Fortune FSR-802 205/50 R17 93V"
+      },
+      "preco": {
+        "de": {
+          "centavos": 43100,
+          "moeda": "BRL"
+        },
+        "parcelado": {
+          "total": {
+            "centavos": 40300,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 3358,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 38285,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": true,
+      "freteGratis": {
+        "regiao": "Sul e Sudeste",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": true,
+      "avaliacao": {
+        "nota": 4.7,
+        "total": 9
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Simétrico"
+    }
+  ]
+}

@@ -1,0 +1,884 @@
+{
+  "slug": "curitiba",
+  "cidade": "Curitiba",
+  "uf": "PR",
+  "nome": "TireShop Autocenter Curitiba",
+  "endereco": {
+    "logradouro": "Rua Westphalen, 2880",
+    "cidade": "Curitiba",
+    "uf": "PR"
+  },
+  "horario": [
+    "Segunda a Sexta das 08:00 às 18:00",
+    "Sábado das 08:00 às 12:00"
+  ],
+  "telefone": "(41) 3333-1777",
+  "whatsapp": [
+    "5541984816579",
+    "5541991558619"
+  ],
+  "foto": {
+    "src": "/img/lojas/curitiba/fachada.webp",
+    "largura": 525,
+    "altura": 241,
+    "alt": "Fachada da TireShop Curitiba"
+  },
+  "servicosResumo": [
+    "Pneus",
+    "Rodas",
+    "Molas",
+    "Abafadores",
+    "Geometria",
+    "Balanceamento",
+    "Alinhamento",
+    "Suspensão",
+    "Freios e Recuperação/personalização de rodas."
+  ],
+  "agendamentoUrl": null,
+  "mapaUrl": "https://goo.gl/maps/JVwDw5Xw4fx",
+  "cnpj": null,
+  "apresentacao": "O autocenter TireShop de Curitiba está pronta para atendê-lo! Nossa empresa está te esperando com promoções especiais. Confira!",
+  "orcamentoUrl": "https://www.tireshop.com.br/Lojas/Curitiba/Orcamento",
+  "instagram": "https://www.instagram.com/tireshopcwb/",
+  "facebook": "https://www.facebook.com/TireShopBR/",
+  "banners": [
+    {
+      "imagem": {
+        "src": "/img/lojas/curitiba/banner-1.webp",
+        "largura": 1600,
+        "altura": 250,
+        "alt": "Seja bem-vindo à TireShop Curitiba. Fone (41) 3333-1777. Rua Westphalen, 2880"
+      },
+      "imagemCelular": null,
+      "destino": {
+        "tipo": "mapa",
+        "url": null
+      }
+    },
+    {
+      "imagem": {
+        "src": "/img/lojas/curitiba/banner-2.webp",
+        "largura": 1600,
+        "altura": 250,
+        "alt": "Super Garantia Yokohama: garantia contra danos acidentais, válida a partir do aro 15"
+      },
+      "imagemCelular": null,
+      "destino": {
+        "tipo": "whatsapp",
+        "url": null
+      }
+    },
+    {
+      "imagem": {
+        "src": "/img/lojas/curitiba/banner-3.webp",
+        "largura": 1600,
+        "altura": 242,
+        "alt": "Revenda oficial premium Yokohama"
+      },
+      "imagemCelular": null,
+      "destino": {
+        "tipo": "whatsapp",
+        "url": null
+      }
+    }
+  ],
+  "vitrine": [
+    {
+      "id": "3084",
+      "slug": "pneu-hankook-ventus-prime-2-k115-225-45-r17-91v-pneu-original-hyundai-i30-e-vw-golf",
+      "nome": "Pneu Hankook Ventus Prime 2 K115 225/45 R17 91V (Pneu Original Hyundai i30 e VW Golf)",
+      "marca": {
+        "slug": "hankook",
+        "nome": "Hankook"
+      },
+      "medida": {
+        "largura": 225,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "225/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/3084-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Hankook Ventus Prime 2 K115 225/45 R17 91V (Pneu Original Hyundai i30 e VW Golf)"
+      },
+      "preco": {
+        "de": null,
+        "parcelado": {
+          "total": {
+            "centavos": 52900,
+            "moeda": "BRL"
+          },
+          "parcelas": 10,
+          "valorParcela": {
+            "centavos": 5290,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 49726,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 6
+        }
+      },
+      "promocao": true,
+      "freteGratis": null,
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.9,
+        "total": 31
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Assimétrico"
+    },
+    {
+      "id": "4589",
+      "slug": "pneu-hankook-dynapro-hp2-ra33-215-60-r17-96v",
+      "nome": "Pneu Hankook Dynapro HP2 RA33 215/60 R17 96V",
+      "marca": {
+        "slug": "hankook",
+        "nome": "Hankook"
+      },
+      "medida": {
+        "largura": 215,
+        "altura": 60,
+        "aro": "17",
+        "rotulo": "215/60 R17"
+      },
+      "departamento": {
+        "slug": "pneus-pick-ups-e-suvs",
+        "nome": "Pneus para pick-ups e SUVs"
+      },
+      "imagem": {
+        "src": "/img/produtos/4589-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Hankook Dynapro HP2 RA33 215/60 R17 96V"
+      },
+      "preco": {
+        "de": null,
+        "parcelado": {
+          "total": {
+            "centavos": 73900,
+            "moeda": "BRL"
+          },
+          "parcelas": 10,
+          "valorParcela": {
+            "centavos": 7390,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 69466,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 6
+        }
+      },
+      "promocao": true,
+      "freteGratis": null,
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.8,
+        "total": 18
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Simétrico"
+    },
+    {
+      "id": "3016",
+      "slug": "pneu-yokohama-g058-cv-235-55-r18-100v",
+      "nome": "Pneu Yokohama G058 CV 235/55 R18 100V",
+      "marca": {
+        "slug": "yokohama",
+        "nome": "Yokohama"
+      },
+      "medida": {
+        "largura": 235,
+        "altura": 55,
+        "aro": "18",
+        "rotulo": "235/55 R18"
+      },
+      "departamento": {
+        "slug": "pneus-pick-ups-e-suvs",
+        "nome": "Pneus para pick-ups e SUVs"
+      },
+      "imagem": {
+        "src": "/img/produtos/3016-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Yokohama G058 CV 235/55 R18 100V"
+      },
+      "preco": {
+        "de": null,
+        "parcelado": {
+          "total": {
+            "centavos": 107900,
+            "moeda": "BRL"
+          },
+          "parcelas": 10,
+          "valorParcela": {
+            "centavos": 10790,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 101426,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 6
+        }
+      },
+      "promocao": true,
+      "freteGratis": null,
+      "tem360": true,
+      "avaliacao": {
+        "nota": 4.7,
+        "total": 12
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Simétrico"
+    },
+    {
+      "id": "2648",
+      "slug": "pneu-bridgestone-dueler-a-t-revo-2-225-65-r17-102t",
+      "nome": "Pneu Bridgestone Dueler A/T Revo 2 225/65 R17 102T",
+      "marca": {
+        "slug": "bridgestone",
+        "nome": "Bridgestone"
+      },
+      "medida": {
+        "largura": 225,
+        "altura": 65,
+        "aro": "17",
+        "rotulo": "225/65 R17"
+      },
+      "departamento": {
+        "slug": "pneus-pick-ups-e-suvs",
+        "nome": "Pneus para pick-ups e SUVs"
+      },
+      "imagem": {
+        "src": "/img/produtos/2648-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Bridgestone Dueler A/T Revo 2 225/65 R17 102T"
+      },
+      "preco": {
+        "de": null,
+        "parcelado": {
+          "total": {
+            "centavos": 100900,
+            "moeda": "BRL"
+          },
+          "parcelas": 10,
+          "valorParcela": {
+            "centavos": 10090,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 94846,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 6
+        }
+      },
+      "promocao": true,
+      "freteGratis": null,
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.9,
+        "total": 44
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "A/T",
+      "desenho": "Simétrico"
+    }
+  ],
+  "servicos": [
+    {
+      "nome": "Check-up",
+      "texto": "Na compra de pneus ou manutenção, fazemos o check-up gratuito, com avaliação dos pneus, rodas e mais de 40 componentes do sistema de freios e suspensão do seu veículo.",
+      "foto": {
+        "src": "/img/lojas/curitiba/check-up.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Montagem de pneus",
+      "texto": "Executamos montagem de pneus de Passeio, SUV, Pick-up, Off-Road, Veículos Comerciais Leves e Alta Performance, a partir do aro 10”. Montamos também pneus run flat e em rodas blindadas, garantindo que a montagem seja executada corretamente sem danos nos pneus e rodas.",
+      "foto": {
+        "src": "/img/lojas/curitiba/montagem-de-pneus.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Rodízio dos Pneus",
+      "texto": "Na compra ou montagem dos pneus em nossa loja, oferecemos rodízios de pneus gratuitamente a cada 5 mil km. Isto garante desgaste uniforme dos pneus e prolonga sua vida útil.",
+      "foto": {
+        "src": "/img/lojas/curitiba/rodizio-dos-pneus.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Conserto de Pneus",
+      "texto": "Oferecemos conserto de pneus sem câmara com reparos MC (manchão combinado), também conhecidos como tip top. São dotados de disco e haste que cumprem a dupla função de vedação e preenchimento nos danos nos pneus.",
+      "foto": {
+        "src": "/img/lojas/curitiba/conserto-de-pneus.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Balanceamento",
+      "texto": "Fazemos balanceamento dos pneus sempre quando trocamos (montamos) e a cada 10 mil km. Isto garante o equilíbrio do conjunto de pneu/roda.",
+      "foto": {
+        "src": "/img/lojas/curitiba/balanceamento.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Conserto de Roda",
+      "texto": "Fazemos manutenção e reforma de rodas, mantendo a pintura original ou fazemos pintura exclusiva para atender a necessidade do cliente. Para não deixar o veículo parado durante a reforma, emprestamos rodas para que o cliente possa utilizar o veículo.",
+      "foto": {
+        "src": "/img/lojas/curitiba/conserto-de-roda.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Geometria",
+      "texto": "Temos equipamentos Geometria / Alinhamento por Imagem Tridimensional \"3D\" , tecnologia de última geração, recomendado pelos principais fabricantes mundiais de Automóveis e Pneus. Garantimos o ajuste de acordo com os parâmetros do fabricante do veículo. Alinhamento - é o ajuste da posição das rodas na suspensão para garantir conforto, segurança e estabilidade ao dirigir, evitando que o veículo puxe a direção para um dos lados e que haja desgaste irregular dos pneus. Caster - é o ângulo de inclinação para trás (negativo) ou para frente (positivo) do braço de suporte do eixo na parte superior, com relação a um plano vertical. O cáster desigual faz com que o veículo puxe para um dos lados, provocando também um desgaste irregular na banda de rodagem dos pneus. Camber - é o grau de inclinação da parte superior da roda, podendo ser negativa (para “dentro” do veículo) ou positiva (para “fora” do veículo) em relação a um plano vertical. A cambagem muito negativa desgasta a parte interna dos pneus e a cambagem muito positiva desgasta a parte externa do pneu.",
+      "foto": {
+        "src": "/img/lojas/curitiba/geometria.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Freios",
+      "texto": "Fazemos avaliação do sistema de freios onde verificamos a necessidade de: Substituição de Peças – Trabalhamos com peças de primeira linha; Retifica em Disco ou Tambor – Fazemos retifica em disco ou tambor, caso seja identificado que as peças tenham material suficiente para a execução da retifica, ficando com a espessura acima do mínimo definida pelo fabricante; e Sangria – Sugerimos a substituição do fluido de freio e sangria sempre quando fazemos a manutenção dos freios do veículo.",
+      "foto": {
+        "src": "/img/lojas/curitiba/freios.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Suspensão",
+      "texto": "Fazemos avaliação dos componentes da suspensão, os quais podem apresentar desgastes naturalmente pelo uso do veículo. Fazemos a substituição de molas, amortecedores, kits de borrachas, coxim de fixação e rolamentos dos amortecedores, barra estabilizadora e bandejas.",
+      "foto": {
+        "src": "/img/lojas/curitiba/suspensao.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Troca de Óleo",
+      "texto": "Trabalhamos com óleo Mobil que atende todas as aplicações do mercado, para atender os carros nacionais e importados. Efetuamos a substituição de filtro de óleo, combustível, ar e ar condicionado.",
+      "foto": {
+        "src": "/img/lojas/curitiba/troca-de-oleo.webp",
+        "largura": 400,
+        "altura": 266,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Higienização",
+      "texto": "Na substituição de filtro de ar condicionado, sugerimos a higienização para eliminação de fungos, ácaros e bactérias do sistema de ar condicionado e também da cabine do veículo.",
+      "foto": {
+        "src": "/img/lojas/curitiba/higienizacao.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    }
+  ],
+  "marcas": [
+    {
+      "grupo": "pneus",
+      "rotulo": "Pneus",
+      "itens": [
+        {
+          "nome": "Yokohama",
+          "logo": {
+            "src": "/img/marcas-lojas/yokohama.webp",
+            "largura": 1122,
+            "altura": 160,
+            "alt": "Yokohama"
+          }
+        },
+        {
+          "nome": "Achilles",
+          "logo": {
+            "src": "/img/marcas-lojas/achilles.webp",
+            "largura": 100,
+            "altura": 30,
+            "alt": "Achilles"
+          }
+        },
+        {
+          "nome": "Prinx",
+          "logo": {
+            "src": "/img/marcas-lojas/prinx.webp",
+            "largura": 490,
+            "altura": 126,
+            "alt": "Prinx"
+          }
+        },
+        {
+          "nome": "Fortune",
+          "logo": {
+            "src": "/img/marcas-lojas/fortune.webp",
+            "largura": 360,
+            "altura": 52,
+            "alt": "Fortune"
+          }
+        },
+        {
+          "nome": "Michelin",
+          "logo": {
+            "src": "/img/marcas-lojas/michelin.webp",
+            "largura": 456,
+            "altura": 104,
+            "alt": "Michelin"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "freios",
+      "rotulo": "Freios",
+      "itens": [
+        {
+          "nome": "ATE",
+          "logo": {
+            "src": "/img/marcas-lojas/ate.webp",
+            "largura": 329,
+            "altura": 214,
+            "alt": "ATE"
+          }
+        },
+        {
+          "nome": "Brembo",
+          "logo": {
+            "src": "/img/marcas-lojas/brembo.svg",
+            "largura": 167,
+            "altura": 40,
+            "alt": "Brembo"
+          }
+        },
+        {
+          "nome": "Ferodo",
+          "logo": {
+            "src": "/img/marcas-lojas/ferodo.webp",
+            "largura": 200,
+            "altura": 31,
+            "alt": "Ferodo"
+          }
+        },
+        {
+          "nome": "Hipper Freios",
+          "logo": {
+            "src": "/img/marcas-lojas/hipper-freios.webp",
+            "largura": 290,
+            "altura": 77,
+            "alt": "Hipper Freios"
+          }
+        },
+        {
+          "nome": "Jurid",
+          "logo": {
+            "src": "/img/marcas-lojas/jurid.webp",
+            "largura": 480,
+            "altura": 160,
+            "alt": "Jurid"
+          }
+        },
+        {
+          "nome": "Textar",
+          "logo": {
+            "src": "/img/marcas-lojas/textar.webp",
+            "largura": 480,
+            "altura": 276,
+            "alt": "Textar"
+          }
+        },
+        {
+          "nome": "Cobreq",
+          "logo": {
+            "src": "/img/marcas-lojas/cobreq.webp",
+            "largura": 96,
+            "altura": 26,
+            "alt": "Cobreq"
+          }
+        },
+        {
+          "nome": "Fremax",
+          "logo": {
+            "src": "/img/marcas-lojas/fremax.webp",
+            "largura": 183,
+            "altura": 52,
+            "alt": "Fremax"
+          }
+        },
+        {
+          "nome": "TRW",
+          "logo": {
+            "src": "/img/marcas-lojas/trw.svg",
+            "largura": 142,
+            "altura": 40,
+            "alt": "TRW"
+          }
+        },
+        {
+          "nome": "Fras-le",
+          "logo": {
+            "src": "/img/marcas-lojas/fras-le.webp",
+            "largura": 100,
+            "altura": 41,
+            "alt": "Fras-le"
+          }
+        },
+        {
+          "nome": "Febi",
+          "logo": {
+            "src": "/img/marcas-lojas/febi.webp",
+            "largura": 50,
+            "altura": 51,
+            "alt": "Febi"
+          }
+        },
+        {
+          "nome": "Bosch",
+          "logo": {
+            "src": "/img/marcas-lojas/bosch.svg",
+            "largura": 179,
+            "altura": 40,
+            "alt": "Bosch"
+          }
+        },
+        {
+          "nome": "Varga",
+          "logo": {
+            "src": "/img/marcas-lojas/varga.webp",
+            "largura": 85,
+            "altura": 35,
+            "alt": "Varga"
+          }
+        },
+        {
+          "nome": "Controil",
+          "logo": {
+            "src": "/img/marcas-lojas/controil.webp",
+            "largura": 100,
+            "altura": 37,
+            "alt": "Controil"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "suspensao",
+      "rotulo": "Suspensão",
+      "itens": [
+        {
+          "nome": "IMA",
+          "logo": {
+            "src": "/img/marcas-lojas/ima.webp",
+            "largura": 100,
+            "altura": 58,
+            "alt": "IMA"
+          }
+        },
+        {
+          "nome": "Viemar",
+          "logo": {
+            "src": "/img/marcas-lojas/viemar.webp",
+            "largura": 293,
+            "altura": 57,
+            "alt": "Viemar"
+          }
+        },
+        {
+          "nome": "KYB",
+          "logo": {
+            "src": "/img/marcas-lojas/kyb.svg",
+            "largura": 124,
+            "altura": 40,
+            "alt": "KYB"
+          }
+        },
+        {
+          "nome": "Cofap",
+          "logo": {
+            "src": "/img/marcas-lojas/cofap.svg",
+            "largura": 192,
+            "altura": 40,
+            "alt": "Cofap"
+          }
+        },
+        {
+          "nome": "Monroe",
+          "logo": {
+            "src": "/img/marcas-lojas/monroe.webp",
+            "largura": 480,
+            "altura": 77,
+            "alt": "Monroe"
+          }
+        },
+        {
+          "nome": "Monroe Axios",
+          "logo": {
+            "src": "/img/marcas-lojas/monroe-axios.webp",
+            "largura": 100,
+            "altura": 26,
+            "alt": "Monroe Axios"
+          }
+        },
+        {
+          "nome": "Nakata",
+          "logo": {
+            "src": "/img/marcas-lojas/nakata.webp",
+            "largura": 178,
+            "altura": 28,
+            "alt": "Nakata"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "filtros",
+      "rotulo": "Filtros",
+      "itens": [
+        {
+          "nome": "Filtros Mil",
+          "logo": {
+            "src": "/img/marcas-lojas/filtros-mil.webp",
+            "largura": 100,
+            "altura": 53,
+            "alt": "Filtros Mil"
+          }
+        },
+        {
+          "nome": "Hengst",
+          "logo": {
+            "src": "/img/marcas-lojas/hengst.svg",
+            "largura": 101,
+            "altura": 40,
+            "alt": "Hengst"
+          }
+        },
+        {
+          "nome": "Mann Filter",
+          "logo": {
+            "src": "/img/marcas-lojas/mann-filter.svg",
+            "largura": 80,
+            "altura": 40,
+            "alt": "Mann Filter"
+          }
+        },
+        {
+          "nome": "Wega",
+          "logo": {
+            "src": "/img/marcas-lojas/wega.svg",
+            "largura": 104,
+            "altura": 40,
+            "alt": "Wega"
+          }
+        },
+        {
+          "nome": "Tecfil",
+          "logo": {
+            "src": "/img/marcas-lojas/tecfil.svg",
+            "largura": 117,
+            "altura": 40,
+            "alt": "Tecfil"
+          }
+        },
+        {
+          "nome": "Fram",
+          "logo": {
+            "src": "/img/marcas-lojas/fram.webp",
+            "largura": 400,
+            "altura": 400,
+            "alt": "Fram"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "oleo",
+      "rotulo": "Óleo de motor",
+      "itens": [
+        {
+          "nome": "Mobil",
+          "logo": {
+            "src": "/img/marcas-lojas/mobil.svg",
+            "largura": 131,
+            "altura": 40,
+            "alt": "Mobil"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "outras",
+      "rotulo": "Outras marcas",
+      "itens": [
+        {
+          "nome": "AC Delco",
+          "logo": {
+            "src": "/img/marcas-lojas/ac-delco.svg",
+            "largura": 198,
+            "altura": 40,
+            "alt": "AC Delco"
+          }
+        },
+        {
+          "nome": "Autoimpact",
+          "logo": {
+            "src": "/img/marcas-lojas/autoimpact.webp",
+            "largura": 100,
+            "altura": 35,
+            "alt": "Autoimpact"
+          }
+        },
+        {
+          "nome": "LuK",
+          "logo": {
+            "src": "/img/marcas-lojas/luk.svg",
+            "largura": 53,
+            "altura": 40,
+            "alt": "LuK"
+          }
+        },
+        {
+          "nome": "NGK",
+          "logo": {
+            "src": "/img/marcas-lojas/ngk.svg",
+            "largura": 40,
+            "altura": 40,
+            "alt": "NGK"
+          }
+        },
+        {
+          "nome": "Würth",
+          "logo": {
+            "src": "/img/marcas-lojas/wurth.svg",
+            "largura": 186,
+            "altura": 40,
+            "alt": "Würth"
+          }
+        },
+        {
+          "nome": "FAG",
+          "logo": {
+            "src": "/img/marcas-lojas/fag.webp",
+            "largura": 100,
+            "altura": 45,
+            "alt": "FAG"
+          }
+        },
+        {
+          "nome": "SKF",
+          "logo": {
+            "src": "/img/marcas-lojas/skf.svg",
+            "largura": 147,
+            "altura": 40,
+            "alt": "SKF"
+          }
+        },
+        {
+          "nome": "SABÓ",
+          "logo": {
+            "src": "/img/marcas-lojas/sabo.webp",
+            "largura": 480,
+            "altura": 215,
+            "alt": "SABÓ"
+          }
+        }
+      ]
+    }
+  ],
+  "mapa": {
+    "link": "https://goo.gl/maps/JVwDw5Xw4fx",
+    "embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.4422290341095!2d-49.26393568498543!3d-25.456904783775972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce4ed7d918171%3A0xd82b8d5ceb32463e!2sR.+Des.+Westphalen%2C+2880+-+Centro%2C+Curitiba+-+PR%2C+80220-031!5e0!3m2!1spt-BR!2sbr!4v1529341581031"
+  },
+  "condicoes": [
+    {
+      "icone": "cartao",
+      "titulo": "10x sem juros no cartão",
+      "texto": "Condição da loja física."
+    },
+    {
+      "icone": "desconto",
+      "titulo": "6% de desconto à vista",
+      "texto": "Em compras na loja."
+    },
+    {
+      "icone": "instalacao",
+      "titulo": "Instalação na hora",
+      "texto": "Montagem, alinhamento e balanceamento no mesmo lugar."
+    }
+  ],
+  "textoApoio": {
+    "titulo": "TireShop Auto Center: a sua loja de pneus em Curitiba",
+    "html": "<p>Quando o assunto é lojas de pneus em Curitiba, a TireShop lidera pela confiança, variedade e atendimento diferenciado. Seja para comprar pneus com exclusividade, realizar serviços essenciais como rodízio de pneus, troca de óleo e check-up automotivo completo, aqui você encontra tudo em um só lugar, com a tranquilidade de contar com uma equipe especializada.</p><p>Oferecemos muito mais do que uma loja de pneus, proporcionando desde a escolha das melhores marcas até balanceamento, geometria, avaliação gratuita dos pneus e conserto de rodas. <strong>Nossa proposta é facilitar sua jornada</strong>, com atendimento ágil e soluções sob medida para o dia a dia ou viagens longas.</p><h2>Pneus novos e em promoção em Curitiba</h2><p>A TireShop orgulha-se de contar com um portfólio exclusivo das marcas Yokohama, Prinx, Fortune e muitas outras. Disponibilizamos <a href=\"https://www.tireshop.com.br/1/1/PromocaoEspecial\" rel=\"noopener\">pneus em promoção</a> para todas as categorias: carros, SUVs, picapes e vans, incluindo modelos run flat e aplicações especiais. Explore a linha completa das marcas mais desejadas, com pagamento facilitado em até 12x sem juros no cartão.</p><h2>Check-up completo e avaliação gratuita</h2><p>Seu carro nunca fica sem cuidado: na TireShop, a avaliação é gratuita em toda visita. Mais de 40 itens são revisados, dos <a href=\"/c/pneus-para-carros\">pneus para carros </a>aos freios, suspensão, amortecedores e rodas. Identificamos falhas, prevenimos desgastes e orientamos o melhor momento para substituições, sempre visando sua segurança e economia.</p><p>O check-up automotivo é realizado com tecnologia de ponta, total transparência e pelo time mais capacitado, <strong>proporcionando tranquilidade tanto à sua rotina quanto em viagens.</strong></p><h2>Montagem, rodízio de pneus, balanceamento e geometria</h2><p>Conte com montagem profissional, rodízio de pneus e serviços de balanceamento e geometria 3D. Todos seguem os mais altos padrões de qualidade, garantindo estabilidade para seu carro e prolongando a vida útil dos<a href=\"https://www.tireshop.com.br/0/5/Pneus-Pick-ups-e-SUVs\" rel=\"noopener\"> pneus de pick-ups e SUVs</a> e outros automóveis.</p><p>Buscando uma loja de pneus Curitiba que ofereça equipamentos modernos e precisão nos ajustes? Na TireShop, seus pneus sofrem menos desgaste e seu volante segue sempre alinhado, proporcionando conforto e economia.</p><h2>Conserto de pneus e rodas</h2><p>Pneu furado ou cortado? A TireShop avalia e realiza conserto de pneus em Curitiba e soluções de alta performance, sempre priorizando segurança. As rodas também são recuperadas, seja para corrigir amassados ou para repintura personalizada, com conserto de roda Curitiba que realmente faz a diferença.</p><p>Garantia total de solução por profissionais experientes, e só trocamos pneus ou rodas em último caso –<strong> sempre buscando economia para você.</strong></p><h2>Troca de óleo, filtros e higienização</h2><p>Os cuidados preventivos com motor e ar-condicionado estão na rotina do TireShop. Aqui, a troca de óleo em Curitiba é feita com lubrificantes das melhores marcas, sempre associada à troca de filtros essenciais. Sua cabine recebe higienização completa, livre de fungos e bactérias, elevando o conforto e saúde dos ocupantes.</p><p>Em nossas lojas e também no site, você encontra opções de <a href=\"https://www.tireshop.com.br/0/15/Pneus-de-Van\" rel=\"noopener\">pneus de van </a>e outros automóveis das melhores marcas do mercado.</p><h2>Suspensão, freios e revisão completa</h2><p>Cuidamos de todo o sistema de suspensão: amortecedores, molas, buchas e direção recebem avaliação detalhada. O mesmo padrão se aplica aos freios: troca de pastilhas, discos e fluido, sempre visando máxima precisão e eficiência nas frenagens.</p><p>Com revisão periódica, você evita gastos maiores no futuro e garante segurança para sua família e seu patrimônio.<strong> Orçamento sem compromisso e equipe pronta para explicar cada passo do serviço.</strong></p><h2>Por que escolher a TireShop entre as lojas de pneus em Curitiba?</h2><p>Pela exclusividade de marcas, condições diferenciadas de pagamento, equipe especializada, ofertas de pneus em promoção em Curitiba e centralização de todos os serviços para seu veículo. Aqui, confiança e transparência vêm em primeiro lugar.</p><p>Aproveite para conhecer também nossas opções de <a href=\"https://www.tireshop.com.br/0/4/Pneus-Competicao\" rel=\"noopener\">pneus para competição</a> ao comprar pneus em Curitiba.</p><h2>Como saber o melhor momento para rodízio, balanceamento ou geometria?</h2><p>Rodízio é indicado a cada 5.000 km. Balanceamento e geometria a cada 10.000 km ou ao notar vibrações e desgaste irregular. Consulte-nos para avaliação gratuita na TireShop.</p><h2>Quais marcas de pneus posso encontrar na loja de pneus Curitiba?</h2><p>Você encontra linhas completas Yokohama, Prinx, Fortune e outras, em todos os aros. <strong>Opções exclusivas para SUV, caminhonete, passeios leves ou veículos blindados.</strong></p><h2>A TireShop realiza troca de óleo e serviços agregados?</h2><p>Sim, com lubrificantes Mobil, troca de filtros, higienização, revisão de suspensão, freios e conserto de rodas. Tudo para seu carro sair pronto, com garantia e agilidade.</p><p>A TireShop se destaca entre as lojas de pneus em Curitiba pela tradição, exclusividade e compromisso com sua satisfação. Confira todas as promoções de pneus em Curitiba e faça já seu<a href=\"https://tireshop.com.br/Lojas/Curitiba/Orcamento\" rel=\"noopener\"> orçamento sem compromisso</a>. Seu carro merece o melhor, sua experiência começa aqui.</p>"
+  },
+  "faq": [
+    {
+      "pergunta": "Por que escolher a TireShop entre as lojas de pneus em Curitiba?",
+      "respostaHtml": "<p>Pela exclusividade de marcas, condições diferenciadas de pagamento, equipe especializada, ofertas de pneus em promoção em Curitiba e centralização de todos os serviços para seu veículo. Aqui, confiança e transparência vêm em primeiro lugar.</p><p>Aproveite para conhecer também nossas opções de <a href=\"https://www.tireshop.com.br/0/4/Pneus-Competicao\" rel=\"noopener\">pneus para competição</a> ao comprar pneus em Curitiba.</p>"
+    },
+    {
+      "pergunta": "Como saber o melhor momento para rodízio, balanceamento ou geometria?",
+      "respostaHtml": "<p>Rodízio é indicado a cada 5.000 km. Balanceamento e geometria a cada 10.000 km ou ao notar vibrações e desgaste irregular. Consulte-nos para avaliação gratuita na TireShop.</p>"
+    },
+    {
+      "pergunta": "Quais marcas de pneus posso encontrar na loja de pneus Curitiba?",
+      "respostaHtml": "<p>Você encontra linhas completas Yokohama, Prinx, Fortune e outras, em todos os aros. <strong>Opções exclusivas para SUV, caminhonete, passeios leves ou veículos blindados.</strong></p>"
+    },
+    {
+      "pergunta": "A TireShop realiza troca de óleo e serviços agregados?",
+      "respostaHtml": "<p>Sim, com lubrificantes Mobil, troca de filtros, higienização, revisão de suspensão, freios e conserto de rodas. Tudo para seu carro sair pronto, com garantia e agilidade.</p><p>A TireShop se destaca entre as lojas de pneus em Curitiba pela tradição, exclusividade e compromisso com sua satisfação. Confira todas as promoções de pneus em Curitiba e faça já seu<a href=\"https://tireshop.com.br/Lojas/Curitiba/Orcamento\" rel=\"noopener\"> orçamento sem compromisso</a>. Seu carro merece o melhor, sua experiência começa aqui.</p>"
+    }
+  ],
+  "seo": {
+    "titulo": "TireShop Auto Center: a sua loja de pneus em Curitiba",
+    "descricao": "Conheça nossa loja de pneus em Curitiba e confira nossos serviços de troca de óleo, check-up completo, montagem, rodízio de pneus e mais. Acesse já!"
+  },
+  "ilustrativo": {
+    "vitrine": true
+  }
+}

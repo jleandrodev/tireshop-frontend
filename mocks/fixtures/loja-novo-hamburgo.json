@@ -1,0 +1,765 @@
+{
+  "slug": "novo-hamburgo",
+  "cidade": "Novo Hamburgo",
+  "uf": "RS",
+  "nome": "TireShop Autocenter Novo Hamburgo",
+  "endereco": {
+    "logradouro": "Rua Coronel Frederico Linck, 88",
+    "cidade": "Novo Hamburgo",
+    "uf": "RS"
+  },
+  "horario": [
+    "Segunda a Sexta das 08:00 às 18:00",
+    "Sábado das 08:00 às 12:00"
+  ],
+  "telefone": "(51) 3593-8888",
+  "whatsapp": [
+    "555135938888"
+  ],
+  "foto": {
+    "src": "/img/lojas/novo-hamburgo/fachada.webp",
+    "largura": 525,
+    "altura": 241,
+    "alt": "Fachada da TireShop Novo Hamburgo"
+  },
+  "servicosResumo": [
+    "Pneus",
+    "Freios",
+    "Suspensão",
+    "Amortecedores",
+    "Molas",
+    "Troca de Óleo e Filtros",
+    "Regulagem de Faróis",
+    "Limpeza de Ar Condicionado",
+    "Conserto e Pintura de Rodas",
+    "Alinhamento e Balanceamento",
+    "Calibragem com Nitrogênio"
+  ],
+  "agendamentoUrl": "https://www.tireshop.com.br/Lojas/NovoHamburgo/Agendamento",
+  "mapaUrl": "https://goo.gl/ycBei9",
+  "cnpj": null,
+  "apresentacao": "O autocenter da TireShop em Novo Hamburgo está pronta para atendê-lo com agilidade e eficiência. As melhores marcas e o melhor serviço está aqui!",
+  "orcamentoUrl": "https://www.tireshop.com.br/Lojas/NovoHamburgo/Orcamento",
+  "instagram": "https://www.instagram.com/tireshopnh/",
+  "facebook": "https://www.facebook.com/TireShopBR/",
+  "banners": [
+    {
+      "imagem": {
+        "src": "/img/lojas/novo-hamburgo/banner-1.webp",
+        "largura": 1600,
+        "altura": 250,
+        "alt": "Seja bem-vindo à TireShop Novo Hamburgo. Fone (51) 3593-8888. Av. Coronel Frederico Linck, 88, Ouro Branco"
+      },
+      "imagemCelular": null,
+      "destino": {
+        "tipo": "mapa",
+        "url": null
+      }
+    },
+    {
+      "imagem": {
+        "src": "/img/lojas/novo-hamburgo/banner-2.webp",
+        "largura": 1600,
+        "altura": 254,
+        "alt": "Serviços de freio e suspensão em até 10x sem juros"
+      },
+      "imagemCelular": null,
+      "destino": {
+        "tipo": "whatsapp",
+        "url": null
+      }
+    },
+    {
+      "imagem": {
+        "src": "/img/lojas/novo-hamburgo/banner-3.webp",
+        "largura": 1600,
+        "altura": 250,
+        "alt": "Nossos serviços: freios e suspensão, troca de óleo e filtros, limpeza do ar-condicionado e outros serviços especializados"
+      },
+      "imagemCelular": null,
+      "destino": {
+        "tipo": "whatsapp",
+        "url": null
+      }
+    },
+    {
+      "imagem": {
+        "src": "/img/lojas/novo-hamburgo/banner-4.webp",
+        "largura": 1600,
+        "altura": 250,
+        "alt": "Super Garantia Yokohama: garantia contra danos acidentais, válida a partir do aro 15"
+      },
+      "imagemCelular": null,
+      "destino": {
+        "tipo": "whatsapp",
+        "url": null
+      }
+    },
+    {
+      "imagem": {
+        "src": "/img/lojas/novo-hamburgo/banner-5.webp",
+        "largura": 1600,
+        "altura": 242,
+        "alt": "Revenda oficial premium Yokohama Advan"
+      },
+      "imagemCelular": null,
+      "destino": {
+        "tipo": "whatsapp",
+        "url": null
+      }
+    }
+  ],
+  "vitrine": [
+    {
+      "id": "3084",
+      "slug": "pneu-hankook-ventus-prime-2-k115-225-45-r17-91v-pneu-original-hyundai-i30-e-vw-golf",
+      "nome": "Pneu Hankook Ventus Prime 2 K115 225/45 R17 91V (Pneu Original Hyundai i30 e VW Golf)",
+      "marca": {
+        "slug": "hankook",
+        "nome": "Hankook"
+      },
+      "medida": {
+        "largura": 225,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "225/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/3084-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Hankook Ventus Prime 2 K115 225/45 R17 91V (Pneu Original Hyundai i30 e VW Golf)"
+      },
+      "preco": {
+        "de": null,
+        "parcelado": {
+          "total": {
+            "centavos": 52900,
+            "moeda": "BRL"
+          },
+          "parcelas": 10,
+          "valorParcela": {
+            "centavos": 5290,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 49726,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 6
+        }
+      },
+      "promocao": true,
+      "freteGratis": null,
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.9,
+        "total": 31
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Assimétrico"
+    },
+    {
+      "id": "4589",
+      "slug": "pneu-hankook-dynapro-hp2-ra33-215-60-r17-96v",
+      "nome": "Pneu Hankook Dynapro HP2 RA33 215/60 R17 96V",
+      "marca": {
+        "slug": "hankook",
+        "nome": "Hankook"
+      },
+      "medida": {
+        "largura": 215,
+        "altura": 60,
+        "aro": "17",
+        "rotulo": "215/60 R17"
+      },
+      "departamento": {
+        "slug": "pneus-pick-ups-e-suvs",
+        "nome": "Pneus para pick-ups e SUVs"
+      },
+      "imagem": {
+        "src": "/img/produtos/4589-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Hankook Dynapro HP2 RA33 215/60 R17 96V"
+      },
+      "preco": {
+        "de": null,
+        "parcelado": {
+          "total": {
+            "centavos": 73900,
+            "moeda": "BRL"
+          },
+          "parcelas": 10,
+          "valorParcela": {
+            "centavos": 7390,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 69466,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 6
+        }
+      },
+      "promocao": true,
+      "freteGratis": null,
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.8,
+        "total": 18
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Simétrico"
+    },
+    {
+      "id": "3016",
+      "slug": "pneu-yokohama-g058-cv-235-55-r18-100v",
+      "nome": "Pneu Yokohama G058 CV 235/55 R18 100V",
+      "marca": {
+        "slug": "yokohama",
+        "nome": "Yokohama"
+      },
+      "medida": {
+        "largura": 235,
+        "altura": 55,
+        "aro": "18",
+        "rotulo": "235/55 R18"
+      },
+      "departamento": {
+        "slug": "pneus-pick-ups-e-suvs",
+        "nome": "Pneus para pick-ups e SUVs"
+      },
+      "imagem": {
+        "src": "/img/produtos/3016-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Yokohama G058 CV 235/55 R18 100V"
+      },
+      "preco": {
+        "de": null,
+        "parcelado": {
+          "total": {
+            "centavos": 107900,
+            "moeda": "BRL"
+          },
+          "parcelas": 10,
+          "valorParcela": {
+            "centavos": 10790,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 101426,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 6
+        }
+      },
+      "promocao": true,
+      "freteGratis": null,
+      "tem360": true,
+      "avaliacao": {
+        "nota": 4.7,
+        "total": 12
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Simétrico"
+    },
+    {
+      "id": "2648",
+      "slug": "pneu-bridgestone-dueler-a-t-revo-2-225-65-r17-102t",
+      "nome": "Pneu Bridgestone Dueler A/T Revo 2 225/65 R17 102T",
+      "marca": {
+        "slug": "bridgestone",
+        "nome": "Bridgestone"
+      },
+      "medida": {
+        "largura": 225,
+        "altura": 65,
+        "aro": "17",
+        "rotulo": "225/65 R17"
+      },
+      "departamento": {
+        "slug": "pneus-pick-ups-e-suvs",
+        "nome": "Pneus para pick-ups e SUVs"
+      },
+      "imagem": {
+        "src": "/img/produtos/2648-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Bridgestone Dueler A/T Revo 2 225/65 R17 102T"
+      },
+      "preco": {
+        "de": null,
+        "parcelado": {
+          "total": {
+            "centavos": 100900,
+            "moeda": "BRL"
+          },
+          "parcelas": 10,
+          "valorParcela": {
+            "centavos": 10090,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 94846,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 6
+        }
+      },
+      "promocao": true,
+      "freteGratis": null,
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.9,
+        "total": 44
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "A/T",
+      "desenho": "Simétrico"
+    }
+  ],
+  "servicos": [
+    {
+      "nome": "Montagem de pneus",
+      "texto": "O serviço de montagem executado corretamente, garante a integridade dos pneus e rodas, evitando cortes e danificação dos talões dos pneus e danos às rodas.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/montagem-de-pneus.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Rodízio dos Pneus",
+      "texto": "É a inversão de posição entre os pneus do veículo, tendo como objetivo principal prolongar a vida útil e o desgaste uniforme dos mesmos, garantindo uma maior segurança ao dirigir.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/rodizio-dos-pneus.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Balanceamento Estático e Dinâmico",
+      "texto": "O balanceamento das massas equilibra os conjuntos de rodas e pneus, permitindo a eliminação de vibrações, responsáveis por desconforto na direção. Contribuindo para preservar a vida útil dos elementos da suspensão, como amortecedores, buchas, batentes e pneus.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/balanceamento-estatico-e-dinamico.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Alinhamento e balanceamento",
+      "texto": "O alinhamento é o ajuste das rodas de acordo com parâmetros fornecidos pelo fabricante do veículo. Contribui para o conforto ao dirigir, garante estabilidade e segurança e evita o desgaste irregular dos pneus.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/alinhamento-e-balanceamento.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Cáster",
+      "texto": "Deve ser feito sempre que fizer o alinhamento de direção e for detectado que as medidas do cáster estão em desacordo com as medidas especificadas pelo fabricante do veículo, quando a direção estiver pesada e também quando as rodas apresentarem dificuldade para voltar à posição inicial após qualquer deslocamento.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/caster.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Suspensão",
+      "texto": "Componentes de suspensão danificados comprometem o conforto, a segurança e contribuem para a deterioração de outros itens do veículo, como buchas, batentes, amortecedores e pneus.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/suspensao.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Freios",
+      "texto": "São itens de segurança de grande importância, verifique sempre o estado de discos, pastilhas ou lonas de freio, tambores, cilindros, pinças e o fluído de freio. Eles são responsáveis pela segurança dos ocupantes do veículo, muitas vezes ajudam a evitar acidentes e salvar vidas.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/freios.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Troca de Óleo",
+      "texto": "Trocar o óleo dentro do período correto é essencial para manter o bom funcionamento do seu veículo.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/troca-de-oleo.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Substituição de Filtros",
+      "texto": "Troca dos filtros de ar, filtros de combustível e filtros de óleo do amortecedor obedecendo às especificações recomendadas pelo fabricante do veículo.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/substituicao-de-filtros.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Conserto, personalização e pintura de rodas",
+      "texto": "Além de proporcionar ganho estético, as rodas em perfeito estado contribuem para o conforto na direção, pois não trepidam. Ao contrário de rodas tortas que podem contribuir para o desgaste irregular dos pneus e dos componentes de suspensão.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/conserto-personalizacao-e-pintura-de-rodas.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Palhetas",
+      "texto": "Contribuem para a visibilidade, principalmente em dias chuvosos. Devem ser substituídas quando estiverem ressecadas ou quando estiverem quebradiças.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/palhetas.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    },
+    {
+      "nome": "Outros Serviços Tercerizados",
+      "texto": "Ar condicionado, forração em couro, serviços de lava car e vidros.",
+      "foto": {
+        "src": "/img/lojas/novo-hamburgo/outros-servicos-tercerizados.webp",
+        "largura": 524,
+        "altura": 348,
+        "alt": ""
+      }
+    }
+  ],
+  "marcas": [
+    {
+      "grupo": "pneus",
+      "rotulo": "Pneus",
+      "itens": [
+        {
+          "nome": "Yokohama",
+          "logo": {
+            "src": "/img/marcas-lojas/yokohama.webp",
+            "largura": 1122,
+            "altura": 160,
+            "alt": "Yokohama"
+          }
+        },
+        {
+          "nome": "Achilles",
+          "logo": {
+            "src": "/img/marcas-lojas/achilles.webp",
+            "largura": 100,
+            "altura": 30,
+            "alt": "Achilles"
+          }
+        },
+        {
+          "nome": "Prinx",
+          "logo": {
+            "src": "/img/marcas-lojas/prinx.webp",
+            "largura": 490,
+            "altura": 126,
+            "alt": "Prinx"
+          }
+        },
+        {
+          "nome": "Fortune",
+          "logo": {
+            "src": "/img/marcas-lojas/fortune.webp",
+            "largura": 360,
+            "altura": 52,
+            "alt": "Fortune"
+          }
+        },
+        {
+          "nome": "Pirelli",
+          "logo": {
+            "src": "/img/marcas-lojas/pirelli.webp",
+            "largura": 751,
+            "altura": 160,
+            "alt": "Pirelli"
+          }
+        },
+        {
+          "nome": "Goodyear",
+          "logo": {
+            "src": "/img/marcas-lojas/goodyear.webp",
+            "largura": 939,
+            "altura": 160,
+            "alt": "Goodyear"
+          }
+        },
+        {
+          "nome": "BF Goodrich",
+          "logo": {
+            "src": "/img/marcas-lojas/bf-goodrich.svg",
+            "largura": 262,
+            "altura": 40,
+            "alt": "BF Goodrich"
+          }
+        },
+        {
+          "nome": "Bridgestone",
+          "logo": {
+            "src": "/img/marcas-lojas/bridgestone.webp",
+            "largura": 1297,
+            "altura": 160,
+            "alt": "Bridgestone"
+          }
+        },
+        {
+          "nome": "Continental",
+          "logo": {
+            "src": "/img/marcas-lojas/continental.webp",
+            "largura": 738,
+            "altura": 135,
+            "alt": "Continental"
+          }
+        },
+        {
+          "nome": "Hankook",
+          "logo": {
+            "src": "/img/marcas-lojas/hankook.webp",
+            "largura": 1278,
+            "altura": 158,
+            "alt": "Hankook"
+          }
+        },
+        {
+          "nome": "Michelin",
+          "logo": {
+            "src": "/img/marcas-lojas/michelin.webp",
+            "largura": 456,
+            "altura": 104,
+            "alt": "Michelin"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "freios",
+      "rotulo": "Freios",
+      "itens": [
+        {
+          "nome": "Bosch",
+          "logo": {
+            "src": "/img/marcas-lojas/bosch.svg",
+            "largura": 179,
+            "altura": 40,
+            "alt": "Bosch"
+          }
+        },
+        {
+          "nome": "Febi",
+          "logo": {
+            "src": "/img/marcas-lojas/febi.webp",
+            "largura": 50,
+            "altura": 51,
+            "alt": "Febi"
+          }
+        },
+        {
+          "nome": "Fras-le",
+          "logo": {
+            "src": "/img/marcas-lojas/fras-le.webp",
+            "largura": 100,
+            "altura": 41,
+            "alt": "Fras-le"
+          }
+        },
+        {
+          "nome": "Brembo",
+          "logo": {
+            "src": "/img/marcas-lojas/brembo.svg",
+            "largura": 167,
+            "altura": 40,
+            "alt": "Brembo"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "suspensao",
+      "rotulo": "Suspensão",
+      "itens": [
+        {
+          "nome": "Eibach",
+          "logo": {
+            "src": "/img/marcas-lojas/eibach.webp",
+            "largura": 480,
+            "altura": 147,
+            "alt": "Eibach"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "filtros",
+      "rotulo": "Filtros",
+      "itens": [
+        {
+          "nome": "Mann Filter",
+          "logo": {
+            "src": "/img/marcas-lojas/mann-filter.svg",
+            "largura": 80,
+            "altura": 40,
+            "alt": "Mann Filter"
+          }
+        },
+        {
+          "nome": "Militec-1",
+          "logo": {
+            "src": "/img/marcas-lojas/militec-1.webp",
+            "largura": 339,
+            "altura": 42,
+            "alt": "Militec-1"
+          }
+        },
+        {
+          "nome": "Hengst",
+          "logo": {
+            "src": "/img/marcas-lojas/hengst.svg",
+            "largura": 101,
+            "altura": 40,
+            "alt": "Hengst"
+          }
+        },
+        {
+          "nome": "Wega",
+          "logo": {
+            "src": "/img/marcas-lojas/wega.svg",
+            "largura": 104,
+            "altura": 40,
+            "alt": "Wega"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "oleo",
+      "rotulo": "Óleo de motor",
+      "itens": [
+        {
+          "nome": "Mobil",
+          "logo": {
+            "src": "/img/marcas-lojas/mobil.svg",
+            "largura": 131,
+            "altura": 40,
+            "alt": "Mobil"
+          }
+        },
+        {
+          "nome": "Motul",
+          "logo": {
+            "src": "/img/marcas-lojas/motul.svg",
+            "largura": 147,
+            "altura": 40,
+            "alt": "Motul"
+          }
+        }
+      ]
+    },
+    {
+      "grupo": "outras",
+      "rotulo": "Outras marcas",
+      "itens": [
+        {
+          "nome": "Moura",
+          "logo": {
+            "src": "/img/marcas-lojas/moura.svg",
+            "largura": 144,
+            "altura": 40,
+            "alt": "Moura"
+          }
+        },
+        {
+          "nome": "Zetta",
+          "logo": {
+            "src": "/img/marcas-lojas/zetta.webp",
+            "largura": 67,
+            "altura": 30,
+            "alt": "Zetta"
+          }
+        }
+      ]
+    }
+  ],
+  "mapa": {
+    "link": "https://goo.gl/ycBei9",
+    "embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3465.9718790659103!2d-51.14258886223733!3d-29.69159496071471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951943069eb3ec97%3A0xa9ac17cab257a150!2sAv.+Cel.+Frederico+Linck%2C+88+-+Ideal%2C+Novo+Hamburgo+-+RS%2C+93330-100!5e0!3m2!1spt-BR!2sbr!4v1536253784493"
+  },
+  "condicoes": [
+    {
+      "icone": "cartao",
+      "titulo": "10x sem juros no cartão",
+      "texto": "Condição da loja física."
+    },
+    {
+      "icone": "desconto",
+      "titulo": "6% de desconto à vista",
+      "texto": "Em compras na loja."
+    },
+    {
+      "icone": "instalacao",
+      "titulo": "Instalação na hora",
+      "texto": "Montagem, alinhamento e balanceamento no mesmo lugar."
+    }
+  ],
+  "textoApoio": null,
+  "faq": [
+    {
+      "pergunta": "Preciso agendar para trocar os pneus?",
+      "respostaHtml": "<p>Em Novo Hamburgo você agenda no botão Agendar serviço, no alto da página.</p>"
+    },
+    {
+      "pergunta": "Como peço um orçamento?",
+      "respostaHtml": "<p>Use o botão Solicite orçamento no alto da página ou chame a equipe pelo WhatsApp da loja. O orçamento é sem compromisso.</p>"
+    },
+    {
+      "pergunta": "A loja faz mais do que pneus?",
+      "respostaHtml": "<p>Sim: alinhamento, balanceamento, freios, suspensão, troca de óleo e filtros, entre outros. A lista completa de cada unidade está na página da loja.</p>"
+    },
+    {
+      "pergunta": "Quais são as condições de pagamento na loja?",
+      "respostaHtml": "<p>Parcelamos em até 10x sem juros no cartão e damos 6% de desconto à vista nas compras na loja. Confirme as campanhas do momento com a equipe.</p>"
+    }
+  ],
+  "seo": {
+    "titulo": "TireShop Autocenter Novo Hamburgo (RS): pneus, alinhamento e balanceamento",
+    "descricao": "O autocenter da TireShop em Novo Hamburgo está pronta para atendê-lo com agilidade e eficiência. As melhores marcas e o melhor serviço está aqui!"
+  },
+  "ilustrativo": {
+    "vitrine": true
+  }
+}

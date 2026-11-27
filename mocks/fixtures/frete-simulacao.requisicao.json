@@ -1,0 +1,10 @@
+{
+  "cep": "80010000",
+  "itens": [
+    {
+      "produtoId": "3084",
+      "quantidade": 4
+    }
+  ],
+  "tipo": "endereco"
+}

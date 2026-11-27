@@ -1,0 +1,518 @@
+{
+  "itens": [
+    {
+      "id": "3084",
+      "slug": "pneu-hankook-ventus-prime-2-k115-225-45-r17-91v-pneu-original-hyundai-i30-e-vw-golf",
+      "nome": "Pneu Hankook Ventus Prime 2 K115 225/45 R17 91V (Pneu Original Hyundai i30 e VW Golf)",
+      "marca": {
+        "slug": "hankook",
+        "nome": "Hankook"
+      },
+      "medida": {
+        "largura": 225,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "225/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/3084-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Hankook Ventus Prime 2 K115 225/45 R17 91V (Pneu Original Hyundai i30 e VW Golf)"
+      },
+      "preco": {
+        "de": {
+          "centavos": 62000,
+          "moeda": "BRL"
+        },
+        "parcelado": {
+          "total": {
+            "centavos": 52900,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 4408,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 50255,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": true,
+      "freteGratis": {
+        "regiao": "Sul e Sudeste",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.9,
+        "total": 31
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Assimétrico"
+    },
+    {
+      "id": "3343",
+      "slug": "pneu-fortune-fsr-701-225-45-zr17-94y",
+      "nome": "Pneu Fortune FSR-701 225/45 ZR17 94Y",
+      "marca": {
+        "slug": "fortune",
+        "nome": "Fortune"
+      },
+      "medida": {
+        "largura": 225,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "225/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/3343-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Fortune FSR-701 225/45 ZR17 94Y"
+      },
+      "preco": {
+        "de": {
+          "centavos": 45300,
+          "moeda": "BRL"
+        },
+        "parcelado": {
+          "total": {
+            "centavos": 42300,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 3525,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 40185,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": true,
+      "freteGratis": {
+        "regiao": "Sul e Sudeste",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": true,
+      "avaliacao": {
+        "nota": 4.8,
+        "total": 30
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Assimétrico"
+    },
+    {
+      "id": "4223",
+      "slug": "pneu-firestone-f-700-225-45-r17-91w",
+      "nome": "Pneu Firestone F-700+ 225/45 R17 91W",
+      "marca": {
+        "slug": "firestone",
+        "nome": "Firestone"
+      },
+      "medida": {
+        "largura": 225,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "225/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/4223-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Firestone F-700+ 225/45 R17 91W"
+      },
+      "preco": {
+        "de": {
+          "centavos": 62000,
+          "moeda": "BRL"
+        },
+        "parcelado": {
+          "total": {
+            "centavos": 46900,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 3908,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 44555,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": true,
+      "freteGratis": {
+        "regiao": "Sul e Sudeste",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.8,
+        "total": 30
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Simétrico"
+    },
+    {
+      "id": "3026",
+      "slug": "pneu-bridgestone-turanza-t005-225-45-r17-91w",
+      "nome": "Pneu Bridgestone Turanza T005 225/45 R17 91W",
+      "marca": {
+        "slug": "bridgestone",
+        "nome": "Bridgestone"
+      },
+      "medida": {
+        "largura": 225,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "225/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/3026-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Bridgestone Turanza T005 225/45 R17 91W"
+      },
+      "preco": {
+        "de": {
+          "centavos": 73000,
+          "moeda": "BRL"
+        },
+        "parcelado": {
+          "total": {
+            "centavos": 52500,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 4375,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 49875,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": true,
+      "freteGratis": {
+        "regiao": "Sul e Sudeste",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.6,
+        "total": 33
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": null
+    },
+    {
+      "id": "4817",
+      "slug": "pneu-bridgestone-turanza-6-225-45-r17-94w",
+      "nome": "Pneu Bridgestone Turanza 6 225/45 R17 94W",
+      "marca": {
+        "slug": "bridgestone",
+        "nome": "Bridgestone"
+      },
+      "medida": {
+        "largura": 225,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "225/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/4817-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Bridgestone Turanza 6 225/45 R17 94W"
+      },
+      "preco": {
+        "de": null,
+        "parcelado": {
+          "total": {
+            "centavos": 55700,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 4642,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 52915,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": false,
+      "freteGratis": {
+        "regiao": "Sul e Sudeste",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": false,
+      "avaliacao": {
+        "nota": 4.7,
+        "total": 24
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Assimétrico"
+    },
+    {
+      "id": "2216",
+      "slug": "pneu-prinx-hz1-225-45-r17-94w",
+      "nome": "Pneu Prinx HZ1 225/45 R17 94W",
+      "marca": {
+        "slug": "prinx",
+        "nome": "Prinx"
+      },
+      "medida": {
+        "largura": 225,
+        "altura": 45,
+        "aro": "17",
+        "rotulo": "225/45 R17"
+      },
+      "departamento": {
+        "slug": "pneus-para-carros",
+        "nome": "Pneus para carros"
+      },
+      "imagem": {
+        "src": "/img/produtos/2216-320.webp",
+        "largura": 320,
+        "altura": 284,
+        "alt": "Pneu Prinx HZ1 225/45 R17 94W"
+      },
+      "preco": {
+        "de": {
+          "centavos": 60000,
+          "moeda": "BRL"
+        },
+        "parcelado": {
+          "total": {
+            "centavos": 56600,
+            "moeda": "BRL"
+          },
+          "parcelas": 12,
+          "valorParcela": {
+            "centavos": 4717,
+            "moeda": "BRL"
+          }
+        },
+        "aVista": {
+          "valor": {
+            "centavos": 53770,
+            "moeda": "BRL"
+          },
+          "descontoPercentual": 5
+        }
+      },
+      "promocao": true,
+      "freteGratis": {
+        "regiao": "todo o Brasil",
+        "valorMinimo": {
+          "centavos": 100000,
+          "moeda": "BRL"
+        }
+      },
+      "tem360": true,
+      "avaliacao": {
+        "nota": 4.6,
+        "total": 23
+      },
+      "disponibilidade": "em_estoque",
+      "runFlat": false,
+      "terreno": "Asfalto",
+      "desenho": "Assimétrico"
+    }
+  ],
+  "pagina": 1,
+  "porPagina": 12,
+  "total": 6,
+  "totalPaginas": 1,
+  "ordem": "mais_vendidos",
+  "ordenacoes": [
+    {
+      "valor": "mais_vendidos",
+      "rotulo": "Mais vendidos"
+    },
+    {
+      "valor": "menor_preco",
+      "rotulo": "Menor preço"
+    },
+    {
+      "valor": "maior_preco",
+      "rotulo": "Maior preço"
+    },
+    {
+      "valor": "melhor_avaliados",
+      "rotulo": "Melhor avaliados"
+    }
+  ],
+  "facetas": [
+    {
+      "chave": "medida",
+      "rotulo": "Medida",
+      "opcoes": [
+        {
+          "valor": "225/45 R17",
+          "rotulo": "225/45 R17",
+          "total": 6
+        }
+      ]
+    },
+    {
+      "chave": "marca",
+      "rotulo": "Marca",
+      "opcoes": [
+        {
+          "valor": "Bridgestone",
+          "rotulo": "Bridgestone",
+          "total": 2
+        },
+        {
+          "valor": "Firestone",
+          "rotulo": "Firestone",
+          "total": 1
+        },
+        {
+          "valor": "Fortune",
+          "rotulo": "Fortune",
+          "total": 1
+        },
+        {
+          "valor": "Hankook",
+          "rotulo": "Hankook",
+          "total": 1
+        },
+        {
+          "valor": "Prinx",
+          "rotulo": "Prinx",
+          "total": 1
+        }
+      ]
+    },
+    {
+      "chave": "preco",
+      "rotulo": "Preço à vista",
+      "opcoes": [
+        {
+          "valor": "0-450",
+          "rotulo": "Até R$ 450",
+          "total": 2
+        },
+        {
+          "valor": "450-550",
+          "rotulo": "R$ 450 a R$ 550",
+          "total": 4
+        }
+      ]
+    },
+    {
+      "chave": "runflat",
+      "rotulo": "Run flat",
+      "opcoes": [
+        {
+          "valor": "Não",
+          "rotulo": "Não",
+          "total": 6
+        }
+      ]
+    },
+    {
+      "chave": "terreno",
+      "rotulo": "Tipo de terreno",
+      "opcoes": [
+        {
+          "valor": "Asfalto",
+          "rotulo": "Asfalto",
+          "total": 6
+        }
+      ]
+    },
+    {
+      "chave": "desenho",
+      "rotulo": "Desenho",
+      "opcoes": [
+        {
+          "valor": "Assimétrico",
+          "rotulo": "Assimétrico",
+          "total": 4
+        },
+        {
+          "valor": "Simétrico",
+          "rotulo": "Simétrico",
+          "total": 1
+        }
+      ]
+    }
+  ]
+}

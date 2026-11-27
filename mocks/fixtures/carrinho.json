@@ -1,0 +1,95 @@
+{
+  "itens": [
+    {
+      "produto": {
+        "id": "3084",
+        "slug": "pneu-hankook-ventus-prime-2-k115-225-45-r17-91v-pneu-original-hyundai-i30-e-vw-golf",
+        "nome": "Pneu Hankook Ventus Prime 2 K115 225/45 R17 91V (Pneu Original Hyundai i30 e VW Golf)",
+        "marca": {
+          "slug": "hankook",
+          "nome": "Hankook"
+        },
+        "medida": {
+          "largura": 225,
+          "altura": 45,
+          "aro": "17",
+          "rotulo": "225/45 R17"
+        },
+        "departamento": {
+          "slug": "pneus-para-carros",
+          "nome": "Pneus para carros"
+        },
+        "imagem": {
+          "src": "/img/produtos/3084-320.webp",
+          "largura": 320,
+          "altura": 284,
+          "alt": "Pneu Hankook Ventus Prime 2 K115 225/45 R17 91V (Pneu Original Hyundai i30 e VW Golf)"
+        },
+        "preco": {
+          "de": {
+            "centavos": 62000,
+            "moeda": "BRL"
+          },
+          "parcelado": {
+            "total": {
+              "centavos": 52900,
+              "moeda": "BRL"
+            },
+            "parcelas": 12,
+            "valorParcela": {
+              "centavos": 4408,
+              "moeda": "BRL"
+            }
+          },
+          "aVista": {
+            "valor": {
+              "centavos": 50255,
+              "moeda": "BRL"
+            },
+            "descontoPercentual": 5
+          }
+        },
+        "promocao": true,
+        "freteGratis": {
+          "regiao": "Sul e Sudeste",
+          "valorMinimo": {
+            "centavos": 100000,
+            "moeda": "BRL"
+          }
+        },
+        "tem360": false,
+        "avaliacao": {
+          "nota": 4.9,
+          "total": 31
+        },
+        "disponibilidade": "em_estoque",
+        "runFlat": false,
+        "terreno": "Asfalto",
+        "desenho": "Assimétrico"
+      },
+      "quantidade": 2,
+      "subtotalAVista": {
+        "centavos": 100510,
+        "moeda": "BRL"
+      }
+    }
+  ],
+  "totais": {
+    "quantidade": 2,
+    "aVista": {
+      "centavos": 100510,
+      "moeda": "BRL"
+    },
+    "parcelado": {
+      "total": {
+        "centavos": 105800,
+        "moeda": "BRL"
+      },
+      "parcelas": 12,
+      "valorParcela": {
+        "centavos": 8817,
+        "moeda": "BRL"
+      }
+    }
+  }
+}

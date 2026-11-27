@@ -95,7 +95,7 @@ jobs:
           DEV_UID="$(id -u)"
           DEV_GID="$(id -g)"
           export DEV_UID DEV_GID
-          docker compose run --rm -T app sh -c "pnpm install --frozen-lockfile && pnpm run format:check && pnpm run lint && pnpm run lint:marca && pnpm run typecheck"
+          docker compose run --rm -T app sh -c "pnpm install --frozen-lockfile && pnpm run format:check && pnpm run lint && pnpm run lint:marca && pnpm run typecheck && pnpm run mocks:sincronizar -- --conferir"
 
   testes:
     name: Testes

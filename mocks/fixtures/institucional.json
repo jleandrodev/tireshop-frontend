@@ -1,0 +1,170 @@
+{
+  "titulo": "Olá, somos a TireShop!",
+  "secoes": [
+    {
+      "titulo": null,
+      "blocos": [
+        {
+          "tipo": "paragrafo",
+          "html": "A <a href=\"https://www.tireshop.com.br/\">TireShop.com.br</a> é uma das pioneiras no e-commerce de pneus no Brasil, com atuação desde 2001. Nossa história começou com um objetivo simples, mas ousado: facilitar a vida dos motoristas brasileiros oferecendo pneus de qualidade diretamente pela internet. Com o passar dos anos, nos consolidamos como uma das marcas mais confiáveis do setor, unindo tecnologia, logística eficiente, atendimento de excelência e um portfólio completo de produtos."
+        },
+        {
+          "tipo": "paragrafo",
+          "html": "Ao longo de mais de duas décadas, construímos uma reputação sólida baseada em comprometimento, agilidade na entrega e respeito ao consumidor. Hoje, seguimos com o mesmo foco: oferecer uma experiência de compra segura, prática e transparente para os clientes de todo o Brasil."
+        },
+        {
+          "tipo": "video",
+          "video": {
+            "id": "NUM0AGJL3dU",
+            "provedor": "youtube",
+            "titulo": "TireShop - A evolução nos conecta com você!",
+            "canal": "Canal da TireShop",
+            "capa": {
+              "src": "/img/institucional/video-NUM0AGJL3dU.webp",
+              "largura": 960,
+              "altura": 540,
+              "alt": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Missão da TireShop",
+      "blocos": [
+        {
+          "tipo": "paragrafo",
+          "html": "A missão da TireShop é proporcionar aos nossos clientes a melhor experiência na compra de pneus online. Trabalhamos para unir praticidade, confiança e preços justos, com um atendimento especializado que garante segurança e performance em cada trajeto."
+        },
+        {
+          "tipo": "paragrafo",
+          "html": "Nosso compromisso vai além da venda. Queremos ajudar cada cliente a tomar a melhor decisão na hora de trocar os pneus, com informações claras, suporte rápido e um processo de compra intuitivo. Nossos canais de atendimento —<strong> telefone, e-mail e WhatsApp</strong> — estão sempre abertos para tirar dúvidas, oferecer suporte técnico e garantir tranquilidade antes, durante e depois da compra."
+        }
+      ]
+    },
+    {
+      "titulo": "Nossa visão",
+      "blocos": [
+        {
+          "tipo": "paragrafo",
+          "html": "Queremos ser reconhecidos como a plataforma online de pneus mais confiável do Brasil. Trabalhamos todos os dias com foco em inovação, excelência no atendimento e agilidade na entrega, porque sabemos que nossos clientes valorizam praticidade e confiança. Temos orgulho de ser uma das empresas mais bem avaliadas do setor, reflexo direto do nosso compromisso em oferecer um atendimento próximo, eficiente e humano."
+        },
+        {
+          "tipo": "paragrafo",
+          "html": "Contamos com estoque 100% próprio, com<a href=\"https://www.tireshop.com.br/0/20/Pneus-Agricola\"> pneus agrícolas</a>, <a href=\"https://www.tireshop.com.br/0/21/Pneus-para-Caminhao\">pneus para caminhão</a> e mais, operando a partir do nosso Centro de Distribuição em Curitiba, o que nos permite garantir prazos de entrega entre os melhores do país. Além disso, oferecemos produtos de qualidade com preços justos e facilitamos o pagamento em até 12x sem juros no cartão, tornando a experiência de compra mais acessível para todos os nossos clientes."
+        },
+        {
+          "tipo": "video",
+          "video": {
+            "id": "gn6iypnkRhA",
+            "provedor": "youtube",
+            "titulo": "Comprar na TireShop é confiável? Uma dica do Tarso Marques!",
+            "canal": "TireShop",
+            "capa": {
+              "src": "/img/institucional/video-gn6iypnkRhA.webp",
+              "largura": 960,
+              "altura": 540,
+              "alt": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "titulo": "Conheça nossas lojas físicas",
+      "blocos": [
+        {
+          "tipo": "paragrafo",
+          "html": "Apesar de sermos uma referência nacional em e-commerce, também contamos com lojas físicas estrategicamente localizadas, onde os clientes podem contar com atendimento presencial, retirada de produtos comprados online, além de serviços como lavagem, troca de óleo, montagem e balanceamento, quando disponíveis."
+        },
+        {
+          "tipo": "paragrafo",
+          "html": "Nossas lojas seguem o mesmo padrão de qualidade do site: equipe capacitada, ambiente organizado e foco total no cliente. Quem visita nossas unidades encontra não apenas variedade, mas também atendimento personalizado, <strong>sempre pronto para ajudar na escolha do pneu ideal.</strong>"
+        },
+        {
+          "tipo": "paragrafo",
+          "html": "Contamos com cinco lojas físicas localizadas em:"
+        },
+        {
+          "tipo": "lista",
+          "itens": [
+            "Curitiba (PR)",
+            "São Paulo (SP)",
+            "Ribeirão Preto (SP)",
+            "Joinville (SC)",
+            "Novo Hamburgo (RS)"
+          ]
+        }
+      ]
+    }
+  ],
+  "fatos": [
+    {
+      "titulo": "Desde 2001",
+      "texto": "no e-commerce de pneus do Brasil"
+    },
+    {
+      "titulo": "5 lojas físicas",
+      "texto": "Curitiba, São Paulo, Ribeirão Preto, Joinville e Novo Hamburgo"
+    },
+    {
+      "titulo": "Estoque 100% próprio",
+      "texto": "a partir do Centro de Distribuição em Curitiba"
+    },
+    {
+      "titulo": "Até 12x sem juros",
+      "texto": "no cartão, para todo o Brasil"
+    }
+  ],
+  "lojasTexto": "Contamos ainda com cinco lojas físicas: Curitiba (PR), São Paulo(SP), Ribeirão Preto(SP), Joinville (SC) e Novo Hamburgo (RS). Visite nosso site e tire suas dúvidas! A Equipe Tireshop estará sempre à disposição.",
+  "estoque": {
+    "titulo": "Estoque",
+    "blocos": [
+      {
+        "tipo": "paragrafo",
+        "html": "Temos um grande estoque para atender nossos clientes com qualidade e segurança. Todos os produtos que estiverem com preço em nosso site, são produtos disponíveis para envio imediato."
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Após a realização de um pedido de compra, o produto automaticamente é reservado e baixado do estoque. Portanto, todo produto comprado, será entregue com todo conforto e segurança no endereço solicitado."
+      },
+      {
+        "tipo": "titulo",
+        "nivel": 3,
+        "texto": "Produto indisponível ou Sob Consulta"
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Quando aparecer a mensagem de \"Produto Indisponível no momento\" ou \"Produto Sob Consulta\", significa que trabalhamos com o produto, porém está em falta no estoque, você pode cadastrar seus dados na própria página do produto no link \"Avise-me quando estiver disponível\" ou \"Entre em contato\", com isso assim que o produto estiver disponível em nosso estoque entraremos em contato com você. "
+      },
+      {
+        "tipo": "paragrafo",
+        "html": "Caso tenha alguma dúvida, nossa equipe está à disposição para atender de Segunda-Feira à Sexta-Feira das 08:00 às 17:45 horas através do e-mail contato@tireshop.com.br, telefone 41-3317-2251 ou Whatsapp 41-3317-2251. "
+      }
+    ],
+    "fotos": [
+      {
+        "src": "/img/institucional/estoque-1.webp",
+        "largura": 360,
+        "altura": 270,
+        "alt": "Estoque da TireShop, foto 1"
+      },
+      {
+        "src": "/img/institucional/estoque-2.webp",
+        "largura": 360,
+        "altura": 270,
+        "alt": "Estoque da TireShop, foto 2"
+      },
+      {
+        "src": "/img/institucional/estoque-3.webp",
+        "largura": 360,
+        "altura": 270,
+        "alt": "Estoque da TireShop, foto 3"
+      }
+    ]
+  },
+  "seo": {
+    "titulo": "Sobre nós | TireShop",
+    "descricao": "A TireShop.com.br é uma das pioneiras no e-commerce de pneus no Brasil, com atuação desde 2001."
+  }
+}
