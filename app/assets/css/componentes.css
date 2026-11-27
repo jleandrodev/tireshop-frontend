@@ -488,6 +488,35 @@ a.ts-selo-loja:hover { color: var(--ts-ink); text-decoration: none; outline: 2px
 /* --- Cabeçalho: o carrinho é botão (abre o minicart) ----------------------- */
 button.ts-header__acao { border: 0; background: none; font: inherit; font-weight: var(--w-medium); cursor: pointer; }
 
+/* --- Dialogo (T-0112): gaveta lateral genérica — minicart, menu do celular e */
+/* painel de filtros (módulos 02, 03 e 06) usam esta base; o conteúdo é de cada um. */
+.ts-dialogo {
+  position: fixed; inset: 0; margin: 0; width: min(420px, 100vw); height: 100dvh; max-height: none;
+  padding: 0; border: 0; background: var(--ts-paper); color: var(--ts-text);
+  display: none; flex-direction: column; box-shadow: var(--ts-shadow-lift);
+}
+.ts-dialogo[open] { display: flex; }
+.ts-dialogo::backdrop { background: var(--ts-scrim); }
+html:has(.ts-dialogo[open]) { overflow: hidden; }   /* a página não rola por trás da gaveta */
+.ts-dialogo--direita { inset: 0 0 0 auto; }
+.ts-dialogo--direita[open] { animation: ts-entra-direita 0.24s ease-out; }
+.ts-dialogo--esquerda { inset: 0 auto 0 0; width: min(340px, 88vw); }
+.ts-dialogo--esquerda[open] { animation: ts-entra-esquerda 0.24s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .ts-dialogo--direita[open], .ts-dialogo--esquerda[open] { animation: none; }
+}
+.ts-dialogo__cabeca {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--ts-s-3) var(--ts-s-3) var(--ts-s-3) var(--ts-s-5); border-bottom: 1px solid var(--ts-line);
+}
+.ts-dialogo__titulo { font-size: var(--ts-fs-xl); }
+.ts-dialogo__fechar {
+  display: grid; place-items: center; flex: none; width: var(--ts-tap); min-width: var(--ts-tap); height: var(--ts-tap);
+  border: 0; border-radius: var(--ts-r-pill); background: none; color: var(--ts-ink); cursor: pointer;
+}
+.ts-dialogo__fechar:hover { background: var(--ts-surface-2); }
+.ts-dialogo__fechar svg { width: 22px; height: 22px; }
+
 /* --- Minicart (C9): gaveta à direita ---------------------------------------- */
 .ts-minicart {
   position: fixed; inset: 0 0 0 auto; margin: 0; width: min(420px, 100vw); height: 100dvh; max-height: none;
