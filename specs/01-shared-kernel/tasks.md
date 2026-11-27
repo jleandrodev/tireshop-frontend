@@ -309,7 +309,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   `ErroDeContrato`, só para o `switch` ser exaustivo; não é o uso esperado deste componente (erro
   de validação é por campo, não de bloco inteiro).
 
-### [ ] T-0114 · `Paginacao` mostra os números e "Próxima página" na mesma linha
+### [x] T-0114 · `Paginacao` mostra os números e "Próxima página" na mesma linha — 2026-11-27
 
 - **Requisito:** REQ-01-15
 - **Camada:** ui
@@ -324,6 +324,12 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/ui/Paginacao.vue`, `Paginacao.spec.ts`
 - **Fora do escopo:** reticências para muitas páginas (o catálogo atual tem no máximo 3; ver Pendências); rolagem infinita.
 - **Depende de:** T-0107
+- **Decisões:** "os quatro números" do `Pronto quando` só precisa de dois pra renderizar
+  (`paginaAtual`/`totalPaginas` — `porPagina`/`total` não mudam o que a tela mostra), então só
+  esses dois entraram como alternativa a `dados: Pagina<T>`. Clique em número ou em "Próxima
+  página" sempre faz `preventDefault` e emite `ir`: o `href` real continua no DOM (funciona sem
+  JS, é rastreável), mas quem decide se navega pela rota ou refaz a busca sem trocar de URL é a
+  tela que escuta `ir`.
 
 ### [ ] T-0115 · `TextoDeApoio` recolhe o texto e abre com "Ler mais"
 
