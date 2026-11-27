@@ -95,7 +95,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
   `mocks/fixtures/_base/categorias.json`. Removida a Pendência da fixture (resolvida: nunca existiu
   no código versionado).
 
-### [ ] T-0204 · O contexto Conteúdo é ligado em um lugar só, com uma busca por requisição
+### [x] T-0204 · O contexto Conteúdo é ligado em um lugar só, com uma busca por requisição — 2026-11-27
 
 - **Requisito:** REQ-02-01
 - **Camada:** infra
@@ -109,6 +109,29 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `app/plugins/12.conteudo.ts`, `layers/conteudo/ui/composables/use-navegacao.ts`, `use-navegacao.spec.ts`, `layers/conteudo/index.ts`
 - **Fora do escopo:** componentes.
 - **Depende de:** T-0202, T-0118
+- **Decisões:** `useAsyncData('navegacao', ..., { dedupe: 'defer' })` — o padrão do Nuxt para
+  `dedupe` é `'cancel'` (uma segunda chamada com a mesma chave *cancela* a primeira e recomeça), o
+  oposto de "uma única chamada à porta" quando dois componentes pedem a navegação na mesma
+  renderização; só com `'defer'` a segunda chamada reaproveita a promessa da primeira. Descoberto
+  escrevendo o teste do dedupe (dois `useNavegacao()` no mesmo `setup()`): sem a opção, a porta era
+  chamada duas vezes, a primeira abortada.
+  O ambiente "nuxt" do Vitest (como a T-0118 já notou) guarda UM app por arquivo de teste, não um
+  por `test()` — e `useAsyncData` liga a busca à chave no payload desse app, não ao componente. Os
+  três testes deste arquivo passaram a usar o **mesmo** `NavegacaoRepositoryFalso` (reprogramado por
+  teste com `programarSucesso`/`programarFalha`) com `clearNuxtData('navegacao')` no `afterEach`:
+  trocar de repositório falso a cada teste não bastava, porque a primeira chamada a
+  `useAsyncData('navegacao', …)` no arquivo fixa esse *handler* (e o que ele capturou) para as
+  chamadas seguintes com a mesma chave — só o objeto falso mutável, não a função, muda de teste
+  para teste.
+  "No servidor, cada requisição recebe a própria instância" não ganhou teste automatizado próprio
+  (mesma saída da T-0118 para o `ClienteHttp`): o ambiente "nuxt" é client-only, sem SSR de
+  verdade para simular duas requisições. A garantia aqui é estrutural, não de comportamento do
+  composable: `app/plugins/12.conteudo.ts` cria o repositório *dentro* do `defineNuxtPlugin`,
+  nunca no escopo do módulo, a partir de `useClienteHttp()` — que a T-0118 já garante ser um por
+  requisição. Como `01.http.ts`, o plugin em si não tem `.spec.ts` (é fiação fina); confirmado à
+  mão com `bin/pnpm dev` (servidor real, SSR de verdade) que `12.conteudo.ts` roda no boot sem
+  erro e a home provisória (`/`) continua respondendo 200 — ainda não há página consumindo
+  `useNavegacao()` (a T-0205 monta o layout; "Fora do escopo: componentes" nesta task).
 
 ### [ ] T-0205 · O layout padrão monta cabeçalho, conteúdo e rodapé
 
