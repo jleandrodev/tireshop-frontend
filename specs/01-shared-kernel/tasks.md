@@ -331,7 +331,7 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
   JS, é rastreável), mas quem decide se navega pela rota ou refaz a busca sem trocar de URL é a
   tela que escuta `ir`.
 
-### [ ] T-0115 · `TextoDeApoio` recolhe o texto e abre com "Ler mais"
+### [x] T-0115 · `TextoDeApoio` recolhe o texto e abre com "Ler mais" — 2026-11-27
 
 - **Requisito:** REQ-01-16
 - **Camada:** ui
@@ -346,6 +346,10 @@ com `/` mas não `//`, âncora `#...`), não só um bloqueio de `javascript:` �
 - **Arquivos:** `layers/shared/ui/TextoDeApoio.vue`, `TextoDeApoio.spec.ts`
 - **Fora do escopo:** descrição do produto (módulo 04 reutiliza o componente).
 - **Depende de:** T-0104
+- **Decisões:** "recolhido" é só visual (`data-recolhido="true"`, máscara em CSS que corta a
+  altura) — o HTML inteiro do corpo fica sempre no DOM, nunca por trás de `v-if`, pra indexar
+  certo. `vue/no-v-html` ganhou uma terceira exceção por arquivo (`TextoDeApoio.vue`, mesma razão
+  do `Acordeao`: o conteúdo só chega como `HtmlSeguro`).
 
 ### [ ] T-0116 · `Migalhas` vai de Home até a página atual
 
