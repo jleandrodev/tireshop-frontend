@@ -58,12 +58,30 @@ async function conferirSemRolagemHorizontal(page: Page): Promise<void> {
 
 const ALVO_MINIMO_PX = 44
 
+// Exceções nomeadas: nenhuma sem seletor e motivo (mesmo padrão de scripts/lint-marca.ts).
+// `.ts-carrossel__ponto` é 24px de propósito (T-0111): navegação redundante, as setas (44px)
+// já cobrem o alvo mínimo.
+const EXCECOES_ALVO_PEQUENO = ['.ts-carrossel__ponto']
+
 async function conferirAlvosDeToque(page: Page): Promise<void> {
   const alvos = await page
     .locator('a, button, input, select, textarea, summary, [role="button"]')
     .all()
   for (const alvo of alvos) {
     if (!(await alvo.isVisible())) continue
+
+    // Link de texto corrido (`display: inline`, o padrão do navegador pra <a> sem CSS de
+    // tamanho) é o que o WCAG 2.5.8 já isenta do alvo mínimo — ex.: Migalhas, `.ts-link` no meio
+    // de um parágrafo. Um controle estilizado como botão nunca é `inline`.
+    const ehLinkDeTexto = await alvo.evaluate((el) => getComputedStyle(el).display === 'inline')
+    if (ehLinkDeTexto) continue
+
+    const excetuado = await alvo.evaluate(
+      (el, seletores) => seletores.some((seletor) => el.matches(seletor)),
+      EXCECOES_ALVO_PEQUENO,
+    )
+    if (excetuado) continue
+
     const caixa = await alvo.boundingBox()
     if (!caixa) continue
     const menorLado = Math.min(caixa.width, caixa.height)

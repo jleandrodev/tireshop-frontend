@@ -6,6 +6,9 @@ const estaNoCI = Boolean(process.env.CI)
 // do projeto (ADR 0014): bin/pnpm test:e2e
 export default defineConfig({
   testDir: './tests/e2e',
+  // T-0120: esquenta a página de prova do kernel antes dos workers em paralelo (ver o
+  // comentário em _global-setup.ts — cold start concorrido atrasava até teste de outro arquivo).
+  globalSetup: './tests/e2e/_global-setup.ts',
   fullyParallel: true,
   forbidOnly: estaNoCI,
   // Teste instável se corrige; não se repete para esconder (ADR 0014).
