@@ -114,7 +114,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Fora do escopo:** componentes.
 - **Depende de:** T-0001
 
-### [ ] T-0006 · O lint de marca reprova cor literal e verde fora de ação
+### [x] T-0006 · O lint de marca reprova cor literal e verde fora de ação · 2026-11-27
 
 - **Requisito:** REQ-00-05
 - **Camada:** infra
@@ -124,7 +124,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
   - reprova amarelo como `color` sem o comentário `/* sobre preto */`
   - aprova o CSS vindo do protótipo, sem alteração
 - **Pronto quando:** `pnpm lint:marca` existe e passa no CSS atual; cobre `.css` e blocos `<style>` de `.vue`. **CI:** `lint:marca` entra no job Qualidade; o caso entra no `ci.spec.ts`.
-- **Arquivos:** `scripts/lint-marca.ts`, `scripts/lint-marca.spec.ts`, `package.json`, `.github/workflows/ci.yml`, `tests/infra/ci.spec.ts`
+- **Arquivos:** `scripts/lint-marca.ts`, `scripts/lint-marca.spec.ts`, `package.json`, `.github/workflows/ci.yml`, `tests/infra/ci.spec.ts`, `vitest.config.ts`
 - **Fora do escopo:** corrigir CSS (não deve ser preciso).
 - **Depende de:** T-0005, T-0012
 
@@ -206,6 +206,9 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Hospedagem (premissa P6 do PRD).** O CI ficou no GitHub Actions (ADR 0014). O provedor de hospedagem continua a confirmar com o TI; a T-1318 só publica a imagem.
 - **Tempo do job E2E.** Quando passar de 10 minutos, dividir em fatias (`--shard`) com matriz. Abrir task no módulo em que isso acontecer.
 - **Numeração dos marcos.** O roadmap vai de M0 a M6; o campo "Marco" de algumas specs usa outra numeração (a 13 diz M10; a 12, M9; as 09, 10 e 11, M8). Alinhar pelo roadmap.
+- **`.ts-selo-loja__icone` usa `--ts-acao` fora de botão.** Ao implementar a regra nova (não existia no `tools/brand_lint.py` original), achei um uso real no CSS do protótipo: o ícone do selo de confiança no rodapé da loja, não um controle clicável. Como a task diz que o CSS atual não deve precisar de correção, registrei como exceção nomeada (`EXCECOES_ACAO`, com seletor e motivo, igual ao padrão de `_axe-excecoes.ts`) em vez de afrouxar a regra geral ou editar o CSS. **Revisar com o design antes da T-1314** (auditoria de marca e privacidade): o uso está no limite do que a ADR 0006 descreve ("verde só em seguir, comprar, confirmar").
+- **Lint de marca é line-based, não um parser de CSS completo.** Como o `tools/brand_lint.py` original. A regra do verde de ação usa um parse leve de blocos `seletor { declarações }` (regex, sem suporte real a `@media` aninhado além do primeiro nível); suficiente para o CSS atual, pode precisar de ajuste se aparecer um padrão mais aninhado.
+- **`fs.globSync` com `exclude`:** a opção só poda diretório durante a varredura, não filtra o arquivo final — descobri isso rodando contra o CSS real (o filtro de `tokens*.css` não funcionava). Corrigido com um `.filter()` depois do glob.
 - **`no-restricted-imports` em vez de `import-x/no-restricted-paths`.** A regra de caminho do `eslint-plugin-import-x` precisa resolver o import a um arquivo real (`resolve()` do plugin); como quase nada dentro das layers existe ainda, ela saía em silêncio sem apontar nada. Troquei por `no-restricted-imports` (núcleo do ESLint), que casa com a *string* do import — funciona mesmo sem arquivo do outro lado. Desinstalei o `eslint-plugin-import-x`.
 - **Um bloco de config por (contexto × pasta), não um por regra.** Em flat config, duas entradas que configuram a mesma regra (`no-restricted-imports`) para o mesmo arquivo não somam: a última vence por inteiro. Por isso a restrição de camada (domain/application/ui) e a de contexto (só index.ts de fora) foram combinadas num `patterns` só, por combinação, em vez de em blocos separados.
 - **Aviso "Cannot extend config from `layers/shared/`".** O Nuxt 4 varre `layers/*` por convenção e tenta estender cada subpasta como layer (`@nuxt/kit`, `glob("layers/*", ...)`) — é como a T-0004 vai funcionar sem precisar listar `extends:` à mão no `nuxt.config.ts` raiz. Até lá, `layers/shared/` não tem `nuxt.config.ts` próprio, e o aviso aparece em `typecheck`, `build` e no projeto `nuxt` do Vitest; não é erro (sai sempre com código 0) e some quando a T-0004 criar o `nuxt.config.ts` de cada layer.

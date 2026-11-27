@@ -152,12 +152,12 @@ describe('ci.yml: instalação de dependências', () => {
 })
 
 describe('ci.yml: os quatro jobs novos da T-0012 existem', () => {
-  test('Qualidade roda format:check, lint e typecheck', () => {
+  test('Qualidade roda format:check, lint, lint:marca e typecheck', () => {
     const job = Object.values(ci.jobs).find((j) => j.name === 'Qualidade')
     const run = job?.steps?.map((p) => p.run ?? '').join('\n') ?? ''
 
     expect(job, 'não existe um job chamado "Qualidade"').toBeTruthy()
-    for (const script of ['format:check', 'lint', 'typecheck']) {
+    for (const script of ['format:check', 'lint', 'lint:marca', 'typecheck']) {
       expect(scriptsChamados(run), `job Qualidade não chama "pnpm ${script}"`).toContain(script)
     }
   })
