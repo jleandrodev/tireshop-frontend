@@ -140,7 +140,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Fora do escopo:** otimização de imagem.
 - **Depende de:** T-0004
 
-### [ ] T-0008 · O servidor de mocks serve fixtures, com atraso e falha simuláveis
+### [x] T-0008 · O servidor de mocks serve fixtures, com atraso e falha simuláveis · 2026-11-27
 
 - **Requisito:** REQ-00-07
 - **Camada:** mock
@@ -150,7 +150,7 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
   - `?_atraso=300` demora pelo menos 300 ms
   - com `NUXT_PUBLIC_API_BASE` externo, a rota responde 404 (mock desligado)
 - **Pronto quando:** `mocks/fixtures` é cópia de `docs/api/examples` (script `pnpm mocks:sincronizar`); utilitário `responderFixture(evento, nome)` em `server/utils/`. **CI:** o job Qualidade roda `pnpm mocks:sincronizar --conferir`, que reprova se as duas pastas divergem; o caso entra no `ci.spec.ts`.
-- **Arquivos:** `server/api/mock/navegacao.get.ts`, `server/utils/mock.ts`, `mocks/fixtures/**`, `scripts/sincronizar-mocks.ts`, `nuxt.config.ts` (runtimeConfig), `.github/workflows/ci.yml`, `tests/infra/ci.spec.ts`
+- **Arquivos:** `server/api/mock/navegacao.get.ts`, `server/api/mock/navegacao.get.spec.ts`, `server/utils/mock.ts`, `mocks/fixtures/**`, `scripts/sincronizar-mocks.ts`, `nuxt.config.ts` (runtimeConfig), `.github/workflows/ci.yml`, `tests/infra/ci.spec.ts`, `vitest.config.ts`, `.prettierignore`, `package.json`
 - **Fora do escopo:** as outras rotas (cada módulo cria as suas).
 - **Depende de:** T-0004
 
@@ -206,6 +206,9 @@ acrescenta ao `ci.yml` e ao `tests/infra/ci.spec.ts`. A regra está em [../READM
 - **Hospedagem (premissa P6 do PRD).** O CI ficou no GitHub Actions (ADR 0014). O provedor de hospedagem continua a confirmar com o TI; a T-1318 só publica a imagem.
 - **Tempo do job E2E.** Quando passar de 10 minutos, dividir em fatias (`--shard`) com matriz. Abrir task no módulo em que isso acontecer.
 - **Numeração dos marcos.** O roadmap vai de M0 a M6; o campo "Marco" de algumas specs usa outra numeração (a 13 diz M10; a 12, M9; as 09, 10 e 11, M8). Alinhar pelo roadmap.
+- **Núcleo puro + invólucro fino.** `responderFixture` (server/utils/mock.ts) não usa `#imports` nem lê `useRuntimeConfig()`: lê `process.env.NUXT_PUBLIC_API_BASE` direto (é exatamente o que o runtimeConfig público faria) e recebe query/instância por parâmetro. Testável com Vitest puro, sem subir o Nitro. A rota (`navegacao.get.ts`) só liga isso a `getQuery`/`setResponseStatus`/`createError` do h3, com import explícito. Confirmado de ponta a ponta à mão contra `bin/pnpm dev` (GET normal, `_falha=500` com `content-type: application/problem+json`, `_atraso=300` demorando de verdade, `NUXT_PUBLIC_API_BASE` externo devolvendo 404) — nenhum teste automatizado cobre esse caminho completo hoje; é a mesma lacuna já registrada na T-0007.
+- **`@types/node` estava faltando.** `server/**` é tipado pelo Nuxt (diferente de `tests/infra/`/`scripts/`, que ficam fora do `nuxt typecheck` — Pendência da T-0003); sem o pacote, `node:fs`, `node:path` e `process` quebravam o typecheck. Instalado como devDependency, na versão da linha do Node 22.
+- **`mocks/fixtures/` saiu do Prettier.** `pnpm format` reformatava a cópia (não a origem, que já estava fora via `docs/`), fazendo `mocks:sincronizar --conferir` acusar divergência por espaçamento, com o conteúdo idêntico. Mesmo padrão da T-0005/T-0006: cópia fiel da fonte, formatação não é o que se verifica aqui.
 - **`ui/` precisou ser registrada como pasta de componentes em cada `nuxt.config.ts` de layer.** Sem isso, `<SpriteDeIcones>` e `<Icone>` não resolviam (Nuxt só auto-escaneia `components/` por padrão; um nome de pasta próprio pede `components: [{ path: './ui', pathPrefix: false }]`). Descoberto rodando o dev server de verdade — passava limpo no Vitest porque o teste não sobe o Nuxt inteiro. Registrado nas 8 layers de uma vez, já que toda vai precisar.
 - **`import.meta.glob` com caminho absoluto ("/app/...") funcionava no Vitest isolado e falhava silenciosamente no `nuxt dev` real** (sprite saía vazio, sem erro). A raiz que o Vite usa para resolver um glob "/" muda entre o Vitest puro e o pipeline do Nuxt. Troquei para caminho relativo ao próprio `sprite.ts` (`../../../app/assets/icons/...`), que não depende de qual raiz está em uso. Só descobri rodando o `nuxt dev` e lendo o HTML de verdade — nenhum teste automatizado pegou isso (fica como pendência de cobertura: nenhum teste roda contra o dev server real hoje).
 - **Comentário de `<!-- eslint-disable -->` dentro de `<template>` vira nó real no HTML.** Movido para `eslint.config.mjs`, escopado ao arquivo, em vez de um comentário inline — evita poluir toda página.
