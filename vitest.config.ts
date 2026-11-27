@@ -1,5 +1,14 @@
+import { fileURLToPath } from 'node:url'
 import { defineVitestProject } from '@nuxt/test-utils/config'
 import { defineConfig } from 'vitest/config'
+
+// T-0201: `#layers/shared` é o alias que o próprio Nuxt gera (um por layer, em `.nuxt/tsconfig.
+// *.json`) para o import cruzado de contexto (docs/architecture.md, A5) — só o TypeScript sabe
+// dele; o projeto "unidade" roda sem o Nuxt, então precisa do alias de novo, para resolver em
+// tempo de execução. Cresce um item por contexto que vier a importar o shared (hoje só ele).
+const ALIAS_LAYERS_SHARED = {
+  '#layers/shared': fileURLToPath(new URL('./layers/shared', import.meta.url)),
+}
 
 // Dois projetos (T-0003): "unidade" roda em node, sem carregar o Nuxt — domínio, aplicação e os
 // testes de infra; "nuxt" roda com o ambiente do Nuxt, para componente Vue (`layers/*/ui/*.spec.ts`,
@@ -12,6 +21,7 @@ import { defineConfig } from 'vitest/config'
 // contexto (REQ-00-02; a T-1313 torna o limite por contexto). Fica fora: fábricas, falsos de teste,
 // os próprios .spec.ts e a API pública de cada contexto (index.ts só reexporta).
 export default defineConfig({
+  resolve: { alias: ALIAS_LAYERS_SHARED },
   test: {
     coverage: {
       provider: 'v8',

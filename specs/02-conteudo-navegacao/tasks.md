@@ -8,7 +8,7 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 
 ---
 
-### [ ] T-0201 · `Navegacao` e o caso de uso `obterNavegacao`
+### [x] T-0201 · `Navegacao` e o caso de uso `obterNavegacao` — 2026-11-27
 
 - **Requisito:** REQ-02-01, REQ-02-05, REQ-02-18
 - **Camada:** aplicação
@@ -24,6 +24,21 @@ T-0214, contexto Conteúdo) e a **newsletter** (T-0215 a T-0218, contexto Relaci
 - **Arquivos:** `layers/conteudo/domain/navegacao.ts`, `navegacao.spec.ts`, `domain/portas.ts`, `domain/__fabricas__/navegacao.ts`, `application/obter-navegacao.ts`, `obter-navegacao.spec.ts`, `application/__falsos__/navegacao-repository-falso.ts`
 - **Fora do escopo:** `ConteudoRepository` (Home, políticas, Sobre nós: módulos 09 a 11).
 - **Depende de:** T-0101, T-0105, T-0107, T-0108
+- **Decisões:** primeiro import cruzado de contexto de verdade no projeto (`conteudo` → `shared`,
+  pela API pública). Dois achados por causa disso, nenhum visível só lendo a task:
+  (1) `#layers/shared` é o alias que o próprio Nuxt gera, um por layer (`.nuxt/tsconfig.*.json`,
+  docs/architecture.md A5) — só o TypeScript sabe dele; o projeto "unidade" do Vitest roda sem o
+  Nuxt, então precisa do mesmo alias de novo (`resolve.alias`, em `vitest.config.ts` e
+  `vitest.mutacao.config.ts` — cresce um item por contexto que vier a importar o shared, hoje só
+  este); (2) importar `#layers/shared` (a API pública inteira) carrega `use-cliente-http.ts`, que
+  importa `h3` — pacote que só existia como dependência transitiva do Nuxt, nunca declarada; fora
+  do contexto do Nuxt (este projeto, "unidade") o Node não acha. `h3` entrou em `dependencies`,
+  fixado na mesma versão que o Nuxt já usa por dentro (`1.15.11` — não a última, pra não ter duas
+  versões de h3 coexistindo com tipos possivelmente incompatíveis). `ErroDeConteudo` começa só com
+  `ErroDeRede | ErroDeContrato`: `PaginaNaoEncontrada` entra quando a task que precisar dele
+  (`obterPolitica`, módulo 11) chegar. A fábrica `umaNavegacao()` espelha os 8 departamentos e a
+  contagem de aros de `docs/api/examples/navegacao.json` (59), sem copiar cada `href` real.
+
 
 ### [ ] T-0202 · `HttpNavegacaoRepository` entende `GET /navegacao`
 
