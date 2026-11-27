@@ -106,7 +106,7 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
   Verificação local: `criterio-de-listagem.spec.ts` (13/13), `typecheck`, `lint` e
   `format:check` (0 erros); suíte inteira/e2e/build no CI do PR.
 
-### [ ] T-0305 · `Faceta` esconde o que não ajuda
+### [x] T-0305 · `Faceta` esconde o que não ajuda — 2026-11-27
 
 - **Requisito:** REQ-03-05
 - **Camada:** domínio
@@ -119,6 +119,15 @@ Spec: [spec.md](spec.md). Ciclo e portões: [../README.md](../README.md).
 - **Arquivos:** `layers/catalogo/domain/faceta.ts`, `faceta.spec.ts`
 - **Fora do escopo:** contagem (vem da API).
 - **Depende de:** T-0304
+- **Decisões:** `Faceta`/`OpcaoDeFaceta` são tipos passivos (mesma linha de `ProdutoResumo`,
+  T-0303) — `facetasExibiveis` e `marcada` são funções livres, puras (sem builder/classe: a
+  task já pede exatamente "função pura"). `marcada(criterio, chave, valor)` é a função testada
+  direto no bullet; `facetasExibiveis` a usa por dentro para marcar cada opção que devolve
+  (`OpcaoExibivel = OpcaoDeFaceta & { marcada: boolean }`) — não há dois jeitos de saber se uma
+  opção está marcada. A ordem sai de graça: `Array.filter`/`.map` preservam a ordem de entrada,
+  sem precisar de nenhum cuidado extra.
+  Verificação local: `faceta.spec.ts` (6/6), `typecheck`, `lint` e `format:check` (0 erros);
+  suíte inteira/e2e/build no CI do PR.
 
 ### [ ] T-0306 · As portas do catálogo e o caso de uso `listarProdutos`
 
